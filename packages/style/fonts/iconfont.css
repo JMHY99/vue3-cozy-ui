@@ -1,0 +1,499 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 4357777 */
+  src: url("iconfont.woff2?t=1717051546470") format("woff2"),
+    url("iconfont.woff?t=1717051546470") format("woff"),
+    url("iconfont.ttf?t=1717051546470") format("truetype");
+}
+
+.cozy-icon {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.c-upload:before {
+  content: "\ebb3";
+}
+
+.c-upload-fill:before {
+  content: "\e63e";
+}
+
+.c-information:before {
+  content: "\e615";
+}
+
+.c-xiazai:before {
+  content: "\e62a";
+}
+
+.c-xiazai1:before {
+  content: "\e6f9";
+}
+
+.c-xiazai2:before {
+  content: "\e6f5";
+}
+
+.c-Info:before {
+  content: "\e691";
+}
+
+.c-folder:before {
+  content: "\e692";
+}
+
+.c-folder-add:before {
+  content: "\e693";
+}
+
+.c-folder-checked:before {
+  content: "\e694";
+}
+
+.c-folder-delete:before {
+  content: "\e695";
+}
+
+.c-folder-opened:before {
+  content: "\e696";
+}
+
+.c-folder-remove:before {
+  content: "\e697";
+}
+
+.c-warning:before {
+  content: "\e6c8";
+}
+
+.c-zoom-in:before {
+  content: "\e6cb";
+}
+
+.c-zoom-out:before {
+  content: "\e6cc";
+}
+
+.c-circle-check-filled:before {
+  content: "\e668";
+}
+
+.c-circle-close-filled:before {
+  content: "\e669";
+}
+
+.c-info-filled:before {
+  content: "\e690";
+}
+
+.c-question-filled:before {
+  content: "\e6a6";
+}
+
+.c-warning-filled:before {
+  content: "\e6c9";
+}
+
+.c-delete:before {
+  content: "\e60f";
+}
+
+.c-edit:before {
+  content: "\e612";
+}
+
+.c-copy:before {
+  content: "\e613";
+}
+
+.c-up-outlined:before {
+  content: "\e630";
+}
+
+.c-down-outlined:before {
+  content: "\e631";
+}
+
+.c-left-outlined:before {
+  content: "\e632";
+}
+
+.c-right-outlined:before {
+  content: "\e633";
+}
+
+.c-arrow-up-outlined:before {
+  content: "\e634";
+}
+
+.c-arrow-down-outlined:before {
+  content: "\e635";
+}
+
+.c-arrow-right-outlined:before {
+  content: "\e636";
+}
+
+.c-arrow-left-outlined:before {
+  content: "\e639";
+}
+
+.c-swap-lr-outlined:before {
+  content: "\e63a";
+}
+
+.c-bianji:before {
+  content: "\10132";
+}
+
+.c-fenxiang:before {
+  content: "\10133";
+}
+
+.c-duihuan:before {
+  content: "\10134";
+}
+
+.c-fasong:before {
+  content: "\10135";
+}
+
+.c-gengduo:before {
+  content: "\10136";
+}
+
+.c-retract-outlined:before {
+  content: "\e620";
+}
+
+.c-expand-outlined:before {
+  content: "\e621";
+}
+
+.c-plus-outlined:before {
+  content: "\e622";
+}
+
+.c-minus-outlined:before {
+  content: "\e623";
+}
+
+.c-check-outlined:before {
+  content: "\e624";
+}
+
+.c-close-outlined:before {
+  content: "\e625";
+}
+
+.c-plus-circle-outlined:before {
+  content: "\e626";
+}
+
+.c-minus-circle-outlined:before {
+  content: "\e627";
+}
+
+.c-check-circle-outlined:before {
+  content: "\e628";
+}
+
+.c-close-circle-outlined:before {
+  content: "\e629";
+}
+
+.c-exit-outlined:before {
+  content: "\e62b";
+}
+
+.c-refresh-outlined:before {
+  content: "\e637";
+}
+
+.c-refresh-double-outlined:before {
+  content: "\e638";
+}
+
+.c-fullscreen-outlined:before {
+  content: "\e644";
+}
+
+.c-scan-outlined:before {
+  content: "\e645";
+}
+
+.c-lock-outlined:before {
+  content: "\e64c";
+}
+
+.c-unlock-outlined:before {
+  content: "\e64d";
+}
+
+.c-user-outlined:before {
+  content: "\e64e";
+}
+
+.c-user-add-outlined:before {
+  content: "\e64f";
+}
+
+.c-user-minus-outlined:before {
+  content: "\e650";
+}
+
+.c-user-adjust-outlined:before {
+  content: "\e651";
+}
+
+.c-collect-outlined:before {
+  content: "\e65e";
+}
+
+.c-like-outlined:before {
+  content: "\e65f";
+}
+
+.c-picture-outlined:before {
+  content: "\e660";
+}
+
+.c-search-outlined:before {
+  content: "\e661";
+}
+
+.c-set-outlined:before {
+  content: "\e662";
+}
+
+.c-mail-outlined:before {
+  content: "\e663";
+}
+
+.c-ibankcard-outlined:before {
+  content: "\e666";
+}
+
+.c-home-outlined:before {
+  content: "\e667";
+}
+
+.c-model-outlined:before {
+  content: "\e66a";
+}
+
+.c-folder-outlined:before {
+  content: "\e66b";
+}
+
+.c-network-outlined:before {
+  content: "\e66e";
+}
+
+.c-lightning-outlined:before {
+  content: "\e66f";
+}
+
+.c-architecture-outlined:before {
+  content: "\e670";
+}
+
+.c-server-outlined:before {
+  content: "\e671";
+}
+
+.c-technology-outlined:before {
+  content: "\e672";
+}
+
+.c-develop-outlined:before {
+  content: "\e673";
+}
+
+.c-code-outlined:before {
+  content: "\e674";
+}
+
+.c-safety-outlined:before {
+  content: "\e675";
+}
+
+.c-monitor-outlined:before {
+  content: "\e676";
+}
+
+.c-openness-outlined:before {
+  content: "\e678";
+}
+
+.c-scene-outlined:before {
+  content: "\e679";
+}
+
+.c-application-outlined:before {
+  content: "\e67a";
+}
+
+.c-application-add-outlined:before {
+  content: "\e67b";
+}
+
+.c-list-outlined:before {
+  content: "\e67e";
+}
+
+.c-profile-outlined:before {
+  content: "\e67f";
+}
+
+.c-supervise-outlined:before {
+  content: "\e680";
+}
+
+.c-data-outlined:before {
+  content: "\e681";
+}
+
+.c-distributed-outlined:before {
+  content: "\e682";
+}
+
+.c-file-refresh-outlined:before {
+  content: "\e683";
+}
+
+.c-file-search-outlined:before {
+  content: "\e684";
+}
+
+.c-file-problem-outlined:before {
+  content: "\e685";
+}
+
+.c-file-examine-outlined:before {
+  content: "\e686";
+}
+
+.c-save-outlined:before {
+  content: "\e687";
+}
+
+.c-bank-outlined:before {
+  content: "\e688";
+}
+
+.c-share-a-outlined:before {
+  content: "\e689";
+}
+
+.c-share-b-outlined:before {
+  content: "\e68a";
+}
+
+.c-module-outlined:before {
+  content: "\e68b";
+}
+
+.c-key-outlined:before {
+  content: "\e68c";
+}
+
+.c-skin-outlined:before {
+  content: "\e68d";
+}
+
+.c-node-index-outlined:before {
+  content: "\e68e";
+}
+
+.c-flowpath-outlined:before {
+  content: "\e68f";
+}
+
+.c-dizhi:before {
+  content: "\e601";
+}
+
+.c-jilu:before {
+  content: "\e602";
+}
+
+.c-wode:before {
+  content: "\e603";
+}
+
+.c-shezhi:before {
+  content: "\e604";
+}
+
+.c-wentifankui:before {
+  content: "\e605";
+}
+
+.c-zixun:before {
+  content: "\e606";
+}
+
+.c-lianxidianhua:before {
+  content: "\e607";
+}
+
+.c-sousuo:before {
+  content: "\e608";
+}
+
+.c-shoucang:before {
+  content: "\e609";
+}
+
+.c-guanli:before {
+  content: "\e60a";
+}
+
+.c-renzheng:before {
+  content: "\e60b";
+}
+
+.c-xinjian:before {
+  content: "\e60c";
+}
+
+.c-shouye:before {
+  content: "\e60d";
+}
+
+.c-jia:before {
+  content: "\e610";
+}
+
+.c-jian:before {
+  content: "\e611";
+}
+
+.c-yonghu:before {
+  content: "\e9bc";
+}
+
+.c-yonghu1:before {
+  content: "\e9bd";
+}
+
+.c-shanchu1:before {
+  content: "\e9be";
+}
+
+.c-qunzu:before {
+  content: "\e9bf";
+}
+
+.c-wode2:before {
+  content: "\e9c0";
+}
+
+.c-a-shujudapan:before {
+  content: "\e60e";
+}
+

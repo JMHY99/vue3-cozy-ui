@@ -1,5 +1,5 @@
 import {
-  demoblockPlugin,
+  demoBlockPlugin,
   demoblockVitePlugin,
 } from "vitepress-theme-demoblock";
 export default {
@@ -95,12 +95,18 @@ export default {
     },
   },
 
-  markdown: {
-    config: (md) => {
-      md.use(demoblockPlugin);
-    },
-  },
+  // markdown: {
+  //   config: (md) => {
+  //     md.use(demoblockPlugin);
+  //   },
+  // },
   vite: {
     plugins: [demoblockVitePlugin()],
   },
+
+  markdown: {
+    config: (md) => {
+      md.use(demoBlockPlugin)
+    }
+  }
 };
