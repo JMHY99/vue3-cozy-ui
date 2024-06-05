@@ -1,3 +1,7 @@
+import {
+  demoblockPlugin,
+  demoblockVitePlugin,
+} from "vitepress-theme-demoblock";
 export default {
   // 站点级选项
   lang: "cn-ZH",
@@ -61,33 +65,42 @@ export default {
                 { text: "Button 按钮", link: "/components/button.md" },
               ],
             },
-            {
-              text: "布局",
-              collapsable: false,
-              sidebarDepth: 1, // 只显示一级标题
-              children: ["flex", "grid", "layout", "space"],
-            },
-            {
-              title: "导航",
-              collapsable: false,
-              sidebarDepth: 1, // 只显示一级标题
-              children: ["affix", "anchor", "breadcrumb", "dropdown"],
-            },
-            {
-              title: "表单",
-              collapsable: false,
-              sidebarDepth: 1, // 只显示一级标题
-              children: ["form", "input", "input-number", "radio", "switch"],
-            },
-            {
-              title: "视图",
-              collapsable: false,
-              sidebarDepth: 1, // 只显示一级标题
-              children: ["alert", "message", "avatar"],
-            },
+            // {
+            //   text: "布局",
+            //   collapsable: false,
+            //   sidebarDepth: 1, // 只显示一级标题
+            //   children: ["flex", "grid", "layout", "space"],
+            // },
+            // {
+            //   title: "导航",
+            //   collapsable: false,
+            //   sidebarDepth: 1, // 只显示一级标题
+            //   children: ["affix", "anchor", "breadcrumb", "dropdown"],
+            // },
+            // {
+            //   title: "表单",
+            //   collapsable: false,
+            //   sidebarDepth: 1, // 只显示一级标题
+            //   children: ["form", "input", "input-number", "radio", "switch"],
+            // },
+            // {
+            //   title: "视图",
+            //   collapsable: false,
+            //   sidebarDepth: 1, // 只显示一级标题
+            //   children: ["alert", "message", "avatar"],
+            // },
           ],
         },
       ],
     },
+  },
+
+  markdown: {
+    config: (md) => {
+      md.use(demoblockPlugin);
+    },
+  },
+  vite: {
+    plugins: [demoblockVitePlugin()],
   },
 };

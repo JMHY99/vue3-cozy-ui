@@ -1,24 +1,27 @@
 {
-	"name": "vue3-cozy-ui",
-	"private": true,
-	"version": "0.0.0",
-	"type": "module",
-	"scripts": {
-		"dev": "vite",
-		"build": "vue-tsc && vite build",
-		"preview": "vite preview",
-		"docs:dev": "vitepress dev docs",
-		"docs:build": "vitepress build docs",
-		"docs:preview": "vitepress preview docs"
-	},
-	"dependencies": {
-		"vue": "^3.4.21"
-	},
-	"devDependencies": {
-		"@vitejs/plugin-vue": "^5.0.4",
-		"typescript": "^5.2.2",
-		"vite": "^5.2.0",
-		"vitepress": "^1.2.3",
-		"vue-tsc": "^2.0.6"
-	}
+  "name": "vue3-cozy-ui",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview",
+    "docs:dev": "pnpm run register:components && vitepress dev docs",
+    "docs:build": "pnpm run register:components && vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "register:components": "vitepress-rc"
+  },
+  "dependencies": {
+    "vue": "^3.4.21"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0",
+    "vitepress": "^1.2.3",
+    "vitepress-theme-demoblock": "^3.0.7",
+    "vue-tsc": "^2.0.6"
+  }
+
 }

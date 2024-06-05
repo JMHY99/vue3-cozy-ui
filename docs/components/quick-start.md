@@ -43,6 +43,9 @@ Vue.use(CButton);
 </script>
 ```
 
+::: demo
 
-:::demo
+``` html
+<button>按钮</button>
+```
 :::
