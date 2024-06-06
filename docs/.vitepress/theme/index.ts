@@ -1,6 +1,7 @@
 import DefaultTheme from "vitepress/theme";
-import "../../../packages/style/fonts/iconfont.css";
+import "../../../packages/style/src/fonts/iconfont.css";
 import CozyUI from "../../../packages";
+import "../../../packages/style/src/index.scss";
 import DemoBlock from "@ruabick/vitepress-demo-block";
 import "@ruabick/vitepress-demo-block/dist/style.css";
 

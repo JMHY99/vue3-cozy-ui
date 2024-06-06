@@ -15,7 +15,3 @@
   <c-icon name="c-qunzu"></c-icon>
   <c-icon name="c-wode2"></c-icon>
 </template>
-
-<script setup>
-
-</script>
