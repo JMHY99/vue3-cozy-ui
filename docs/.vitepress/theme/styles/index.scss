@@ -11,3 +11,8 @@
 .vp-doc td {
   width: 500px;
 }
+
+// demo按钮
+.vitepress-demo .demo-platforms a{
+  display: none !important;
+}
