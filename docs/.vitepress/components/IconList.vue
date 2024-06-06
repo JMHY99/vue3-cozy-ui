@@ -72,7 +72,7 @@ export default {
   align-items: center;
   line-height: 1.8;
   &:hover {
-    background: #1890ff;
+    background: #5770ee;
     color: #ffffff;
     border-radius: 5px;
   }
