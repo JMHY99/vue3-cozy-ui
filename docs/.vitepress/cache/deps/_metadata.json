@@ -1,40 +1,37 @@
 {
-  "hash": "603f5110",
-  "configHash": "18610fd6",
-  "lockfileHash": "c3fb273e",
-  "browserHash": "935a0001",
+  "hash": "2529f46e",
+  "configHash": "889a3ccb",
+  "lockfileHash": "0ac389a5",
+  "browserHash": "cdb56407",
   "optimized": {
     "vue": {
-      "src": "../../../../node_modules/.pnpm/vue@3.4.27_typescript@5.4.5/node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "3bff6d70",
+      "fileHash": "71cd32eb",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
-      "src": "../../../../node_modules/.pnpm/@vue+devtools-api@7.2.1_vue@3.4.27_typescript@5.4.5_/node_modules/@vue/devtools-api/dist/index.js",
+      "src": "../../../../node_modules/@vue/devtools-api/dist/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "eb6cbd59",
+      "fileHash": "4b0b1844",
       "needsInterop": false
     },
     "vitepress > @vueuse/core": {
-      "src": "../../../../node_modules/.pnpm/@vueuse+core@10.10.0_vue@3.4.27_typescript@5.4.5_/node_modules/@vueuse/core/index.mjs",
+      "src": "../../../../node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "cf941c10",
+      "fileHash": "4f1299d2",
       "needsInterop": false
     },
-    "vue-demi": {
-      "src": "../../../../node_modules/.pnpm/vitepress@1.2.3_@algolia+client-search@4.23.3_postcss@8.4.38_search-insights@2.14.0_typescript@5.4.5/node_modules/vitepress/lib/vue-demi.mjs",
-      "file": "vue-demi.js",
-      "fileHash": "441dac7e",
+    "@ruabick/vitepress-demo-block": {
+      "src": "../../../../node_modules/@ruabick/vitepress-demo-block/dist/vitepress-demo-block.js",
+      "file": "@ruabick_vitepress-demo-block.js",
+      "fileHash": "f7c89ba7",
       "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-WZC2W4VK": {
-      "file": "chunk-WZC2W4VK.js"
-    },
-    "chunk-EGKMESFD": {
-      "file": "chunk-EGKMESFD.js"
+    "chunk-RY5ODQAQ": {
+      "file": "chunk-RY5ODQAQ.js"
     }
   }
 }

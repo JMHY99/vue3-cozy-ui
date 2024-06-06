@@ -36,6 +36,8 @@ pageClass: icon-page-class
 
 :::
 
+<demo src="../demos/icon.vue" title="Demo block" desc="use demo"></demo>
+
 ### 图标大小
 
 通过设置`size`属性来控制图标的大小

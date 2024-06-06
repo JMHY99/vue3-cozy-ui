@@ -53,3 +53,5 @@ Vue.use(CButton);
 ```
 
 :::
+
+<demo src="../demos/icon.vue" title="Demo block" desc="use demo"></demo>

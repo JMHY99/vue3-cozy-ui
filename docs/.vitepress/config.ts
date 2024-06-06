@@ -1,7 +1,4 @@
-import {
-  demoBlockPlugin,
-  demoblockVitePlugin,
-} from "vitepress-theme-demoblock";
+import { applyPlugins } from "@ruabick/md-demo-plugins";
 export default {
   // 站点级选项
   lang: "cn-ZH",
@@ -95,18 +92,9 @@ export default {
     },
   },
 
-  // markdown: {
-  //   config: (md) => {
-  //     md.use(demoblockPlugin);
-  //   },
-  // },
-  vite: {
-    plugins: [demoblockVitePlugin()],
-  },
-
   markdown: {
     config: (md) => {
-      md.use(demoBlockPlugin)
-    }
-  }
+      applyPlugins(md);
+    },
+  },
 };
