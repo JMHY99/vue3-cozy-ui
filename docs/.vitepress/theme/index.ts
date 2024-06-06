@@ -8,6 +8,7 @@ import IconList from "../components/IconList.vue";
 import ColorDemo from "../components/ColorDemo.vue";
 import ColorDemo1 from "../components/ColorDemo1.vue";
 import ColorDemo2 from "../components/ColorDemo2.vue";
+import "./styles/index.scss"
 
 export default {
   ...DefaultTheme,

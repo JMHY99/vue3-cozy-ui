@@ -10,17 +10,19 @@ export default {
     logo: "/logo.jpg",
     // 浏览器标签页图标
     head: [["link", { rel: "icon", href: "/favicon.ico" }]],
+    outlineTitle: "页面目录",
+    outline: 3,
 
     // 导航菜单项的配置
     nav: [
       // 直接跳转，'/'为不添加路由，跳转至首页，以/结尾的最终对应的都是/index.html,也就是README.md文件编译后的页面
       { text: "首页", link: "/" },
       // 对应blog/fontend/README.md
-      { text: "组件", link: "/components/install" },
+      { text: "组件", link: "/components/color" },
       { text: "指南", link: "/components/quick-start" },
       {
         text: "Gitee",
-        link: "https://gitee.com/itxiaoming9/vue2-cozy-ui.git",
+        link: "https://gitee.com/maoxiaojiu9/vue3-cozy-ui.git",
         target: "_blank",
       },
     ],

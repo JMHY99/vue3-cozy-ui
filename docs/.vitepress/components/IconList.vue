@@ -63,13 +63,14 @@ export default {
 .icon-list ul li {
   list-style: none;
   margin: 0;
-  padding: 30px;
+  padding: 0;
   width: 136px;
   height: 136px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  line-height: 1.8;
   &:hover {
     background: #1890ff;
     color: #ffffff;

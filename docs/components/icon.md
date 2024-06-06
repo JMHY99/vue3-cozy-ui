@@ -6,7 +6,9 @@ pageClass: icon-page-class
 
 ### 概述
 
+::: tip
 图标组件集成了一套常用的图标库，为开发者提供了丰富多样的图标选择，以满足不同应用场景下的视觉需求。
+:::
 
 ### 基础用法
 
@@ -37,3 +39,16 @@ pageClass: icon-page-class
 | name | 图标名称 | string  | -          | -      |
 | size | 尺寸大小 | number  | -          | 24     |
 | spin | 是否旋转 | boolean | true/false | false  |
+
+::: info
+This is an info box.
+:::
+::: tip
+This is a tip.
+:::
+::: warning
+This is a warning.
+:::
+::: danger
+This is a dangerous warning.
+:::
