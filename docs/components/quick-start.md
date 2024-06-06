@@ -42,16 +42,3 @@ Vue.use(CButton);
   };
 </script>
 ```
-
-::: demo
-
-```vue
-<template>
-  <button>按钮</button>
-  <button>按钮</button>
-</template>
-```
-
-:::
-
-<demo src="../demos/icon.vue" title="Demo block" desc="use demo"></demo>

@@ -28,7 +28,7 @@ pageClass: icon-page-class
 
 ### 图标集合
 
-<!-- <IconList/> -->
+<IconList/>
 
 ### API
 
