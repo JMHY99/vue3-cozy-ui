@@ -1,5 +1,6 @@
 import { applyPlugins } from "@ruabick/md-demo-plugins";
 export default {
+  base:"/vue3-cozy-ui/",
   // 站点级选项
   lang: "cn-ZH",
   title: "Cozy UI Plus",
