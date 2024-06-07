@@ -12,6 +12,12 @@
   width: 500px;
 }
 
+.demo-slot.vp-raw {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
 // demo按钮
 .vitepress-demo .demo-platforms a{
   display: none !important;

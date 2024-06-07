@@ -28,6 +28,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  word-break: break-all;
+  font-size: 14px;
+  line-height: 0.9;
 }
 
 .color1 {
