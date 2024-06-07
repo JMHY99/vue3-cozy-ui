@@ -7,29 +7,22 @@
 </template>
 
 <script setup lang="ts">
+// 3.3+ 中可以通过 defineOptions
 defineOptions({
   name: "CIcon", //定义组件名
 });
 
+// props的类型接口
 interface Props {
   name: string;
-  size: number | string;
-  spin: boolean;
+  size?: number | string;
+  spin?: boolean; //?表示该属性是可选的，可以选择性地赋值。
 }
 
-// 定义组件属性
-const props: Props = defineProps({
-  name: {
-    type: String,
-    default: "",
-  },
-  size: {
-    type: [Number, String],
-    default: 24,
-  },
-  spin: {
-    type: Boolean,
-    default: false,
-  },
+// Props 解构默认值
+const props = withDefaults(defineProps<Props>(), {
+  name: "",
+  size: 24,
+  spin: false,
 });
 </script>
