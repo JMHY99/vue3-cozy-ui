@@ -43,3 +43,11 @@
 .cozy-sider {
   width: 200px;
 }
+
+// 侧边栏响应式
+@media (max-width: 768px) {
+  .cozy-sider {
+    display: none;
+    width: 0px;
+  }
+}
