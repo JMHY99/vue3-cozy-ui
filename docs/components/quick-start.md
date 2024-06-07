@@ -11,19 +11,26 @@ npm install cozy-ui -S
 #### 全局完整注册
 
 ```javascript
-import Vue from "vue";
-import CozyUI from "cozy-ui";
+import { createApp } from "vue";
+import CozyUIPlus from "vue3-cozy-ui";
+//导入样式
+import "vue3-cozy-ui/dist/index.css";
 
-Vue.use(CozyUI);
+const app = createApp(App);
+
+app.use(CozyUIPlus);
+app.mount("#app");
 ```
 
 #### 全局部分注册
 
 ```javascript
-import Vue from "vue";
-import { CButton } from "cozy-ui";
+import { createApp } from "vue";
+import { CButton } from "vue3-cozy-ui";
 
-Vue.use(CButton);
+const app = createApp(App);
+
+app.use(Button).mount("#app");
 ```
 
 #### 局部注册
@@ -32,13 +39,7 @@ Vue.use(CButton);
 <template>
   <c-button>按钮</c-button>
 </template>
-<script>
-  import { CButton } from "cozy-ui";
-
-  export default {
-    components: {
-      CButton,
-    },
-  };
+<script setup>
+  import { CButton } from "vue3-cozy-ui";
 </script>
 ```
