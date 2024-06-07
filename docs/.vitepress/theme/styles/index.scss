@@ -1,3 +1,7 @@
+.Layout {
+  background-image: url("/bg.png");
+}
+
 // 图标
 .VPImage.image-src {
   border-radius: 20px;
@@ -7,13 +11,10 @@
 }
 
 // 导航栏毛玻璃效果
-.VPNav .VPNavBar.has-sidebar .content-body,.content{
+.VPNav .VPNavBar.has-sidebar .content-body,
+.content {
   background-color: transparent !important;
-  backdrop-filter: blur( 8px );
-}
-
-.Layout{
-  background-image: url('../../../public/bg.png');
+  backdrop-filter: blur(8px);
 }
 
 // 表格样式
@@ -23,12 +24,12 @@
 }
 
 .demo-slot.vp-raw {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 // demo按钮
-.vitepress-demo .demo-platforms a{
+.vitepress-demo .demo-platforms a {
   display: none !important;
 }

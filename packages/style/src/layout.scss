@@ -1,0 +1,45 @@
+/* layout */
+.cozy-layout,
+.cozy-layout * {
+  box-sizing: border-box; //盒子的大小=盒子的width
+}
+
+.cozy-layout {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  width: 100%;
+}
+
+.cozy-layout.cozy-layout-is-vertical {
+  flex-direction: row; //所有元素在一行上排列
+}
+
+/* header */
+.cozy-header {
+  height: 64px;
+  line-height: 64px;
+  padding: 0 50px;
+  background-color: #001529;
+}
+
+.cozy-header,
+.cozy-footer {
+  flex: 0 0 auto;
+}
+
+/* content */
+.cozy-content {
+  flex: auto;
+}
+
+/* footer */
+.cozy-footer {
+  height: 64px;
+  padding: 24px 50px;
+}
+
+/* sider */
+.cozy-sider {
+  width: 200px;
+}

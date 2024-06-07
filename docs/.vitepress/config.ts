@@ -58,42 +58,48 @@ export default {
           items: [
             {
               text: "基础",
-              collapsable: false, //下拉
-              sidebarDepth: 1, // 只显示一级标题
-              // children: ["color", "icon", "button"],
               items: [
                 { text: "Color 色彩", link: "/components/color.md" },
-                {
-                  text: "Icon 图标",
-                  link: "/components/icon.md",
-                },
+                { text: "Icon 图标", link: "/components/icon.md" },
                 { text: "Button 按钮", link: "/components/button.md" },
               ],
             },
-            // {
-            //   text: "布局",
-            //   collapsable: false,
-            //   sidebarDepth: 1, // 只显示一级标题
-            //   children: ["flex", "grid", "layout", "space"],
-            // },
-            // {
-            //   title: "导航",
-            //   collapsable: false,
-            //   sidebarDepth: 1, // 只显示一级标题
-            //   children: ["affix", "anchor", "breadcrumb", "dropdown"],
-            // },
-            // {
-            //   title: "表单",
-            //   collapsable: false,
-            //   sidebarDepth: 1, // 只显示一级标题
-            //   children: ["form", "input", "input-number", "radio", "switch"],
-            // },
-            // {
-            //   title: "视图",
-            //   collapsable: false,
-            //   sidebarDepth: 1, // 只显示一级标题
-            //   children: ["alert", "message", "avatar"],
-            // },
+            {
+              text: "布局",
+              items: [
+                { text: "Flex 布局", link: "/components/flex.md" },
+                { text: "Grid 布局", link: "/components/grid.md" },
+                { text: "Layout 布局", link: "/components/layout.md" },
+                { text: "Space 间隙", link: "/components/space.md" },
+              ],
+            },
+            {
+              text: "导航",
+              items: [
+                { text: "affix", link: "/components/affix.md" },
+                { text: "anchor", link: "/components/anchor.md" },
+                { text: "breadcrumb", link: "/components/breadcrumb.md" },
+                { text: "dropdown", link: "/components/dropdown.md" },
+              ],
+            },
+            {
+              text: "表单",
+              items: [
+                { text: "form", link: "/components/form.md" },
+                { text: "input", link: "/components/input.md" },
+                { text: "input-number", link: "/components/input-number.md" },
+                { text: "radio", link: "/components/radio.md" },
+                { text: "switch", link: "/components/switch.md" },
+              ],
+            },
+            {
+              text: "视图",
+              items: [
+                { text: "alert", link: "/components/alert.md" },
+                { text: "message", link: "/components/message.md" },
+                { text: "avatar", link: "/components/avatar.md" },
+              ],
+            },
           ],
         },
       ],
