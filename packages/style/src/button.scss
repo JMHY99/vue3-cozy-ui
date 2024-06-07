@@ -1,0 +1,394 @@
+@import "./variables.scss";
+
+.cozy-button {
+  display: inline-block;
+  margin: 0;
+  padding: 10px 20px;
+  cursor: pointer;
+  color: $color-gray-black-1;
+  background: $color-white;
+  white-space: nowrap;
+  outline: none;
+  border: 1px solid $color-gray;
+  border-radius: 4px;
+  font-size: 14px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.cozy-button > span {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* 尺寸大小 */
+.cozy-button-large {
+  font-size: 16px;
+  height: 40px;
+  padding: 8px 15px;
+  border-radius: 8px;
+}
+.cozy-button-middle {
+  font-size: 14px;
+  height: 32px;
+  padding: 6px 15px;
+  line-height: 1;
+}
+.cozy-button-small {
+  font-size: 14px;
+  height: 24px;
+  padding: 0px 7px;
+}
+
+.cozy-button-default {
+  transform: all 0.2s;
+  &:active {
+    background: $color-gray-light-3;
+    box-shadow: 0 0 5px 0px $color-primary;
+  }
+  &:hover {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+}
+
+.cozy-button-primary {
+  color: $color-gray-light-3;
+  background: $color-primary;
+  border: 1px solid $color-primary;
+  &:active {
+    border: 1px solid $color-primary-light-2;
+    background: $color-primary-light-2;
+    box-shadow: 0 0 6px -1px $color-primary-light-2;
+  }
+}
+
+.cozy-button-success {
+  color: $color-gray-light-3;
+  background: $color-success;
+  border: 1px solid $color-success;
+  &:active {
+    border: 1px solid $color-success-light-2;
+    background: $color-success-light-2;
+    box-shadow: 0 0 6px -1px $color-success-light-2;
+  }
+}
+
+.cozy-button-info {
+  color: $color-gray-light-3;
+  background: $color-info;
+  border: 1px solid $color-info;
+  &:active {
+    border: 1px solid $color-info-light-2;
+    background: $color-info-light-2;
+    box-shadow: 0 0 6px -1px $color-info-light-2;
+  }
+}
+
+.cozy-button-danger {
+  color: $color-gray-light-3;
+  background: $color-danger;
+  border: 1px solid $color-danger;
+  &:active {
+    border: 1px solid $color-danger-light-2;
+    background: $color-danger-light-2;
+    box-shadow: 0 0 6px -1px $color-danger-light-2;
+  }
+}
+
+.cozy-button-warning {
+  color: $color-gray-light-3;
+  background: $color-warning;
+  border: 1px solid $color-warning;
+  &:active {
+    border: 1px solid $color-warning-light-2;
+    background: $color-warning-light-2;
+    box-shadow: 0 0 6px -1px $color-warning-light-2;
+  }
+}
+
+/* 按钮禁用 */
+.cozy-button-disabled {
+  opacity: 0.4;
+  &:hover,
+  &:focus {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  &:active {
+    box-shadow: none;
+  }
+}
+
+.cozy-button-default.cozy-button-disabled {
+  &:hover,
+  &:focus {
+    opacity: 0.4;
+    cursor: not-allowed;
+    color: $color-gray-black-1;
+    border: 1px solid $color-gray;
+  }
+  &:active {
+    color: $color-gray-black-1;
+    background: $color-white;
+  }
+}
+
+.cozy-button-primary.cozy-button-disabled {
+  &:active {
+    color: $color-gray-light-3;
+    background: $color-primary;
+  }
+}
+.cozy-button-success.cozy-button-disabled {
+  &:active {
+    color: $color-gray-light-3;
+    background: $color-success;
+  }
+}
+.cozy-button-info.cozy-button-disabled {
+  &:active {
+    color: $color-gray-light-3;
+    background: $color-info;
+  }
+}
+.cozy-button-danger.cozy-button-disabled {
+  &:active {
+    color: $color-gray-light-3;
+    background: $color-danger;
+  }
+}
+.cozy-button-warning.cozy-button-disabled {
+  &:active {
+    color: $color-gray-light-3;
+    background: $color-warning;
+  }
+}
+
+.cozy-button-circle {
+  border-radius: 10px;
+}
+
+/* 空背景 */
+.cozy-button-ghost {
+  background: none;
+}
+
+.cozy-button-default.cozy-button-ghost {
+  color: $color-info;
+  border: 1px solid $color-info;
+  &:hover {
+    background: $color-gray-light-2;
+  }
+}
+
+.cozy-button-info.cozy-button-ghost {
+  color: $color-info;
+  border: 1px solid $color-info;
+  &:hover {
+    background: $color-info;
+    color: $color-white;
+  }
+  &:active {
+    background: $color-info-light-2;
+  }
+}
+
+.cozy-button-primary.cozy-button-ghost {
+  color: $color-primary;
+  border: 1px solid $color-primary;
+  &:hover {
+    background: $color-primary;
+    color: $color-white;
+  }
+  &:active {
+    background: $color-primary-light-2;
+  }
+}
+
+.cozy-button-success.cozy-button-ghost {
+  color: $color-success;
+  border: 1px solid $color-success;
+  &:hover {
+    background: $color-success;
+    color: $color-white;
+  }
+  &:active {
+    background: $color-success-light-2;
+  }
+}
+
+.cozy-button-warning.cozy-button-ghost {
+  color: $color-warning;
+  border: 1px solid $color-warning;
+  &:hover {
+    background: $color-warning;
+    color: $color-white;
+  }
+  &:active {
+    background: $color-warning-light-2;
+  }
+}
+
+.cozy-button-danger.cozy-button-ghost {
+  color: $color-danger;
+  border: 1px solid $color-danger;
+  &:hover {
+    background: $color-danger;
+    color: $color-white;
+  }
+  &:active {
+    background: $color-danger-light-2;
+  }
+}
+
+/* 按钮禁用 */
+.cozy-button-ghost.cozy-button-disabled {
+  opacity: 0.4;
+  &:hover,
+  &:focus {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  &:active {
+    box-shadow: none;
+  }
+}
+
+.cozy-button-default.cozy-button-ghost.cozy-button-disabled {
+  color: $color-info;
+  border: 1px solid $color-info;
+  &:hover {
+    background: none;
+  }
+}
+
+.cozy-button-info.cozy-button-ghost.cozy-button-disabled {
+  color: $color-info;
+  border: 1px solid $color-info;
+  &:hover {
+    background: none;
+  }
+  &:active {
+    background: none;
+  }
+}
+
+.cozy-button-primary.cozy-button-ghost.cozy-button-disabled {
+  color: $color-primary;
+  border: 1px solid $color-primary;
+  &:hover {
+    background: none;
+  }
+  &:active {
+    background: none;
+  }
+}
+
+.cozy-button-success.cozy-button-ghost.cozy-button-disabled {
+  color: $color-success;
+  border: 1px solid $color-success;
+  &:hover {
+    background: none;
+  }
+  &:active {
+    background: none;
+  }
+}
+
+.cozy-button-warning.cozy-button-ghost.cozy-button-disabled {
+  color: $color-warning;
+  border: 1px solid $color-warning;
+  &:hover {
+    background: none;
+  }
+  &:active {
+    background: none;
+  }
+}
+
+.cozy-button-danger.cozy-button-ghost.cozy-button-disabled {
+  color: $color-danger;
+  border: 1px solid $color-danger;
+  &:hover {
+    background: none;
+  }
+  &:active {
+    background: none;
+  }
+}
+
+.cozy-button-loading-icon {
+  width: 9px;
+  height: 9px;
+  border: 1px solid $color-white;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-radius: 100%;
+  animation: circle infinite 0.75s linear;
+  margin-right: 4px;
+}
+
+// 转转转动画
+@keyframes circle {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.cozy-button-loading-icon-default {
+  border: 1px solid $color-gray-black-1;
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+
+.cozy-button-loading-icon-info {
+  border: 1px solid $color-info;
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+
+.cozy-button-loading-icon-primary {
+  border: 1px solid $color-primary;
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+
+.cozy-button-loading-icon-success {
+  border: 1px solid $color-success;
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+.cozy-button-loading-icon-warning {
+  border: 1px solid $color-warning;
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+.cozy-button-loading-icon-danger {
+  border: 1px solid $color-danger;
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+
+.cozy-button-loading {
+  opacity: 0.4;
+}
+
+.cozy-button-ghost.cozy-button-loading {
+  &:hover .cozy-button-loading-icon {
+    border: 1px solid $color-white;
+    border-top-color: transparent;
+    border-left-color: transparent;
+  }
+}
+
+.cozy-button-ghost.cozy-button-default.cozy-button-loading {
+  &:hover .cozy-button-loading-icon {
+    border: 1px solid $color-gray-black-1;
+    border-top-color: transparent;
+    border-left-color: transparent;
+  }
+}

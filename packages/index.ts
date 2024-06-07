@@ -1,6 +1,8 @@
 import CIcon from "./icon";
+import CButton from "./button";
+import CButtonGroup from "./button-group";
 
-const components = [CIcon];
+const components = [CIcon, CButton, CButtonGroup];
 
 const installComponents = (app: any) => {
   components.forEach((comp: any) => {
@@ -11,6 +13,6 @@ const install = (app: any, router?: any) => {
   installComponents(app);
 };
 
-export { CIcon };
+export { CIcon, CButton, CButtonGroup };
 
 export default { install };

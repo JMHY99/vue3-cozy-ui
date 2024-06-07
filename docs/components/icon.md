@@ -40,7 +40,7 @@ pageClass: icon-page-class
 | size | 尺寸大小 | number  | -          | 24     |
 | spin | 是否旋转 | boolean | true/false | false  |
 
-::: info
+<!-- ::: info
 This is an info box.
 :::
 ::: tip
@@ -51,4 +51,7 @@ This is a warning.
 :::
 ::: danger
 This is a dangerous warning.
-:::
+::: -->
+<!-- > [!tip]
+>
+> -->
