@@ -6,6 +6,16 @@
   border-radius: 4px;
 }
 
+// 导航栏毛玻璃效果
+.VPNav .VPNavBar.has-sidebar .content-body,.content{
+  background-color: transparent !important;
+  backdrop-filter: blur( 8px );
+}
+
+.Layout{
+  background-image: url('../../../public/bg.png');
+}
+
 // 表格样式
 .vp-doc th,
 .vp-doc td {

@@ -37,6 +37,4 @@ features:
       light: /easily.svg
     title: 简洁易用的
     details: 组件库设计了简洁明了的API，使得组件的使用变得更加容易和直观，开发人员能够更加高效地构建出所需的用户界面。
-
-footer: MIT Licensed | Copyright © 2018-2024 zjm
 ---

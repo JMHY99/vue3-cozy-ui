@@ -35,11 +35,11 @@ app.use(Button).mount("#app");
 
 #### 局部注册
 
-```html
+```vue
 <template>
   <c-button>按钮</c-button>
 </template>
 <script setup>
-  import { CButton } from "vue3-cozy-ui";
+import { CButton } from "vue3-cozy-ui";
 </script>
 ```
