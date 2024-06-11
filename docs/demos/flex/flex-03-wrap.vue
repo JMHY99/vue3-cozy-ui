@@ -23,7 +23,6 @@
         <div></div>
         <div></div>
         <div></div>
-        <div></div>
       </c-flex>
     </div>
   </div>
@@ -46,7 +45,7 @@ export default {
 
 <style>
 .demo3 div > div {
-  width: 100px;
+  width: 84px;
   height: 80px;
 }
 
