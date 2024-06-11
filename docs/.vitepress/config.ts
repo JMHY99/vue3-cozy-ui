@@ -76,20 +76,26 @@ export default {
             {
               text: "导航",
               items: [
-                { text: "affix", link: "/components/affix.md" },
-                { text: "anchor", link: "/components/anchor.md" },
-                { text: "breadcrumb", link: "/components/breadcrumb.md" },
-                { text: "dropdown", link: "/components/dropdown.md" },
+                { text: "Affix 固钉", link: "/components/affix.md" },
+                { text: "Anchor 锚点", link: "/components/anchor.md" },
+                {
+                  text: "Breadcrumb 面包屑",
+                  link: "/components/breadcrumb.md",
+                },
+                { text: "Dropdown 下拉菜单", link: "/components/dropdown.md" },
               ],
             },
             {
               text: "表单",
               items: [
-                { text: "form", link: "/components/form.md" },
-                { text: "input", link: "/components/input.md" },
-                { text: "input-number", link: "/components/input-number.md" },
-                { text: "radio", link: "/components/radio.md" },
-                { text: "switch", link: "/components/switch.md" },
+                { text: "Form 表单", link: "/components/form.md" },
+                { text: "Input 输入框", link: "/components/input.md" },
+                {
+                  text: "InputNumber 数字输入框",
+                  link: "/components/input-number.md",
+                },
+                { text: "Radio 单选框", link: "/components/radio.md" },
+                { text: "Switch 开关", link: "/components/switch.md" },
               ],
             },
             {

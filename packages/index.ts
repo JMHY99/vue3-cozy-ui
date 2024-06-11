@@ -8,6 +8,8 @@ import CFooter from "./layout-footer";
 import CHeader from "./layout-header";
 import CSider from "./layout-sider";
 import CAlert from "./alert";
+import CAvatar from "./avatar";
+import CSpace from "./space";
 
 const components = [
   CIcon,
@@ -20,6 +22,8 @@ const components = [
   CHeader,
   CSider,
   CAlert,
+  CAvatar,
+  CSpace,
 ];
 
 const installComponents = (app: any) => {
@@ -42,6 +46,8 @@ export {
   CHeader,
   CSider,
   CAlert,
+  CAvatar,
+  CSpace,
 };
 
 export default { install };

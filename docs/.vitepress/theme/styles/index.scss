@@ -23,6 +23,11 @@
   width: 500px;
 }
 
+.vp-doc th:nth-child(2),
+.vp-doc td:nth-child(2){
+  width: 2000px;
+}
+
 .demo-slot.vp-raw {
   display: flex;
   flex-wrap: wrap;

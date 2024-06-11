@@ -1,0 +1,27 @@
+.cozy-space {
+  display: flex;
+}
+.cozy-space-horizontal {
+  flex-direction: row;
+}
+.cozy-space-vertical {
+  flex-direction: column;
+}
+.cozy-space-align-stretch {
+  align-items: stretch;
+}
+.cozy-space-align-start {
+  align-items: flex-start;
+}
+.cozy-space-align-end {
+  align-items: flex-end;
+}
+.cozy-space-align-center {
+  align-items: center;
+}
+.cozy-space-align-baseline {
+  align-items: baseline;
+}
+.cozy-space-item {
+  width: fit-content;
+}
