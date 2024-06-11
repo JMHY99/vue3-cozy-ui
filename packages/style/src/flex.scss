@@ -1,0 +1,67 @@
+.cozy-flex {
+  display: flex;
+}
+
+/* 排列方式 */
+.cozy-flex-horizontal {
+  flex-direction: row;
+}
+
+.cozy-flex-vertical {
+  flex-direction: column;
+}
+
+/* 是否换行 */
+.cozy-flex-wrap-nowrap {
+  flex-wrap: nowrap;
+}
+
+.cozy-flex-wrap-wrap {
+  flex-wrap: wrap;
+}
+
+.cozy-flex-wrap-wrap-reverse {
+  flex-wrap: wrap-reverse;
+}
+
+/* 左右对齐方式 */
+.cozy-justify-flex-start {
+  justify-content: flex-start;
+}
+
+.cozy-justify-flex-end {
+  justify-content: flex-end;
+}
+
+.cozy-justify-center {
+  justify-content: center;
+}
+
+.cozy-justify-space-between {
+  justify-content: space-between;
+}
+
+.cozy-justify-space-around {
+  justify-content: space-around;
+}
+
+.cozy-justify-space-evenly {
+  justify-content: space-evenly;
+}
+
+/* 上下对齐方式 */
+.cozy-align-stretch {
+  align-items: stretch;
+}
+
+.cozy-align-flex-start {
+  align-items: flex-start;
+}
+
+.cozy-align-flex-end {
+  align-items: flex-end;
+}
+
+.cozy-align-center {
+  align-items: center;
+}

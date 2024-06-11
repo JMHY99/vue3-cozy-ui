@@ -95,9 +95,9 @@ export default {
             {
               text: "视图",
               items: [
-                { text: "alert", link: "/components/alert.md" },
-                { text: "message", link: "/components/message.md" },
-                { text: "avatar", link: "/components/avatar.md" },
+                { text: "Alert 警告提示", link: "/components/alert.md" },
+                { text: "Message 全局提示", link: "/components/message.md" },
+                { text: "Avatar 头像", link: "/components/avatar.md" },
               ],
             },
           ],
