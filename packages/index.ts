@@ -10,6 +10,7 @@ import CSider from "./layout-sider";
 import CAlert from "./alert";
 import CAvatar from "./avatar";
 import CSpace from "./space";
+import CWatermark from "./watermark";
 
 const components = [
   CIcon,
@@ -24,6 +25,7 @@ const components = [
   CAlert,
   CAvatar,
   CSpace,
+  CWatermark,
 ];
 
 const installComponents = (app: any) => {
@@ -48,6 +50,7 @@ export {
   CAlert,
   CAvatar,
   CSpace,
+  CWatermark,
 };
 
 export default { install };

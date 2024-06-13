@@ -106,6 +106,12 @@ export default {
                 { text: "Avatar 头像", link: "/components/avatar.md" },
               ],
             },
+            {
+              text: "其他",
+              items: [
+                { text: "Watermark 水印", link: "/components/watermark.md" },
+              ],
+            },
           ],
         },
       ],
