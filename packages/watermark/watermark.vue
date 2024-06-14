@@ -116,11 +116,12 @@ onMounted(drawWatermark);
 }
 </style> -->
 <template>
-  <div class="c-watermark-wrapper">
-    <div class="c-watermark-content">
-      <slot></slot>
-    </div>
-    <div :style="watermarkStyle" class="c-watermark-overlay"></div>
+  <div
+    class="c-watermark-wrapper"
+    style="position: relative; width: 100%; height: 100%"
+  >
+    <slot></slot>
+    <div :style="watermarkStyle"></div>
   </div>
 </template>
 
@@ -138,7 +139,7 @@ interface WatermarkProps {
   rotate?: number;
   zIndex?: number;
   image?: string;
-  content?: string;
+  content?: string | string[];
   font?: {
     color?: string;
     fontSize?: string;
@@ -149,7 +150,12 @@ interface WatermarkProps {
   offset?: [number, number];
 }
 
-const props = defineProps<WatermarkProps>();
+const props = withDefaults(defineProps<WatermarkProps>(), {
+  width: 120,
+  height: 60,
+  rotate: -20,
+  zIndex: 10,
+});
 
 const defaultFont = {
   color: "rgba(0, 0, 0, 0.15)",
@@ -166,9 +172,9 @@ const drawWatermark = () => {
   const ctx = canvas.getContext("2d");
 
   const [gapX, gapY] = gap ?? [100, 100];
-  const [offsetX, offsetY] = offset ?? [gapX / 2, gapY / 2];
-  const effectiveWidth = width ?? 200;
-  const effectiveHeight = height ?? 200;
+  const [offsetX, offsetY] = offset ?? [0, 0];
+  const effectiveWidth = width;
+  const effectiveHeight = height;
 
   canvas.width = gapX + effectiveWidth;
   canvas.height = gapY + effectiveHeight;
@@ -181,22 +187,33 @@ const drawWatermark = () => {
     } ${font?.fontFamily ?? defaultFont.fontFamily}`;
     ctx.fillStyle = font?.color ?? defaultFont.color;
     ctx.translate(offsetX + effectiveWidth / 2, offsetY + effectiveHeight / 2);
-    ctx.rotate(((rotate ?? -22) * Math.PI) / 180);
+    // ctx.translate(canvas.width / 2, canvas.height / 2);
+    ctx.rotate(((rotate ?? -20) * Math.PI) / 180);
 
+    // 图片
     if (image) {
       const img = new Image();
+      img.crossOrigin = "Anonymous"; //设置crossOrigin属性来请求CORS权限
       img.src = image;
       img.onload = () => {
-        ctx.drawImage(
-          img,
-          -effectiveWidth / 2,
-          -effectiveHeight / 2,
-          effectiveWidth,
-          effectiveHeight
-        );
+        // 将旋转的中心点移动到画布中心或图片中心
+        ctx.translate(canvas.width / 2, canvas.height / 2);
+
+        // 旋转-20度，注意JavaScript中的Math.PI是π，所以-20度转换为弧度是 -20 * (Math.PI / 180)
+         ctx.rotate(((rotate ?? -20) * Math.PI) / 180);
+
+        ctx.drawImage(img, 0, 0, effectiveWidth, effectiveHeight);
         updateWatermarkStyle(canvas.toDataURL());
       };
-    } else if (content) {
+    } else if (Array.isArray(content)) {
+      // 当 content 是字符串数组时，多行水印
+      let lineHeight = parseInt(font?.fontSize ?? defaultFont.fontSize, 10);
+      content.forEach((line, index) => {
+        ctx.fillText(line, 0, index * lineHeight, effectiveWidth);
+      });
+      updateWatermarkStyle(canvas.toDataURL());
+    } else if (typeof content === "string") {
+      // 当 content 是单个字符串时
       ctx.fillText(content, 0, 0, effectiveWidth);
       updateWatermarkStyle(canvas.toDataURL());
     }
@@ -210,8 +227,8 @@ const updateWatermarkStyle = (dataUrl: string) => {
     position: "absolute",
     top: 0,
     left: 0,
-    right: 0,
-    bottom: 0,
+    width: "100%",
+    height: "100%",
     zIndex: props.zIndex ?? 10,
     backgroundImage: `url(${dataUrl})`,
     backgroundRepeat: "repeat",
@@ -237,26 +254,3 @@ watch(
 
 onMounted(drawWatermark);
 </script>
-
-<style scoped>
-.c-watermark-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.c-watermark-content {
-  position: relative;
-  z-index: 1;
-}
-
-.c-watermark-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 2;
-  pointer-events: none;
-}
-</style>

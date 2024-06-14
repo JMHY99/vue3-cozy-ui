@@ -2,10 +2,22 @@
 
 ### 概述
 
-设置组件之间的间距。
+给页面的某个区域加上水印。
 
 ### 基础用法
 
-相邻组件水平间距。
+最简单的用法。
 
 <demo src="../demos/watermark/watermark-01-base.vue"></demo>
+
+### 基础用法
+
+最简单的用法。
+
+<demo src="../demos/watermark/watermark-02-content.vue"></demo>
+
+### 基础用法
+
+最简单的用法。
+
+<demo src="../demos/watermark/watermark-03-image.vue"></demo>
