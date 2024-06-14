@@ -10,14 +10,21 @@
 
 <demo src="../demos/watermark/watermark-01-base.vue"></demo>
 
-### 基础用法
+### 多行水印
 
-最简单的用法。
+content可以为数组
 
 <demo src="../demos/watermark/watermark-02-content.vue"></demo>
 
-### 基础用法
+### 图片水印
 
-最简单的用法。
+image属性
 
 <demo src="../demos/watermark/watermark-03-image.vue"></demo>
+
+### 设置字体
+
+font属性
+
+<demo src="../demos/watermark/watermark-04-offset.vue"></demo>
+

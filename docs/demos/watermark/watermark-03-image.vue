@@ -1,9 +1,5 @@
 <template>
-  <c-watermark
-    :height="30"
-    :width="130"
-    image="https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*lkAoRbywo0oAAAAAAAAAAAAADrJ8AQ/original"
-  >
+  <c-watermark image="https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*lkAoRbywo0oAAAAAAAAAAAAADrJ8AQ/original">
     <div class="content"></div>
   </c-watermark>
 </template>

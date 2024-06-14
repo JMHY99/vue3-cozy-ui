@@ -26,7 +26,7 @@
 }
 </style> -->
 <template>
-  <c-watermark content="Cozy UI">
+  <c-watermark content="Cozy Plus Vue">
     <div class="content"></div>
   </c-watermark>
 </template>
