@@ -7,6 +7,7 @@ import CContent from "./layout-content";
 import CFooter from "./layout-footer";
 import CHeader from "./layout-header";
 import CSider from "./layout-sider";
+import CAffix from "./affix";
 import CAlert from "./alert";
 import CAvatar from "./avatar";
 import CSpace from "./space";
@@ -22,6 +23,7 @@ const components = [
   CFooter,
   CHeader,
   CSider,
+  CAffix,
   CAlert,
   CAvatar,
   CSpace,
@@ -47,6 +49,7 @@ export {
   CFooter,
   CHeader,
   CSider,
+  CAffix,
   CAlert,
   CAvatar,
   CSpace,
