@@ -1,7 +1,7 @@
 <template>
   <i
     :class="[`cozy-icon ${props.name}`, { 'cozy-icon-spin': props.spin }]"
-    :style="{ 'font-size': props.size + 'px' }"
+    :style="{ 'font-size': props.size + 'px', color: props.color }"
   >
   </i>
 </template>
@@ -17,6 +17,7 @@ interface Props {
   name: string;
   size?: number | string;
   spin?: boolean; //?表示该属性是可选的，可以选择性地赋值。
+  color?: string;
 }
 
 // Props 解构默认值

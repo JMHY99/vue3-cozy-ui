@@ -28,6 +28,12 @@ pageClass: icon-page-class
 
 <demo src="../demos/icon/icon-03-spin.vue"></demo>
 
+### 图标颜色
+
+设置`color`属性实现多种图标颜色
+
+<demo src="../demos/icon/icon-04-color.vue"></demo>
+
 ### 图标集合
 
 <IconList/>
