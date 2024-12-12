@@ -12,6 +12,7 @@ import CAlert from "./alert";
 import CAvatar from "./avatar";
 import CSpace from "./space";
 import CWatermark from "./watermark";
+import CInput from './input'
 
 const components = [
   CIcon,
@@ -28,6 +29,7 @@ const components = [
   CAvatar,
   CSpace,
   CWatermark,
+  CInput,
 ];
 
 const installComponents = (app: any) => {
@@ -54,6 +56,7 @@ export {
   CAvatar,
   CSpace,
   CWatermark,
+  CInput,
 };
 
 export default { install };
