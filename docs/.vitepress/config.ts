@@ -97,13 +97,22 @@ export default {
                 { text: "Radio 单选框", link: "/components/radio.md" },
                 { text: "Switch 开关", link: "/components/switch.md" },
                 { text: "Checkbox 多选框", link: "/components/checkbox.md" },
+                { text: "Select 选择器", link: "/components/select.md" },
                 { text: "Rate 评分", link: "/components/rate.md" },
                 { text: "Slider 滑动输入条", link: "/components/slider.md" },
                 { text: "Upload 上传", link: "/components/upload.md" },
-                { text: "DatePicker 日期选择器", link: "/components/date-picker.md" },
-                { text: "TimePicker 时间选择器", link: "/components/time-picker.md" },
-                { text: "DateTimePicker 日期时间选择器", link: "/components/date-time-picker.md" },
-                { text: "Calendar 日历", link: "/components/calendar.md" },
+                {
+                  text: "DatePicker 日期选择器",
+                  link: "/components/date-picker.md",
+                },
+                {
+                  text: "TimePicker 时间选择器",
+                  link: "/components/time-picker.md",
+                },
+                {
+                  text: "DateTimePicker 日期时间选择器",
+                  link: "/components/date-time-picker.md",
+                },
               ],
             },
             {
@@ -112,6 +121,7 @@ export default {
                 { text: "Alert 警告提示", link: "/components/alert.md" },
                 { text: "Message 全局提示", link: "/components/message.md" },
                 { text: "Avatar 头像", link: "/components/avatar.md" },
+                { text: "Calendar 日历", link: "/components/calendar.md" },
               ],
             },
             {

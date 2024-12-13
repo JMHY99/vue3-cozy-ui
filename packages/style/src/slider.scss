@@ -1,0 +1,196 @@
+.cozy-slider {
+  position: relative;
+  width: 100%;
+  height: 12px;
+  padding: 4px 0;
+  margin: 10px 0;
+  cursor: pointer;
+  touch-action: none;
+
+  &-rail {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: #f5f5f5;
+    border-radius: 2px;
+    transition: background-color 0.3s;
+  }
+
+  &-track {
+    position: absolute;
+    height: 4px;
+    background-color: #1890ff;
+    border-radius: 2px;
+    transition: background-color 0.3s;
+  }
+
+  &-handle {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    margin-top: -5px;
+    background-color: #fff;
+    border: 2px solid #1890ff;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: grab;
+    transition: border-color 0.3s, box-shadow 0.3s;
+
+    &:hover {
+      border-color: #40a9ff;
+    }
+
+    &:active {
+      cursor: grabbing;
+      border-color: #096dd9;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 5px rgba(24, 144, 255, 0.12);
+    }
+  }
+
+  &-marks {
+    position: absolute;
+    top: 18px;
+    left: 0;
+    width: 100%;
+
+    .cozy-slider-mark {
+      position: absolute;
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.45);
+      transform: translateX(-50%);
+      user-select: none;
+    }
+  }
+
+  &-steps {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: transparent;
+
+    .cozy-slider-step {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background-color: #f5f5f5;
+      border-radius: 50%;
+      transform: translateX(-50%);
+
+      &-active {
+        background-color: #fff;
+      }
+    }
+  }
+
+  &-tooltip {
+    position: absolute;
+    top: -32px;
+    padding: 4px 8px;
+    color: #fff;
+    font-size: 12px;
+    line-height: 1;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 2px;
+    transform: translateX(-50%);
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      width: 8px;
+      height: 8px;
+      background-color: rgba(0, 0, 0, 0.75);
+      transform: translateX(-50%) rotate(45deg);
+    }
+  }
+
+  &-disabled {
+    cursor: not-allowed;
+
+    .cozy-slider-rail {
+      background-color: #f5f5f5;
+    }
+
+    .cozy-slider-track {
+      background-color: rgba(0, 0, 0, 0.25);
+    }
+
+    .cozy-slider-handle {
+      background-color: #fff;
+      border-color: rgba(0, 0, 0, 0.25);
+      box-shadow: none;
+      cursor: not-allowed;
+
+      &:hover,
+      &:active,
+      &:focus {
+        border-color: rgba(0, 0, 0, 0.25);
+        box-shadow: none;
+      }
+    }
+
+    .cozy-slider-mark {
+      color: rgba(0, 0, 0, 0.25);
+    }
+  }
+
+  &-vertical {
+    width: 12px;
+    height: 100%;
+    padding: 0 4px;
+    margin: 6px 10px;
+
+    .cozy-slider-rail {
+      width: 4px;
+      height: 100%;
+    }
+
+    .cozy-slider-track {
+      width: 4px;
+      bottom: 0;
+    }
+
+    .cozy-slider-handle {
+      margin-top: 0;
+      margin-left: -5px;
+    }
+
+    .cozy-slider-marks {
+      top: 0;
+      left: 18px;
+      height: 100%;
+      width: auto;
+
+      .cozy-slider-mark {
+        transform: translateY(50%);
+      }
+    }
+
+    .cozy-slider-steps {
+      width: 4px;
+      height: 100%;
+
+      .cozy-slider-step {
+        transform: translateY(50%);
+      }
+    }
+
+    .cozy-slider-tooltip {
+      top: 50%;
+      left: 24px;
+      transform: translateY(-50%);
+
+      &::after {
+        top: 50%;
+        left: -4px;
+        transform: translateY(-50%) rotate(45deg);
+      }
+    }
+  }
+}
