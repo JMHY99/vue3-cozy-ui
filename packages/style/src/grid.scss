@@ -1,0 +1,115 @@
+@use "sass:math";
+
+// Row
+.cozy-row {
+  display: flex;
+  flex-flow: row wrap;
+  min-width: 0;
+
+  &::before,
+  &::after {
+    display: flex;
+  }
+
+  // 对齐方式
+  &-start {
+    justify-content: flex-start;
+  }
+
+  &-center {
+    justify-content: center;
+  }
+
+  &-end {
+    justify-content: flex-end;
+  }
+
+  &-space-between {
+    justify-content: space-between;
+  }
+
+  &-space-around {
+    justify-content: space-around;
+  }
+
+  // 垂直对齐
+  &-top {
+    align-items: flex-start;
+  }
+
+  &-middle {
+    align-items: center;
+  }
+
+  &-bottom {
+    align-items: flex-end;
+  }
+
+  &-no-wrap {
+    flex-wrap: nowrap;
+  }
+}
+
+// Col
+.cozy-col {
+  position: relative;
+  max-width: 100%;
+  min-height: 1px;
+}
+
+// 生成栅格系统
+@for $i from 1 through 24 {
+  .cozy-col-#{$i} {
+    display: block;
+    flex: 0 0 calc($i / 24 * 100%);
+    max-width: calc($i / 24 * 100%);
+  }
+
+  .cozy-col-offset-#{$i} {
+    margin-left: calc($i / 24 * 100%);
+  }
+
+  .cozy-col-pull-#{$i} {
+    right: calc($i / 24 * 100%);
+  }
+
+  .cozy-col-push-#{$i} {
+    left: calc($i / 24 * 100%);
+  }
+}
+
+// 响应式
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1600px
+);
+
+@each $breakpoint in map-keys($breakpoints) {
+  $value: map-get($breakpoints, $breakpoint);
+
+  @media (min-width: $value) {
+    @for $i from 1 through 24 {
+      .cozy-col-#{$breakpoint}-#{$i} {
+        display: block;
+        flex: 0 0 calc($i / 24 * 100%);
+        max-width: calc($i / 24 * 100%);
+      }
+
+      .cozy-col-#{$breakpoint}-offset-#{$i} {
+        margin-left: calc($i / 24 * 100%);
+      }
+
+      .cozy-col-#{$breakpoint}-pull-#{$i} {
+        right: calc($i / 24 * 100%);
+      }
+
+      .cozy-col-#{$breakpoint}-push-#{$i} {
+        left: calc($i / 24 * 100%);
+      }
+    }
+  }
+}

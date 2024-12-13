@@ -17,6 +17,8 @@ import CRadio, { CRadioButton, CRadioGroup } from './radio'
 import CInputNumber from './input-number'
 import CSwitch from './switch'
 import Message from './message'
+import CRow from './row'
+import CCol from './col'
 
 const components = [
   CIcon,
@@ -39,6 +41,8 @@ const components = [
   CRadioGroup,
   CInputNumber,
   CSwitch,
+  CRow,
+  CCol,
 ];
 
 const installComponents = (app: any) => {
@@ -73,6 +77,8 @@ export {
   CInputNumber,
   CSwitch,
   Message,
+  CRow,
+  CCol,
 };
 
 export default { install };
