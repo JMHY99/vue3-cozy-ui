@@ -14,6 +14,7 @@ import CSpace from "./space";
 import CWatermark from "./watermark";
 import CInput from './input'
 import CRadio, { CRadioButton, CRadioGroup } from './radio'
+import CInputNumber from './input-number'
 
 const components = [
   CIcon,
@@ -34,6 +35,7 @@ const components = [
   CRadio,
   CRadioButton,
   CRadioGroup,
+  CInputNumber,
 ];
 
 const installComponents = (app: any) => {
@@ -64,6 +66,7 @@ export {
   CRadio,
   CRadioButton,
   CRadioGroup,
+  CInputNumber,
 };
 
 export default { install };
