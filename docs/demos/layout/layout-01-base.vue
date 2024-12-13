@@ -42,7 +42,7 @@ const headerStyle = ref({
   height: 64,
   paddingInline: 50,
   lineHeight: "64px",
-  backgroundColor: "#90a1f3",
+  backgroundColor: "#92caff",
 });
 
 const contentStyle = ref({
@@ -50,19 +50,19 @@ const contentStyle = ref({
   minHeight: 120,
   lineHeight: "120px",
   color: "#fff",
-  backgroundColor: "#566fec",
+  backgroundColor: "#5bb0ff",
 });
 
 const siderStyle = ref({
   textAlign: "center",
   lineHeight: "120px",
   color: "#fff",
-  backgroundColor: "#7387ef",
+  backgroundColor: "#7cc0ff",
 });
 
 const footerStyle = ref({
   textAlign: "center",
   color: "#fff",
-  backgroundColor: "#90a1f3",
+  backgroundColor: "#92caff",
 });
 </script>
