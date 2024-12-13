@@ -1,0 +1,108 @@
+.cozy-switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-width: 44px;
+  height: 22px;
+  line-height: 22px;
+  padding: 0;
+  vertical-align: middle;
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 0;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &-handle {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: all 0.2s ease-in-out;
+
+    .cozy-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 12px;
+      color: #1890ff;
+    }
+  }
+
+  &-inner {
+    display: block;
+    margin: 0 7px 0 25px;
+    color: #fff;
+    font-size: 12px;
+    transition: margin 0.2s;
+  }
+
+  &-checked {
+    background-color: #1890ff;
+
+    .cozy-switch-handle {
+      left: calc(100% - 20px);
+    }
+
+    .cozy-switch-inner {
+      margin: 0 25px 0 7px;
+    }
+  }
+
+  &-loading {
+    cursor: not-allowed;
+    opacity: 0.65;
+
+    .cozy-switch-handle {
+      animation: loadingCircle 1s infinite linear;
+    }
+  }
+
+  &-disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+  }
+
+  // 小号开关
+  &-small {
+    min-width: 28px;
+    height: 16px;
+    line-height: 16px;
+
+    .cozy-switch-handle {
+      width: 12px;
+      height: 12px;
+    }
+
+    .cozy-switch-inner {
+      margin: 0 5px 0 18px;
+      font-size: 12px;
+    }
+
+    &.cozy-switch-checked {
+      .cozy-switch-handle {
+        left: calc(100% - 14px);
+      }
+
+      .cozy-switch-inner {
+        margin: 0 18px 0 5px;
+      }
+    }
+  }
+}
+
+@keyframes loadingCircle {
+  100% {
+    transform: rotate(360deg);
+  }
+}
