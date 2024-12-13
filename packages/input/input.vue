@@ -2,7 +2,7 @@
   <div class="cozy-input" :class="inputClass">
     <!-- 前缀图标 -->
     <span v-if="prefixIcon && !isTextarea" class="cozy-input-prefix">
-      <i :class="prefixIcon"></i>
+      <i :class="`cozy-icon ${prefixIcon}`"></i>
     </span>
 
     <!-- 文本域 -->
@@ -46,10 +46,10 @@
     <span v-if="(suffixIcon || clearable) && !isTextarea" class="cozy-input-suffix">
       <i
         v-if="clearable && modelValue"
-        class="cozy-input-clear"
+        class="cozy-icon c-close-circle-outlined cozy-input-clear"
         @click="handleClear"
       ></i>
-      <i v-else-if="suffixIcon" :class="suffixIcon"></i>
+      <i v-else-if="suffixIcon" :class="`cozy-icon ${suffixIcon}`"></i>
     </span>
   </div>
 </template>

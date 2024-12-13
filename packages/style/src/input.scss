@@ -4,6 +4,7 @@
   width: 100%;
   font-size: 14px;
   line-height: 1.5;
+  position: relative;
 
   &-inner {
     width: 100%;
@@ -39,8 +40,16 @@
     align-items: center;
     padding: 0 11px;
     color: rgba(0, 0, 0, 0.45);
-    background-color: #fff;
     pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  //前缀
+  &-prefix {
+    left: 0;
   }
 
   &-clear {
@@ -95,5 +104,9 @@
       color: rgba(0, 0, 0, 0.25);
       resize: none;
     }
+  }
+
+  &-clear {
+    cursor: pointer;
   }
 }

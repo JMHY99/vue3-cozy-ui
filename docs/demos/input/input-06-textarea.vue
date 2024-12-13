@@ -24,15 +24,16 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref } from "vue";
 
-const text1 = ref('')
-const text2 = ref('')
-const text3 = ref('')
+const text1 = ref("");
+const text2 = ref("");
+const text3 = ref("");
 </script>
 
 <style>
 .demo-input-textarea {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 16px;
