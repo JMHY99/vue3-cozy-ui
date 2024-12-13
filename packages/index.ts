@@ -23,6 +23,7 @@ import CBreadcrumb, { CBreadcrumbItem } from './breadcrumb'
 import CCheckbox, { CCheckboxGroup } from './checkbox'
 import CRate from './rate'
 import CSlider from './slider'
+import CSelect, { COption, COptionGroup } from './select'
 
 const components = [
   CIcon,
@@ -52,7 +53,10 @@ const components = [
   CCheckbox,
   CCheckboxGroup,
   CRate,
-  CSlider
+  CSlider,
+  CSelect,
+  COption,
+  COptionGroup
 ];
 
 const installComponents = (app: any) => {
@@ -94,7 +98,10 @@ export {
   CCheckbox,
   CCheckboxGroup,
   CRate,
-  CSlider
+  CSlider,
+  CSelect,
+  COption,
+  COptionGroup
 };
 
 export default { install };
