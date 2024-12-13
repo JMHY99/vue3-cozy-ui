@@ -20,6 +20,7 @@ import Message from './message'
 import CRow from './row'
 import CCol from './col'
 import CBreadcrumb, { CBreadcrumbItem } from './breadcrumb'
+import CCheckbox, { CCheckboxGroup } from './checkbox'
 
 const components = [
   CIcon,
@@ -45,7 +46,9 @@ const components = [
   CRow,
   CCol,
   CBreadcrumb,
-  CBreadcrumbItem
+  CBreadcrumbItem,
+  CCheckbox,
+  CCheckboxGroup,
 ];
 
 const installComponents = (app: any) => {
@@ -83,7 +86,9 @@ export {
   CRow,
   CCol,
   CBreadcrumb,
-  CBreadcrumbItem
+  CBreadcrumbItem,
+  CCheckbox,
+  CCheckboxGroup,
 };
 
 export default { install };
