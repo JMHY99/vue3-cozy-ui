@@ -3,6 +3,25 @@ import MessageConstructor from './message.vue'
 
 let seed = 1
 const instances: VNode[] = []
+const gap = 16 // 消息间距
+
+// 获取消息的当前位置
+const getVerticalOffset = (height: number, index: number) => {
+  let verticalOffset = gap
+  for (let i = 0; i < index; i++) {
+    verticalOffset += (instances[i].el?.offsetHeight || 0) + gap
+  }
+  return verticalOffset
+}
+
+// 更新消息位置
+const updatePosition = () => {
+  for (let i = 0; i < instances.length; i++) {
+    const instance = instances[i]
+    const verticalOffset = getVerticalOffset(instance.el?.offsetHeight || 0, i)
+    instance.component!.props.offset = verticalOffset
+  }
+}
 
 const Message = (options: any) => {
   if (typeof options === 'string') {
@@ -11,21 +30,14 @@ const Message = (options: any) => {
     }
   }
 
-  // 计算偏移量，每个消息之间间隔16px
-  let verticalOffset = 20
-  instances.forEach(({ el }) => {
-    verticalOffset += (el?.offsetHeight || 0) + 16
-  })
-
+  const container = document.createElement('div')
   const id = `message_${seed++}`
   const userOnClose = options.onClose
 
-  const container = document.createElement('div')
-
   const props = {
     ...options,
-    offset: verticalOffset,
     id,
+    offset: instances.length ? instances[instances.length - 1].el?.offsetHeight + gap : gap,
     onClose: () => {
       close(id, userOnClose)
     }
@@ -36,11 +48,13 @@ const Message = (options: any) => {
   document.body.appendChild(container.firstElementChild!)
 
   const vm = vnode.component!.proxy as any
-  vnode.props!.offset = verticalOffset
   instances.push(vnode)
 
   // 使用 nextTick 确保组件已经挂载
   Promise.resolve().then(() => {
+    // 更新位置
+    updatePosition()
+    // 显示消息
     vm.show()
   })
 
@@ -51,16 +65,19 @@ const Message = (options: any) => {
 
 // 关闭方法
 function close(id: string, userOnClose?: (vm: VNode) => void) {
-  const idx = instances.findIndex(({ props }) => props!.id === id)
-  if (idx === -1) return
+  const index = instances.findIndex(({ props }) => props!.id === id)
+  if (index === -1) return
 
-  const vm = instances[idx]
+  const vm = instances[index]
   if (!vm) return
 
   userOnClose?.(vm)
+  instances.splice(index, 1)
 
-  // 直接从数组中移除实例，不需要更新其他消息的位置
-  instances.splice(idx, 1)
+  // 更新位置
+  if (instances.length) {
+    updatePosition()
+  }
 }
 
 // 定义类型
@@ -92,6 +109,15 @@ Message.warn = Message.warning // alias
 Message.info = createMessage('info')
 Message.error = createMessage('error')
 Message.loading = createMessage('loading')
+
+// 全局方法
+Message.destroy = () => {
+  while (instances.length) {
+    const instance = instances[0]
+    instance.component?.proxy?.close()
+    instances.splice(0, 1)
+  }
+}
 
 // 全局注册
 Message.install = (app: App) => {
