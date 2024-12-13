@@ -6,6 +6,41 @@
   "description": "cozy-ui组件库",
   "glyphs": [
     {
+      "icon_id": "725952",
+      "name": "时间",
+      "font_class": "shijian",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "31392120",
+      "name": "日期",
+      "font_class": "riqi",
+      "unicode": "e6cf",
+      "unicode_decimal": 59087
+    },
+    {
+      "icon_id": "7450597",
+      "name": "左双箭头",
+      "font_class": "zuoshuangjiantou",
+      "unicode": "e65c",
+      "unicode_decimal": 58972
+    },
+    {
+      "icon_id": "7450660",
+      "name": "右双箭头",
+      "font_class": "youshuangjiantou",
+      "unicode": "e66c",
+      "unicode_decimal": 58988
+    },
+    {
+      "icon_id": "1125602",
+      "name": "收藏",
+      "font_class": "shoucang1",
+      "unicode": "e63b",
+      "unicode_decimal": 58939
+    },
+    {
       "icon_id": "5388009",
       "name": "上传",
       "font_class": "upload",

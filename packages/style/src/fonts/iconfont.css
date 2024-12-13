@@ -1,8 +1,10 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4357777 */
-  src: url("iconfont.woff2?t=1717051546470") format("woff2"),
-    url("iconfont.woff?t=1717051546470") format("woff"),
-    url("iconfont.ttf?t=1717051546470") format("truetype");
+  src: url('iconfont.eot?t=1734077179162'); /* IE9 */
+  src: url('iconfont.eot?t=1734077179162#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('iconfont.woff2?t=1734077179162') format('woff2'),
+       url('iconfont.woff?t=1734077179162') format('woff'),
+       url('iconfont.ttf?t=1734077179162') format('truetype');
 }
 
 .cozy-icon {
@@ -11,6 +13,26 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.c-shijian:before {
+  content: "\e614";
+}
+
+.c-riqi:before {
+  content: "\e6cf";
+}
+
+.c-zuoshuangjiantou:before {
+  content: "\e65c";
+}
+
+.c-youshuangjiantou:before {
+  content: "\e66c";
+}
+
+.c-shoucang1:before {
+  content: "\e63b";
 }
 
 .c-upload:before {
