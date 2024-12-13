@@ -16,6 +16,7 @@ import CInput from './input'
 import CRadio, { CRadioButton, CRadioGroup } from './radio'
 import CInputNumber from './input-number'
 import CSwitch from './switch'
+import Message from './message'
 
 const components = [
   CIcon,
@@ -47,6 +48,7 @@ const installComponents = (app: any) => {
 };
 const install = (app: any, router?: any) => {
   installComponents(app);
+  app.config.globalProperties.$message = Message;
 };
 
 export {
@@ -70,6 +72,7 @@ export {
   CRadioGroup,
   CInputNumber,
   CSwitch,
+  Message,
 };
 
 export default { install };

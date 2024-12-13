@@ -1,0 +1,73 @@
+.cozy-message {
+  position: fixed;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1010;
+  width: fit-content;
+  max-width: calc(100vw - 32px);
+  margin: 0;
+  padding: 8px 16px;
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  pointer-events: all;
+
+  &-content {
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+
+    .cozy-icon {
+      position: relative;
+      top: 1px;
+      margin-right: 8px;
+      font-size: 16px;
+    }
+  }
+
+  &-success .cozy-icon {
+    color: #52c41a;
+  }
+
+  &-error .cozy-icon {
+    color: #ff4d4f;
+  }
+
+  &-warning .cozy-icon {
+    color: #faad14;
+  }
+
+  &-info .cozy-icon {
+    color: #1677ff;
+  }
+
+  &-loading .cozy-icon-loading {
+    animation: loadingCircle 1s infinite linear;
+  }
+}
+
+.cozy-message-fade-enter-active,
+.cozy-message-fade-leave-active {
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.cozy-message-fade-enter-from {
+  opacity: 0;
+  transform: translate(-50%, -100%);
+}
+
+.cozy-message-fade-leave-to {
+  opacity: 0;
+  transform: translate(-50%, -100%);
+}
+
+@keyframes loadingCircle {
+  100% {
+    transform: rotate(360deg);
+  }
+}

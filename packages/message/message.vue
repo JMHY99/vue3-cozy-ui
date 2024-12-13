@@ -1,68 +1,105 @@
 <template>
-  <div class="message" :class="`message-${type}`" v-if="visible">
-    <div class="message-content">
-      <slot></slot>
+  <transition name="cozy-message-fade" @after-leave="handleAfterLeave">
+    <div
+      v-show="visible"
+      :class="['cozy-message', `cozy-message-${type}`]"
+      role="alert"
+      :style="{
+        top: `${offset}px`,
+      }"
+    >
+      <div class="cozy-message-content">
+        <i
+          :class="[
+            'cozy-icon',
+            {
+              'c-Info': type === 'info',
+              'c-check-circle-outlined': type === 'success',
+              'c-close-circle-outlined': type === 'error',
+              'c-warning': type === 'warning',
+              'c-refresh-outlined cozy-icon-loading': type === 'loading',
+            },
+          ]"
+        ></i>
+        <span>{{ content }}</span>
+      </div>
     </div>
-  </div>
+  </transition>
 </template>
 
-<script  lang="ts">
-import { defineComponent, ref, onMounted, onUnmounted } from 'vue';
+<script lang="ts">
+import { defineComponent, ref, onBeforeUnmount } from "vue";
 
 export default defineComponent({
-  name: 'Message',
+  name: "CMessage",
   props: {
-    visible: {
-      type: Boolean,
-      default: false,
+    id: {
+      type: String,
+      default: "",
+    },
+    content: {
+      type: String,
+      default: "",
     },
     type: {
       type: String,
-      default: 'info',
+      values: ["success", "warning", "info", "error", "loading"],
+      default: "info",
     },
     duration: {
       type: Number,
       default: 3000,
     },
+    offset: {
+      type: Number,
+      default: 20,
+    },
+    onClose: {
+      type: Function,
+      default: () => {},
+    },
   },
-  setup(props, { emit }) {
-    const timer = ref<number | null>(null);
+  setup(props) {
+    const visible = ref(false);
+    let timer: NodeJS.Timeout | null = null;
 
-    const handleClose = () => {
-      clearTimeout(timer.value!);
-      emit('update:visible', false);
+    const close = () => {
+      visible.value = false;
+      if (timer) {
+        clearTimeout(timer);
+        timer = null;
+      }
     };
 
-    onMounted(() => {
-      if (props.visible) {
-        timer.value = setTimeout(handleClose, props.duration);
+    const handleAfterLeave = () => {
+      props.onClose?.();
+    };
+
+    const startTimer = () => {
+      if (props.duration > 0) {
+        timer = setTimeout(() => {
+          close();
+        }, props.duration);
+      }
+    };
+
+    const show = () => {
+      visible.value = true;
+      startTimer();
+    };
+
+    onBeforeUnmount(() => {
+      if (timer) {
+        clearTimeout(timer);
       }
     });
 
-    onUnmounted(() => {
-      clearTimeout(timer.value!);
-    });
-
     return {
-      timer,
+      visible,
+      close,
+      show,
+      handleAfterLeave,
     };
   },
 });
 </script>
-
-<style scoped>
-.message {
-  /* 添加你的样式 */
-}
-
-/* 根据 type 添加不同的样式 */
-.message-success {
-  /* 成功样式 */
-}
-
-.message-error {
-  /* 错误样式 */
-}
-
-/* ... 其他类型样式 */
-</style>
