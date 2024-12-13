@@ -109,10 +109,6 @@ export default {
                   text: "TimePicker 时间选择器",
                   link: "/components/time-picker.md",
                 },
-                {
-                  text: "DateTimePicker 日期时间选择器",
-                  link: "/components/date-time-picker.md",
-                },
               ],
             },
             {

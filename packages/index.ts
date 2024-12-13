@@ -24,6 +24,7 @@ import CCheckbox, { CCheckboxGroup } from './checkbox'
 import CRate from './rate'
 import CSlider from './slider'
 import CSelect, { COption, COptionGroup } from './select'
+import CUpload from './upload'
 
 const components = [
   CIcon,
@@ -56,7 +57,8 @@ const components = [
   CSlider,
   CSelect,
   COption,
-  COptionGroup
+  COptionGroup,
+  CUpload
 ];
 
 const installComponents = (app: any) => {
@@ -101,7 +103,8 @@ export {
   CSlider,
   CSelect,
   COption,
-  COptionGroup
+  COptionGroup,
+  CUpload
 };
 
 export default { install };

@@ -1,0 +1,141 @@
+.cozy-upload {
+  display: inline-block;
+  
+  &-input {
+    display: none;
+  }
+
+  &-select {
+    border: 1px dashed #d9d9d9;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+    
+    &:hover {
+      border-color: var(--cozy-primary-color);
+    }
+    
+    &.is-dragover {
+      border-color: var(--cozy-primary-color);
+      background-color: rgba(var(--cozy-primary-rgb), 0.1);
+    }
+  }
+
+  &-select-picture-card {
+    width: 104px;
+    height: 104px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    text-align: center;
+    vertical-align: top;
+    background-color: #fafafa;
+    border-radius: 4px;
+    
+    .cozy-upload-trigger {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &-trigger {
+    padding: 16px;
+    
+    .cozy-upload-icon {
+      font-size: 24px;
+      color: #999;
+      margin-bottom: 8px;
+    }
+    
+    .cozy-upload-text {
+      color: #666;
+      font-size: 14px;
+    }
+  }
+
+  &-list {
+    &-item {
+      position: relative;
+      height: 22px;
+      margin-top: 8px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      
+      &.is-picture {
+        height: 104px;
+        margin: 0 8px 8px 0;
+        padding: 8px;
+        border: 1px solid #d9d9d9;
+        border-radius: 4px;
+      }
+      
+      &-thumbnail {
+        width: 48px;
+        height: 48px;
+        line-height: 48px;
+        text-align: center;
+        
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      
+      &-info {
+        flex: 1;
+        padding: 0 8px;
+        overflow: hidden;
+      }
+      
+      &-name {
+        display: inline-block;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        
+        .cozy-icon-file {
+          margin-right: 4px;
+          color: #666;
+        }
+      }
+      
+      &-size {
+        margin-left: 8px;
+        color: #999;
+        font-size: 12px;
+      }
+      
+      &-actions {
+        .cozy-icon-loading {
+          color: var(--cozy-primary-color);
+        }
+      }
+      
+      &-preview,
+      &-remove {
+        padding: 0 4px;
+        color: #666;
+        cursor: pointer;
+        transition: all 0.3s;
+        
+        &:hover {
+          color: var(--cozy-primary-color);
+        }
+      }
+      
+      &-remove:hover {
+        color: var(--cozy-error-color);
+      }
+      
+      &-error {
+        color: var(--cozy-error-color);
+        border-color: var(--cozy-error-color);
+      }
+    }
+  }
+} 
