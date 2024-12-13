@@ -13,10 +13,10 @@
           :class="[
             'cozy-icon',
             {
-              'c-Info': type === 'info',
-              'c-check-circle-outlined': type === 'success',
-              'c-close-circle-outlined': type === 'error',
-              'c-warning': type === 'warning',
+              'c-information': type === 'info',
+              'c-circle-check-filled': type === 'success',
+              'c-circle-close-filled': type === 'error',
+              'c-warning-filled': type === 'warning',
               'c-refresh-outlined cozy-icon-loading': type === 'loading',
             },
           ]"
