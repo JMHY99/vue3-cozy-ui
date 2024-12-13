@@ -31,7 +31,7 @@
         ></i>
         <i
           v-else
-          class="cozy-icon c-shoucang"
+          class="cozy-icon c-shoucang1"
           :style="{ color: item.value <= currentValue ? activeColor : '#e8e8e8' }"
         ></i>
       </slot>
@@ -50,7 +50,7 @@
             ></i>
             <i
               v-else
-              class="cozy-icon c-shoucang"
+              class="cozy-icon c-shoucang1"
               :style="{ color: item.value - 0.5 <= currentValue ? activeColor : '#e8e8e8' }"
             ></i>
           </slot>
@@ -69,7 +69,7 @@
             ></i>
             <i
               v-else
-              class="cozy-icon c-shoucang"
+              class="cozy-icon c-shoucang1"
               :style="{ color: item.value <= currentValue ? activeColor : '#e8e8e8' }"
             ></i>
           </slot>
