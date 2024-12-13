@@ -1,18 +1,40 @@
 <template>
   <div class="cozy-input" :class="inputClass">
     <!-- 前缀图标 -->
-    <span v-if="prefixIcon" class="cozy-input-prefix">
+    <span v-if="prefixIcon && !isTextarea" class="cozy-input-prefix">
       <i :class="prefixIcon"></i>
     </span>
 
+    <!-- 文本域 -->
+    <textarea
+      v-if="type === 'textarea'"
+      ref="textareaRef"
+      :value="modelValue"
+      :placeholder="placeholder"
+      :disabled="disabled"
+      :readonly="readonly"
+      :rows="rows"
+      :maxlength="maxlength"
+      :autofocus="autofocus"
+      :resize="resize"
+      class="cozy-input-textarea"
+      @input="handleInput"
+      @focus="handleFocus"
+      @blur="handleBlur"
+      @change="handleChange"
+    ></textarea>
+
     <!-- 输入框 -->
     <input
+      v-else
       ref="inputRef"
       :type="type"
       :value="modelValue"
       :placeholder="placeholder"
       :disabled="disabled"
       :readonly="readonly"
+      :maxlength="maxlength"
+      :autofocus="autofocus"
       class="cozy-input-inner"
       @input="handleInput"
       @focus="handleFocus"
@@ -21,7 +43,7 @@
     >
 
     <!-- 后缀图标 -->
-    <span v-if="suffixIcon || clearable" class="cozy-input-suffix">
+    <span v-if="(suffixIcon || clearable) && !isTextarea" class="cozy-input-suffix">
       <i
         v-if="clearable && modelValue"
         class="cozy-input-clear"
@@ -76,6 +98,24 @@ const props = defineProps({
   size: {
     type: String,
     default: 'default'
+  },
+  // 文本域特有属性
+  rows: {
+    type: Number,
+    default: 3
+  },
+  maxlength: {
+    type: Number,
+    default: undefined
+  },
+  autofocus: {
+    type: Boolean,
+    default: false
+  },
+  resize: {
+    type: String,
+    values: ['none', 'both', 'horizontal', 'vertical'],
+    default: 'vertical'
   }
 })
 
@@ -91,6 +131,12 @@ const emit = defineEmits([
 
 // input ref
 const inputRef = ref<HTMLInputElement>()
+
+// 新增计算属性
+const isTextarea = computed(() => props.type === 'textarea')
+
+// 新增 textarea ref
+const textareaRef = ref<HTMLTextAreaElement>()
 
 // 计算 class
 const inputClass = computed(() => ({
@@ -130,8 +176,26 @@ const handleClear = () => {
 
 // 暴露方法
 defineExpose({
-  focus: () => inputRef.value?.focus(),
-  blur: () => inputRef.value?.blur(),
-  select: () => inputRef.value?.select()
+  focus: () => {
+    if (isTextarea.value) {
+      textareaRef.value?.focus()
+    } else {
+      inputRef.value?.focus()
+    }
+  },
+  blur: () => {
+    if (isTextarea.value) {
+      textareaRef.value?.blur()
+    } else {
+      inputRef.value?.blur()
+    }
+  },
+  select: () => {
+    if (isTextarea.value) {
+      textareaRef.value?.select()
+    } else {
+      inputRef.value?.select()
+    }
+  }
 })
 </script>

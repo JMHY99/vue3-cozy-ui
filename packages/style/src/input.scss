@@ -63,4 +63,37 @@
     height: 24px;
     padding: 1px 7px;
   }
+
+  // 文本域样式
+  &-textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 8px 11px;
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: 1.5;
+    resize: vertical;
+    overflow: auto;
+
+    &:focus {
+      outline: none;
+      border-color: #40a9ff;
+      box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+    }
+
+    &::placeholder {
+      color: #bfbfbf;
+    }
+
+    &[disabled] {
+      background-color: #f5f5f5;
+      cursor: not-allowed;
+      color: rgba(0, 0, 0, 0.25);
+      resize: none;
+    }
+  }
 }

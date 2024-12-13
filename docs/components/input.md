@@ -32,6 +32,12 @@
 
 <demo src="../demos/input/input-05-size.vue"></demo>
 
+## 文本域
+
+用于输入多行文本信息，通过将 `type` 属性的值指定为 `textarea`。
+
+<demo src="../demos/input/input-06-textarea.vue"></demo>
+
 ## Input 属性
 
 | 属性名 | 说明 | 类型 | 可选值 | 默认值 |
@@ -45,6 +51,10 @@
 | prefix-icon | 前缀图标类名 | string | — | — |
 | suffix-icon | 后缀图标类名 | string | — | — |
 | size | 输入框尺寸 | string | large/default/small | default |
+| rows | 文本域默认行数 | number | — | 3 |
+| maxlength | 最大输入长度 | number | — | — |
+| autofocus | 自动获取焦点 | boolean | — | false |
+| resize | 文本域是否可缩放 | string | none/both/horizontal/vertical | vertical |
 
 ## Input 事件
 
