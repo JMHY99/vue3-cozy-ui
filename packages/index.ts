@@ -19,6 +19,7 @@ import CSwitch from './switch'
 import Message from './message'
 import CRow from './row'
 import CCol from './col'
+import CBreadcrumb, { CBreadcrumbItem } from './breadcrumb'
 
 const components = [
   CIcon,
@@ -43,6 +44,8 @@ const components = [
   CSwitch,
   CRow,
   CCol,
+  CBreadcrumb,
+  CBreadcrumbItem
 ];
 
 const installComponents = (app: any) => {
@@ -79,6 +82,8 @@ export {
   Message,
   CRow,
   CCol,
+  CBreadcrumb,
+  CBreadcrumbItem
 };
 
 export default { install };

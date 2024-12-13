@@ -1,0 +1,45 @@
+@import './variables.scss';
+
+.cozy-breadcrumb {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  line-height: 1.5;
+  color: $color-gray-black-1;
+}
+
+.cozy-breadcrumb-item {
+  display: flex;
+  align-items: center;
+
+  &-content {
+    color: $color-gray;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+
+  &-link {
+    color: $color-gray;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &-separator {
+    margin: 0 8px;
+    color: $color-gray;
+  }
+
+  &:last-child {
+    .cozy-breadcrumb-item-content {
+      color: $color-gray-black-1;
+      cursor: text;
+
+      &:hover {
+        color: $color-gray-black-1;
+      }
+    }
+  }
+}
