@@ -21,6 +21,7 @@ import CRow from './row'
 import CCol from './col'
 import CBreadcrumb, { CBreadcrumbItem } from './breadcrumb'
 import CCheckbox, { CCheckboxGroup } from './checkbox'
+import CRate from './rate'
 
 const components = [
   CIcon,
@@ -49,6 +50,7 @@ const components = [
   CBreadcrumbItem,
   CCheckbox,
   CCheckboxGroup,
+  CRate
 ];
 
 const installComponents = (app: any) => {
@@ -89,6 +91,7 @@ export {
   CBreadcrumbItem,
   CCheckbox,
   CCheckboxGroup,
+  CRate
 };
 
 export default { install };
