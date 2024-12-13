@@ -25,6 +25,8 @@ import CRate from './rate'
 import CSlider from './slider'
 import CSelect, { COption, COptionGroup } from './select'
 import CUpload from './upload'
+import CDatePicker from './date-picker'
+import CTimePicker from './time-picker'
 
 const components = [
   CIcon,
@@ -58,7 +60,9 @@ const components = [
   CSelect,
   COption,
   COptionGroup,
-  CUpload
+  CUpload,
+  CDatePicker,
+  CTimePicker
 ];
 
 const installComponents = (app: any) => {
@@ -104,7 +108,9 @@ export {
   CSelect,
   COption,
   COptionGroup,
-  CUpload
+  CUpload,
+  CDatePicker,
+  CTimePicker
 };
 
 export default { install };
