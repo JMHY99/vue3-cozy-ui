@@ -12,6 +12,7 @@
     "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
+    "dayjs": "^1.11.13",
     "vue": "^3.4.21"
   },
   "devDependencies": {

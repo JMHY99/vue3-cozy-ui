@@ -27,6 +27,7 @@ import CSelect, { COption, COptionGroup } from './select'
 import CUpload from './upload'
 import CDatePicker from './date-picker'
 import CTimePicker from './time-picker'
+import CCalendar from './calendar'
 
 const components = [
   CIcon,
@@ -62,7 +63,8 @@ const components = [
   COptionGroup,
   CUpload,
   CDatePicker,
-  CTimePicker
+  CTimePicker,
+  CCalendar
 ];
 
 const installComponents = (app: any) => {
@@ -110,7 +112,8 @@ export {
   COptionGroup,
   CUpload,
   CDatePicker,
-  CTimePicker
+  CTimePicker,
+  CCalendar
 };
 
 export default { install };

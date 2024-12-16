@@ -1,0 +1,257 @@
+@import "./variables.scss";
+
+.cozy-calendar {
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $text-color;
+  background-color: $color-white;
+  border: $border-width-base $border-style-base $border-color;
+  border-radius: $border-radius-base;
+  width: 300px;
+
+  &.cozy-calendar-fullscreen {
+    width: 100%;
+    border: 0;
+
+    .cozy-calendar-header {
+      padding: $spacing-lg;
+      border-bottom: $border-width-base $border-style-base $border-color-split;
+    }
+
+    .cozy-calendar-body {
+      padding: 0 $spacing-lg;
+    }
+
+    .cozy-calendar-weekdays {
+      border-bottom: none;
+    }
+
+    .cozy-calendar-date {
+      height: 32px;
+      line-height: 32px;
+    }
+
+    .cozy-calendar-cell {
+      padding: $spacing-sm;
+      position: relative;
+      min-height: 80px;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: $border-color-split;
+      }
+
+      &:hover {
+        background-color: $background-color-light;
+      }
+
+      &-today {
+        color: $color-primary;
+        font-weight: 500;
+        border: none;
+
+        &::before {
+          background-color: $color-primary;
+        }
+      }
+
+      &-selected {
+        background-color: $color-primary-light-10;
+        color: $color-primary;
+
+        &:hover {
+          background-color: $color-primary-light-10;
+        }
+      }
+    }
+  }
+
+  // 日历头部
+  &-header {
+    padding: $spacing-md;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: $border-width-base $border-style-base $border-color;
+  }
+
+  &-picker {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+  }
+
+  &-prev-btn,
+  &-next-btn {
+    border: none;
+    background: none;
+    padding: $spacing-xs $spacing-sm;
+    cursor: pointer;
+    color: $text-color-secondary;
+    transition: color $animation-duration-base;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &-current-month {
+    font-size: $font-size-lg;
+    font-weight: 500;
+  }
+
+  &-mode-switch {
+    display: flex;
+    gap: 1px;
+    background-color: $border-color;
+    border-radius: $border-radius-base;
+    padding: 1px;
+  }
+
+  &-mode-btn {
+    border: none;
+    background: $color-white;
+    padding: $spacing-xs $spacing-md;
+    cursor: pointer;
+    transition: all $animation-duration-base;
+
+    &:first-child {
+      border-top-left-radius: $border-radius-base;
+      border-bottom-left-radius: $border-radius-base;
+    }
+
+    &:last-child {
+      border-top-right-radius: $border-radius-base;
+      border-bottom-right-radius: $border-radius-base;
+    }
+
+    &-active {
+      color: $color-primary;
+      background: $color-primary-light-10;
+    }
+  }
+
+  // 日历主体
+  &-body {
+    padding: $spacing-sm;
+  }
+
+  // 星期头部
+  &-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    border-bottom: $border-width-base $border-style-base $border-color;
+    margin-bottom: $spacing-xs;
+    padding: $spacing-sm 0;
+  }
+
+  &-weekday {
+    height: 30px;
+    line-height: 30px;
+    color: $text-color-secondary;
+  }
+
+  // 日期网格
+  &-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: $spacing-xs;
+  }
+
+  &-cell {
+    position: relative;
+    padding: $spacing-xs;
+    text-align: center;
+    cursor: pointer;
+    border-radius: $border-radius-sm;
+    transition: all $animation-duration-base;
+
+    &:hover {
+      background-color: $background-color-light;
+    }
+
+    &-today {
+      color: $color-primary;
+      font-weight: 500;
+      border: $border-width-base $border-style-base $color-primary;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    &-selected {
+      background-color: $color-primary;
+      color: $text-color-inverse;
+
+      &:hover {
+        background-color: $color-primary-light-1;
+      }
+    }
+
+    &-disabled {
+      color: $text-color-disabled;
+      cursor: not-allowed;
+      background: none;
+
+      &:hover {
+        background: none;
+      }
+    }
+
+    &-prev-month,
+    &-next-month {
+      color: $text-color-disabled;
+    }
+  }
+
+  &-date {
+    height: 24px;
+    line-height: 24px;
+  }
+
+  &-content {
+    min-height: 40px;
+    padding: $spacing-xs 0;
+  }
+
+  // 年视图
+  &-months {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-lg;
+    padding: $spacing-lg;
+  }
+
+  &-month-cell {
+    text-align: center;
+    padding: $spacing-lg;
+    cursor: pointer;
+    border-radius: $border-radius-base;
+    transition: all $animation-duration-base;
+
+    &:hover {
+      background-color: $background-color-light;
+    }
+
+    &-selected {
+      background-color: $color-primary;
+      color: $text-color-inverse;
+
+      &:hover {
+        background-color: $color-primary-light-1;
+      }
+    }
+  }
+}
+
+.cozy-calendar-content-wrapper {
+  margin-top: 4px;
+  padding: 2px;
+}
