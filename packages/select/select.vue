@@ -71,7 +71,7 @@
         >
       </template>
 
-      <!-- 清���按钮 -->
+      <!-- 清空按钮 -->
       <span
         v-if="clearable && (modelValue || selectedValues.length) && !disabled"
         class="cozy-select-clear"
@@ -156,8 +156,8 @@ const emit = defineEmits(['update:modelValue', 'change', 'search', 'clear', 'foc
 // DOM 引用
 const selectRef = ref<HTMLElement>()      // 选择器根元素
 const selectorRef = ref<HTMLElement>()    // 选择框元素
-const inputRef = ref<HTMLInputElement>()  // 输入框元素
-const dropdownRef = ref<HTMLElement>()    // 下拉菜���元素
+const inputRef = ref<HTMLInputElement>()  // 输入框元��
+const dropdownRef = ref<HTMLElement>()    // 下拉菜单元素
 
 // 组件状态
 const dropdownVisible = ref(false)        // 下拉菜单是否可见
@@ -222,6 +222,10 @@ const unregisterOption = (option: OptionType) => {
 // 处理选择器点击事件
 const handleClick = (event: MouseEvent) => {
   if (props.disabled) return
+  // 如果点击的是移除标签按钮，不触发下拉框的展开/关闭
+  if ((event.target as HTMLElement).closest('.cozy-select-selection-item-remove')) {
+    return
+  }
   event.stopPropagation()
   dropdownVisible.value = !dropdownVisible.value
   if (dropdownVisible.value && props.showSearch) {
@@ -275,6 +279,8 @@ const removeTag = (value: string | number | boolean) => {
   const newValue = selectedValues.value.filter(v => v !== value)
   emit('update:modelValue', newValue)
   emit('change', newValue)
+  // 阻止事件冒泡，避免触发选择器的点击事件
+  event?.stopPropagation()
 }
 
 // 处理点击外部关闭下拉框
