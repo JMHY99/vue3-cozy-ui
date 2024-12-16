@@ -107,59 +107,56 @@
 </template>
 
 <script lang="ts" setup>
+// 引入必要的 Vue 组合式 API
 import { ref, computed, provide, nextTick, onMounted, onUnmounted, watch } from 'vue'
 
+// 定义选项类型接口
 interface OptionType {
-  value: string | number | boolean
-  label: string
-  disabled: boolean
-  group?: string
+  value: string | number | boolean  // 选项值
+  label: string                     // 选项标签
+  disabled: boolean                 // 是否禁用
+  group?: string                    // 所属分组
 }
 
+// 组件名称
 defineOptions({
   name: 'CSelect'
 })
 
+// 组件属性定义
 const props = withDefaults(defineProps<{
-  modelValue?: string | number | boolean | (string | number | boolean)[]
-  disabled?: boolean
-  multiple?: boolean
-  placeholder?: string
-  clearable?: boolean
-  size?: 'large' | 'small'
-  loading?: boolean
-  showSearch?: boolean
-  filterOption?: boolean | ((inputValue: string, option: OptionType) => boolean)
-  maxTagCount?: number
-  emptyText?: string
+  modelValue?: string | number | boolean | (string | number | boolean)[]  // 选中值，支持单选和多选
+  disabled?: boolean    // 是否禁用
+  multiple?: boolean    // 是否多选模式
+  placeholder?: string  // 占位文本
+  clearable?: boolean   // 是否可清空
+  size?: 'large' | 'small'  // 组件大小
+  loading?: boolean     // 加载状态
+  showSearch?: boolean  // 是否显示搜索框
+  filterOption?: boolean | ((inputValue: string, option: OptionType) => boolean)  // 搜索过滤函数
+  maxTagCount?: number  // 多选模式下最多显示的标签数
+  emptyText?: string    // 无数据时显示的文本
 }>(), {
-  disabled: false,
-  multiple: false,
-  placeholder: '请选择',
-  clearable: false,
-  loading: false,
-  showSearch: false,
-  filterOption: true,
-  maxTagCount: 0,
-  emptyText: '暂无数据'
+  // 属性默认值
 })
 
+// 组件事件
 const emit = defineEmits(['update:modelValue', 'change', 'search', 'clear', 'focus', 'blur'])
 
-// refs
-const selectorRef = ref<HTMLElement>()
-const inputRef = ref<HTMLInputElement>()
-const dropdownRef = ref<HTMLElement>()
-const selectRef = ref<HTMLElement>()
+// DOM 引用
+const selectRef = ref<HTMLElement>()      // 选择器根元素
+const selectorRef = ref<HTMLElement>()    // 选择框元素
+const inputRef = ref<HTMLInputElement>()  // 输入框元素
+const dropdownRef = ref<HTMLElement>()    // 下拉菜单元素
 
-// 状态
-const dropdownVisible = ref(false)
-const searchValue = ref('')
-const searchFocused = ref(false)
-const activeValue = ref<string | number | boolean>('')
-const options = ref<OptionType[]>([])
+// 组件状态
+const dropdownVisible = ref(false)        // 下拉菜单是否可见
+const searchValue = ref('')               // 搜索输入值
+const searchFocused = ref(false)          // 搜索框是否聚焦
+const activeValue = ref<string | number | boolean>('')  // 当前激活的选项值
+const options = ref<OptionType[]>([])     // 所有选项列表
 
-// 选中值(多选模式)
+// 计算属性：选中值（多选模式）
 const selectedValues = computed(() => {
   if (props.multiple && Array.isArray(props.modelValue)) {
     return props.modelValue
@@ -167,7 +164,7 @@ const selectedValues = computed(() => {
   return []
 })
 
-// 显示的标签(多选模式)
+// 计算属性：显示的标签（多选模式）
 const displayTags = computed(() => {
   if (props.maxTagCount && props.maxTagCount > 0) {
     return selectedValues.value.slice(0, props.maxTagCount)
@@ -175,7 +172,7 @@ const displayTags = computed(() => {
   return selectedValues.value
 })
 
-// 下拉框样式
+// 计算属性：下拉框样式
 const dropdownStyle = computed(() => {
   if (!selectorRef.value) return {}
   const rect = selectorRef.value.getBoundingClientRect()
@@ -190,13 +187,13 @@ const dropdownStyle = computed(() => {
   }
 })
 
-// 获取选项标签
+// 获取选项标签文本
 const getOptionLabel = (value: string | number | boolean) => {
   const option = options.value.find(opt => opt.value === value)
   return option ? option.label : String(value)
 }
 
-// 注册选项
+// 注册选项到选择器
 const registerOption = (option: OptionType) => {
   const index = options.value.findIndex(opt => opt.value === option.value)
   if (index === -1) {
@@ -204,7 +201,7 @@ const registerOption = (option: OptionType) => {
   }
 }
 
-// 注销选项
+// 从选择器中注销选项
 const unregisterOption = (option: OptionType) => {
   const index = options.value.findIndex(opt => opt.value === option.value)
   if (index > -1) {
@@ -212,7 +209,7 @@ const unregisterOption = (option: OptionType) => {
   }
 }
 
-// 点击选择器
+// 处理选择器点击事件
 const handleClick = (event: MouseEvent) => {
   if (props.disabled) return
   event.stopPropagation()
@@ -224,7 +221,7 @@ const handleClick = (event: MouseEvent) => {
   }
 }
 
-// 失去焦点
+// 处理失去焦点事件
 const handleBlur = (e: FocusEvent) => {
   // 检查相关目标是否在选择器内部
   const target = e.relatedTarget as HTMLElement
@@ -235,7 +232,7 @@ const handleBlur = (e: FocusEvent) => {
   searchValue.value = ''
 }
 
-// 清除选择
+// 处理清空选择
 const handleClear = () => {
   if (props.multiple) {
     emit('update:modelValue', [])
@@ -246,29 +243,31 @@ const handleClear = () => {
   dropdownVisible.value = false
 }
 
-// 搜索相关
+// 处理搜索框聚焦
 const handleSearchFocus = () => {
   searchFocused.value = true
   emit('focus')
 }
 
+// 处理搜索框失焦
 const handleSearchBlur = () => {
   searchFocused.value = false
   emit('blur')
 }
 
+// 处理搜索输入
 const handleSearch = () => {
   emit('search', searchValue.value)
 }
 
-// 移除标签
+// 移除选中标签（多选模式）
 const removeTag = (value: string | number | boolean) => {
   const newValue = selectedValues.value.filter(v => v !== value)
   emit('update:modelValue', newValue)
   emit('change', newValue)
 }
 
-// 点击外部关闭下拉框
+// 处理点击外部关闭下拉框
 const handleClickOutside = (event: MouseEvent) => {
   const target = event.target as HTMLElement
   if (selectRef.value && !selectRef.value.contains(target)) {
@@ -288,7 +287,7 @@ onUnmounted(() => {
   options.value = []
 })
 
-// 修改 provide 部分，将 handleOptionClick 移到 provide 外部
+// 处理选项点击
 const handleOptionClick = (value: string | number | boolean) => {
   if (props.disabled) return
 
@@ -312,7 +311,7 @@ const handleOptionClick = (value: string | number | boolean) => {
   }
 }
 
-// 提供上下文
+// 提供上下文给子组件
 provide('select', {
   value: computed(() => props.modelValue),
   multiple: computed(() => props.multiple),

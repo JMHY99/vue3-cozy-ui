@@ -1,3 +1,4 @@
+/* Select 组件样式 */
 .cozy-select {
   position: relative;
   display: inline-block;
@@ -12,16 +13,19 @@
   transition: all 0.2s;
   cursor: pointer;
 
+  /* 悬停状态 */
   &:hover {
     border-color: #4096ff;
   }
 
+  /* 聚焦状态 */
   &:focus-within {
     border-color: #4096ff;
     box-shadow: 0 0 0 2px rgba(5, 145, 255, 0.1);
     outline: 0;
   }
 
+  /* 禁用状态 */
   &-disabled {
     color: rgba(0, 0, 0, 0.25);
     background: #f5f5f5;
@@ -32,6 +36,7 @@
     }
   }
 
+  /* 选择框 */
   &-selector {
     position: relative;
     display: flex;
@@ -44,6 +49,7 @@
     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   }
 
+  /* 展开状态 */
   &-open {
     .cozy-select-selector {
       border-color: #4096ff;
@@ -55,6 +61,7 @@
     }
   }
 
+  /* 单选模式 */
   &-single {
     .cozy-select-selector {
       height: 30px;
@@ -75,15 +82,7 @@
     }
   }
 
-  &-selection-single {
-    position: relative;
-    display: block;
-    padding-right: 11px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-
+  /* 多选模式 */
   &-multiple {
     .cozy-select-selector {
       padding: 1px 4px;
@@ -96,22 +95,9 @@
       margin-inline-start: 0;
       margin-inline-end: 4px;
     }
-
-    .cozy-select-selection-item {
-      height: 24px;
-      margin: 2px 4px 2px 0;
-      line-height: 22px;
-      background: rgba(0, 0, 0, 0.06);
-      border-radius: 4px;
-      cursor: default;
-      transition: font-size 0.3s, line-height 0.3s, height 0.3s;
-      user-select: none;
-      padding-inline: 8px 4px;
-      display: flex;
-      align-items: center;
-    }
   }
 
+  /* 搜索输入框 */
   &-selection-search-input {
     margin: 0;
     padding: 0;
@@ -128,6 +114,7 @@
     }
   }
 
+  /* 占位符 */
   &-selection-placeholder {
     position: absolute;
     top: 50%;
@@ -143,6 +130,7 @@
     pointer-events: none;
   }
 
+  /* 选中项样式 */
   &-selection-item {
     position: relative;
     display: flex;
@@ -159,6 +147,7 @@
     user-select: none;
     padding-inline: 8px 4px;
 
+    /* 选中项内容 */
     &-content {
       display: inline-block;
       margin-right: 4px;
@@ -167,6 +156,7 @@
       text-overflow: ellipsis;
     }
 
+    /* 删除按钮 */
     &-remove {
       color: rgba(0, 0, 0, 0.45);
       font-size: 10px;
@@ -182,6 +172,7 @@
     }
   }
 
+  /* 下拉箭头 */
   &-arrow {
     position: absolute;
     top: 50%;
@@ -200,6 +191,7 @@
     transition: transform 0.3s;
   }
 
+  /* 清除按钮 */
   &-clear {
     position: absolute;
     top: 50%;
@@ -222,6 +214,7 @@
     }
   }
 
+  /* 大尺寸 */
   &-large {
     font-size: 16px;
 
@@ -239,6 +232,7 @@
     }
   }
 
+  /* 小尺寸 */
   &-small {
     font-size: 12px;
 
@@ -257,6 +251,7 @@
   }
 }
 
+/* 下拉菜单 */
 .cozy-select-dropdown {
   position: absolute;
   margin: 4px 0;
@@ -267,16 +262,19 @@
     0 3px 6px -4px rgba(0, 0, 0, 0.12),
     0 9px 28px 8px rgba(0, 0, 0, 0.05);
 
+  /* 隐藏状态 */
   &-hidden {
     display: none;
   }
 
+  /* 空状态 */
   &-empty {
     padding: 8px 12px;
     color: rgba(0, 0, 0, 0.25);
     text-align: center;
   }
 
+  /* 选项列表 */
   &-list {
     max-height: 256px;
     overflow-y: auto;
@@ -285,6 +283,7 @@
     margin: 0;
   }
 
+  /* 加载状态 */
   &-loading {
     padding: 12px;
     text-align: center;
@@ -292,7 +291,7 @@
   }
 }
 
-// 选项样式
+/* 选项样式 */
 .cozy-select-option {
   position: relative;
   display: flex;
@@ -307,10 +306,12 @@
   transition: background 0.3s ease;
   border-radius: 4px;
 
+  /* 悬停状态（非选中非禁用） */
   &:hover:not(&-selected):not(&-disabled) {
     background: rgba(0, 0, 0, 0.04);
   }
 
+  /* 选中状态 */
   &-selected {
     color: #1677ff;
     font-weight: 600;
@@ -321,10 +322,12 @@
     }
   }
 
+  /* 激活状态（非选中非禁用） */
   &-active:not(&-selected):not(&-disabled) {
     background: rgba(0, 0, 0, 0.04);
   }
 
+  /* 禁用状态 */
   &-disabled {
     color: rgba(0, 0, 0, 0.25);
     cursor: not-allowed;
@@ -335,7 +338,9 @@
   }
 }
 
+/* 选项分组 */
 .cozy-select-option-group {
+  /* 分组标签 */
   &-label {
     padding: 6px 16px;
     color: rgba(0, 0, 0, 0.45);
@@ -343,9 +348,11 @@
     line-height: 1.5;
   }
 
+  /* 分组列表 */
   &-list {
     margin-left: 0;
 
+    /* 分组内选项 */
     .cozy-select-option {
       padding-left: 24px;
     }

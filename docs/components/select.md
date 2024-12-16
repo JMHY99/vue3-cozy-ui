@@ -2,44 +2,44 @@
 
 下拉选择器。
 
-## 何时使用
+### 何时使用
 
 - 弹出一个下拉菜单给用户选择操作，用于代替原生的选择器。
 - 当选项少时（少于 5 项），建议直接将选项平铺，使用 Radio 是更好的选择。
 
-## 基本使用
+### 基本使用
 
 最基本的选择器。
 
 <demo src="../demos/select/select-01-basic.vue"></demo>
 
-## 多选模式
+### 多选模式
 
 多选模式。
 
 <demo src="../demos/select/select-02-multiple.vue"></demo>
 
-## 带搜索框
+### 带搜索框
 
 展开后可对选项进行搜索。
 
 <demo src="../demos/select/select-03-search.vue"></demo>
 
-## 分组
+### 分组
 
 使用 OptionGroup 进行选项分组。
 
 <demo src="../demos/select/select-04-group.vue"></demo>
 
-## 尺寸
+### 尺寸
 
 三种尺寸的选择器。
 
 <demo src="../demos/select/select-05-size.vue"></demo>
 
-## API
+### API
 
-### Select Props
+#### Select Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -54,7 +54,7 @@
 | filter-option | 是否根据输入项进行筛选 | boolean \| function(inputValue, option) | true |
 | max-tag-count | 最多显示多少个 tag，响应式模式会对性能产生损耗 | number | - |
 
-### Select Events
+#### Select Events
 
 | 事件名称 | 说明 | 回调参数 |
 | --- | --- | --- |
@@ -64,7 +64,7 @@
 | focus | 获取焦点时回调 | function |
 | blur | 失去焦点时回调 | function |
 
-### Option Props
+#### Option Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -72,7 +72,7 @@
 | label | 选项显示的内容 | string | - |
 | disabled | 是否禁用 | boolean | false |
 
-### OptionGroup Props
+#### OptionGroup Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
