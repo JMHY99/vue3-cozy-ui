@@ -38,7 +38,7 @@
         <template v-if="selectedValues.length || searchValue">
           <span
             v-for="value in displayTags"
-            :key="value"
+            :key="String(value)"
             class="cozy-select-selection-item"
           >
             <span class="cozy-select-selection-item-content">
@@ -52,10 +52,10 @@
             </span>
           </span>
           <span
-            v-if="selectedValues.length > maxTagCount && maxTagCount > 0"
+            v-if="selectedValues.length > (maxTagCount ?? 0) && (maxTagCount ?? 0) > 0"
             class="cozy-select-selection-item"
           >
-            +{{ selectedValues.length - maxTagCount }} ...
+            +{{ selectedValues.length - (maxTagCount ?? 0) }} ...
           </span>
         </template>
         <span v-else class="cozy-select-selection-placeholder">{{ placeholder }}</span>
@@ -71,7 +71,7 @@
         >
       </template>
 
-      <!-- 清除按钮 -->
+      <!-- 清���按钮 -->
       <span
         v-if="clearable && (modelValue || selectedValues.length) && !disabled"
         class="cozy-select-clear"
@@ -123,7 +123,7 @@ defineOptions({
   name: 'CSelect'
 })
 
-// 组件属性定义
+// 组属性定义
 const props = withDefaults(defineProps<{
   modelValue?: string | number | boolean | (string | number | boolean)[]  // 选中值，支持单选和多选
   disabled?: boolean    // 是否禁用
@@ -137,7 +137,17 @@ const props = withDefaults(defineProps<{
   maxTagCount?: number  // 多选模式下最多显示的标签数
   emptyText?: string    // 无数据时显示的文本
 }>(), {
-  // 属性默认值
+  modelValue: undefined,
+  disabled: false,
+  multiple: false,
+  placeholder: '请选择',
+  clearable: false,
+  size: undefined,
+  loading: false,
+  showSearch: false,
+  filterOption: true,
+  maxTagCount: undefined,
+  emptyText: '暂无数据'
 })
 
 // 组件事件
@@ -147,7 +157,7 @@ const emit = defineEmits(['update:modelValue', 'change', 'search', 'clear', 'foc
 const selectRef = ref<HTMLElement>()      // 选择器根元素
 const selectorRef = ref<HTMLElement>()    // 选择框元素
 const inputRef = ref<HTMLInputElement>()  // 输入框元素
-const dropdownRef = ref<HTMLElement>()    // 下拉菜单元素
+const dropdownRef = ref<HTMLElement>()    // 下拉菜���元素
 
 // 组件状态
 const dropdownVisible = ref(false)        // 下拉菜单是否可见
@@ -179,7 +189,7 @@ const dropdownStyle = computed(() => {
   return {
     minWidth: `${rect.width}px`,
     maxHeight: '256px',
-    position: 'absolute',
+    position: 'absolute' as const,
     top: '100%',
     left: '0',
     zIndex: 1000,

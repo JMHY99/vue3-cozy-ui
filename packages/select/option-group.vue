@@ -8,21 +8,25 @@
 </template>
 
 <script lang="ts" setup>
-// 引入必要的 Vue 组合式 API
 import { provide } from 'vue'
 
-// 组件名称
+// 定义分组上下文接口
+interface OptionGroupContext {
+  label: string
+}
+
 defineOptions({
   name: 'COptionGroup'
 })
 
-// 组件属性定义
 const props = withDefaults(defineProps<{
   label: string  // 分组标签
-}>(), {})
+}>(), {
+  label: ''
+})
 
 // 提供分组上下文给子组件
-provide('optionGroup', {
+provide<OptionGroupContext>('optionGroup', {
   label: props.label
 })
 </script>

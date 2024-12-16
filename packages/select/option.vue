@@ -15,6 +15,27 @@
 
 <script lang="ts" setup>
 import { computed, inject, onMounted, onUnmounted } from 'vue'
+import type { ComputedRef } from 'vue'
+
+// 定义 Select 上下文接口
+interface SelectContext {
+  value: ComputedRef<string | number | boolean | (string | number | boolean)[] | undefined>
+  multiple: ComputedRef<boolean>
+  selectedValues: ComputedRef<(string | number | boolean)[]>
+  activeValue: ComputedRef<string | number | boolean>
+  handleOptionClick: (value: string | number | boolean) => void
+  handleOptionMouseEnter: (value: string | number | boolean) => void
+  registerOption: (option: OptionType) => void
+  unregisterOption: (option: OptionType) => void
+}
+
+// 定义选项类型接口
+interface OptionType {
+  value: string | number | boolean
+  label: string
+  disabled: boolean
+  group?: string
+}
 
 defineOptions({
   name: 'COption'
@@ -26,18 +47,20 @@ const props = withDefaults(defineProps<{
   disabled?: boolean
   group?: string
 }>(), {
-  disabled: false
+  disabled: false,
+  label: '',
+  group: undefined
 })
 
-const select = inject('select', {
+const select = inject<SelectContext>('select', {
   value: computed(() => ''),
   multiple: computed(() => false),
   selectedValues: computed(() => []),
   activeValue: computed(() => ''),
-  handleOptionClick: (value: string | number | boolean) => {},
-  handleOptionMouseEnter: (value: string | number | boolean) => {},
-  registerOption: (option: any) => {},
-  unregisterOption: (option: any) => {}
+  handleOptionClick: () => {},
+  handleOptionMouseEnter: () => {},
+  registerOption: () => {},
+  unregisterOption: () => {}
 })
 
 const isSelected = computed(() => {
