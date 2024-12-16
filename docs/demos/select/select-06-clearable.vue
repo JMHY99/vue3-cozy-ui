@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <c-space direction="vertical">
     <c-select
       v-model="value1"
       style="width: 200px"
@@ -28,7 +28,7 @@
         :label="item.label"
       />
     </c-select>
-  </div>
+  </c-space>
 </template>
 
 <script lang="ts" setup>

@@ -71,9 +71,9 @@
         >
       </template>
 
-      <!-- 清除按钮 -->
+      <!-- 清���按钮 -->
       <span
-        v-if="clearable && (modelValue || selectedValues.length) && !disabled"
+        v-if="clearable && ((multiple && selectedValues.length > 0) || (!multiple && modelValue)) && !disabled"
         class="cozy-select-clear"
         @click.stop="handleClear"
       >
@@ -118,7 +118,7 @@ interface OptionType {
   group?: string                    // 所属分组
 }
 
-// 组件名称
+// 组��名称
 defineOptions({
   name: 'CSelect'
 })
