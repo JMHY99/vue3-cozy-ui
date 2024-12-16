@@ -279,7 +279,7 @@
     max-height: 256px;
     overflow-y: auto;
     list-style: none;
-    padding: 4px 8px;
+    padding: 0px 4px;
     margin: 0;
   }
 
@@ -296,7 +296,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  padding: 5px 16px;
+  padding: 5px 8px;
   margin: 2px 0;
   color: rgba(0, 0, 0, 0.88);
   font-weight: normal;
@@ -342,7 +342,7 @@
 .cozy-select-option-group {
   /* 分组标签 */
   &-label {
-    padding: 6px 16px;
+    padding: 6px 8px;
     color: rgba(0, 0, 0, 0.45);
     font-size: 12px;
     line-height: 1.5;
@@ -354,7 +354,7 @@
 
     /* 分组内选项 */
     .cozy-select-option {
-      padding-left: 24px;
+      padding-left: 16px;
     }
   }
 }
