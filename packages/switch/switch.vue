@@ -5,7 +5,7 @@
       checked ? 'cozy-switch-checked' : '',
       disabled ? 'cozy-switch-disabled' : '',
       loading ? 'cozy-switch-loading' : '',
-      `cozy-switch-${size}`
+      `cozy-switch-${size}`,
     ]"
     type="button"
     role="switch"
@@ -23,48 +23,49 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { computed } from "vue";
 
+// 定义组件名称
 defineOptions({
-  name: 'CSwitch'
-})
+  name: "CSwitch",
+});
 
 const props = defineProps({
   modelValue: {
     type: Boolean,
-    default: false
+    default: false,
   },
   disabled: {
     type: Boolean,
-    default: false
+    default: false,
   },
   loading: {
     type: Boolean,
-    default: false
+    default: false,
   },
   size: {
     type: String,
-    values: ['default', 'small'],
-    default: 'default'
+    values: ["default", "small"],
+    default: "default",
   },
   checkedText: {
     type: String,
-    default: ''
+    default: "",
   },
   unCheckedText: {
     type: String,
-    default: ''
-  }
-})
+    default: "",
+  },
+});
 
-const emit = defineEmits(['update:modelValue', 'change'])
+const emit = defineEmits(["update:modelValue", "change"]);
 
-const checked = computed(() => props.modelValue)
+const checked = computed(() => props.modelValue);
 
 const handleClick = () => {
-  if (props.disabled || props.loading) return
-  const newValue = !checked.value
-  emit('update:modelValue', newValue)
-  emit('change', newValue)
-}
+  if (props.disabled || props.loading) return;
+  const newValue = !checked.value;
+  emit("update:modelValue", newValue);
+  emit("change", newValue);
+};
 </script>

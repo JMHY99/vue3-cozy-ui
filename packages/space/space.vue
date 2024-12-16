@@ -9,7 +9,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from "vue";
+import { ref, computed } from "vue";
+
+// 定义组件名称
 defineOptions({
   name: "CSpace",
 });

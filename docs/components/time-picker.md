@@ -38,7 +38,7 @@
 | disabled | 是否禁用 | boolean | false |
 | showSecond | 是否显示秒选择器 | boolean | true |
 | disabledHours | 禁止选择部分小时选项 | () => number[] | - |
-| disabledMinutes | 禁��选择部分分钟选项 | (hour: number) => number[] | - |
+| disabledMinutes | 禁止选择部分分钟选项 | (hour: number) => number[] | - |
 | disabledSeconds | 禁止选择部分秒选项 | (hour: number, minute: number) => number[] | - |
 
 ### 事件

@@ -14,6 +14,7 @@
 import { provide, computed } from 'vue'
 import { radioGroupKey } from './types'
 
+// 定义组件名称
 defineOptions({
   name: 'CRadioGroup'
 })

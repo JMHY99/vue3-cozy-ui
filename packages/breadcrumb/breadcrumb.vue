@@ -7,6 +7,7 @@
 <script setup lang="ts">
 import { provide, ref, watch } from 'vue'
 
+// 定义组件名称
 defineOptions({
   name: "CBreadcrumb"
 });

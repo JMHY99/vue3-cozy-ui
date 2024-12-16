@@ -3,7 +3,7 @@
     class="cozy-radio"
     :class="{
       'cozy-radio-checked': isChecked,
-      'cozy-radio-disabled': isDisabled
+      'cozy-radio-disabled': isDisabled,
     }"
   >
     <span class="cozy-radio-input">
@@ -15,7 +15,7 @@
         :checked="isChecked"
         class="cozy-radio-original"
         @change="handleChange"
-      >
+      />
       <span class="cozy-radio-inner"></span>
     </span>
     <span class="cozy-radio-label">
@@ -25,58 +25,59 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, inject } from 'vue'
-import { radioGroupKey } from './types'
+import { computed, inject } from "vue";
+import { radioGroupKey } from "./types";
 
+// 定义组件名称
 defineOptions({
-  name: 'CRadio'
-})
+  name: "CRadio",
+});
 
 const props = defineProps({
   modelValue: {
     type: [String, Number, Boolean],
-    default: ''
+    default: "",
   },
   label: {
     type: [String, Number, Boolean],
-    default: ''
+    default: "",
   },
   disabled: {
     type: Boolean,
-    default: false
+    default: false,
   },
   name: {
     type: String,
-    default: ''
-  }
-})
+    default: "",
+  },
+});
 
-const emit = defineEmits(['update:modelValue', 'change'])
+const emit = defineEmits(["update:modelValue", "change"]);
 
 // 注入父组件提供的数据
-const radioGroup = inject(radioGroupKey, null)
+const radioGroup = inject(radioGroupKey, null);
 
 const isChecked = computed(() => {
   return radioGroup
     ? radioGroup.modelValue.value === props.label
-    : props.modelValue === props.label
-})
+    : props.modelValue === props.label;
+});
 
 const isDisabled = computed(() => {
   return radioGroup
     ? radioGroup.disabled.value || props.disabled
-    : props.disabled
-})
+    : props.disabled;
+});
 
 const handleChange = (event: Event) => {
-  if (isDisabled.value) return
-  const target = event.target as HTMLInputElement
-  const value = props.label
+  if (isDisabled.value) return;
+  const target = event.target as HTMLInputElement;
+  const value = props.label;
   if (radioGroup) {
-    radioGroup.modelValue.value = value
+    radioGroup.modelValue.value = value;
   } else {
-    emit('update:modelValue', value)
-    emit('change', event)
+    emit("update:modelValue", value);
+    emit("change", event);
   }
-}
+};
 </script>

@@ -8,25 +8,30 @@
 </template>
 
 <script lang="ts" setup>
-import { provide } from 'vue'
+import { provide } from "vue";
 
 // 定义分组上下文接口
 interface OptionGroupContext {
-  label: string
+  label: string;
 }
 
+// 定义组件名称
 defineOptions({
-  name: 'COptionGroup'
-})
+  name: "COptionGroup",
+});
 
-const props = withDefaults(defineProps<{
-  label: string  // 分组标签
-}>(), {
-  label: ''
-})
+// 定义组件属性
+const props = withDefaults(
+  defineProps<{
+    label: string; // 分组标签
+  }>(),
+  {
+    label: "",
+  }
+);
 
 // 提供分组上下文给子组件
-provide<OptionGroupContext>('optionGroup', {
-  label: props.label
-})
+provide<OptionGroupContext>("optionGroup", {
+  label: props.label,
+});
 </script>

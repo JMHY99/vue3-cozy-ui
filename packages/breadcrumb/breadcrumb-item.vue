@@ -3,7 +3,7 @@
     <span
       :class="[
         'cozy-breadcrumb-item-content',
-        { 'cozy-breadcrumb-item-link': to }
+        { 'cozy-breadcrumb-item-link': to },
       ]"
       @click="handleClick"
     >
@@ -21,47 +21,57 @@
 </template>
 
 <script setup lang="ts">
-import { inject, computed, onMounted, onBeforeUnmount, getCurrentInstance } from 'vue'
+import {
+  inject,
+  computed,
+  onMounted,
+  onBeforeUnmount,
+  getCurrentInstance,
+} from "vue";
 
+// 定义组件名称
 defineOptions({
-  name: "CBreadcrumbItem"
+  name: "CBreadcrumbItem",
 });
 
-const props = withDefaults(defineProps<{
-  to?: string | Record<string, any>;
-  replace?: boolean;
-}>(), {
-  replace: false
-})
+const props = withDefaults(
+  defineProps<{
+    to?: string | Record<string, any>;
+    replace?: boolean;
+  }>(),
+  {
+    replace: false,
+  }
+);
 
-const emit = defineEmits(['click'])
+const emit = defineEmits(["click"]);
 
-const separator = inject('breadcrumbSeparator', '/')
-const separatorIcon = inject('breadcrumbSeparatorIcon', '')
-const addItem = inject('breadcrumbAddItem', (item: any) => {})
-const removeItem = inject('breadcrumbRemoveItem', (item: any) => {})
-const isLastItem = inject('breadcrumbIsLastItem', (item: any) => false)
+const separator = inject("breadcrumbSeparator", "/");
+const separatorIcon = inject("breadcrumbSeparatorIcon", "");
+const addItem = inject("breadcrumbAddItem", (item: any) => {});
+const removeItem = inject("breadcrumbRemoveItem", (item: any) => {});
+const isLastItem = inject("breadcrumbIsLastItem", (item: any) => false);
 
-const instance = getCurrentInstance()
+const instance = getCurrentInstance();
 const isLast = computed(() => {
-  if (!instance) return false
-  return isLastItem(instance)
-})
+  if (!instance) return false;
+  return isLastItem(instance);
+});
 
 onMounted(() => {
   if (instance) {
-    addItem(instance)
+    addItem(instance);
   }
-})
+});
 
 onBeforeUnmount(() => {
   if (instance) {
-    removeItem(instance)
+    removeItem(instance);
   }
-})
+});
 
 const handleClick = () => {
-  if (!props.to) return
-  emit('click', props.to)
-}
+  if (!props.to) return;
+  emit("click", props.to);
+};
 </script>

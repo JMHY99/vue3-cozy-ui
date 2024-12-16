@@ -47,6 +47,7 @@
 <script lang="ts" setup>
 import { ref, computed } from "vue";
 
+// 定义组件名称
 defineOptions({
   name: "CInputNumber",
 });

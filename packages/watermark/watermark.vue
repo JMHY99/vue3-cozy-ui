@@ -1,5 +1,8 @@
 <template>
-  <div class="c-watermark-wrapper" style="position: relative; width: 100%; height: 100%">
+  <div
+    class="c-watermark-wrapper"
+    style="position: relative; width: 100%; height: 100%"
+  >
     <slot></slot>
     <div :style="watermarkStyle"></div>
   </div>
@@ -8,6 +11,7 @@
 <script setup lang="ts">
 import { ref, watch, onMounted, defineProps } from "vue";
 
+// 定义组件名称
 defineOptions({
   name: "CWatermark",
 });
@@ -48,28 +52,32 @@ const watermarkStyle = ref({});
 
 const getLongContent = (content) => {
   if (!Array.isArray(content)) {
-    return content
+    return content;
   }
-  let longContent = '';
+  let longContent = "";
   for (let i = 0; i < content.length; i++) {
-    if (typeof content[i] === 'string' && content[i].length > longContent.length) {
+    if (
+      typeof content[i] === "string" &&
+      content[i].length > longContent.length
+    ) {
       longContent = content[i];
     }
   }
   return longContent;
-}
+};
 
 const drawWatermark = () => {
   const { width, height, rotate, image, content, font, gap, offset } = props;
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
-  const longContent = getLongContent(content)
+  const longContent = getLongContent(content);
 
   //文本默认高宽
   let contentWidth = 0;
   if (ctx) {
-    ctx.font = `${font?.fontWeight ?? defaultFont.fontWeight} ${font?.fontSize ?? defaultFont.fontSize
-      } ${font?.fontFamily ?? defaultFont.fontFamily}`;
+    ctx.font = `${font?.fontWeight ?? defaultFont.fontWeight} ${
+      font?.fontSize ?? defaultFont.fontSize
+    } ${font?.fontFamily ?? defaultFont.fontFamily}`;
     contentWidth = ctx.measureText(longContent).width;
   }
   const fontSize = parseInt(font?.fontSize ?? defaultFont.fontSize, 10);
@@ -84,8 +92,9 @@ const drawWatermark = () => {
   if (ctx) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.save();
-    ctx.font = `${font?.fontWeight ?? defaultFont.fontWeight} ${font?.fontSize ?? defaultFont.fontSize
-      } ${font?.fontFamily ?? defaultFont.fontFamily}`;
+    ctx.font = `${font?.fontWeight ?? defaultFont.fontWeight} ${
+      font?.fontSize ?? defaultFont.fontSize
+    } ${font?.fontFamily ?? defaultFont.fontFamily}`;
     ctx.fillStyle = font?.color ?? defaultFont.color;
     // 图片
     if (image) {

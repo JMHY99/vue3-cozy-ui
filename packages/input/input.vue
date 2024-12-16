@@ -40,10 +40,13 @@
       @focus="handleFocus"
       @blur="handleBlur"
       @change="handleChange"
-    >
+    />
 
     <!-- 后缀图标 -->
-    <span v-if="(suffixIcon || clearable) && !isTextarea" class="cozy-input-suffix">
+    <span
+      v-if="(suffixIcon || clearable) && !isTextarea"
+      class="cozy-input-suffix"
+    >
       <i
         v-if="clearable && modelValue"
         class="cozy-icon c-close-circle-outlined cozy-input-clear"
@@ -55,147 +58,148 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from 'vue'
+import { ref, computed } from "vue";
 
+// 定义组件名称
 defineOptions({
-  name: 'CInput'
-})
+  name: "CInput",
+});
 
 // 定义组件属性
 const props = defineProps({
   modelValue: {
     type: [String, Number],
-    default: ''
+    default: "",
   },
   type: {
     type: String,
-    default: 'text'
+    default: "text",
   },
   placeholder: {
     type: String,
-    default: '请输入'
+    default: "请输入",
   },
   disabled: {
     type: Boolean,
-    default: false
+    default: false,
   },
   readonly: {
     type: Boolean,
-    default: false
+    default: false,
   },
   clearable: {
     type: Boolean,
-    default: false
+    default: false,
   },
   prefixIcon: {
     type: String,
-    default: ''
+    default: "",
   },
   suffixIcon: {
     type: String,
-    default: ''
+    default: "",
   },
   size: {
     type: String,
-    default: 'default'
+    default: "default",
   },
   // 文本域特有属性
   rows: {
     type: Number,
-    default: 3
+    default: 3,
   },
   maxlength: {
     type: Number,
-    default: undefined
+    default: undefined,
   },
   autofocus: {
     type: Boolean,
-    default: false
+    default: false,
   },
   resize: {
     type: String,
-    values: ['none', 'both', 'horizontal', 'vertical'],
-    default: 'vertical'
-  }
-})
+    values: ["none", "both", "horizontal", "vertical"],
+    default: "vertical",
+  },
+});
 
 // 定义事件
 const emit = defineEmits([
-  'update:modelValue',
-  'input',
-  'change',
-  'focus',
-  'blur',
-  'clear'
-])
+  "update:modelValue",
+  "input",
+  "change",
+  "focus",
+  "blur",
+  "clear",
+]);
 
 // input ref
-const inputRef = ref<HTMLInputElement>()
+const inputRef = ref<HTMLInputElement>();
 
 // 新增计算属性
-const isTextarea = computed(() => props.type === 'textarea')
+const isTextarea = computed(() => props.type === "textarea");
 
 // 新增 textarea ref
-const textareaRef = ref<HTMLTextAreaElement>()
+const textareaRef = ref<HTMLTextAreaElement>();
 
 // 计算 class
 const inputClass = computed(() => ({
-  'cozy-input-disabled': props.disabled,
+  "cozy-input-disabled": props.disabled,
   [`cozy-input-${props.size}`]: props.size,
-  'cozy-input-with-prefix': props.prefixIcon,
-  'cozy-input-with-suffix': props.suffixIcon || props.clearable
-}))
+  "cozy-input-with-prefix": props.prefixIcon,
+  "cozy-input-with-suffix": props.suffixIcon || props.clearable,
+}));
 
 // 处理输入
 const handleInput = (event: Event) => {
-  const value = (event.target as HTMLInputElement).value
-  emit('update:modelValue', value)
-  emit('input', event)
-}
+  const value = (event.target as HTMLInputElement).value;
+  emit("update:modelValue", value);
+  emit("input", event);
+};
 
 // 处理聚焦
 const handleFocus = (event: FocusEvent) => {
-  emit('focus', event)
-}
+  emit("focus", event);
+};
 
 // 处理失焦
 const handleBlur = (event: FocusEvent) => {
-  emit('blur', event)
-}
+  emit("blur", event);
+};
 
 // 处理变化
 const handleChange = (event: Event) => {
-  emit('change', event)
-}
+  emit("change", event);
+};
 
 // 处理清空
 const handleClear = () => {
-  emit('update:modelValue', '')
-  emit('clear')
-}
+  emit("update:modelValue", "");
+  emit("clear");
+};
 
 // 暴露方法
 defineExpose({
   focus: () => {
     if (isTextarea.value) {
-      textareaRef.value?.focus()
+      textareaRef.value?.focus();
     } else {
-      inputRef.value?.focus()
+      inputRef.value?.focus();
     }
   },
   blur: () => {
     if (isTextarea.value) {
-      textareaRef.value?.blur()
+      textareaRef.value?.blur();
     } else {
-      inputRef.value?.blur()
+      inputRef.value?.blur();
     }
   },
   select: () => {
     if (isTextarea.value) {
-      textareaRef.value?.select()
+      textareaRef.value?.select();
     } else {
-      inputRef.value?.select()
+      inputRef.value?.select();
     }
-  }
-})
+  },
+});
 </script>

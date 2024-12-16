@@ -5,8 +5,8 @@
       size ? `cozy-radio-button-${size}` : '',
       {
         'cozy-radio-button-checked': isChecked,
-        'cozy-radio-button-disabled': isDisabled
-      }
+        'cozy-radio-button-disabled': isDisabled,
+      },
     ]"
   >
     <input
@@ -17,7 +17,7 @@
       :checked="isChecked"
       class="cozy-radio-button-original"
       @change="handleChange"
-    >
+    />
     <span class="cozy-radio-button-inner">
       <slot>{{ label }}</slot>
     </span>
@@ -25,48 +25,47 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, inject } from 'vue'
-import { radioGroupKey } from './types'
+import { computed, inject } from "vue";
+import { radioGroupKey } from "./types";
 
+// 定义组件名称
 defineOptions({
-  name: 'CRadioButton'
-})
+  name: "CRadioButton",
+});
 
 const props = defineProps({
   label: {
     type: [String, Number, Boolean],
-    default: ''
+    default: "",
   },
   disabled: {
     type: Boolean,
-    default: false
+    default: false,
   },
   name: {
     type: String,
-    default: ''
-  }
-})
+    default: "",
+  },
+});
 
-const radioGroup = inject(radioGroupKey, null)
+const radioGroup = inject(radioGroupKey, null);
 
 const isChecked = computed(() => {
-  return radioGroup
-    ? radioGroup.modelValue.value === props.label
-    : false
-})
+  return radioGroup ? radioGroup.modelValue.value === props.label : false;
+});
 
-const size = computed(() => radioGroup?.size.value)
+const size = computed(() => radioGroup?.size.value);
 
 const isDisabled = computed(() => {
   return radioGroup
     ? radioGroup.disabled.value || props.disabled
-    : props.disabled
-})
+    : props.disabled;
+});
 
 const handleChange = (event: Event) => {
-  if (isDisabled.value) return
+  if (isDisabled.value) return;
   if (radioGroup) {
-    radioGroup.modelValue.value = props.label
+    radioGroup.modelValue.value = props.label;
   }
-}
+};
 </script>
