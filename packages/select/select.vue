@@ -71,13 +71,13 @@
         >
       </template>
 
-      <!-- 清空按钮 -->
+      <!-- 清除按钮 -->
       <span
         v-if="clearable && (modelValue || selectedValues.length) && !disabled"
         class="cozy-select-clear"
         @click.stop="handleClear"
       >
-        ×
+        <i class="cozy-icon c-close-circle-outlined"></i>
       </span>
 
       <!-- 箭头图标 -->
@@ -156,7 +156,7 @@ const emit = defineEmits(['update:modelValue', 'change', 'search', 'clear', 'foc
 // DOM 引用
 const selectRef = ref<HTMLElement>()      // 选择器根元素
 const selectorRef = ref<HTMLElement>()    // 选择框元素
-const inputRef = ref<HTMLInputElement>()  // 输入框元��
+const inputRef = ref<HTMLInputElement>()  // 输入框元素
 const dropdownRef = ref<HTMLElement>()    // 下拉菜单元素
 
 // 组件状态
