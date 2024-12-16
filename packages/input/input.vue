@@ -58,7 +58,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from "vue";
+import { ref, computed, inject } from "vue";
 
 // 定义组件名称
 defineOptions({
@@ -155,6 +155,7 @@ const handleInput = (event: Event) => {
   const value = (event.target as HTMLInputElement).value;
   emit("update:modelValue", value);
   emit("input", event);
+  formItem?.validate?.()
 };
 
 // 处理聚焦
@@ -165,6 +166,7 @@ const handleFocus = (event: FocusEvent) => {
 // 处理失焦
 const handleBlur = (event: FocusEvent) => {
   emit("blur", event);
+  formItem?.validate?.()
 };
 
 // 处理变化
@@ -202,4 +204,6 @@ defineExpose({
     }
   },
 });
+
+const formItem = inject(`form-item-${props.name}`, undefined)
 </script>

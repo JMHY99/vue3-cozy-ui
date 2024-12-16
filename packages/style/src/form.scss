@@ -1,0 +1,142 @@
+.cozy-form {
+  &-inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    
+    .cozy-form-item {
+      flex: none;
+      margin-right: 0;
+      margin-bottom: 0;
+    }
+  }
+  
+  &-label-left {
+    .cozy-form-item-label {
+      text-align: left;
+      justify-content: flex-start;
+    }
+  }
+  
+  &-label-right {
+    .cozy-form-item-label {
+      text-align: right;
+      justify-content: flex-end;
+    }
+  }
+  
+  &-label-top {
+    .cozy-form-item {
+      display: block;
+      
+      .cozy-form-item-label {
+        margin: 0;
+        padding: 0 0 8px;
+        white-space: normal;
+        text-align: left;
+        line-height: 1.5;
+        
+        &::after {
+          position: relative;
+          margin: 0 8px 0 2px;
+        }
+      }
+    }
+  }
+}
+
+.cozy-form-item {
+  display: flex;
+  margin-bottom: 24px;
+  
+  &.is-top {
+    display: block;
+    
+    .cozy-form-item-label {
+      margin: 0;
+      padding: 0 0 8px;
+      line-height: 1.5;
+      white-space: normal;
+    }
+  }
+  
+  &-label {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 120px;
+    max-width: 100%;
+    min-height: 32px;
+    line-height: 32px;
+    color: rgba(0, 0, 0, 0.88);
+    font-size: 14px;
+    padding-right: 12px;
+    box-sizing: border-box;
+    justify-content: flex-end;
+    
+    &::after {
+      content: ':';
+      position: relative;
+      margin-left: 2px;
+      top: -0.5px;
+    }
+    
+    &.no-colon::after {
+      content: '';
+      margin: 0;
+    }
+  }
+  
+  &-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-left: 4px;
+    position: relative;
+    
+    .cozy-form-item-error {
+      color: #ff4d4f;
+      font-size: 12px;
+      line-height: 1.5;
+      position: absolute;
+      bottom: -20px;
+      left: 0;
+      width: 100%;
+      transition: color 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+  }
+  
+  &.is-required {
+    .cozy-form-item-label::before {
+      display: inline-block;
+      margin-right: 4px;
+      color: #ff4d4f;
+      font-size: 14px;
+      font-family: SimSun, sans-serif;
+      line-height: 1;
+      content: '*';
+    }
+  }
+  
+  &.is-error {
+    margin-bottom: 32px;
+    
+    .cozy-input-wrapper {
+      .cozy-input {
+        border-color: #ff4d4f !important;
+        
+        &:hover {
+          border-color: #ff4d4f !important;
+        }
+        
+        &:focus {
+          border-color: #ff7875 !important;
+          box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.2);
+          outline: none;
+        }
+      }
+    }
+  }
+} 

@@ -12,6 +12,7 @@
     "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
+    "async-validator": "^4.2.5",
     "dayjs": "^1.11.13",
     "vue": "^3.4.21"
   },

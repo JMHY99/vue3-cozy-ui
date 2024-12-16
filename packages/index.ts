@@ -28,6 +28,7 @@ import CUpload from './upload'
 import CDatePicker from './date-picker'
 import CTimePicker from './time-picker'
 import CCalendar from './calendar'
+import { CForm, CFormItem } from './form'
 
 const components = [
   CIcon,
@@ -64,7 +65,9 @@ const components = [
   CUpload,
   CDatePicker,
   CTimePicker,
-  CCalendar
+  CCalendar,
+  CForm,
+  CFormItem
 ];
 
 const installComponents = (app: any) => {
@@ -113,7 +116,9 @@ export {
   CUpload,
   CDatePicker,
   CTimePicker,
-  CCalendar
+  CCalendar,
+  CForm,
+  CFormItem
 };
 
 export default { install };
