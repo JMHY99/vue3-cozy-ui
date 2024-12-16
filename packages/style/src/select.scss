@@ -281,7 +281,7 @@
     max-height: 256px;
     overflow-y: auto;
     list-style: none;
-    padding: 0;
+    padding: 4px 8px;
     margin: 0;
   }
 
@@ -289,5 +289,65 @@
     padding: 12px;
     text-align: center;
     color: rgba(0, 0, 0, 0.45);
+  }
+}
+
+// 选项样式
+.cozy-select-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 5px 16px;
+  margin: 2px 0;
+  color: rgba(0, 0, 0, 0.88);
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  border-radius: 4px;
+
+  &:hover:not(&-selected):not(&-disabled) {
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  &-selected {
+    color: #1677ff;
+    font-weight: 600;
+    background: #e6f4ff;
+
+    &:hover {
+      background: #e6f4ff;
+    }
+  }
+
+  &-active:not(&-selected):not(&-disabled) {
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  &-disabled {
+    color: rgba(0, 0, 0, 0.25);
+    cursor: not-allowed;
+
+    &:hover {
+      background: transparent;
+    }
+  }
+}
+
+.cozy-select-option-group {
+  &-label {
+    padding: 6px 16px;
+    color: rgba(0, 0, 0, 0.45);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  &-list {
+    margin-left: 0;
+
+    .cozy-select-option {
+      padding-left: 24px;
+    }
   }
 }

@@ -1,5 +1,6 @@
 <template>
   <div
+    ref="selectRef"
     class="cozy-select"
     :class="[
       {
@@ -10,9 +11,7 @@
       },
       size ? `cozy-select-${size}` : ''
     ]"
-    @click="handleClick"
-    @blur.capture="handleBlur"
-    tabindex="0"
+    @mousedown.stop="handleClick"
   >
     <!-- 选择框 -->
     <div class="cozy-select-selector" ref="selectorRef">
@@ -92,10 +91,13 @@
       v-show="dropdownVisible"
       class="cozy-select-dropdown"
       :style="dropdownStyle"
-      @mousedown.prevent
+      @mousedown.stop
     >
       <div v-if="loading" class="cozy-select-dropdown-loading">
         加载中...
+      </div>
+      <div v-else-if="!$slots.default" class="cozy-select-dropdown-empty">
+        {{ emptyText }}
       </div>
       <div v-else class="cozy-select-dropdown-list" ref="dropdownRef">
         <slot></slot>
@@ -148,6 +150,7 @@ const emit = defineEmits(['update:modelValue', 'change', 'search', 'clear', 'foc
 const selectorRef = ref<HTMLElement>()
 const inputRef = ref<HTMLInputElement>()
 const dropdownRef = ref<HTMLElement>()
+const selectRef = ref<HTMLElement>()
 
 // 状态
 const dropdownVisible = ref(false)
@@ -210,8 +213,9 @@ const unregisterOption = (option: OptionType) => {
 }
 
 // 点击选择器
-const handleClick = () => {
+const handleClick = (event: MouseEvent) => {
   if (props.disabled) return
+  event.stopPropagation()
   dropdownVisible.value = !dropdownVisible.value
   if (dropdownVisible.value && props.showSearch) {
     nextTick(() => {
@@ -264,39 +268,61 @@ const removeTag = (value: string | number | boolean) => {
   emit('change', newValue)
 }
 
+// 点击外部关闭下拉框
+const handleClickOutside = (event: MouseEvent) => {
+  const target = event.target as HTMLElement
+  if (selectRef.value && !selectRef.value.contains(target)) {
+    dropdownVisible.value = false
+    searchValue.value = ''
+  }
+}
+
+// 在 onMounted 中添加事件监听
+onMounted(() => {
+  document.addEventListener('mousedown', handleClickOutside)
+})
+
+// 在 onUnmounted 中移除事件监听
+onUnmounted(() => {
+  document.removeEventListener('mousedown', handleClickOutside)
+  options.value = []
+})
+
+// 修改 provide 部分，将 handleOptionClick 移到 provide 外部
+const handleOptionClick = (value: string | number | boolean) => {
+  if (props.disabled) return
+
+  if (props.multiple) {
+    const newValue = [...selectedValues.value]
+    const index = newValue.indexOf(value)
+    if (index === -1) {
+      newValue.push(value)
+    } else {
+      newValue.splice(index, 1)
+    }
+    emit('update:modelValue', newValue)
+    emit('change', newValue)
+    // 多选模式下不关闭下拉框
+  } else {
+    emit('update:modelValue', value)
+    emit('change', value)
+    // 单选模式下选择后关闭下拉框
+    dropdownVisible.value = false
+    searchValue.value = ''
+  }
+}
+
 // 提供上下文
 provide('select', {
   value: computed(() => props.modelValue),
   multiple: computed(() => props.multiple),
   selectedValues,
   activeValue,
-  handleOptionClick: (value: string | number | boolean) => {
-    if (props.multiple) {
-      const newValue = [...selectedValues.value]
-      const index = newValue.indexOf(value)
-      if (index === -1) {
-        newValue.push(value)
-      } else {
-        newValue.splice(index, 1)
-      }
-      emit('update:modelValue', newValue)
-      emit('change', newValue)
-    } else {
-      emit('update:modelValue', value)
-      emit('change', value)
-      dropdownVisible.value = false
-      searchValue.value = ''
-    }
-  },
+  handleOptionClick,
   handleOptionMouseEnter: (value: string | number | boolean) => {
     activeValue.value = value
   },
   registerOption,
   unregisterOption
-})
-
-// 组件卸载时清理选项
-onUnmounted(() => {
-  options.value = []
 })
 </script>
