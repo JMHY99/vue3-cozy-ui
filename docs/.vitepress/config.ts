@@ -84,6 +84,10 @@ export default {
                   link: "/components/breadcrumb.md",
                 },
                 { text: "Dropdown 下拉菜单", link: "/components/dropdown.md" },
+                { text: "Menu 导航菜单", link: "/components/menu.md" },
+                { text: "PageHeader 页头", link: "/components/page-header.md" },
+                { text: "Pagination 分页", link: "/components/pagination.md" },
+                { text: "Steps 步骤条", link: "/components/steps.md" },
               ],
             },
             {
@@ -116,9 +120,62 @@ export default {
               text: "视图",
               items: [
                 { text: "Alert 警告提示", link: "/components/alert.md" },
+                { text: "Badge 徽标数", link: "/components/badge.md" },
                 { text: "Message 全局提示", link: "/components/message.md" },
                 { text: "Avatar 头像", link: "/components/avatar.md" },
                 { text: "Calendar 日历", link: "/components/calendar.md" },
+                { text: "Card 卡片", link: "/components/card.md" },
+                { text: "Carousel 走马灯", link: "/components/carousel.md" },
+                { text: "Collapse 折叠面板", link: "/components/collapse.md" },
+                { text: "Comment 评论", link: "/components/comment.md" },
+                {
+                  text: "Descriptions 描述列表",
+                  link: "/components/descriptions.md",
+                },
+                { text: "Empty 空状态", link: "/components/empty.md" },
+                { text: "Image 图片", link: "/components/image.md" },
+                {
+                  text: "ImagePreview 图片预览",
+                  link: "/components/image-preview.md",
+                },
+                { text: "List 列表", link: "/components/list.md" },
+                { text: "Skeleton 骨架屏", link: "/components/skeleton.md" },
+                { text: "Table 表格", link: "/components/table.md" },
+                { text: "Tabs 标签页", link: "/components/tabs.md" },
+                { text: "Tag 标签", link: "/components/tag.md" },
+                { text: "Timeline 时间轴", link: "/components/timeline.md" },
+                { text: "Transfer 穿梭框", link: "/components/transfer.md" },
+                { text: "Tree 树", link: "/components/tree.md" },
+                { text: "Tooltip 文字提示", link: "/components/tooltip.md" },
+              ],
+            },
+            {
+              text: "虚拟",
+              items: [
+                {
+                  text: "VirtualList 虚拟列表",
+                  link: "/components/virtual-list.md",
+                },
+                {
+                  text: "VirtualScroll 虚拟滚动",
+                  link: "/components/virtual-scroll.md",
+                },
+                {
+                  text: "VirtualTree 虚拟树",
+                  link: "/components/virtual-tree.md",
+                },
+                {
+                  text: "VirtualGrid 虚拟网格",
+                  link: "/components/virtual-grid.md",
+                },
+                {
+                  text: "VirtualTable 虚拟表格",
+                  link: "/components/virtual-table.md",
+                },
+                {
+                  text: "VirtualSelect 虚拟选择",
+                  link: "/components/virtual-select.md",
+                },
               ],
             },
             {
