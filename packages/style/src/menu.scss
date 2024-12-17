@@ -1,0 +1,130 @@
+@import './variables.scss';
+
+// Menu 组件样式
+.cozy-menu {
+  margin: 0;
+  padding: 4px 0;
+  list-style: none;
+  background-color: $background-color-light;
+  border-right: 1px solid $border-color;
+  outline: none;
+
+  &-horizontal {
+    display: flex;
+    border-right: none;
+    border-bottom: 1px solid $border-color;
+  }
+
+  &-vertical, &-inline {
+    width: 100%;
+  }
+}
+
+// MenuItem 样式
+.cozy-menu-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  height: 40px;
+  line-height: 40px;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    color: $color-primary;
+  }
+
+  &-selected {
+    color: $color-primary;
+    background-color: $color-primary-light-10;
+  }
+
+  &-disabled {
+    color: $text-color-disabled;
+    cursor: not-allowed;
+  }
+
+  &-icon {
+    margin-right: 10px;
+  }
+}
+
+// SubMenu 样式
+.cozy-submenu {
+  position: relative;
+  list-style: none;
+
+  &-title {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &-arrow {
+    position: absolute;
+    right: 16px;
+    transform: rotate(0deg);
+    transition: transform 0.3s;
+  }
+
+  &-open > &-title > &-arrow {
+    transform: rotate(180deg);
+  }
+
+  &-content {
+    padding: 0;
+    list-style: none;
+  }
+
+  &-inline &-content {
+    padding-left: 20px;
+  }
+
+  &-disabled > &-title {
+    color: $text-color-disabled;
+    cursor: not-allowed;
+  }
+}
+
+// MenuItemGroup 样式
+.cozy-menu-item-group {
+  list-style: none;
+
+  &-title {
+    padding: 8px 20px;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+    color: $text-color-secondary;
+  }
+
+  &-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}
+
+// 动画
+.cozy-zoom-in-top-enter-active,
+.cozy-zoom-in-top-leave-active {
+  opacity: 1;
+  transform: scaleY(1);
+  transition: transform $animation-duration-slow cubic-bezier(0.23, 1, 0.32, 1),
+              opacity $animation-duration-slow cubic-bezier(0.23, 1, 0.32, 1);
+  transform-origin: center top;
+}
+
+.cozy-zoom-in-top-enter,
+.cozy-zoom-in-top-leave-to {
+  opacity: 0;
+  transform: scaleY(0);
+}

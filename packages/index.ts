@@ -30,6 +30,8 @@ import CTimePicker from './time-picker'
 import CCalendar from './calendar'
 import { CForm, CFormItem } from './form'
 import Divider from './divider'
+import CMenu from './menu'
+import { CMenuItem, CSubMenu, CMenuItemGroup } from './menu'
 
 const components = [
   CIcon,
@@ -69,7 +71,11 @@ const components = [
   CCalendar,
   CForm,
   CFormItem,
-  Divider
+  Divider,
+  CMenu,
+  CMenuItem,
+  CSubMenu,
+  CMenuItemGroup
 ];
 
 const installComponents = (app: any) => {
@@ -121,7 +127,11 @@ export {
   CCalendar,
   CForm,
   CFormItem,
-  Divider
+  Divider,
+  CMenu,
+  CMenuItem,
+  CSubMenu,
+  CMenuItemGroup
 };
 
 export default { install };
