@@ -4,7 +4,7 @@
       <c-input v-model="formInline.user" placeholder="审批人" />
     </c-form-item>
     <c-form-item label="活动区域">
-      <c-select v-model="formInline.region" placeholder="活动区域">
+      <c-select style="width: 180px" v-model="formInline.region" placeholder="活动区域">
         <c-option label="区域一" value="shanghai" />
         <c-option label="区域二" value="beijing" />
       </c-select>

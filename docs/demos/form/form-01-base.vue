@@ -20,14 +20,10 @@
         <c-form-item prop="date1">
           <c-date-picker
             v-model="form.date1"
-            type="date"
             placeholder="选择日期"
             style="width: 100%"
           />
         </c-form-item>
-      </c-col>
-      <c-col :span="2" class="text-center">
-        <span class="text-gray-500">-</span>
       </c-col>
       <c-col :span="11">
         <c-form-item prop="date2">
@@ -74,8 +70,8 @@ const formRef = ref()
 const form = reactive({
   name: '',
   region: '',
-  date1: '',
-  date2: '',
+  date1: undefined,
+  date2: undefined,
   delivery: false,
   type: [],
   resource: '',
