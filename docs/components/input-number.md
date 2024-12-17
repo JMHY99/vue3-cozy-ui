@@ -1,30 +1,33 @@
 # InputNumber 数字输入框
 
+### 概述
+::: tip
 仅允许输入标准的数字值，可定义范围
+:::
 
-## 基础用法
+### 基础用法
 
 <demo src="../demos/input-number/input-number-01-basic.vue"></demo>
 
-## 禁用状态
+### 禁用状态
 
 <demo src="../demos/input-number/input-number-02-disabled.vue"></demo>
 
-## 步数
+### 步数
 
 <demo src="../demos/input-number/input-number-03-step.vue"></demo>
 
-## 精度
+### 精度
 
 <demo src="../demos/input-number/input-number-04-precision.vue"></demo>
 
-## 不同尺寸
+### 不同尺寸
 
 <demo src="../demos/input-number/input-number-05-size.vue"></demo>
 
-## API
+### API
 
-### 属性
+#### 属性
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 |  ----  | ----  | ----  | ----  | ----  |
@@ -39,7 +42,7 @@
 | name | 等价于原生 input name 属性 | string | - | - |
 | controls | 是否使用控制按钮 | boolean | - | true |
 
-### 事件
+#### 事件
 
 | 事件名 | 说明 | 回调参数 |
 |  ----  | ----  | ----  |
@@ -47,7 +50,7 @@
 | blur | 在组件 Input 失去焦点时触发 | (event: FocusEvent) |
 | focus | 在组件 Input 获得焦点时触发 | (event: FocusEvent) |
 
-### 方法
+#### 方法
 
 | 方法名 | 说明 | 参数 |
 |  ----  | ----  | ----  |

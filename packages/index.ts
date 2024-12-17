@@ -29,6 +29,7 @@ import CDatePicker from './date-picker'
 import CTimePicker from './time-picker'
 import CCalendar from './calendar'
 import { CForm, CFormItem } from './form'
+import Divider from './divider'
 
 const components = [
   CIcon,
@@ -67,7 +68,8 @@ const components = [
   CTimePicker,
   CCalendar,
   CForm,
-  CFormItem
+  CFormItem,
+  Divider
 ];
 
 const installComponents = (app: any) => {
@@ -118,7 +120,8 @@ export {
   CTimePicker,
   CCalendar,
   CForm,
-  CFormItem
+  CFormItem,
+  Divider
 };
 
 export default { install };

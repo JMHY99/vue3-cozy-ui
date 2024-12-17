@@ -1,22 +1,26 @@
 # Message 全局提示
 
-全局展示操作反馈信息。
+### 概述
 
-## 基础用法
+::: tip
+全局展示操作反馈信息。
+:::
+
+### 基础用法
 
 <demo src="../demos/message/message-01-basic.vue"></demo>
 
-## 不同类型
+### 不同类型
 
 <demo src="../demos/message/message-02-types.vue"></demo>
 
-## 修改延时
+### 修改延时
 
 <demo src="../demos/message/message-03-duration.vue"></demo>
 
-## API
+### API
 
-### Message 方法
+#### Message 方法
 
 组件提供了一些静态方法，使用方式和参数如下：
 
@@ -33,7 +37,7 @@
 | duration | 自动关闭的延时，单位秒。设为 0 时不自动关闭 | number | 3 |
 | onClose | 关闭时触发的回调函数 | () => void | - |
 
-### 全局方法
+#### 全局方法
 
 还提供了全局配置和全局销毁方法：
 

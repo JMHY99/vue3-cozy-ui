@@ -1,0 +1,92 @@
+@import './variables.scss';
+
+.cozy-divider {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  border: none;
+  border-top: 1px solid rgba(5, 5, 5, 0.12);
+
+  &-horizontal {
+    display: flex;
+    clear: both;
+    width: 100%;
+    min-width: 100%;
+    margin: 24px 0;
+  }
+
+  &-vertical {
+    position: relative;
+    display: inline-block;
+    height: 1.2em;
+    margin: 0 5px;
+    vertical-align: middle;
+    border-top: 0;
+    border-left: 1px solid rgba(5, 5, 5, 0.12);
+  }
+
+  &-dashed {
+    border-top-style: dashed;
+  }
+
+  &-with-text {
+    display: flex;
+    align-items: center;
+    border-top: 0;
+    margin: 16px 0;
+
+    &::before,
+    &::after {
+      position: relative;
+      width: 50%;
+      border-top: 1px solid rgba(5, 5, 5, 0.12);
+      transform: translateY(50%);
+      content: '';
+    }
+
+    &.cozy-divider-dashed {
+      &::before,
+      &::after {
+        border-top-style: dashed;
+      }
+    }
+  }
+
+  &-inner-text {
+    display: inline-block;
+    padding: 0 1em;
+    font-size: 14px;
+    white-space: nowrap;
+    text-align: center;
+    background: #ffffff;
+  }
+
+  &-with-text-left {
+    &::before {
+      width: 5%;
+    }
+    &::after {
+      width: 95%;
+    }
+  }
+
+  &-with-text-right {
+    &::before {
+      width: 95%;
+    }
+    &::after {
+      width: 5%;
+    }
+  }
+
+  &-plain {
+    .cozy-divider-inner-text {
+      color: rgba(0, 0, 0, 0.45);
+    }
+  }
+}

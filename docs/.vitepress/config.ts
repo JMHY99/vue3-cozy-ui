@@ -71,6 +71,7 @@ export default {
                 { text: "Grid 布局", link: "/components/grid.md" },
                 { text: "Layout 布局", link: "/components/layout.md" },
                 { text: "Space 间隙", link: "/components/space.md" },
+                { text: "Divider 分割线", link: "/components/divider.md" },
               ],
             },
             {

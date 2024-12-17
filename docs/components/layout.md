@@ -2,6 +2,7 @@
 
 ### 概述
 
+::: tip
 使用 html 语义化标签，`section`、`header`、`main`、`aside`、`footer`
 
 - `c-layout`：布局容器，其下可嵌套`c-header`、`c-sider`、`c-content`、`c-footer`或`c-layout` 本身，可以放在任何父容器中。
@@ -9,6 +10,7 @@
 - `c-sider`：侧边栏，自带默认样式及基本功能，其下可嵌套任何元素，只能放在 `c-layout` 中。
 - `c-content`：内容部分，自带默认样式，其下可嵌套任何元素，只能放在 `c-layout` 中。
 - `c-footer`：底部布局，自带默认样式，其下可嵌套任何元素，只能放在 `c-layout` 中。
+:::
 
 ### 基础用法
 
