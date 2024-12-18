@@ -420,13 +420,13 @@
     width: 100%;
   }
 
-  // 收缩状态
+  // 内联菜单收缩状态
   &-inline-collapsed {
     width: 80px !important;
 
     // 收缩状态下的菜单项
     .cozy-menu-item {
-      padding: 0 32px !important;
+      // padding: 0 32px !important;
       text-overflow: clip;
       position: relative;
 
@@ -434,7 +434,7 @@
         margin: 0;
         font-size: 16px;
         line-height: 40px;
-        transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+        // transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
       }
 
       .cozy-menu-item-title {
@@ -450,14 +450,14 @@
     // 收缩状态下的子菜单
     .cozy-submenu {
       &-title {
-        padding: 0 32px !important;
+        // padding: 0 32px !important;
         position: relative;
 
         .cozy-submenu-title-icon {
           margin: 0;
           font-size: 16px;
           line-height: 40px;
-          transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+          // transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
         }
 
         .cozy-submenu-title-content {
