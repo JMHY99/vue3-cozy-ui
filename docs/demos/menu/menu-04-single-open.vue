@@ -37,14 +37,31 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
+// 当前展开的子菜单 key 数组
 const openKeys = ref<string[]>(['sub1'])
+// 当前选中的菜单项 key 数组
 const selectedKeys = ref<string[]>(['1'])
 
+// 处理子菜单展开/收起
 const onOpenChange = (keys: string[]) => {
-  const latestOpenKey = keys.find(key => openKeys.value.indexOf(key) === -1)
-  openKeys.value = latestOpenKey ? [latestOpenKey] : []
+  // 找到最新被点击的菜单项（即最后一个不在当前 openKeys 中的 key）
+  const latestOpenKey = keys.find(key => !openKeys.value.includes(key))
+
+  if (latestOpenKey) {
+    // 如果有新展开的菜单项，只展开这一项
+    openKeys.value = [latestOpenKey]
+  } else {
+    // 如果没有新展开的菜单项（说明是收起操作）
+    // 找到被收起的项
+    const closedKey = openKeys.value.find(key => !keys.includes(key))
+    // 如果找到了被收起的项，则清空 openKeys
+    if (closedKey) {
+      openKeys.value = []
+    }
+  }
 }
 
+// 处理菜单项选择
 const onSelect = (key: string) => {
   selectedKeys.value = [key]
 }

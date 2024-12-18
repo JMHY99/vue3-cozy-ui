@@ -529,6 +529,134 @@
       }
     }
   }
+
+  // 垂直菜单样式
+  &-vertical {
+    width: 256px;
+    border-right: 1px solid $border-color;
+
+    .cozy-menu-item,
+    .cozy-submenu-title {
+      height: 40px;
+      line-height: 40px;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      transition: all 0.3s;
+      cursor: pointer;
+      color: rgba(0, 0, 0, 0.85);
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
+
+    .cozy-submenu {
+      position: relative;
+
+      &-title {
+        padding-right: 34px; // 为箭头留出空间
+      }
+
+      &-arrow {
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        width: 10px;
+        transform: translateY(-50%);
+        transition: transform 0.3s;
+        color: rgba(0, 0, 0, 0.45);
+
+
+        // 确保箭头始终保持向右，即使在悬浮或打开状态
+        &.c-right-outlined {
+          transform: translateY(-50%) !important;
+        }
+      }
+
+      // 移除箭头旋转相关的样式
+      &-open > .cozy-submenu-title > .cozy-submenu-arrow {
+        transform: translateY(-50%);
+      }
+
+      // 弹出层样式
+      &-popup-vertical {
+        position: absolute;
+        left: 100%;
+        top: 0;
+        min-width: 160px;
+        margin-left: 4px;
+        padding: 4px 0;
+        z-index: 1050;
+        background: #fff;
+        border-radius: 2px;
+        box-shadow: 0 3px 6px -4px rgba(0,0,0,.12), 0 6px 16px 0 rgba(0,0,0,.08), 0 9px 28px 8px rgba(0,0,0,.05);
+
+        .cozy-menu-item,
+        .cozy-submenu-title {
+          padding: 0 16px;
+          min-width: 160px;
+          margin: 0;
+          white-space: nowrap;
+          cursor: pointer;
+          transition: all 0.3s;
+          display: flex;
+          align-items: center;
+
+          &:hover {
+            color: $color-primary;
+            background-color: $color-primary-light-10;
+          }
+        }
+
+        // 嵌套的子菜单
+        .cozy-submenu {
+          &-popup {
+            left: 100%;
+            top: 0;
+            margin-left: 4px;
+          }
+
+          &-title {
+            &:hover {
+              color: $color-primary;
+              background-color: $color-primary-light-10;
+            }
+          }
+        }
+
+        // 选中状态
+        .cozy-menu-item-selected {
+          color: $color-primary;
+          background-color: $color-primary-light-10;
+          font-weight: 500;
+        }
+      }
+
+      &-open {
+        > .cozy-submenu-title {
+          color: $color-primary;
+        }
+      }
+    }
+  }
+
+  // 右侧弹出动画
+  &-zoom-in-right-enter-active,
+  &-zoom-in-right-leave-active {
+    opacity: 1;
+    transform: scaleX(1);
+    transform-origin: 0 0;
+    transition: opacity 0.2s cubic-bezier(0.23, 1, 0.32, 1),
+                transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  &-zoom-in-right-enter-from,
+  &-zoom-in-right-leave-to {
+    opacity: 0;
+    transform: scaleX(0);
+  }
 }
 
 // MenuItem 样式

@@ -187,7 +187,7 @@ const handleOverflowLeave = (e: MouseEvent) => {
   }, 100);
 };
 
-// ���理子菜单的鼠标事件
+// 处理子菜单的鼠标事件
 const handleSubmenuMouseEnter = () => {
   mouseInMenu.value = true;
 };
@@ -420,7 +420,7 @@ const clearOverflowItems = () => {
   hiddenItems.value = [];
 };
 
-// 清除所有菜单项的选中状态
+// 清除所有菜单项的中状态
 const clearAllSelected = () => {
   // 清除所有菜单项的选中状态（包括原始菜单和克隆菜单）
   document.querySelectorAll(".cozy-menu-item-selected").forEach((el) => {

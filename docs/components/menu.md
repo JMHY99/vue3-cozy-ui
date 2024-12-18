@@ -31,6 +31,8 @@
 
 ### 垂直菜单
 
+子菜单是弹出的形式。
+
 <demo src="../demos/menu/menu-05-vertical.vue"></demo>
 
 ### 主题
