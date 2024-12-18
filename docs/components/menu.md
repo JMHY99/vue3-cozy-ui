@@ -6,11 +6,9 @@
 为页面和功能提供导航的菜单列表，支持垂直、水平、和内联模式，支持多级菜单。
 :::
 
-### 基础用法
+### 顶部导航
 
-最基础的导航菜单，支持垂直、水平、和内联三种模式。
-
-<demo src="../demos/menu/menu-01-base.vue"></demo>
+<demo src="../demos/menu/menu-01-horizontal.vue"></demo>
 
 ### 内联菜单
 
@@ -30,17 +28,21 @@
 
 <demo src="../demos/menu/menu-04-single-open.vue"></demo>
 
+### 垂直菜单
+
+<demo src="../demos/menu/menu-05-vertical.vue"></demo>
+
 ### 主题
 
 内建了两套主题 light 和 dark，默认 light。
 
-<demo src="../demos/menu/menu-05-theme.vue"></demo>
+<demo src="../demos/menu/menu-06-theme.vue"></demo>
 
 ### 菜单分组
 
 使用 MenuItemGroup 进行菜单分组。
 
-<demo src="../demos/menu/menu-06-group.vue"></demo>
+<demo src="../demos/menu/menu-07-group.vue"></demo>
 
 ### API
 
