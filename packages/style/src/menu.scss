@@ -97,8 +97,8 @@
 
       &::after {
         position: absolute;
-        left: 0px;
-        right: 0px;
+        left: 2px;
+        right: 2px;
         bottom: -1px;
         border-bottom: 2px solid $color-primary;
         transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -246,7 +246,7 @@
 
       .cozy-menu-overflow-submenu {
         position: absolute;
-        right: 0;
+        left: 0;
         top: 100%;
         min-width: 160px;
         background-color: #fff;

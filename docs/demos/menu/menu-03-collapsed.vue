@@ -23,13 +23,13 @@
         <c-menu-item itemKey="3" icon="inbox">
           Option 3
         </c-menu-item>
-        <c-sub-menu itemKey="sub1" title="Navigation One" icon="mail">
+        <c-sub-menu itemKey="sub1" title="Navigation One" icon="c-folder">
           <c-menu-item itemKey="5">Option 5</c-menu-item>
           <c-menu-item itemKey="6">Option 6</c-menu-item>
           <c-menu-item itemKey="7">Option 7</c-menu-item>
           <c-menu-item itemKey="8">Option 8</c-menu-item>
         </c-sub-menu>
-        <c-sub-menu itemKey="sub2" title="Navigation Two" icon="appstore">
+        <c-sub-menu itemKey="sub2" title="Navigation Two" icon="c-folder">
           <c-menu-item itemKey="9">Option 9</c-menu-item>
           <c-menu-item itemKey="10">Option 10</c-menu-item>
           <c-sub-menu itemKey="sub3" title="Submenu">
