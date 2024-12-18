@@ -32,6 +32,8 @@ import { CForm, CFormItem } from './form'
 import Divider from './divider'
 import CMenu from './menu'
 import { CMenuItem, CSubMenu, CMenuItemGroup } from './menu'
+import CPageHeader from './page-header'
+import CPagination from './pagination'
 
 const components = [
   CIcon,
@@ -75,7 +77,9 @@ const components = [
   CMenu,
   CMenuItem,
   CSubMenu,
-  CMenuItemGroup
+  CMenuItemGroup,
+  CPageHeader,
+  CPagination,
 ];
 
 const installComponents = (app: any) => {
@@ -131,7 +135,9 @@ export {
   CMenu,
   CMenuItem,
   CSubMenu,
-  CMenuItemGroup
+  CMenuItemGroup,
+  CPageHeader,
+  CPagination,
 };
 
 export default { install };
