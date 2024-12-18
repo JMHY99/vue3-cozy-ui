@@ -102,6 +102,7 @@
 .cozy-form-item {
   display: flex;
   margin-bottom: 32px;
+  position: relative;
   
   &.is-top {
     display: block;
@@ -117,7 +118,7 @@
   &-label {
     position: relative;
     display: inline-flex;
-    align-items: center;
+    align-items: flex-start;
     flex: 0 0 120px;
     max-width: 100%;
     min-height: 28px;
@@ -154,43 +155,47 @@
   &-content {
     flex: 1;
     min-width: 0;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    margin-left: 4px;
     position: relative;
+    margin-left: 4px;
     
-    > * {
-      margin-right: 12px;
+    .cozy-form-item-control {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
       
-      &:last-child {
-        margin-right: 0;
+      > * {
+        margin-right: 12px;
+        
+        &:last-child {
+          margin-right: 0;
+        }
       }
-    }
-    
-    .c-input-wrapper,
-    .c-select,
-    .c-date-picker,
-    .c-time-picker,
-    .c-input-number,
-    .c-radio-group,
-    .c-checkbox-group {
-      margin-right: 12px;
       
-      &:last-child {
-        margin-right: 0;
+      .cozy-input,
+      .cozy-select,
+      .cozy-date-picker,
+      .cozy-time-picker,
+      .cozy-input-number {
+        width: 100%;
+      }
+      
+      .cozy-radio-group,
+      .cozy-checkbox-group {
+        width: auto;
       }
     }
     
     .cozy-form-item-error {
+      position: absolute;
+      left: 0;
+      top: 100%;
+      margin-top: 2px;
       color: #ff4d4f;
       font-size: 12px;
       line-height: 1.5;
-      position: absolute;
-      bottom: -22px;
-      left: 0;
       width: 100%;
       transition: color 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+      pointer-events: none;
     }
   }
   
@@ -207,8 +212,6 @@
   }
   
   &.is-error {
-    margin-bottom: 32px;
-    
     .cozy-input-wrapper {
       .cozy-input {
         border-color: #ff4d4f !important;
@@ -227,8 +230,9 @@
   }
   
   &-error-inline {
-    position: static;
+    position: static !important;
     margin-left: 12px;
+    margin-top: 0;
     line-height: 32px;
   }
   

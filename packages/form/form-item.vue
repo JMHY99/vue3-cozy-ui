@@ -26,7 +26,9 @@
       </span>
     </label>
     <div class="cozy-form-item-content">
-      <slot></slot>
+      <div class="cozy-form-item-control">
+        <slot></slot>
+      </div>
       <slot
         v-if="validateState === 'error' && props.showMessage"
         name="error"
@@ -182,7 +184,7 @@ const isRequired = computed(() => {
 /**
  * 重置表单项
  * - 清除校验状态和错误信息
- * - 重置字段值为初始值
+ * - 重置字段值为初始��
  */
 const resetField = () => {
   validateState.value = '';
