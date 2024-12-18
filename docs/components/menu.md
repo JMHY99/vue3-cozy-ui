@@ -7,6 +7,7 @@
 :::
 
 ### 顶部导航
+水平的顶部导航菜单。
 
 <demo src="../demos/menu/menu-01-horizontal.vue"></demo>
 

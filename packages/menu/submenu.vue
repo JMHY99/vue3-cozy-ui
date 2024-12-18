@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, inject, ref } from 'vue';
+import { computed, inject, ref, watch } from 'vue';
 
 // 定义组件名称
 defineOptions({
@@ -38,9 +38,28 @@ const subMenuClasses = computed(() => [
   {
     'cozy-submenu-open': isOpen.value,
     'cozy-submenu-disabled': props.disabled,
-    'cozy-submenu-inline': menuContext.mode.value === 'inline'
+    'cozy-submenu-inline': menuContext.mode.value === 'inline',
+    'cozy-submenu-selected': menuContext.selectedKeys.value.some((key: string) =>
+      getAllKeys(props.itemKey as string).includes(key)
+    )
   }
 ]);
+
+// 获取所有子菜单项的 key
+const getAllKeys = (key: string): string[] => {
+  const keys: string[] = [key];
+  const node = document.querySelector(`[data-menu-id="${key}"]`);
+  if (node) {
+    const items = node.querySelectorAll('.cozy-menu-item');
+    items.forEach((item) => {
+      const itemKey = item.getAttribute('data-menu-id');
+      if (itemKey) {
+        keys.push(itemKey);
+      }
+    });
+  }
+  return keys;
+};
 
 // 点击标题处理
 const handleTitleClick = () => {
@@ -70,9 +89,11 @@ const handleMouseLeave = () => {
     :class="subMenuClasses"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
+    :data-menu-id="itemKey"
   >
     <div
       class="cozy-submenu-title"
+      :style="inlineStyle"
       @click="handleTitleClick"
     >
       <span v-if="icon" class="cozy-submenu-title-icon">
@@ -81,12 +102,37 @@ const handleMouseLeave = () => {
       <span class="cozy-submenu-title-content">
         {{ title }}
       </span>
-      <i class="cozy-icon c-down-outlined cozy-submenu-arrow"></i>
+      <i
+        v-if="menuContext.mode !== 'horizontal'"
+        class="cozy-submenu-arrow"
+        :class="menuContext.expandIcon || 'cozy-icon c-down-outlined'"
+      ></i>
     </div>
-    <transition name="cozy-zoom-in-top">
-      <ul v-show="isOpen" class="cozy-submenu-content">
+    <!-- 内联模式使用普通过渡 -->
+    <transition
+      v-if="menuContext.mode === 'inline'"
+      name="cozy-submenu-inline"
+    >
+      <ul
+        v-show="isOpen"
+        class="cozy-submenu-content"
+      >
         <slot></slot>
       </ul>
+    </transition>
+    <!-- 水平/垂直模式使用弹出层 -->
+    <transition
+      v-else
+      name="cozy-zoom-in-top"
+    >
+      <div
+        v-show="isOpen"
+        class="cozy-submenu-popup"
+      >
+        <ul class="cozy-submenu-content">
+          <slot></slot>
+        </ul>
+      </div>
     </transition>
   </li>
 </template>

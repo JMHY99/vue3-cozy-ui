@@ -49,10 +49,16 @@ const handleClick = () => {
 <template>
   <li
     :class="itemClasses"
+    :style="inlineStyle"
     @click="handleClick"
-    :title="title"
+    :title="menuContext.inlineCollapsed && title"
+    :data-menu-id="itemKey"
+    role="menuitem"
   >
-    <span v-if="icon" class="cozy-menu-item-icon">
+    <span v-if="loading" class="cozy-menu-item-loading-icon">
+      <i class="cozy-icon c-loading-outlined"></i>
+    </span>
+    <span v-else-if="icon" class="cozy-menu-item-icon">
       <i :class="`cozy-icon ${icon}`"></i>
     </span>
     <span class="cozy-menu-item-title">
