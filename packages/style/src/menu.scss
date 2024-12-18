@@ -11,6 +11,168 @@
   width: 256px;
   transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
 
+  // Light 主题（默认）
+  &-light {
+    background-color: $menu-light-bg;
+    border-right: 1px solid $menu-light-border;
+
+    .cozy-menu-item {
+      color: $menu-light-item-color;
+
+      &:hover {
+        color: $menu-light-item-hover-color;
+      }
+
+      &-selected {
+        color: $menu-light-item-hover-color;
+        background-color: $menu-light-item-selected-bg;
+      }
+
+      &-disabled {
+        color: $menu-light-item-disabled-color !important;
+      }
+    }
+
+    .cozy-submenu {
+      &-title {
+        color: $menu-light-item-color;
+
+        &:hover {
+          color: $menu-light-item-hover-color;
+        }
+      }
+
+      &-arrow {
+        color: $menu-light-arrow-color;
+      }
+
+      &-popup {
+        background-color: $menu-light-bg;
+        border: 1px solid $menu-light-border;
+      }
+
+      &-selected > .cozy-submenu-title {
+        color: $menu-light-item-hover-color;
+      }
+    }
+  }
+
+  // Dark 主题
+  &-dark {
+    background-color: $menu-dark-bg;
+    border-right: 0;
+
+    // 提高暗色主题下选中和悬浮状态的优先级
+    &.cozy-menu:not(.cozy-menu-horizontal) {
+      .cozy-menu-item {
+        &:hover {
+          color: $menu-dark-item-hover-color;
+          background-color: $menu-dark-item-hover-bg;
+        }
+
+        &-selected {
+          color: $menu-dark-item-selected-color;
+          background-color: $menu-dark-item-selected-bg !important;
+
+          &:hover {
+            background-color: $menu-dark-item-selected-bg !important;
+          }
+        }
+      }
+
+      .cozy-submenu-popup {
+        .cozy-menu-item {
+          &:hover {
+            color: $menu-dark-item-hover-color;
+            background-color: $menu-dark-item-hover-bg;
+          }
+
+          &-selected {
+            color: $menu-dark-item-selected-color;
+            background-color: $menu-dark-item-selected-bg !important;
+
+            &:hover {
+              background-color: $menu-dark-item-selected-bg !important;
+            }
+          }
+        }
+      }
+    }
+
+    .cozy-menu-item {
+      color: $menu-dark-item-color;
+
+      &:hover {
+        color: $menu-dark-item-hover-color;
+        background-color: $menu-dark-item-hover-bg;
+      }
+
+      &-selected {
+        color: $menu-dark-item-selected-color;
+        background-color: $menu-dark-item-selected-bg;
+
+        &:hover {
+          background-color: $menu-dark-item-selected-bg;
+        }
+      }
+
+      &-disabled {
+        color: $menu-dark-item-disabled-color !important;
+        opacity: 0.75;
+
+        &:hover {
+          background-color: transparent;
+        }
+      }
+    }
+
+    .cozy-submenu {
+      &-title {
+        color: $menu-dark-item-color;
+
+        &:hover {
+          color: $menu-dark-item-hover-color;
+          background-color: $menu-dark-item-hover-bg;
+        }
+      }
+
+      &-arrow {
+        color: $menu-dark-arrow-color;
+      }
+
+      &-popup {
+        background-color: $menu-dark-bg;
+        border: 0;
+
+        .cozy-menu-item {
+          &:hover {
+            color: $menu-dark-item-hover-color;
+            background-color: $menu-dark-item-hover-bg;
+          }
+
+          &-selected {
+            color: $menu-dark-item-selected-color;
+            background-color: $menu-dark-item-selected-bg;
+
+            &:hover {
+              background-color: $menu-dark-item-selected-bg;
+            }
+          }
+        }
+      }
+
+      &-selected > .cozy-submenu-title {
+        color: $menu-dark-item-hover-color;
+      }
+    }
+
+    // Dark主题下的弹出菜单
+    .cozy-submenu-popup {
+      background-color: $menu-dark-bg;
+      box-shadow: $menu-dark-popup-shadow;
+    }
+  }
+
   li + li {
     margin-top: 0;
   }
@@ -79,6 +241,7 @@
 
       &:not(.cozy-menu-item-disabled):hover {
         color: $color-primary;
+        background-color: transparent;
         &::after {
           position: absolute;
           left: 0px;
@@ -95,6 +258,7 @@
     > .cozy-submenu-selected > .cozy-submenu-title {
       color: $color-primary;
       font-weight: 500;
+      background-color: transparent;
 
       &::after {
         position: absolute;
@@ -474,7 +638,7 @@
         }
       }
 
-      // 收缩状态下隐藏内联展开的子菜单内容
+      // 收缩状态隐藏内联展开的子菜单内容
       &-inline {
         .cozy-submenu-content {
           display: none;

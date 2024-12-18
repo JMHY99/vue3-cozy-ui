@@ -143,3 +143,26 @@ $zindex-message: 1010;
 $zindex-notification: 1010;
 $zindex-popover: 1030;
 $zindex-tooltip: 1070;
+
+// Menu Colors
+// Light Theme
+$menu-light-bg: #fff;
+$menu-light-border: #f0f0f0;
+$menu-light-item-color: rgba(0, 0, 0, 0.85);
+$menu-light-item-hover-color: $color-primary;
+$menu-light-item-selected-bg: #e6f7ff;
+$menu-light-item-disabled-color: rgba(0, 0, 0, 0.25);
+$menu-light-arrow-color: rgba(0, 0, 0, 0.45);
+
+// Dark Theme
+$menu-dark-bg: #001529;
+$menu-dark-item-color: rgba(255, 255, 255, 0.65);
+$menu-dark-item-hover-color: #fff;
+$menu-dark-item-hover-bg: #0c2135;
+$menu-dark-item-selected-bg: #177ddc;
+$menu-dark-item-selected-color: #fff;
+$menu-dark-item-disabled-color: rgba(255, 255, 255, 0.35);
+$menu-dark-arrow-color: rgba(255, 255, 255, 0.65);
+$menu-dark-popup-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.48),
+                        0 6px 16px 0 rgba(0, 0, 0, 0.32),
+                        0 9px 28px 8px rgba(0, 0, 0, 0.2);

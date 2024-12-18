@@ -1,7 +1,7 @@
 <template>
   <div class="demo-menu">
     <c-switch
-      :checked="theme === 'dark'"
+      v-model="checked"
       @change="changeTheme"
       checked-children="Dark"
       un-checked-children="Light"
@@ -44,6 +44,7 @@
 import { ref } from 'vue'
 
 const theme = ref<'light' | 'dark'>('light')
+const checked = ref(false)
 
 const changeTheme = (checked: boolean) => {
   theme.value = checked ? 'dark' : 'light'
