@@ -14,13 +14,13 @@
         :selectedKeys="['1']"
         style="width: 256px"
       >
-        <c-menu-item itemKey="1" icon="pie-chart">
+        <c-menu-item itemKey="1" icon="c-folder">
           Option 1
         </c-menu-item>
-        <c-menu-item itemKey="2" icon="desktop">
+        <c-menu-item itemKey="2" icon="c-folder">
           Option 2
         </c-menu-item>
-        <c-menu-item itemKey="3" icon="inbox">
+        <c-menu-item itemKey="3" icon="c-folder">
           Option 3
         </c-menu-item>
         <c-sub-menu itemKey="sub1" title="Navigation One" icon="c-folder">

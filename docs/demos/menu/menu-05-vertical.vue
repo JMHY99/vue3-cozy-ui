@@ -6,19 +6,19 @@
         :selectedKeys="['1']"
         :openKeys="['sub1']"
       >
-        <c-menu-item itemKey="1">
+        <c-menu-item itemKey="1" icon="c-folder">
           <span>Navigation One</span>
         </c-menu-item>
-        <c-menu-item itemKey="2">
+        <c-menu-item itemKey="2" icon="c-folder">
           <span>Navigation Two</span>
         </c-menu-item>
-        <c-sub-menu itemKey="sub1" title="Navigation Three">
+        <c-sub-menu itemKey="sub1" title="Navigation Three" icon="c-folder">
           <c-menu-item itemKey="3">Option 3</c-menu-item>
           <c-menu-item itemKey="4">Option 4</c-menu-item>
           <c-menu-item itemKey="5">Option 5</c-menu-item>
           <c-menu-item itemKey="6">Option 6</c-menu-item>
         </c-sub-menu>
-        <c-sub-menu itemKey="sub2" title="Navigation Four">
+        <c-sub-menu itemKey="sub2" title="Navigation Four" icon="c-folder"  >
           <c-menu-item itemKey="7">Option 7</c-menu-item>
           <c-menu-item itemKey="8">Option 8</c-menu-item>
           <c-menu-item itemKey="9">Option 9</c-menu-item>
