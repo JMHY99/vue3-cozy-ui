@@ -82,6 +82,19 @@ const handleMouseLeave = () => {
   if (props.disabled || menuContext.mode.value === 'inline') return;
   isOpen.value = false;
 };
+
+// 添加 inlineStyle 计算属性
+const inlineStyle = computed(() => {
+  const style: Record<string, string> = {};
+
+  // 如果是内联模式且有缩进要求，可以在这里添加缩进样式
+  if (menuContext.mode.value === 'inline') {
+    // 可以根据需要添加样式
+    // style.paddingLeft = '24px';
+  }
+
+  return style;
+});
 </script>
 
 <template>

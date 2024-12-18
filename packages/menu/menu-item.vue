@@ -16,11 +16,14 @@ interface MenuItemProps {
   icon?: string;
   // 设置收缩时展示的悬浮标题
   title?: string;
+  // 是否显示加载状态
+  loading?: boolean;
 }
 
 // Props 默认值
 const props = withDefaults(defineProps<MenuItemProps>(), {
-  disabled: false
+  disabled: false,
+  loading: false
 });
 
 // 注入父级 Menu 组件的上下文
@@ -34,6 +37,12 @@ const itemClasses = computed(() => [
     'cozy-menu-item-disabled': props.disabled
   }
 ]);
+
+// 计算内联样式
+const inlineStyle = computed(() => {
+  // 如果需要添加其他内联样式，可以在这里扩展
+  return {};
+});
 
 // 点击处理
 const handleClick = () => {

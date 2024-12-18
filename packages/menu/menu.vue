@@ -135,7 +135,7 @@ const updateSelectedState = (key: string) => {
 };
 
 // 修改克隆菜单项的点击事件处理
-const handleMenuItemClick = (key: string, originalItem: HTMLElement) => {
+const handleMenuItemClick = (key: string, originalItem: Element | HTMLElement) => {
   if (!props.selectable) return;
 
   // 更新选中状态
@@ -233,7 +233,7 @@ const cloneMenuItem = (item: HTMLElement) => {
   // 处理子菜单
   if (item.classList.contains('cozy-submenu')) {
     const cloneSubmenu = clone;
-    const clonePopup = cloneSubmenu.querySelector('.cozy-submenu-popup');
+    const clonePopup = cloneSubmenu.querySelector('.cozy-submenu-popup') as HTMLElement;
     const cloneTitle = cloneSubmenu.querySelector('.cozy-submenu-title');
     const originalTitle = item.querySelector('.cozy-submenu-title');
 
@@ -278,7 +278,7 @@ const cloneMenuItem = (item: HTMLElement) => {
       }
     });
 
-    cloneSubmenu.addEventListener('mouseleave', (e) => {
+    cloneSubmenu.addEventListener('mouseleave', (e: MouseEvent) => {
       const relatedTarget = e.relatedTarget as HTMLElement;
       if (relatedTarget?.closest('.cozy-submenu-popup')) {
         return;
@@ -298,7 +298,7 @@ const cloneMenuItem = (item: HTMLElement) => {
         }
       });
 
-      clonePopup.addEventListener('mouseleave', (e) => {
+      clonePopup.addEventListener('mouseleave', (e: MouseEvent) => {
         const relatedTarget = e.relatedTarget as HTMLElement;
         if (relatedTarget?.closest('.cozy-submenu')) {
           return;
@@ -414,7 +414,7 @@ const clearOverflowItems = () => {
   hiddenItems.value = [];
 };
 
-// ���除所有菜单项的选中状态
+// 清除所有菜单项的选中状态
 const clearAllSelected = () => {
   // 清除所有菜单项的选中状态（包括原始菜单和克隆菜单）
   document.querySelectorAll('.cozy-menu-item-selected').forEach(el => {
