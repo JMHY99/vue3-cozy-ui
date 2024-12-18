@@ -34,6 +34,7 @@ import CMenu from './menu'
 import { CMenuItem, CSubMenu, CMenuItemGroup } from './menu'
 import CPageHeader from './page-header'
 import CPagination from './pagination'
+import { CSteps, CStep } from './steps'
 
 const components = [
   CIcon,
@@ -80,6 +81,8 @@ const components = [
   CMenuItemGroup,
   CPageHeader,
   CPagination,
+  CSteps,
+  CStep,
 ];
 
 const installComponents = (app: any) => {
@@ -138,6 +141,8 @@ export {
   CMenuItemGroup,
   CPageHeader,
   CPagination,
+  CSteps,
+  CStep,
 };
 
 export default { install };
