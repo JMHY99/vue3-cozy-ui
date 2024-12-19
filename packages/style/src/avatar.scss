@@ -1,0 +1,97 @@
+@import './variables.scss';
+
+.cozy-avatar {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  color: $text-color-inverse;
+  white-space: nowrap;
+  text-align: center;
+  vertical-align: middle;
+  background: $color-gray-light-1;
+  border-radius: $border-radius-base;
+  user-select: none;
+
+  // 图片样式
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  // 图标样式
+  .cozy-avatar-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+  }
+
+  // 文字样式
+  .cozy-avatar-string {
+    position: absolute;
+    left: 50%;
+    transform-origin: 0 center;
+  }
+
+  // 圆形样式
+  &.cozy-avatar-circle {
+    border-radius: 50%;
+  }
+
+  // 方形样式
+  &.cozy-avatar-square {
+    border-radius: $border-radius-base;
+  }
+
+  // 大小变体
+  &.cozy-avatar-large {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+
+    &.cozy-avatar-icon {
+      font-size: 24px;
+    }
+  }
+
+  &.cozy-avatar-small {
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 14px;
+
+    &.cozy-avatar-icon {
+      font-size: 14px;
+    }
+  }
+
+  &.cozy-avatar-default {
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    font-size: 18px;
+
+    &.cozy-avatar-icon {
+      font-size: 18px;
+    }
+  }
+
+  // 头像组样式
+  &-group {
+    display: inline-flex;
+    align-items: center;
+
+    .cozy-avatar {
+      border: 1px solid #fff;
+
+      &:not(:first-child) {
+        margin-left: -8px;
+      }
+    }
+  }
+}

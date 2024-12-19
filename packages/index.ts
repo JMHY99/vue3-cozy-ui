@@ -9,7 +9,7 @@ import CHeader from "./layout-header";
 import CSider from "./layout-sider";
 import CAffix from "./affix";
 import CAlert from "./alert";
-import CAvatar from "./avatar";
+import { CAvatar, CAvatarGroup } from './avatar'
 import CSpace from "./space";
 import CWatermark from "./watermark";
 import CInput from "./input";
@@ -52,6 +52,7 @@ const components = [
   CAffix,
   CAlert,
   CAvatar,
+  CAvatarGroup,
   CSpace,
   CWatermark,
   CInput,
@@ -115,6 +116,7 @@ export {
   CAffix,
   CAlert,
   CAvatar,
+  CAvatarGroup,
   CSpace,
   CWatermark,
   CInput,
