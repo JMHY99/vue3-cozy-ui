@@ -1,0 +1,46 @@
+<template>
+  <div class="carousel-demo-group">
+    <c-carousel height="200px" :interval="5000">
+      <c-carousel-item v-for="item in 4" :key="item">
+        <div
+          class="carousel-demo-item"
+          :style="{ background: colors[item - 1] }"
+        >
+          {{ item }}
+        </div>
+      </c-carousel-item>
+    </c-carousel>
+
+    <c-carousel height="200px" :autoplay="false">
+      <c-carousel-item v-for="item in 4" :key="item">
+        <div
+          class="carousel-demo-item"
+          :style="{ background: colors[item - 1] }"
+        >
+          {{ item }}
+        </div>
+      </c-carousel-item>
+    </c-carousel>
+  </div>
+</template>
+
+<script setup lang="ts">
+const colors = ["#364d79", "#64cbcc", "#8bc34a", "#ff9800"];
+</script>
+
+<style scoped>
+.carousel-demo-group {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.carousel-demo-item {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #fff;
+}
+</style>

@@ -39,6 +39,7 @@ import CDropdown from "./dropdown";
 import { CAnchor, CAnchorLink } from "./anchor";
 import CBadge from './badge'
 import CCard from './card'
+import { CCarousel, CCarouselItem } from './carousel'
 
 const components = [
   CIcon,
@@ -92,7 +93,9 @@ const components = [
   CAnchor,
   CAnchorLink,
   CBadge,
-  CCard
+  CCard,
+  CCarousel,
+  CCarouselItem
 ];
 
 const installComponents = (app: any) => {
@@ -100,6 +103,7 @@ const installComponents = (app: any) => {
     app.component(comp.name as string, comp);
   });
 };
+
 const install = (app: any, router?: any) => {
   installComponents(app);
   app.config.globalProperties.$message = Message;
@@ -158,7 +162,9 @@ export {
   CAnchor,
   CAnchorLink,
   CBadge,
-  CCard
+  CCard,
+  CCarousel,
+  CCarouselItem
 };
 
 export default { install };
