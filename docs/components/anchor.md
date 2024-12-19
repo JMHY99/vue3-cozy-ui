@@ -1,12 +1,11 @@
 # Anchor 锚点
 
+### 概述
+
+::: tip
 用于跳转到页面指定位置。
-
-## 何时使用
-
 需要展现当前页面上可供跳转的锚点链接，以及快速在锚点之间跳转。
-
-## 代码演示
+:::
 
 ### 基本使用
 最简单的用法。
@@ -38,9 +37,9 @@
 
 <demo src="../demos/anchor/anchor-06-bounds.vue"></demo>
 
-## API
+### API
 
-### Anchor Props
+#### Anchor Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -55,21 +54,21 @@
 | targetOffset | 锚点滚动偏移量，默认与 offsetTop 相同 | `number` | - |
 | wrapperStyle | 容器样式 | `CSSProperties` | - |
 
-### Anchor Events
+#### Anchor Events
 
 | 事件名称 | 说明 | 回调参数 |
 | --- | --- | --- |
 | change | 锚点链接改变时触发 | `(currentActiveLink: string) => void` |
 | click | 点击锚点链接时触发 | `(e: MouseEvent, link: string) => void` |
 
-### AnchorLink Props
+#### AnchorLink Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | href | 锚点链接 | `string` | - |
 | title | 文字内容 | `string` | - |
 
-### AnchorLink Slots
+#### AnchorLink Slots
 
 | 名称 | 说明 |
 | --- | --- |
