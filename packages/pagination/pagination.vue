@@ -28,7 +28,7 @@
             'cozy-pagination-item',
             { 'cozy-pagination-item-active': page === current },
           ]"
-          @click="handlePageClick(page)"
+          @click="handlePageClick(Number(page))"
         >
           {{ page }}
         </li>
