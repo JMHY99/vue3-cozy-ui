@@ -5,22 +5,22 @@
         mode="vertical"
         :selectedKeys="['1']"
       >
-        <c-menu-item-group title="Group 1">
-          <c-menu-item itemKey="1">Option 1</c-menu-item>
-          <c-menu-item itemKey="2">Option 2</c-menu-item>
+        <c-menu-item-group title="分组1">
+          <c-menu-item itemKey="1">页面1</c-menu-item>
+          <c-menu-item itemKey="2">页面2</c-menu-item>
         </c-menu-item-group>
-        <c-menu-item-group title="Group 2">
-          <c-menu-item itemKey="3">Option 3</c-menu-item>
-          <c-menu-item itemKey="4">Option 4</c-menu-item>
+        <c-menu-item-group title="分组2">
+          <c-menu-item itemKey="3">页面3</c-menu-item>
+          <c-menu-item itemKey="4">页面4</c-menu-item>
         </c-menu-item-group>
-        <c-sub-menu itemKey="sub1" title="Sub Menu">
-          <c-menu-item-group title="Group 3">
-            <c-menu-item itemKey="5">Option 5</c-menu-item>
-            <c-menu-item itemKey="6">Option 6</c-menu-item>
+        <c-sub-menu itemKey="sub1" title="子菜单">
+          <c-menu-item-group title="分组3">
+            <c-menu-item itemKey="5">页面5</c-menu-item>
+            <c-menu-item itemKey="6">页面6</c-menu-item>
           </c-menu-item-group>
-          <c-menu-item-group title="Group 4">
-            <c-menu-item itemKey="7">Option 7</c-menu-item>
-            <c-menu-item itemKey="8">Option 8</c-menu-item>
+          <c-menu-item-group title="分组4">
+            <c-menu-item itemKey="7">页面7</c-menu-item>
+            <c-menu-item itemKey="8">页面8</c-menu-item>
           </c-menu-item-group>
         </c-sub-menu>
       </c-menu>
