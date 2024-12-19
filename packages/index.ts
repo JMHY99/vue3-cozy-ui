@@ -38,6 +38,7 @@ import { CSteps, CStep } from "./steps";
 import CDropdown from "./dropdown";
 import { CAnchor, CAnchorLink } from "./anchor";
 import CBadge from './badge'
+import CCard from './card'
 
 const components = [
   CIcon,
@@ -91,6 +92,7 @@ const components = [
   CAnchor,
   CAnchorLink,
   CBadge,
+  CCard
 ];
 
 const installComponents = (app: any) => {
@@ -156,6 +158,7 @@ export {
   CAnchor,
   CAnchorLink,
   CBadge,
+  CCard
 };
 
 export default { install };
