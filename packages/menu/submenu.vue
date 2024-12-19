@@ -66,8 +66,8 @@ const getAllKeys = (key: string): string[] => {
 const handleTitleClick = () => {
   if (props.disabled) return;
 
-  // 只在内联模式下切换展开状态
-  if (menuContext.mode.value === "inline") {
+  // 只在内联模式且非收缩状态下切换展开状态
+  if (menuContext.mode.value === 'inline' && !menuContext.inlineCollapsed.value) {
     isOpen.value = !isOpen.value;
     menuContext.onOpenChange(props.itemKey);
   }
@@ -76,8 +76,8 @@ const handleTitleClick = () => {
 // 鼠标移入处理（用于水平和垂直模式）
 const handleMouseEnter = () => {
   if (props.disabled) return;
-  // 水平和垂直模式下，鼠标移入时展开子菜单
-  if (menuContext.mode.value !== "inline") {
+  // 水平和垂直模式，或者内联收缩模式下，鼠标移入时展开子菜单
+  if (menuContext.mode.value !== 'inline' || menuContext.inlineCollapsed.value) {
     isOpen.value = true;
   }
 };
@@ -85,8 +85,8 @@ const handleMouseEnter = () => {
 // 鼠标移出处理（用于水平和垂直模式）
 const handleMouseLeave = () => {
   if (props.disabled) return;
-  // 水平和垂直模式下，鼠标移出时关闭子菜单
-  if (menuContext.mode.value !== "inline") {
+  // 水平和垂直模式，或者内联收缩模式下，鼠标移出时关闭子菜单
+  if (menuContext.mode.value !== 'inline' || menuContext.inlineCollapsed.value) {
     isOpen.value = false;
   }
 };
@@ -102,6 +102,27 @@ const inlineStyle = computed(() => {
   }
 
   return style;
+});
+
+// 判断是否在弹出层中
+const isInPopup = computed(() => {
+  // 如果是内联模式且非收缩状态，直接返回false
+  if (menuContext.mode.value === 'inline' && !menuContext.inlineCollapsed.value) {
+    return false;
+  }
+  const el = document.querySelector(`[data-menu-id="${props.itemKey}"]`);
+  return el?.closest('.cozy-submenu-popup') !== null;
+});
+
+// 判断是否应该显示向右的箭头
+const shouldShowRightArrow = computed(() => {
+  // 在以下情况下显示向右箭头：
+  // 1. 垂直菜单模式
+  // 2. 内联菜单收缩状态
+  // 3. 在弹出层中的子菜单（但不包括内联模式非收缩状态）
+  return menuContext.mode.value === 'vertical' ||
+         menuContext.inlineCollapsed.value ||
+         (isInPopup.value && menuContext.mode.value !== 'inline');
 });
 </script>
 
@@ -128,23 +149,26 @@ const inlineStyle = computed(() => {
         class="cozy-submenu-arrow"
         :class="[
           'cozy-icon',
-          menuContext.mode.value === 'vertical'
+          shouldShowRightArrow
             ? 'c-right-outlined'
-            : 'c-down-outlined',
+            : 'c-down-outlined'
         ]"
       ></i>
     </div>
-    <!-- 内联模式使用普通过渡 -->
-    <transition v-if="menuContext.mode.value === 'inline'" name="cozy-submenu-inline">
+    <!-- 内联模式且非收缩状态使用普通过渡 -->
+    <transition
+      v-if="menuContext.mode.value === 'inline' && !menuContext.inlineCollapsed.value"
+      name="cozy-submenu-inline"
+    >
       <ul v-show="isOpen" class="cozy-submenu-content">
         <slot></slot>
       </ul>
     </transition>
-    <!-- 水平/垂直模式使用弹���层 -->
+    <!-- 水平/垂直模式或内联收缩状态使用弹出层 -->
     <transition
       v-else
       :name="
-        menuContext.mode.value === 'vertical'
+        menuContext.mode.value === 'vertical' || menuContext.inlineCollapsed.value
           ? 'cozy-zoom-in-right'
           : 'cozy-zoom-in-top'
       "
@@ -153,7 +177,7 @@ const inlineStyle = computed(() => {
         v-show="isOpen"
         class="cozy-submenu-popup"
         :class="{
-          'cozy-submenu-popup-vertical': menuContext.mode.value === 'vertical',
+          'cozy-submenu-popup-vertical': menuContext.mode.value === 'vertical' || menuContext.inlineCollapsed.value,
         }"
       >
         <ul class="cozy-submenu-content">
