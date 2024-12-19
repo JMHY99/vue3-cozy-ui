@@ -12,30 +12,31 @@ import CAlert from "./alert";
 import CAvatar from "./avatar";
 import CSpace from "./space";
 import CWatermark from "./watermark";
-import CInput from './input'
-import CRadio, { CRadioButton, CRadioGroup } from './radio'
-import CInputNumber from './input-number'
-import CSwitch from './switch'
-import Message from './message'
-import CRow from './row'
-import CCol from './col'
-import CBreadcrumb, { CBreadcrumbItem } from './breadcrumb'
-import CCheckbox, { CCheckboxGroup } from './checkbox'
-import CRate from './rate'
-import CSlider from './slider'
-import CSelect, { COption, COptionGroup } from './select'
-import CUpload from './upload'
-import CDatePicker from './date-picker'
-import CTimePicker from './time-picker'
-import CCalendar from './calendar'
-import { CForm, CFormItem } from './form'
-import Divider from './divider'
-import CMenu from './menu'
-import { CMenuItem, CSubMenu, CMenuItemGroup } from './menu'
-import CPageHeader from './page-header'
-import CPagination from './pagination'
-import { CSteps, CStep } from './steps'
-import CDropdown from './dropdown'
+import CInput from "./input";
+import CRadio, { CRadioButton, CRadioGroup } from "./radio";
+import CInputNumber from "./input-number";
+import CSwitch from "./switch";
+import Message from "./message";
+import CRow from "./row";
+import CCol from "./col";
+import CBreadcrumb, { CBreadcrumbItem } from "./breadcrumb";
+import CCheckbox, { CCheckboxGroup } from "./checkbox";
+import CRate from "./rate";
+import CSlider from "./slider";
+import CSelect, { COption, COptionGroup } from "./select";
+import CUpload from "./upload";
+import CDatePicker from "./date-picker";
+import CTimePicker from "./time-picker";
+import CCalendar from "./calendar";
+import { CForm, CFormItem } from "./form";
+import Divider from "./divider";
+import CMenu from "./menu";
+import { CMenuItem, CSubMenu, CMenuItemGroup } from "./menu";
+import CPageHeader from "./page-header";
+import CPagination from "./pagination";
+import { CSteps, CStep } from "./steps";
+import CDropdown from "./dropdown";
+import { CAnchor, CAnchorLink } from "./anchor";
 
 const components = [
   CIcon,
@@ -85,6 +86,8 @@ const components = [
   CSteps,
   CStep,
   CDropdown,
+  CAnchor,
+  CAnchorLink,
 ];
 
 const installComponents = (app: any) => {
@@ -146,6 +149,8 @@ export {
   CSteps,
   CStep,
   CDropdown,
+  CAnchor,
+  CAnchorLink,
 };
 
 export default { install };
