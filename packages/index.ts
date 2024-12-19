@@ -35,6 +35,7 @@ import { CMenuItem, CSubMenu, CMenuItemGroup } from './menu'
 import CPageHeader from './page-header'
 import CPagination from './pagination'
 import { CSteps, CStep } from './steps'
+import CDropdown from './dropdown'
 
 const components = [
   CIcon,
@@ -83,6 +84,7 @@ const components = [
   CPagination,
   CSteps,
   CStep,
+  CDropdown,
 ];
 
 const installComponents = (app: any) => {
@@ -143,6 +145,7 @@ export {
   CPagination,
   CSteps,
   CStep,
+  CDropdown,
 };
 
 export default { install };

@@ -1,0 +1,57 @@
+@import "./variables.scss";
+
+.cozy-dropdown {
+  position: relative;
+  display: inline-block;
+
+  &-trigger {
+    cursor: pointer;
+
+    &.is-disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+
+  &-overlay {
+    position: fixed;
+    z-index: $zindex-dropdown;
+    display: inline-block;
+    min-width: 120px;
+    background-color: $background-color-white;
+    border-radius: $border-radius-base;
+    box-shadow: $shadow-2;
+    transition: opacity $animation-duration-base, transform $animation-duration-base;
+    transform-origin: top;
+
+    &.slide-fade-enter-active,
+    &.slide-fade-leave-active {
+      transition: opacity $animation-duration-base, transform $animation-duration-base;
+    }
+
+    &.slide-fade-enter-from,
+    &.slide-fade-leave-to {
+      opacity: 0;
+      transform: scaleY(0);
+    }
+  }
+
+  &-content {
+    padding: $spacing-xs 0;
+  }
+}
+
+// 不同位置的样式
+.cozy-dropdown-placement {
+  &-bottomLeft,
+  &-bottomCenter,
+  &-bottomRight {
+    transform-origin: top;
+  }
+
+  &-topLeft,
+  &-topCenter,
+  &-topRight {
+    transform-origin: bottom;
+  }
+}
