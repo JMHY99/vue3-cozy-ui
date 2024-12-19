@@ -37,6 +37,7 @@ import CPagination from "./pagination";
 import { CSteps, CStep } from "./steps";
 import CDropdown from "./dropdown";
 import { CAnchor, CAnchorLink } from "./anchor";
+import CBadge from './badge'
 
 const components = [
   CIcon,
@@ -88,6 +89,7 @@ const components = [
   CDropdown,
   CAnchor,
   CAnchorLink,
+  CBadge,
 ];
 
 const installComponents = (app: any) => {
@@ -151,6 +153,7 @@ export {
   CDropdown,
   CAnchor,
   CAnchorLink,
+  CBadge,
 };
 
 export default { install };
