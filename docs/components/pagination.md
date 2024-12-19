@@ -53,8 +53,10 @@
 
 #### 事件
 
+
 | 事件名称        | 说明                       | 回调参数                 |
-| --------------- | -------------------------- | ------------------------ | --- |
-| change          | 页码或 pageSize 改变的回调 | function(page, pageSize) | -   |
-| update:current  | 当前页改变时的回调         | function(page)           | -   |
-| update:pageSize | 每页条数改变时的回调       | function(size)           | -   |
+| --------------- | -------------------------- | ------------------------ |
+| change          | 页码或 pageSize 改变的回调 | function(page, pageSize) |
+| update:current  | 当前页改变时的回调         | function(page)           |
+| update:pageSize | 每页条数改变时的回调       | function(size)           |
+
