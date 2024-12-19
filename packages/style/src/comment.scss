@@ -1,0 +1,99 @@
+@use 'sass:map';
+@import './variables.scss';
+
+.cozy-comment {
+  position: relative;
+  background-color: $background-color-white;
+
+  // 评论内部容器
+  &-inner {
+    display: flex;
+    padding: 12px 0;
+  }
+
+  // 头像
+  &-avatar {
+    position: relative;
+    flex-shrink: 0;
+    margin-right: 12px;
+
+    img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+    }
+  }
+
+  // 评论内容
+  &-content {
+    position: relative;
+    flex: 1 1 auto;
+    min-width: 1px;
+    font-size: $font-size-base;
+    word-wrap: break-word;
+
+    &-author {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      margin-bottom: 4px;
+      font-size: $font-size-sm;
+
+      &-name {
+        color: $text-color;
+        font-weight: 500;
+        font-size: $font-size-base;
+
+        > * {
+          color: $text-color;
+          font-size: $font-size-base;
+        }
+      }
+
+      &-time {
+        margin-left: 8px;
+        color: $text-color-secondary;
+        white-space: nowrap;
+        cursor: auto;
+      }
+    }
+
+    &-detail {
+      color: $text-color;
+    }
+  }
+
+  // 评论操作
+  &-actions {
+    margin-top: 4px;
+    margin-bottom: inherit;
+    padding-left: 0;
+
+    > li {
+      display: inline-block;
+      color: $text-color-secondary;
+
+      > span {
+        margin-right: 8px;
+        color: $text-color-secondary;
+        font-size: $font-size-sm;
+        cursor: pointer;
+        transition: color 0.3s;
+        user-select: none;
+
+        &:hover {
+          color: $color-primary;
+        }
+      }
+
+      &:not(:last-child) {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  // 嵌套评论
+  &-nested {
+    margin-left: 16px;
+  }
+} 
