@@ -40,6 +40,7 @@ import { CAnchor, CAnchorLink } from "./anchor";
 import CBadge from './badge'
 import CCard from './card'
 import { CCarousel, CCarouselItem } from './carousel'
+import { CCollapse, CCollapsePanel } from './collapse'
 
 const components = [
   CIcon,
@@ -95,7 +96,9 @@ const components = [
   CBadge,
   CCard,
   CCarousel,
-  CCarouselItem
+  CCarouselItem,
+  CCollapse,
+  CCollapsePanel
 ];
 
 const installComponents = (app: any) => {
@@ -164,7 +167,9 @@ export {
   CBadge,
   CCard,
   CCarousel,
-  CCarouselItem
+  CCarouselItem,
+  CCollapse,
+  CCollapsePanel
 };
 
 export default { install };

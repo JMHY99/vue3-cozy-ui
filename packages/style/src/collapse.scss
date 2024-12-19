@@ -1,0 +1,135 @@
+@import './variables.scss';
+
+.cozy-collapse {
+  background-color: $background-color-white;
+  border: $border-width-base $border-style-base $border-color;
+  border-radius: $border-radius-base;
+  
+  &-borderless {
+    border: none;
+    background-color: transparent;
+  }
+  
+  &-ghost {
+    background-color: transparent;
+  }
+  
+  &-icon-position {
+    &-start .cozy-collapse-expand-icon {
+      margin-right: $spacing-md;
+    }
+    
+    &-end .cozy-collapse-expand-icon {
+      margin-left: $spacing-md;
+      order: 1;
+    }
+  }
+}
+
+.cozy-collapse-panel {
+  border-bottom: $border-width-base $border-style-base $border-color;
+  
+  &:last-child {
+    border-bottom: none;
+  }
+  
+  &-disabled {
+    .cozy-collapse-header {
+      cursor: not-allowed;
+      color: $text-color-disabled;
+    }
+  }
+  
+  .cozy-collapse-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: $spacing-md $spacing-lg;
+    color: $text-color;
+    cursor: pointer;
+    transition: all $animation-duration-base;
+    
+    &:hover {
+      background-color: $background-color-light;
+    }
+    
+    &-disabled:hover {
+      background-color: transparent;
+    }
+    
+    .cozy-collapse-expand-icon {
+      display: flex;
+      align-items: center;
+      
+      i {
+        font-size: $font-size-base;
+        transition: transform $animation-duration-base;
+        
+        &.is-active {
+          transform: rotate(90deg);
+        }
+      }
+    }
+    
+    .cozy-collapse-header-text {
+      flex: 1;
+    }
+    
+    .cozy-collapse-extra {
+      margin-left: $spacing-md;
+    }
+  }
+  
+  .cozy-collapse-content {
+    color: $text-color-secondary;
+    background-color: $background-color-white;
+    overflow: hidden;
+    transition: height $animation-duration-base ease-in-out,
+                opacity $animation-duration-base ease-in-out;
+    
+    &-box {
+      padding: $spacing-lg;
+    }
+  }
+  
+  &-active {
+    > .cozy-collapse-header {
+      font-weight: 500;
+    }
+  }
+}
+
+// 尺寸变体
+.cozy-collapse-panel-large {
+  .cozy-collapse-header {
+    padding: $spacing-lg $spacing-xl;
+  }
+  
+  .cozy-collapse-content-box {
+    padding: $spacing-xl;
+  }
+}
+
+.cozy-collapse-panel-small {
+  .cozy-collapse-header {
+    padding: $spacing-sm $spacing-md;
+  }
+  
+  .cozy-collapse-content-box {
+    padding: $spacing-md;
+  }
+}
+
+// 动画
+.cozy-collapse-enter-active,
+.cozy-collapse-leave-active {
+  transition: height $animation-duration-base ease-in-out,
+              opacity $animation-duration-base ease-in-out;
+  will-change: height, opacity;
+}
+
+.cozy-collapse-enter-from,
+.cozy-collapse-leave-to {
+  height: 0;
+  opacity: 0;
+} 
