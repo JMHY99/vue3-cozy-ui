@@ -42,6 +42,8 @@ import CCard from './card'
 import { CCarousel, CCarouselItem } from './carousel'
 import { CCollapse, CCollapsePanel } from './collapse'
 import CComment from './comment'
+import CDescriptions, { CDescriptionsItem } from './descriptions'
+import CTooltip from './tooltip'
 
 const components = [
   CIcon,
@@ -100,7 +102,10 @@ const components = [
   CCarouselItem,
   CCollapse,
   CCollapsePanel,
-  CComment
+  CComment,
+  CDescriptions,
+  CDescriptionsItem,
+  CTooltip
 ];
 
 const installComponents = (app: any) => {
@@ -172,7 +177,10 @@ export {
   CCarouselItem,
   CCollapse,
   CCollapsePanel,
-  CComment
+  CComment,
+  CDescriptions,
+  CDescriptionsItem,
+  CTooltip
 };
 
 export default { install };

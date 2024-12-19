@@ -1,0 +1,174 @@
+.cozy-descriptions {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  // 标题区域
+  &-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  &-title {
+    flex: auto;
+    color: rgba(0, 0, 0, 0.88);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  &-extra {
+    margin-left: auto;
+  }
+
+  // 内容区域
+  &-row {
+    transition: background-color 0.3s;
+  }
+
+  &-item {
+    padding-bottom: 0;
+    vertical-align: top;
+
+    &-label {
+      color: rgba(0, 0, 0, 0.45);
+      font-weight: normal;
+      padding: 8px 24px 8px 0;
+      line-height: 1.5714285714285714;
+      white-space: nowrap;
+
+      &::after {
+        content: ':';
+        position: relative;
+        top: -0.5px;
+        margin: 0 8px 0 2px;
+      }
+
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+
+    &-content {
+      padding: 8px 0;
+      line-height: 1.5714285714285714;
+      color: rgba(0, 0, 0, 0.88);
+    }
+  }
+
+  // 带边框样式
+  &-bordered {
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+
+    .cozy-descriptions-view {
+      border: none;
+      padding: 16px 24px;
+    }
+
+    .cozy-descriptions-item {
+      padding: 0;
+      border-right: 1px solid #f0f0f0;
+
+      &-label, 
+      &-content {
+        padding: 16px 24px;
+        border-right: 1px solid #f0f0f0;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      &-label {
+        background-color: #fafafa;
+        font-weight: 500;
+      }
+
+      &:last-child {
+        .cozy-descriptions-item-label,
+        .cozy-descriptions-item-content {
+          border-right: none;
+        }
+      }
+    }
+
+    .cozy-descriptions-row:last-child {
+      .cozy-descriptions-item-label,
+      .cozy-descriptions-item-content {
+        border-bottom: none;
+      }
+    }
+  }
+
+  // 垂直布局
+  &-vertical {
+    .cozy-descriptions-item {
+      padding: 0;
+    }
+
+    .cozy-descriptions-item-label {
+      padding: 0 0 8px;
+      color: rgba(0, 0, 0, 0.88);
+      font-weight: 500;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    .cozy-descriptions-item-content {
+      padding: 0 0 16px;
+      color: rgba(0, 0, 0, 0.45);
+    }
+
+    &.cozy-descriptions-bordered {
+      .cozy-descriptions-item {
+        &-label {
+          background: transparent;
+          padding: 16px 24px 8px;
+        }
+        &-content {
+          padding: 8px 24px 16px;
+        }
+      }
+    }
+  }
+
+  // 中等尺寸
+  &-middle {
+    .cozy-descriptions-item-label {
+      padding: 6px 24px 6px 0;
+    }
+    .cozy-descriptions-item-content {
+      padding: 6px 0;
+    }
+
+    &.cozy-descriptions-bordered {
+      .cozy-descriptions-item {
+        &-label,
+        &-content {
+          padding: 12px 24px;
+        }
+      }
+    }
+  }
+
+  // 小尺寸
+  &-small {
+    .cozy-descriptions-item-label {
+      padding: 4px 16px 4px 0;
+    }
+    .cozy-descriptions-item-content {
+      padding: 4px 0;
+    }
+
+    &.cozy-descriptions-bordered {
+      .cozy-descriptions-item {
+        &-label,
+        &-content {
+          padding: 8px 16px;
+        }
+      }
+    }
+  }
+} 

@@ -1,0 +1,94 @@
+@import './variables.scss';
+
+.cozy-tooltip {
+  position: absolute;
+  z-index: $zindex-tooltip;
+  display: block;
+  width: max-content;
+  max-width: $tooltip-max-width;
+
+  &-trigger {
+    display: inline-block;
+  }
+
+  // 箭头
+  &-arrow {
+    position: absolute;
+    display: block;
+    width: $tooltip-arrow-width;
+    height: $tooltip-arrow-width;
+    background: transparent;
+    
+    &::before {
+      position: absolute;
+      width: $tooltip-arrow-width;
+      height: $tooltip-arrow-width;
+      background: $tooltip-bg;
+      content: '';
+      transform: rotate(45deg);
+    }
+  }
+
+  // 内容
+  &-content {
+    position: relative;
+    min-width: 30px;
+    padding: $tooltip-padding;
+    color: $tooltip-color;
+    text-align: start;
+    text-decoration: none;
+    word-wrap: break-word;
+    background-color: $tooltip-bg;
+    border-radius: $tooltip-border-radius;
+    box-shadow: $tooltip-box-shadow;
+  }
+
+  // 位置
+  &-placement-top,
+  &-placement-topLeft,
+  &-placement-topRight {
+    padding-bottom: $tooltip-arrow-width;
+    .cozy-tooltip-arrow {
+      bottom: 0;
+      &::before {
+        box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.07);
+      }
+    }
+  }
+
+  &-placement-right,
+  &-placement-rightTop,
+  &-placement-rightBottom {
+    padding-left: $tooltip-arrow-width;
+    .cozy-tooltip-arrow {
+      left: 0;
+      &::before {
+        box-shadow: -3px 3px 7px rgba(0, 0, 0, 0.07);
+      }
+    }
+  }
+
+  &-placement-bottom,
+  &-placement-bottomLeft,
+  &-placement-bottomRight {
+    padding-top: $tooltip-arrow-width;
+    .cozy-tooltip-arrow {
+      top: 0;
+      &::before {
+        box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.06);
+      }
+    }
+  }
+
+  &-placement-left,
+  &-placement-leftTop,
+  &-placement-leftBottom {
+    padding-right: $tooltip-arrow-width;
+    .cozy-tooltip-arrow {
+      right: 0;
+      &::before {
+        box-shadow: 3px -3px 7px rgba(0, 0, 0, 0.07);
+      }
+    }
+  }
+} 
