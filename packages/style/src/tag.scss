@@ -1,0 +1,204 @@
+// Tag 标签样式
+.cozy-tag {
+  box-sizing: border-box;
+  margin: 0 8px 0 0;
+  padding: 0 7px;
+  font-size: 12px;
+  line-height: 20px;
+  white-space: nowrap;
+  background: #fafafa;
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+  cursor: default;
+  opacity: 1;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+
+  &-icon {
+    margin-right: 4px;
+    font-size: 14px;
+  }
+
+  &-close-icon {
+    margin-left: 4px;
+    font-size: 10px;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.45);
+    transition: all 0.3s;
+
+    &:hover {
+      color: rgba(0, 0, 0, 0.85);
+    }
+  }
+
+  &-has-color {
+    border-color: transparent;
+
+    .cozy-tag-close-icon {
+      color: #fff;
+
+      &:hover {
+        color: rgba(255, 255, 255, 0.85);
+      }
+    }
+  }
+
+  &-checkable {
+    cursor: pointer;
+
+    &:not(.cozy-tag-checked):hover {
+      color: #1890ff;
+      background: rgba(24, 144, 255, 0.1);
+    }
+
+    &:active {
+      color: #096dd9;
+      background: rgba(24, 144, 255, 0.2);
+    }
+
+    &.cozy-tag-checked {
+      color: #fff;
+      background: #1890ff;
+      border-color: transparent;
+
+      &:hover {
+        background: #40a9ff;
+      }
+
+      &:active {
+        background: #096dd9;
+      }
+    }
+  }
+
+  // 预设颜色
+  &-success {
+    color: #52c41a;
+    background: #f6ffed;
+    border-color: #b7eb8f;
+  }
+
+  &-processing {
+    color: #1890ff;
+    background: #e6f7ff;
+    border-color: #91d5ff;
+  }
+
+  &-error {
+    color: #ff4d4f;
+    background: #fff2f0;
+    border-color: #ffccc7;
+  }
+
+  &-warning {
+    color: #faad14;
+    background: #fffbe6;
+    border-color: #ffe58f;
+  }
+
+  // 预设颜色（纯色）
+  &-pink {
+    color: #fff;
+    background: #eb2f96;
+    border-color: #eb2f96;
+  }
+
+  &-red {
+    color: #fff;
+    background: #f5222d;
+    border-color: #f5222d;
+  }
+
+  &-yellow {
+    color: #fff;
+    background: #fadb14;
+    border-color: #fadb14;
+  }
+
+  &-orange {
+    color: #fff;
+    background: #fa8c16;
+    border-color: #fa8c16;
+  }
+
+  &-cyan {
+    color: #fff;
+    background: #13c2c2;
+    border-color: #13c2c2;
+  }
+
+  &-green {
+    color: #fff;
+    background: #52c41a;
+    border-color: #52c41a;
+  }
+
+  &-blue {
+    color: #fff;
+    background: #1890ff;
+    border-color: #1890ff;
+  }
+
+  &-purple {
+    color: #fff;
+    background: #722ed1;
+    border-color: #722ed1;
+  }
+
+  &-geekblue {
+    color: #fff;
+    background: #2f54eb;
+    border-color: #2f54eb;
+  }
+
+  &-magenta {
+    color: #fff;
+    background: #eb2f96;
+    border-color: #eb2f96;
+  }
+
+  &-volcano {
+    color: #fff;
+    background: #fa541c;
+    border-color: #fa541c;
+  }
+
+  &-gold {
+    color: #fff;
+    background: #faad14;
+    border-color: #faad14;
+  }
+
+  &-lime {
+    color: #fff;
+    background: #a0d911;
+    border-color: #a0d911;
+  }
+}
+
+// 动画
+.cozy-zoom-fade-enter-active,
+.cozy-zoom-fade-leave-active {
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.cozy-zoom-fade-enter-from {
+  transform: scale(0);
+  opacity: 0;
+}
+
+.cozy-zoom-fade-enter-to {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.cozy-zoom-fade-leave-from {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.cozy-zoom-fade-leave-to {
+  transform: scale(0);
+  opacity: 0;
+}

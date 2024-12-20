@@ -46,6 +46,7 @@ import CDescriptions, { CDescriptionsItem } from './descriptions'
 import CTooltip from './tooltip'
 import CPopover from './popover';
 import CTabs, { CTabPane } from './tabs';
+import CTag from './tag';
 
 const components = [
   CIcon,
@@ -110,7 +111,8 @@ const components = [
   CTooltip,
   CPopover,
   CTabs,
-  CTabPane
+  CTabPane,
+  CTag,
 ];
 
 const installComponents = (app: any) => {
@@ -188,7 +190,8 @@ export {
   CTooltip,
   CPopover,
   CTabs,
-  CTabPane
+  CTabPane,
+  CTag,
 };
 
 export default { install };
