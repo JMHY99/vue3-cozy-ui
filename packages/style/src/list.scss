@@ -1,0 +1,137 @@
+@import "./variables.scss";
+
+.cozy-list {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  color: $text-color;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  background: $background-color-white;
+
+  &-bordered {
+    border: $border-width-base $border-style-base $border-color;
+    border-radius: $border-radius-base;
+  }
+
+  &-split {
+    .cozy-list-item {
+      border-bottom: $border-width-base $border-style-base $border-color-split;
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  &-header {
+    padding: $spacing-lg $spacing-xl;
+    background: transparent;
+    border-bottom: $border-width-base $border-style-base $border-color-split;
+  }
+
+  &-footer {
+    padding: $spacing-lg $spacing-xl;
+    background: transparent;
+    border-top: $border-width-base $border-style-base $border-color-split;
+  }
+
+  &-empty {
+    padding: $spacing-lg 0;
+    color: $text-color-secondary;
+    text-align: center;
+  }
+
+  &-loading {
+    .cozy-list-loading-content {
+      padding: 40px 0;
+      text-align: center;
+      .cozy-list-spin {
+        color: $color-primary;
+        font-size: 24px;
+      }
+    }
+  }
+
+  &-pagination {
+    margin-top: $spacing-lg;
+    text-align: right;
+  }
+
+  // 列表项样式
+  &-item {
+    display: flex;
+    align-items: center;
+    padding: $spacing-md $spacing-xl;
+    color: $text-color;
+
+    &-meta {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+
+      &-avatar {
+        margin-right: $spacing-lg;
+      }
+
+      &-content {
+        flex: 1;
+        overflow: hidden;
+      }
+
+      &-title {
+        margin-bottom: $spacing-xs;
+        color: $text-color;
+        font-size: $font-size-base;
+        line-height: $line-height-base;
+      }
+
+      &-description {
+        color: $text-color-secondary;
+        font-size: $font-size-sm;
+        line-height: $line-height-base;
+      }
+    }
+
+    &-content {
+      flex: 1;
+    }
+
+    &-actions {
+      display: flex;
+      margin-left: $spacing-xl * 2;
+      padding: 0;
+      list-style: none;
+
+      li {
+        padding: 0 $spacing-sm;
+        color: $text-color-secondary;
+        cursor: pointer;
+
+        &:not(:last-child) {
+          border-right: $border-width-base $border-style-base $border-color-split;
+        }
+
+        &:hover {
+          color: $color-primary;
+        }
+      }
+    }
+
+    &-extra {
+      margin-left: $spacing-xl * 2;
+    }
+  }
+
+  // 大小变体
+  &-large {
+    .cozy-list-item {
+      padding: $spacing-lg $spacing-xl;
+    }
+  }
+
+  &-small {
+    .cozy-list-item {
+      padding: $spacing-sm $spacing-lg;
+    }
+  }
+} 
