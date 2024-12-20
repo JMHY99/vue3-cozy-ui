@@ -1,0 +1,27 @@
+.cozy-empty {
+  margin: 0 8px;
+  font-size: 14px;
+  line-height: 1.5715;
+  text-align: center;
+
+  &-image {
+    height: 100px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    img {
+      height: 100%;
+    }
+  }
+
+  &-description {
+    margin-top: 16px;
+    color: rgba(0, 0, 0, 0.45);
+  }
+
+  &-footer {
+    margin-top: 16px;
+  }
+} 

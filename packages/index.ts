@@ -48,6 +48,7 @@ import CPopover from './popover';
 import CTabs, { CTabPane } from './tabs';
 import CTag from './tag';
 import CTable, { CTableColumn } from './table';
+import CEmpty from './empty'
 
 const components = [
   CIcon,
@@ -116,6 +117,7 @@ const components = [
   CTag,
   CTable,
   CTableColumn,
+  CEmpty
 ];
 
 const installComponents = (app: any) => {
@@ -197,6 +199,7 @@ export {
   CTag,
   CTable,
   CTableColumn,
+  CEmpty
 };
 
 export default { install };

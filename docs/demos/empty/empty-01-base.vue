@@ -1,0 +1,3 @@
+<template>
+  <c-empty />
+</template> 
