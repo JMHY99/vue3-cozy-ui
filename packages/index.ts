@@ -44,6 +44,7 @@ import { CCollapse, CCollapsePanel } from './collapse'
 import CComment from './comment'
 import CDescriptions, { CDescriptionsItem } from './descriptions'
 import CTooltip from './tooltip'
+import CPopover from './popover';
 
 const components = [
   CIcon,
@@ -105,7 +106,8 @@ const components = [
   CComment,
   CDescriptions,
   CDescriptionsItem,
-  CTooltip
+  CTooltip,
+  CPopover
 ];
 
 const installComponents = (app: any) => {
@@ -180,7 +182,8 @@ export {
   CComment,
   CDescriptions,
   CDescriptionsItem,
-  CTooltip
+  CTooltip,
+  CPopover
 };
 
 export default { install };
