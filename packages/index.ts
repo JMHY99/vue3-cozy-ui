@@ -49,6 +49,7 @@ import CTabs, { CTabPane } from './tabs';
 import CTag from './tag';
 import CTable, { CTableColumn } from './table';
 import CEmpty from './empty'
+import CImage from './image'
 
 const components = [
   CIcon,
@@ -117,7 +118,8 @@ const components = [
   CTag,
   CTable,
   CTableColumn,
-  CEmpty
+  CEmpty,
+  CImage
 ];
 
 const installComponents = (app: any) => {
@@ -199,7 +201,8 @@ export {
   CTag,
   CTable,
   CTableColumn,
-  CEmpty
+  CEmpty,
+  CImage
 };
 
 export default { install };
