@@ -1,94 +1,156 @@
-@import './variables.scss';
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
 
 .cozy-tooltip {
   position: absolute;
-  z-index: $zindex-tooltip;
+  z-index: 1070;
   display: block;
-  width: max-content;
-  max-width: $tooltip-max-width;
+  max-width: 250px;
+  visibility: visible;
+  font-size: 14px;
+  line-height: 1.5;
 
-  &-trigger {
-    display: inline-block;
+  &-content {
+    min-width: 30px;
+    min-height: 32px;
+    padding: 6px 8px;
+    color: #fff;
+    text-align: left;
+    text-decoration: none;
+    word-wrap: break-word;
+    background-color: rgba(0, 0, 0, 0.85);
+    border-radius: 2px;
+    box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12),
+      0 6px 16px 0 rgba(0, 0, 0, 0.08),
+      0 9px 28px 8px rgba(0, 0, 0, 0.05);
   }
 
-  // 箭头
   &-arrow {
     position: absolute;
     display: block;
-    width: $tooltip-arrow-width;
-    height: $tooltip-arrow-width;
+    width: 8px;
+    height: 8px;
     background: transparent;
-    
-    &::before {
-      position: absolute;
-      width: $tooltip-arrow-width;
-      height: $tooltip-arrow-width;
-      background: $tooltip-bg;
-      content: '';
-      transform: rotate(45deg);
-    }
+    border-style: solid;
+    border-width: 6px;
   }
 
-  // 内容
-  &-content {
-    position: relative;
-    min-width: 30px;
-    padding: $tooltip-padding;
-    color: $tooltip-color;
-    text-align: start;
-    text-decoration: none;
-    word-wrap: break-word;
-    background-color: $tooltip-bg;
-    border-radius: $tooltip-border-radius;
-    box-shadow: $tooltip-box-shadow;
-  }
-
-  // 位置
-  &-placement-top,
-  &-placement-topLeft,
-  &-placement-topRight {
-    padding-bottom: $tooltip-arrow-width;
+  // 上方
+  &-top,
+  &-topLeft,
+  &-topRight {
+    padding-bottom: 8px;
     .cozy-tooltip-arrow {
-      bottom: 0;
-      &::before {
-        box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.07);
-      }
+      bottom: 4px;
+      border-top-color: rgba(0, 0, 0, 0.85);
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
     }
   }
 
-  &-placement-right,
-  &-placement-rightTop,
-  &-placement-rightBottom {
-    padding-left: $tooltip-arrow-width;
+  &-top .cozy-tooltip-arrow {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &-topLeft .cozy-tooltip-arrow {
+    left: 12px;
+  }
+
+  &-topRight .cozy-tooltip-arrow {
+    right: 12px;
+  }
+
+  // 下方
+  &-bottom,
+  &-bottomLeft,
+  &-bottomRight {
+    padding-top: 8px;
     .cozy-tooltip-arrow {
-      left: 0;
-      &::before {
-        box-shadow: -3px 3px 7px rgba(0, 0, 0, 0.07);
-      }
+      top: 4px;
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: rgba(0, 0, 0, 0.85);
+      border-left-color: transparent;
     }
   }
 
-  &-placement-bottom,
-  &-placement-bottomLeft,
-  &-placement-bottomRight {
-    padding-top: $tooltip-arrow-width;
+  &-bottom .cozy-tooltip-arrow {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &-bottomLeft .cozy-tooltip-arrow {
+    left: 12px;
+  }
+
+  &-bottomRight .cozy-tooltip-arrow {
+    right: 12px;
+  }
+
+  // 左侧
+  &-left,
+  &-leftTop,
+  &-leftBottom {
+    padding-right: 8px;
     .cozy-tooltip-arrow {
-      top: 0;
-      &::before {
-        box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.06);
-      }
+      right: 4px;
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: rgba(0, 0, 0, 0.85);
     }
   }
 
-  &-placement-left,
-  &-placement-leftTop,
-  &-placement-leftBottom {
-    padding-right: $tooltip-arrow-width;
+  &-left .cozy-tooltip-arrow {
+    top: 50% !important;
+    transform: translateY(-50%);
+  }
+
+  &-leftTop .cozy-tooltip-arrow {
+    top: 4px !important;
+  }
+
+  &-leftBottom .cozy-tooltip-arrow {
+    bottom: 4px !important;
+  }
+
+  // 右侧
+  &-right,
+  &-rightTop,
+  &-rightBottom {
+    padding-left: 8px;
     .cozy-tooltip-arrow {
-      right: 0;
-      &::before {
-        box-shadow: 3px -3px 7px rgba(0, 0, 0, 0.07);
-      }
+      left: 4px;
+      border-top-color: transparent;
+      border-right-color: rgba(0, 0, 0, 0.85);
+      border-bottom-color: transparent;
+      border-left-color: transparent;
     }
   }
-} 
+
+  &-right .cozy-tooltip-arrow {
+    top: 50% !important;
+    transform: translateY(-50%);
+  }
+
+  &-rightTop .cozy-tooltip-arrow {
+    top: 4px !important;
+  }
+
+  &-rightBottom .cozy-tooltip-arrow {
+    bottom: 4px !important;
+  }
+}
+
+.cozy-tooltip-trigger {
+  display: inline-block;
+}

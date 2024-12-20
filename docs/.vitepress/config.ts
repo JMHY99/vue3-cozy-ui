@@ -134,10 +134,6 @@ export default {
                 },
                 { text: "Empty 空状态", link: "/components/empty.md" },
                 { text: "Image 图片", link: "/components/image.md" },
-                {
-                  text: "ImagePreview 图片预览",
-                  link: "/components/image-preview.md",
-                },
                 { text: "List 列表", link: "/components/list.md" },
                 { text: "Skeleton 骨架屏", link: "/components/skeleton.md" },
                 { text: "Table 表格", link: "/components/table.md" },
@@ -147,6 +143,7 @@ export default {
                 { text: "Transfer 穿梭框", link: "/components/transfer.md" },
                 { text: "Tree 树", link: "/components/tree.md" },
                 { text: "Tooltip 文字提示", link: "/components/tooltip.md" },
+                { text: "Popover 气泡卡片", link: "/components/popover.md" },
               ],
             },
             {
