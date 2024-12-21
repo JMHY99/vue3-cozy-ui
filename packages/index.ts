@@ -51,6 +51,7 @@ import CTable, { CTableColumn } from './table';
 import CEmpty from './empty'
 import CImage from './image'
 import CList, { CListItem } from './list'
+import CSkeleton from './skeleton'
 
 const components = [
   CIcon,
@@ -122,7 +123,8 @@ const components = [
   CEmpty,
   CImage,
   CList,
-  CListItem
+  CListItem,
+  CSkeleton
 ];
 
 const installComponents = (app: any) => {
@@ -207,7 +209,8 @@ export {
   CEmpty,
   CImage,
   CList,
-  CListItem
+  CListItem,
+  CSkeleton
 };
 
 export default { install };

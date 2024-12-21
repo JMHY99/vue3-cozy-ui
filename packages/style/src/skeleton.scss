@@ -1,0 +1,112 @@
+@import './variables.scss';
+
+.cozy-skeleton {
+  display: flex;
+  width: 100%;
+
+  // 重置标签样式
+  h3,
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+  }
+
+  // 基础样式
+  &-avatar,
+  &-title,
+  &-paragraph li {
+    background: $skeleton-color;
+    background-size: 400% 100%;
+  }
+
+  // 动画效果
+  &-active {
+    .cozy-skeleton-avatar,
+    .cozy-skeleton-title,
+    .cozy-skeleton-paragraph li {
+      background: linear-gradient(
+        90deg,
+        $skeleton-color 25%,
+        $skeleton-to-color 37%,
+        $skeleton-color 63%
+      );
+      background-size: 400% 100%;
+      animation: skeleton-loading 1.4s ease infinite;
+    }
+  }
+
+  // 头像样式
+  &-avatar {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    margin-right: 16px;
+    border-radius: 50%;
+
+    &-large {
+      width: 40px;
+      height: 40px;
+    }
+
+    &-small {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  // 内容区域
+  &-content {
+    flex: 1;
+  }
+
+  // 标题样式
+  &-title {
+    display: block;
+    width: 100%;
+    height: 16px;
+    border-radius: 4px;
+
+    & + .cozy-skeleton-paragraph {
+      margin-top: 24px;
+    }
+  }
+
+  // 段落样式
+  &-paragraph {
+    list-style: none;
+
+    > li {
+      width: 100%;
+      height: 16px;
+      list-style: none;
+      border-radius: 4px;
+
+      &:last-child:not(:first-child):not(:nth-child(2)) {
+        width: 60%;
+      }
+
+      + li {
+        margin-top: 16px;
+      }
+    }
+  }
+
+  // 圆角样式
+  &-round {
+    .cozy-skeleton-title,
+    .cozy-skeleton-paragraph li {
+      border-radius: 100px;
+    }
+  }
+}
+
+// 加载动画
+@keyframes skeleton-loading {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+} 
