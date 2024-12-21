@@ -8,7 +8,9 @@
         'cozy-list-split': split,
         'cozy-list-bordered': bordered,
         'cozy-list-loading': loading,
-        'cozy-list-empty': !loading && (!dataSource || dataSource.length === 0)
+        'cozy-list-empty': !loading && (!dataSource || dataSource.length === 0),
+        'cozy-list-vertical': itemLayout === 'vertical',
+        'cozy-list-grid': grid
       }
     ]"
   >
@@ -32,17 +34,34 @@
             <CEmpty />
           </slot>
         </div>
-        <ul v-else class="cozy-list-items">
-          <li
-            v-for="(item, index) in dataSource"
-            :key="item.key || index"
-            class="cozy-list-item"
-          >
-            <slot name="item" :item="item" :index="index">
-              {{ item }}
-            </slot>
-          </li>
-        </ul>
+        <template v-else>
+          <!-- 栅格布局 -->
+          <div v-if="grid" :class="gridClasses">
+            <div
+              v-for="(item, index) in dataSource"
+              :key="item.key || index"
+              :class="colClasses"
+            >
+              <div class="cozy-list-grid-item">
+                <slot name="item" :item="item" :index="index">
+                  {{ item }}
+                </slot>
+              </div>
+            </div>
+          </div>
+          <!-- 普通列表布局 -->
+          <ul v-else class="cozy-list-items">
+            <li
+              v-for="(item, index) in dataSource"
+              :key="item.key || index"
+              class="cozy-list-item"
+            >
+              <slot name="item" :item="item" :index="index">
+                {{ item }}
+              </slot>
+            </li>
+          </ul>
+        </template>
       </template>
     </div>
 
@@ -60,7 +79,7 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { computed } from 'vue';
 import CEmpty from '../empty';
 import CPagination from '../pagination';
@@ -69,6 +88,18 @@ import CPagination from '../pagination';
 defineOptions({
   name: 'CList'
 });
+
+// 栅格配置接口
+interface GridConfig {
+  gutter?: number;
+  column?: number;
+  xs?: number;
+  sm?: number;
+  md?: number;
+  lg?: number;
+  xl?: number;
+  xxl?: number;
+}
 
 // 定义Props接口
 interface ListProps {
@@ -88,6 +119,10 @@ interface ListProps {
   loading?: boolean;
   // 对应的分页配置
   pagination?: Record<string, any>;
+  // 栅格配置
+  grid?: GridConfig;
+  // 列表布局方式
+  itemLayout?: 'horizontal' | 'vertical';
 }
 
 // Props默认值
@@ -95,6 +130,39 @@ const props = withDefaults(defineProps<ListProps>(), {
   bordered: false,
   split: true,
   size: 'default',
-  loading: false
+  loading: false,
+  itemLayout: 'horizontal'
+});
+
+// 定义事件
+const emit = defineEmits<{
+  (e: 'change', page: number, pageSize: number): void;
+}>();
+
+// 计算栅格类名
+const gridClasses = computed(() => {
+  if (!props.grid) return '';
+  const { gutter } = props.grid;
+  return [
+    'cozy-row',
+    { [`cozy-row-gutter-${gutter}`]: gutter }
+  ];
+});
+
+// 计算列类名
+const colClasses = computed(() => {
+  if (!props.grid) return '';
+  const { column = 4, xs, sm, md, lg, xl, xxl } = props.grid;
+  const span = 24 / column;
+  return [
+    'cozy-col',
+    `cozy-col-${span}`,
+    xs && `cozy-col-xs-${24 / xs}`,
+    sm && `cozy-col-sm-${24 / sm}`,
+    md && `cozy-col-md-${24 / md}`,
+    lg && `cozy-col-lg-${24 / lg}`,
+    xl && `cozy-col-xl-${24 / xl}`,
+    xxl && `cozy-col-xxl-${24 / xxl}`
+  ];
 });
 </script> 

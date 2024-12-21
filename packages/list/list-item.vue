@@ -3,21 +3,7 @@
   <div class="cozy-list-item">
     <!-- 列表项元信息 -->
     <div v-if="$slots.meta" class="cozy-list-item-meta">
-      <slot name="meta">
-        <!-- 头像 -->
-        <div v-if="$slots.avatar" class="cozy-list-item-meta-avatar">
-          <slot name="avatar"></slot>
-        </div>
-        <!-- 标题和描述 -->
-        <div class="cozy-list-item-meta-content">
-          <div v-if="$slots.title" class="cozy-list-item-meta-title">
-            <slot name="title"></slot>
-          </div>
-          <div v-if="$slots.description" class="cozy-list-item-meta-description">
-            <slot name="description"></slot>
-          </div>
-        </div>
-      </slot>
+      <slot name="meta"></slot>
     </div>
 
     <!-- 列表项内容 -->
@@ -39,7 +25,7 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 // 定义组件名称
 defineOptions({
   name: 'CListItem'

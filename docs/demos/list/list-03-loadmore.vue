@@ -8,10 +8,16 @@
     <template #item="{ item }">
       <c-list-item>
         <template #meta>
-          <template #title>
-            <a href="javascript:;">{{ item.name.last }}</a>
-          </template>
-          <template #description>{{ item.email }}</template>
+          <div class="cozy-list-item-meta">
+            <div class="cozy-list-item-meta-content">
+              <div class="cozy-list-item-meta-title">
+                <a href="javascript:;">{{ item.name.last }}</a>
+              </div>
+              <div class="cozy-list-item-meta-description">
+                {{ item.email }}
+              </div>
+            </div>
+          </div>
         </template>
         <template #actions>
           <a href="javascript:;">编辑</a>
@@ -22,13 +28,13 @@
   </c-list>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 
 const loading = ref(false)
 const data = ref([])
 const pagination = ref({
-  onChange: (page) => {
+  onChange: (page: number) => {
     fetchData(page)
   },
   pageSize: 3,
@@ -46,7 +52,7 @@ const fetchData = (page = 1) => {
 
 fetchData(1)
 
-const handleChange = (page) => {
+const handleChange = (page: number) => {
   fetchData(page)
 }
 </script> 

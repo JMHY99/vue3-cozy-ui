@@ -134,4 +134,117 @@
       padding: $spacing-sm $spacing-lg;
     }
   }
+
+  // 垂直布局
+  &-vertical {
+    .cozy-list-item {
+      flex-direction: column;
+      align-items: stretch;
+
+      &-meta {
+        margin-bottom: $spacing-lg;
+      }
+
+      &-content {
+        margin: $spacing-md 0;
+      }
+
+      &-actions {
+        margin-top: $spacing-lg;
+        margin-left: 0;
+      }
+
+      &-extra {
+        margin-top: $spacing-lg;
+        margin-left: 0;
+        text-align: center;
+      }
+    }
+  }
+
+  // 栅格布局
+  &-grid {
+    .cozy-list-item {
+      border-bottom: none;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  &-grid-item {
+    padding: $spacing-lg;
+    border: $border-width-base $border-style-base $border-color-split;
+    border-radius: $border-radius-base;
+    transition: all 0.3s;
+
+    &:hover {
+      box-shadow: $shadow-1;
+    }
+  }
+}
+
+// 栅格系统
+.cozy-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 calc(-1 * #{$spacing-lg});
+}
+
+.cozy-col {
+  padding: $spacing-lg;
+}
+
+@for $i from 1 through 24 {
+  .cozy-col-#{$i} {
+    width: calc(100% * #{$i} / 24);
+  }
+}
+
+// 响应式
+@media screen and (max-width: 576px) {
+  @for $i from 1 through 24 {
+    .cozy-col-xs-#{$i} {
+      width: calc(100% * #{$i} / 24);
+    }
+  }
+}
+
+@media screen and (min-width: 576px) {
+  @for $i from 1 through 24 {
+    .cozy-col-sm-#{$i} {
+      width: calc(100% * #{$i} / 24);
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  @for $i from 1 through 24 {
+    .cozy-col-md-#{$i} {
+      width: calc(100% * #{$i} / 24);
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  @for $i from 1 through 24 {
+    .cozy-col-lg-#{$i} {
+      width: calc(100% * #{$i} / 24);
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  @for $i from 1 through 24 {
+    .cozy-col-xl-#{$i} {
+      width: calc(100% * #{$i} / 24);
+    }
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  @for $i from 1 through 24 {
+    .cozy-col-xxl-#{$i} {
+      width: calc(100% * #{$i} / 24);
+    }
+  }
 } 
