@@ -179,6 +179,7 @@ export default {
               text: "其他",
               items: [
                 { text: "Watermark 水印", link: "/components/watermark.md" },
+                { text: "Spin 加载中", link: "/components/spin.md" },
               ],
             },
           ],
