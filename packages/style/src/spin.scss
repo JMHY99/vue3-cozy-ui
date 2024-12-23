@@ -1,31 +1,16 @@
 @import './variables.scss';
 
 // 圆环动画
-@keyframes cozy-spin-circle {
-  0% {
-    stroke-dasharray: 1, 150;
-    stroke-dashoffset: 0;
-  }
-  50% {
-    stroke-dasharray: 90, 150;
-    stroke-dashoffset: -35;
-  }
-  100% {
-    stroke-dasharray: 90, 150;
-    stroke-dashoffset: -124;
+@keyframes cozy-spin {
+  to {
+    transform: rotate(360deg);
   }
 }
 
 // 波浪动画
 @keyframes cozy-spin-wave {
-  0% {
-    transform: scaleY(0.4);
-  }
   50% {
-    transform: scaleY(1);
-  }
-  100% {
-    transform: scaleY(0.4);
+    transform: scaleY(0.3);
   }
 }
 
@@ -39,18 +24,28 @@
   }
 }
 
-// 脉冲动画
-@keyframes cozy-spin-pulse {
+// 心电图动画
+@keyframes cozy-spin-travel {
   0% {
-    transform: scale(0);
-    opacity: 0.5;
+    stroke-dashoffset: 100;
   }
-  50% {
-    transform: scale(1);
+
+  75% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes cozy-spin-fade {
+  0% {
     opacity: 0;
   }
+
+  20%,
+  55% {
+    opacity: 1;
+  }
+
   100% {
-    transform: scale(1.2);
     opacity: 0;
   }
 }
@@ -89,6 +84,41 @@
   }
   100% {
     transform: rotate(-360deg);
+  }
+}
+
+// 圆环旋转动画
+@keyframes cozy-spin-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  65%,
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cozy-spin-smooth-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// 圆环拉伸动画
+@keyframes cozy-spin-stretch {
+  0% {
+    stroke-dasharray: 0, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 75, 150;
+    stroke-dashoffset: -25;
+  }
+  100% {
+    stroke-dashoffset: -100;
   }
 }
 
@@ -132,82 +162,138 @@
   &-circle {
     position: relative;
     display: inline-block;
-    width: 24px;
-    height: 24px;
-    animation: cozy-spin 2s linear infinite;
 
-    svg {
-      width: 100%;
+    .container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      height: 24px;
+      width: 24px;
+      animation: cozy-spin-smooth-rotate 2.7s linear infinite;
+    }
+
+    .dot {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
       height: 100%;
-      
-      circle {
-        fill: none;
-        stroke: $color-primary;
-        stroke-width: 3;
-        stroke-linecap: round;
-        animation: cozy-spin-circle 1.5s ease-in-out infinite;
+      width: 100%;
+      animation: cozy-spin-rotate 1.5s ease-in-out infinite;
+
+      &::before {
+        content: '';
+        height: 4px;
+        width: 4px;
+        border-radius: 50%;
+        background-color: $color-primary;
+        transition: background-color 0.3s ease;
+      }
+
+      &:nth-child(2),
+      &:nth-child(2)::before {
+        animation-delay: -0.625s;
+      }
+
+      &:nth-child(3),
+      &:nth-child(3)::before {
+        animation-delay: -0.5s;
+      }
+
+      &:nth-child(4),
+      &:nth-child(4)::before {
+        animation-delay: -0.375s;
+      }
+
+      &:nth-child(5),
+      &:nth-child(5)::before {
+        animation-delay: -0.25s;
+      }
+
+      &:nth-child(6),
+      &:nth-child(6)::before {
+        animation-delay: -0.125s;
       }
     }
 
     &-small {
-      width: 16px;
-      height: 16px;
+      .container {
+        height: 18px;
+        width: 18px;
+      }
 
-      svg circle {
-        stroke-width: 2;
+      .dot::before {
+        height: 3px;
+        width: 3px;
       }
     }
 
     &-large {
-      width: 36px;
-      height: 36px;
+      .container {
+        height: 30px;
+        width: 30px;
+      }
 
-      svg circle {
-        stroke-width: 4;
+      .dot::before {
+        height: 5px;
+        width: 5px;
       }
     }
   }
 
   // 波浪加载
   &-wave {
+    position: relative;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
-    width: 30px;
-    height: 20px;
-    gap: 2px;
+    width: 35px;
+    height: 35px;
+    gap: 1.75px;
 
-    i {
-      display: inline-block;
-      width: 2px;
-      height: 100%;
+    .bar {
+      width: 3.5px;
+      height: 25px;
       background-color: $color-primary;
-      animation: cozy-spin-wave 1s ease-in-out infinite;
-      transform-origin: center center;
+      transform-origin: center;
 
-      &:nth-child(2) { animation-delay: 0.1s; }
-      &:nth-child(3) { animation-delay: 0.2s; }
-      &:nth-child(4) { animation-delay: 0.3s; }
-      &:nth-child(5) { animation-delay: 0.4s; }
+      &:nth-child(1) {
+        animation: cozy-spin-wave 1s ease -0.45s infinite;
+      }
+
+      &:nth-child(2) {
+        animation: cozy-spin-wave 1s ease -0.3s infinite;
+      }
+
+      &:nth-child(3) {
+        animation: cozy-spin-wave 1s ease -0.15s infinite;
+      }
+
+      &:nth-child(4) {
+        animation: cozy-spin-wave 1s ease infinite;
+      }
     }
 
     &-small {
-      width: 20px;
-      height: 14px;
-      gap: 1px;
+      width: 24px;
+      height: 24px;
+      gap: 1.25px;
 
-      i {
-        width: 1px;
+      .bar {
+        width: 2.5px;
       }
     }
 
     &-large {
-      width: 40px;
-      height: 28px;
-      gap: 3px;
+      width: 48px;
+      height: 48px;
+      gap: 2.25px;
 
-      i {
-        width: 3px;
+      .bar {
+        width: 4.5px;
       }
     }
   }
@@ -264,44 +350,52 @@
     }
   }
 
-  // 脉冲加载
-  &-pulse {
+  // 心电图加载
+  &-cardio {
     position: relative;
-    width: 24px;
-    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    .container {
+      height: 31.5px;
+      width: 45px;
+      transform-origin: center;
+      overflow: visible;
+    }
 
-    i {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: $color-primary;
-      border-radius: 50%;
-      animation: cozy-spin-pulse 1.2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+    .car {
+      stroke: $color-primary;
+      stroke-dasharray: 100;
+      stroke-dashoffset: 0;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      animation: 
+        cozy-spin-travel 1.75s ease-in-out infinite,
+        cozy-spin-fade 1.75s ease-out infinite;
+      will-change: stroke-dasharray, stroke-dashoffset;
+      transition: stroke 0.5s ease;
+    }
 
-      &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: $color-primary;
-        border-radius: 50%;
-        animation: cozy-spin-pulse 1.2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
-        animation-delay: -0.6s;
-      }
+    .track {
+      stroke: $color-primary;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      opacity: 0.1;
     }
 
     &-small {
-      width: 16px;
-      height: 16px;
+      .container {
+        height: 24.5px;
+        width: 35px;
+      }
     }
 
     &-large {
-      width: 36px;
-      height: 36px;
+      .container {
+        height: 38.5px;
+        width: 55px;
+      }
     }
   }
 

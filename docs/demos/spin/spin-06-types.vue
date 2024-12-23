@@ -13,8 +13,8 @@
       <span class="type-name">bounce</span>
     </div>
     <div class="type-item">
-      <c-spin type="pulse" />
-      <span class="type-name">pulse</span>
+      <c-spin type="cardio" />
+      <span class="type-name">cardio</span>
     </div>
     <div class="type-item">
       <c-spin type="square" />

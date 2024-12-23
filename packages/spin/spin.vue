@@ -22,9 +22,14 @@
           'cozy-spin-circle-large': size === 'large'
         }"
       >
-        <svg viewBox="0 0 50 50">
-          <circle cx="25" cy="25" r="20"></circle>
-        </svg>
+        <div class="container">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
       </span>
 
       <!-- 波浪加载 -->
@@ -36,11 +41,10 @@
           'cozy-spin-wave-large': size === 'large'
         }"
       >
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
       </span>
 
       <!-- 弹跳加载 -->
@@ -57,16 +61,39 @@
         <i></i>
       </span>
 
-      <!-- 脉冲加载 -->
+      <!-- 脉冲加载改为心电图加载 -->
       <span 
-        v-else-if="type === 'pulse'"
-        class="cozy-spin-pulse"
+        v-else-if="type === 'cardio'"
+        class="cozy-spin-cardio"
         :class="{
-          'cozy-spin-pulse-small': size === 'small',
-          'cozy-spin-pulse-large': size === 'large'
+          'cozy-spin-cardio-small': size === 'small',
+          'cozy-spin-cardio-large': size === 'large'
         }"
       >
-        <i></i>
+        <svg
+          class="container" 
+          x="0px" 
+          y="0px"
+          viewBox="0 0 50 31.25"
+          height="31.25"
+          width="50"
+          preserveAspectRatio='xMidYMid meet'
+        >
+          <path 
+            class="track"
+            stroke-width="4" 
+            fill="none" 
+            pathlength="100"
+            d="M0.625 21.5 h10.25 l3.75 -5.875 l7.375 15 l9.75 -30 l7.375 20.875 v0 h10.25"
+          />
+          <path 
+            class="car"
+            stroke-width="4" 
+            fill="none" 
+            pathlength="100"
+            d="M0.625 21.5 h10.25 l3.75 -5.875 l7.375 15 l9.75 -30 l7.375 20.875 v0 h10.25"
+          />
+        </svg>
       </span>
 
       <!-- 方块加载 -->
@@ -104,12 +131,12 @@ const props = withDefaults(defineProps<{
   spinning?: boolean;
   /** 加载指示符的大小 */
   size?: 'small' | 'default' | 'large';
-  /** 当作为包裹元素时，可以自定义延迟显示加载状态 */
+  /** 当作��包裹元素时，可以自定义延迟显示加载状态 */
   delay?: number;
   /** 自定义描述文案 */
   tip?: string;
   /** 加载动画类型 */
-  type?: 'circle' | 'wave' | 'bounce' | 'pulse' | 'square';
+  type?: 'circle' | 'wave' | 'bounce' | 'cardio' | 'square';
 }>(), {
   spinning: true,
   size: 'default',
