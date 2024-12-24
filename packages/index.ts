@@ -53,6 +53,7 @@ import CImage from './image'
 import CList, { CListItem } from './list'
 import CSkeleton from './skeleton'
 import CSpin from './spin'
+import { CTimeline, CTimelineItem } from './timeline'
 
 const components = [
   CIcon,
@@ -126,7 +127,9 @@ const components = [
   CList,
   CListItem,
   CSkeleton,
-  CSpin
+  CSpin,
+  CTimeline,
+  CTimelineItem
 ];
 
 const installComponents = (app: any) => {
@@ -213,7 +216,9 @@ export {
   CList,
   CListItem,
   CSkeleton,
-  CSpin
+  CSpin,
+  CTimeline,
+  CTimelineItem
 };
 
 export default { install };
