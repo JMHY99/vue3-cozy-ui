@@ -57,7 +57,7 @@
   }
 
   &-top .cozy-tooltip-arrow {
-    left: 50%;
+    left: 50% !important;
     transform: translateX(-50%);
   }
 
@@ -84,7 +84,7 @@
   }
 
   &-bottom .cozy-tooltip-arrow {
-    left: 50%;
+    left: 50% !important;
     transform: translateX(-50%);
   }
 
