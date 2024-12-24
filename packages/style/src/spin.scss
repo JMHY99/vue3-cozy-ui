@@ -122,6 +122,40 @@
   }
 }
 
+// 果冻动画
+@keyframes cozy-spin-rotate-jelly {
+  0%,
+  49.999%,
+  100% {
+    transform: none;
+  }
+
+  50%,
+  99.999% {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes cozy-spin-shift-left {
+  0%,
+  100% {
+    transform: translateX(0%);
+  }
+  50% {
+    transform: scale(0.65) translateX(-75%);
+  }
+}
+
+@keyframes cozy-spin-shift-right {
+  0%,
+  100% {
+    transform: translateX(0%);
+  }
+  50% {
+    transform: scale(0.65) translateX(75%);
+  }
+}
+
 .cozy-spin {
   position: absolute;
   display: flex;
@@ -458,6 +492,65 @@
   &-text {
     margin-top: 8px;
     color: $color-primary;
+  }
+
+  // 果冻加载
+  &-jelly {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    .container {
+      --uib-size: 36px;
+      --uib-speed: 0.9s;
+      position: relative;
+      height: calc(var(--uib-size) / 2);
+      width: var(--uib-size);
+      filter: url('#uib-jelly-ooze');
+      animation: cozy-spin-rotate-jelly calc(var(--uib-speed) * 2) linear infinite;
+      will-change: transform;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0%;
+        left: 25%;
+        width: 50%;
+        height: 100%;
+        background-color: $color-primary;
+        border-radius: 100%;
+        will-change: transform;
+        transition: background-color 0.3s ease;
+      }
+
+      &::before {
+        animation: cozy-spin-shift-left var(--uib-speed) ease infinite;
+      }
+
+      &::after {
+        animation: cozy-spin-shift-right var(--uib-speed) ease infinite;
+      }
+    }
+
+    .svg {
+      width: 0;
+      height: 0;
+      position: absolute;
+    }
+
+    &-small {
+      .container {
+        --uib-size: 26px;
+      }
+    }
+
+    &-large {
+      .container {
+        --uib-size: 46px;
+      }
+    }
   }
 }
 

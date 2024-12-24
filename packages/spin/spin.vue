@@ -111,6 +111,36 @@
         <i></i>
       </span>
 
+      <!-- 果冻加载 -->
+      <span
+        v-else-if="type === 'jelly'"
+        class="cozy-spin-jelly"
+        :class="{
+          'cozy-spin-jelly-small': size === 'small',
+          'cozy-spin-jelly-large': size === 'large'
+        }"
+      >
+        <div class="container"></div>
+        <svg width="0" height="0" class="svg">
+          <defs>
+            <filter id="uib-jelly-ooze">
+              <feGaussianBlur
+                in="SourceGraphic"
+                stdDeviation="5"
+                result="blur"
+              />
+              <feColorMatrix
+                in="blur"
+                mode="matrix"
+                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+                result="ooze"
+              />
+              <feBlend in="SourceGraphic" in2="ooze" />
+            </filter>
+          </defs>
+        </svg>
+      </span>
+
       <!-- 加载提示文本 -->
       <div v-if="tip" class="cozy-spin-text">{{ tip }}</div>
     </div>
@@ -131,12 +161,12 @@ const props = withDefaults(defineProps<{
   spinning?: boolean;
   /** 加载指示符的大小 */
   size?: 'small' | 'default' | 'large';
-  /** 当作��包裹元素时，可以自定义延迟显示加载状态 */
+  /** 当作包裹元素时，可以自定义延迟显示加载状态 */
   delay?: number;
   /** 自定义描述文案 */
   tip?: string;
   /** 加载动画类型 */
-  type?: 'circle' | 'wave' | 'bounce' | 'cardio' | 'square';
+  type?: 'circle' | 'wave' | 'bounce' | 'cardio' | 'square' | 'jelly';
 }>(), {
   spinning: true,
   size: 'default',

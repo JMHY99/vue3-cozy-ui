@@ -20,6 +20,10 @@
       <c-spin type="square" />
       <span class="type-name">square</span>
     </div>
+    <div class="type-item">
+      <c-spin type="jelly" />
+      <span class="type-name">jelly</span>
+    </div>
   </div>
 </template>
 

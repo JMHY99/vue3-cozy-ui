@@ -32,7 +32,7 @@
 
 ### 加载类型
 
-提供了五种加载动画类型，可以根据场景选择。
+提供了六种加载动画类型，可以根据场景选择。
 
 <demo src="../demos/spin/spin-06-types.vue"></demo>
 
@@ -46,7 +46,7 @@
 | size | 组件大小 | string | small / default / large | default |
 | tip | 当作为包裹元素时，可以自定义描述文案 | string | - | - |
 | delay | 延迟显示加载效果的时间（防止闪烁） | number | - | 0 |
-| type | 加载动画类型 | string | circle / wave / bounce / cardio / square | circle |
+| type | 加载动画类型 | string | circle / wave / bounce / cardio / square / jelly  |
 
 #### Spin 插槽
 
