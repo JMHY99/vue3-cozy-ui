@@ -114,6 +114,8 @@ export default {
                   text: "TimePicker 时间选择器",
                   link: "/components/time-picker.md",
                 },
+                { text: "Transfer 穿梭框", link: "/components/transfer.md" },
+                { text: "TreeSelect 树选择", link: "/components/tree-select.md" },
               ],
             },
             {
@@ -140,7 +142,6 @@ export default {
                 { text: "Tabs 标签页", link: "/components/tabs.md" },
                 { text: "Tag 标签", link: "/components/tag.md" },
                 { text: "Timeline 时间轴", link: "/components/timeline.md" },
-                { text: "Transfer 穿梭框", link: "/components/transfer.md" },
                 { text: "Tree 树", link: "/components/tree.md" },
                 { text: "Tooltip 文字提示", link: "/components/tooltip.md" },
                 { text: "Popover 气泡卡片", link: "/components/popover.md" },

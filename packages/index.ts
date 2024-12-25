@@ -9,7 +9,7 @@ import CHeader from "./layout-header";
 import CSider from "./layout-sider";
 import CAffix from "./affix";
 import CAlert from "./alert";
-import { CAvatar, CAvatarGroup } from './avatar'
+import { CAvatar, CAvatarGroup } from "./avatar";
 import CSpace from "./space";
 import CWatermark from "./watermark";
 import CInput from "./input";
@@ -37,23 +37,24 @@ import CPagination from "./pagination";
 import { CSteps, CStep } from "./steps";
 import CDropdown from "./dropdown";
 import { CAnchor, CAnchorLink } from "./anchor";
-import CBadge from './badge'
-import CCard from './card'
-import { CCarousel, CCarouselItem } from './carousel'
-import { CCollapse, CCollapsePanel } from './collapse'
-import CComment from './comment'
-import CDescriptions, { CDescriptionsItem } from './descriptions'
-import CTooltip from './tooltip'
-import CPopover from './popover';
-import CTabs, { CTabPane } from './tabs';
-import CTag from './tag';
-import CTable, { CTableColumn } from './table';
-import CEmpty from './empty'
-import CImage from './image'
-import CList, { CListItem } from './list'
-import CSkeleton from './skeleton'
-import CSpin from './spin'
-import { CTimeline, CTimelineItem } from './timeline'
+import CBadge from "./badge";
+import CCard from "./card";
+import { CCarousel, CCarouselItem } from "./carousel";
+import { CCollapse, CCollapsePanel } from "./collapse";
+import CComment from "./comment";
+import CDescriptions, { CDescriptionsItem } from "./descriptions";
+import CTooltip from "./tooltip";
+import CPopover from "./popover";
+import CTabs, { CTabPane } from "./tabs";
+import CTag from "./tag";
+import CTable, { CTableColumn } from "./table";
+import CEmpty from "./empty";
+import CImage from "./image";
+import CList, { CListItem } from "./list";
+import CSkeleton from "./skeleton";
+import CSpin from "./spin";
+import { CTimeline, CTimelineItem } from "./timeline";
+import CTransfer from "./transfer";
 
 const components = [
   CIcon,
@@ -129,7 +130,8 @@ const components = [
   CSkeleton,
   CSpin,
   CTimeline,
-  CTimelineItem
+  CTimelineItem,
+  CTransfer,
 ];
 
 const installComponents = (app: any) => {
@@ -218,7 +220,8 @@ export {
   CSkeleton,
   CSpin,
   CTimeline,
-  CTimelineItem
+  CTimelineItem,
+  CTransfer,
 };
 
 export default { install };
