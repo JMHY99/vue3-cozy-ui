@@ -55,6 +55,8 @@ import CSkeleton from "./skeleton";
 import CSpin from "./spin";
 import { CTimeline, CTimelineItem } from "./timeline";
 import CTransfer from "./transfer";
+import CTree from "./tree";
+import CTreeSelect from "./tree-select";
 
 const components = [
   CIcon,
@@ -132,6 +134,8 @@ const components = [
   CTimeline,
   CTimelineItem,
   CTransfer,
+  CTree,
+  CTreeSelect,
 ];
 
 const installComponents = (app: any) => {
@@ -222,6 +226,8 @@ export {
   CTimeline,
   CTimelineItem,
   CTransfer,
+  CTree,
+  CTreeSelect,
 };
 
 export default { install };

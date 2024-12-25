@@ -1,0 +1,189 @@
+@import './variables.scss';
+
+.cozy-tree-select {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  min-width: 0;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  line-height: 1.5715;
+
+  // 选择框
+  &-selector {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 4px 11px;
+    min-height: 32px;
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    transition: all 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      border-color: #40a9ff;
+    }
+  }
+
+  // 选择项
+  &-selection {
+    &-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      max-width: 100%;
+      height: 24px;
+      margin-right: 4px;
+      padding: 0 4px 0 8px;
+      color: rgba(0, 0, 0, 0.85);
+      background-color: #f5f5f5;
+      border-radius: 2px;
+      line-height: 22px;
+
+      &-content {
+        display: inline-block;
+        margin-right: 4px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      &-remove {
+        display: inline-block;
+        padding: 0 4px;
+        color: rgba(0, 0, 0, 0.45);
+        font-size: 12px;
+        cursor: pointer;
+
+        &:hover {
+          color: rgba(0, 0, 0, 0.85);
+        }
+      }
+    }
+
+    &-placeholder {
+      color: #bfbfbf;
+    }
+  }
+
+  // 清除按钮
+  &-clear {
+    position: absolute;
+    top: 50%;
+    right: 28px;
+    z-index: 1;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-top: -6px;
+    color: rgba(0, 0, 0, 0.25);
+    font-size: 12px;
+    font-style: normal;
+    line-height: 1;
+    text-align: center;
+    text-transform: none;
+    background: #fff;
+    cursor: pointer;
+    opacity: 0;
+    transition: color 0.3s ease, opacity 0.15s ease;
+    text-rendering: auto;
+
+    &:hover {
+      color: rgba(0, 0, 0, 0.45);
+    }
+  }
+
+  &:hover {
+    .cozy-tree-select-clear {
+      opacity: 1;
+    }
+  }
+
+  // 箭头图标
+  &-arrow {
+    position: absolute;
+    top: 50%;
+    right: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 12px;
+    height: 12px;
+    margin-top: -6px;
+    color: rgba(0, 0, 0, 0.25);
+    font-size: 12px;
+    line-height: 1;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  // 下拉面板
+  &-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1050;
+    margin: 4px 0;
+    padding: 4px 0;
+    overflow: auto;
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    outline: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+    &-search {
+      padding: 4px 8px;
+      
+      .cozy-input {
+        width: 100%;
+      }
+    }
+  }
+
+  // 禁用状态
+  &-disabled {
+    background: #f5f5f5;
+    cursor: not-allowed;
+
+    .cozy-tree-select-selector {
+      background: #f5f5f5;
+      border-color: #d9d9d9;
+      cursor: not-allowed;
+
+      &:hover {
+        border-color: #d9d9d9;
+      }
+    }
+
+    .cozy-tree-select-selection-item {
+      color: rgba(0, 0, 0, 0.25);
+      background: #f5f5f5;
+    }
+  }
+
+  // 聚焦状态
+  &-focused {
+    .cozy-tree-select-selector {
+      border-color: #40a9ff;
+      box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+    }
+  }
+
+  // 展开状态
+  &-open {
+    .cozy-tree-select-arrow {
+      transform: rotate(180deg);
+    }
+  }
+
+  // 多选模式
+  &-multiple {
+    .cozy-tree-select-selector {
+      padding: 1px 4px;
+    }
+  }
+} 
