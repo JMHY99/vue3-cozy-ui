@@ -182,6 +182,7 @@ export default {
                 { text: "Watermark 水印", link: "/components/watermark.md" },
                 { text: "Spin 加载中", link: "/components/spin.md" },
                 { text: "Progress 进度条", link: "/components/progress.md" },
+                { text: "Result 结果", link: "/components/result.md" },
               ],
             },
           ],

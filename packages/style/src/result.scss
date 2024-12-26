@@ -1,0 +1,87 @@
+@import "./variables.scss";
+
+.cozy-result {
+  padding: 48px 32px;
+  text-align: center;
+
+  &-icon {
+    margin-bottom: 24px;
+
+    .c-icon {
+      &.success {
+        color: $color-success;
+      }
+      &.error {
+        color: $color-danger;
+      }
+      &.info {
+        color: $color-info;
+      }
+      &.warning {
+        color: $color-warning;
+      }
+    }
+  }
+
+  &-error-image {
+    width: 254px;
+    height: 203px;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    &.cozy-result-403 {
+      background-image: url('../../result/403.png');
+    }
+
+    &.cozy-result-404 {
+      background-image: url('../../result/404.png');
+    }
+
+    &.cozy-result-500 {
+      background-image: url('../../result/500.png');
+    }
+  }
+
+  &-title {
+    color: $text-color;
+    font-size: 24px;
+    line-height: 1.8;
+    margin-bottom: 8px;
+  }
+
+  &-subtitle {
+    color: $text-color-secondary;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  &-extra {
+    margin-bottom: 32px;
+  }
+
+  &-content {
+    padding: 24px 40px;
+    background-color: $background-color-light;
+    border-radius: $border-radius-base;
+  }
+
+  // 状态样式
+  &-success &-icon {
+    color: $color-success;
+  }
+
+  &-error &-icon {
+    color: $color-danger;
+  }
+
+  &-info &-icon {
+    color: $color-info;
+  }
+
+  &-warning &-icon {
+    color: $color-warning;
+  }
+} 

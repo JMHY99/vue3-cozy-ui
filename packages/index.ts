@@ -58,6 +58,7 @@ import CTransfer from "./transfer";
 import CTree from "./tree";
 import CTreeSelect from "./tree-select";
 import CProgress from "./progress";
+import CResult from "./result";
 
 const components = [
   CIcon,
@@ -138,6 +139,7 @@ const components = [
   CTree,
   CTreeSelect,
   CProgress,
+  CResult,
 ];
 
 const installComponents = (app: any) => {
@@ -231,6 +233,7 @@ export {
   CTree,
   CTreeSelect,
   CProgress,
+  CResult,
 };
 
 export default { install };
