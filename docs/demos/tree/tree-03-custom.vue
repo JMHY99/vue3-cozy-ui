@@ -1,21 +1,20 @@
-::: demo 自定义图标：可以使用自定义图标展示树节点。
-
-```vue
 <template>
-  <c-tree
-    v-model:selectedKeys="selectedKeys"
-    v-model:expandedKeys="expandedKeys"
-    :tree-data="treeData"
-    show-icon
-    @select="onSelect"
-    @expand="onExpand"
-  />
+  <div>
+    <c-tree
+      :tree-data="treeData"
+      show-icon
+      :default-expanded-keys="['0-0']"
+      @select="onSelect"
+      @expand="onExpand"
+    />
+  </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import type { TreeNodeData } from '../../../packages/tree/tree.vue'
 
-const treeData = [
+const treeData: TreeNodeData[] = [
   {
     title: '父节点1',
     key: '0-0',
@@ -26,8 +25,8 @@ const treeData = [
         key: '0-0-0',
         icon: 'c-folder-outlined',
         children: [
-          { title: '叶子节点', key: '0-0-0-0', icon: 'c-file-outlined' },
-          { title: '叶子节点', key: '0-0-0-1', icon: 'c-file-outlined' }
+          { title: '叶子节点', key: '0-0-0-0', icon: 'c-file-outlined', children: [] },
+          { title: '叶子节点', key: '0-0-0-1', icon: 'c-file-outlined', children: [] }
         ]
       },
       {
@@ -35,7 +34,7 @@ const treeData = [
         key: '0-0-1',
         icon: 'c-folder-outlined',
         children: [
-          { title: '叶子节点', key: '0-0-1-0', icon: 'c-file-outlined' }
+          { title: '叶子节点', key: '0-0-1-0', icon: 'c-file-outlined', children: [] }
         ]
       }
     ]
@@ -50,8 +49,8 @@ const treeData = [
         key: '0-1-0',
         icon: 'c-folder-outlined',
         children: [
-          { title: '叶子节点', key: '0-1-0-0', icon: 'c-file-outlined' },
-          { title: '叶子节点', key: '0-1-0-1', icon: 'c-file-outlined' }
+          { title: '叶子节点', key: '0-1-0-0', icon: 'c-file-outlined', children: [] },
+          { title: '叶子节点', key: '0-1-0-1', icon: 'c-file-outlined', children: [] }
         ]
       }
     ]
@@ -71,6 +70,3 @@ const onExpand = (keys: string[], { expanded, node }: any) => {
   console.log('node:', node)
 }
 </script>
-```
-
-::: 

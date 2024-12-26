@@ -1,76 +1,57 @@
-::: demo 基础用法：最简单的用法，展示可选中，可展开收起的树形控件。
-
-```vue
 <template>
-  <c-tree
-    v-model:selectedKeys="selectedKeys"
-    v-model:expandedKeys="expandedKeys"
-    :tree-data="treeData"
-    @select="onSelect"
-    @expand="onExpand"
-  />
+  <div>
+    <c-tree
+      :tree-data="treeData"
+      v-model:expanded-keys="expandedKeys"
+      v-model:selected-keys="selectedKeys"
+      @select="onSelect"
+      @expand="onExpand"
+    />
+  </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import type { TreeNodeData } from '../../../packages/tree/tree.vue'
 
-const treeData = [
+const treeData: TreeNodeData[] = [
   {
-    title: '0-0',
-    key: '0-0',
+    title: '项目文件夹',
+    key: 'dir1',
     children: [
       {
-        title: '0-0-0',
-        key: '0-0-0',
+        title: 'src',
+        key: 'dir1-1',
         children: [
-          { title: '0-0-0-0', key: '0-0-0-0' },
-          { title: '0-0-0-1', key: '0-0-0-1' },
-          { title: '0-0-0-2', key: '0-0-0-2' }
+          { title: 'components', key: 'dir1-1-1', children: [] },
+          { title: 'views', key: 'dir1-1-2', children: [] },
+          { title: 'utils', key: 'dir1-1-3', children: [] },
+          { title: 'App.vue', key: 'dir1-1-4', children: [] },
+          { title: 'main.ts', key: 'dir1-1-5', children: [] }
         ]
       },
       {
-        title: '0-0-1',
-        key: '0-0-1',
+        title: 'public',
+        key: 'dir1-2',
         children: [
-          { title: '0-0-1-0', key: '0-0-1-0' },
-          { title: '0-0-1-1', key: '0-0-1-1' },
-          { title: '0-0-1-2', key: '0-0-1-2' }
+          { title: 'index.html', key: 'dir1-2-1', children: [] },
+          { title: 'favicon.ico', key: 'dir1-2-2', children: [] }
         ]
       },
-      {
-        title: '0-0-2',
-        key: '0-0-2'
-      }
+      { title: 'package.json', key: 'dir1-3', children: [] },
+      { title: 'README.md', key: 'dir1-4', children: [] }
     ]
-  },
-  {
-    title: '0-1',
-    key: '0-1',
-    children: [
-      { title: '0-1-0', key: '0-1-0' },
-      { title: '0-1-1', key: '0-1-1' },
-      { title: '0-1-2', key: '0-1-2' }
-    ]
-  },
-  {
-    title: '0-2',
-    key: '0-2'
   }
 ]
 
-const selectedKeys = ref<string[]>(['0-0-0'])
-const expandedKeys = ref<string[]>(['0-0', '0-0-0'])
+const selectedKeys = ref<(string | number)[]>([])
+const expandedKeys = ref<(string | number)[]>(['dir1'])
 
-const onSelect = (keys: string[], { selected, selectedNodes }: any) => {
-  console.log('selected:', selected)
-  console.log('selectedNodes:', selectedNodes)
+const onSelect = (keys: (string | number)[], info: { selected: boolean }) => {
+  console.log('选中：', keys, info)
 }
 
-const onExpand = (keys: string[], { expanded, node }: any) => {
-  console.log('expanded:', expanded)
-  console.log('node:', node)
+const onExpand = (keys: (string | number)[], info: { expanded: boolean; node: TreeNodeData }) => {
+  console.log('展开/收起：', keys, info)
 }
 </script>
-```
-
-::: 

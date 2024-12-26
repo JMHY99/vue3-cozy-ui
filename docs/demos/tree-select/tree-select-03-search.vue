@@ -2,52 +2,83 @@
 
 ```vue
 <template>
-  <c-tree-select
-    v-model="value"
-    :tree-data="treeData"
-    show-search
-    placeholder="请输入搜索内容"
-    style="width: 300px"
-    @search="onSearch"
-  />
+  <div>
+    <c-tree-select
+      v-model="value"
+      :tree-data="treeData"
+      show-search
+      :filter-tree-node="filterTreeNode"
+      placeholder="请输入搜索内容"
+      style="width: 300px"
+      allow-clear
+      @search="onSearch"
+    />
+  </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import type { TreeNodeData } from '../../../packages/tree/tree.vue'
 
 const value = ref<string>()
 
 const treeData = [
   {
-    title: '节点1',
-    key: '0-0',
+    title: '中国',
+    key: 'china',
     children: [
       {
-        title: '子节点1',
-        key: '0-0-0',
+        title: '浙江',
+        key: 'zhejiang',
         children: [
-          { title: '子节点1.1', key: '0-0-0-0' },
-          { title: '子节点1.2', key: '0-0-0-1' }
+          { title: '杭州', key: 'hangzhou' },
+          { title: '宁波', key: 'ningbo' },
+          { title: '温州', key: 'wenzhou' }
         ]
       },
       {
-        title: '子节点2',
-        key: '0-0-1'
+        title: '江苏',
+        key: 'jiangsu',
+        children: [
+          { title: '南京', key: 'nanjing' },
+          { title: '苏州', key: 'suzhou' },
+          { title: '无锡', key: 'wuxi' }
+        ]
       }
     ]
   },
   {
-    title: '节点2',
-    key: '0-1',
+    title: '美国',
+    key: 'usa',
     children: [
-      { title: '子节点2.1', key: '0-1-0' },
-      { title: '子节点2.2', key: '0-1-1' }
+      {
+        title: '加利福尼亚',
+        key: 'california',
+        children: [
+          { title: '洛杉矶', key: 'los-angeles' },
+          { title: '旧金山', key: 'san-francisco' },
+          { title: '圣地亚哥', key: 'san-diego' }
+        ]
+      },
+      {
+        title: '纽约州',
+        key: 'new-york-state',
+        children: [
+          { title: '纽约市', key: 'new-york-city' },
+          { title: '布法罗', key: 'buffalo' },
+          { title: '罗切斯特', key: 'rochester' }
+        ]
+      }
     ]
   }
 ]
 
+const filterTreeNode = (searchValue: string, node: TreeNodeData) => {
+  return node.title.toLowerCase().includes(searchValue.toLowerCase())
+}
+
 const onSearch = (value: string) => {
-  console.log('search:', value)
+  console.log('搜索内容：', value)
 }
 </script>
 ```

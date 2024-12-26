@@ -8,7 +8,7 @@
           :node="item"
           :field-names="fieldNames"
           :selected-keys="selectedKeys"
-          :expanded-keys="expandedKeys"
+          :expanded-keys="expandedKeysRef"
           :checked-keys="checkedKeys"
           :checkable="checkable"
           :selectable="selectable"
@@ -29,7 +29,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref, computed } from 'vue'
+import { defineComponent, PropType, ref, computed, watch } from 'vue'
 import CTreeNode from './tree-node.vue'
 
 // 树节点数据类型
@@ -84,6 +84,16 @@ export default defineComponent({
       type: Array as PropType<(string | number)[]>,
       default: () => []
     },
+    // 默认展开的节点
+    defaultExpandedKeys: {
+      type: Array as PropType<(string | number)[]>,
+      default: () => []
+    },
+    // 默认展开所有节点
+    defaultExpandAll: {
+      type: Boolean,
+      default: false
+    },
     // 勾选的节点
     checkedKeys: {
       type: Array as PropType<(string | number)[]>,
@@ -127,6 +137,29 @@ export default defineComponent({
     'drop'
   ],
   setup(props, { emit }) {
+    // 内部状态
+    const expandedKeysRef = ref<(string | number)[]>(props.defaultExpandedKeys)
+
+    // 如果设置了defaultExpandAll，则展开所有非叶子节点
+    if (props.defaultExpandAll) {
+      const expandAllKeys: (string | number)[] = []
+      const traverse = (nodes: TreeNodeData[]) => {
+        nodes.forEach(node => {
+          if (node.children && node.children.length > 0) {
+            expandAllKeys.push(node[props.fieldNames.key])
+            traverse(node.children)
+          }
+        })
+      }
+      traverse(props.treeData)
+      expandedKeysRef.value = expandAllKeys
+    }
+
+    // 监听外部expandedKeys变化
+    watch(() => props.expandedKeys, (newKeys) => {
+      expandedKeysRef.value = newKeys
+    })
+
     // 选中节点
     const onSelect = (key: string | number, selected: boolean) => {
       const newSelectedKeys = selected ? 
@@ -154,8 +187,9 @@ export default defineComponent({
     // 展开/收起节点
     const onExpand = (key: string | number, expanded: boolean) => {
       const newExpandedKeys = expanded ?
-        [...props.expandedKeys, key] :
-        props.expandedKeys.filter(k => k !== key)
+        [...expandedKeysRef.value, key] :
+        expandedKeysRef.value.filter(k => k !== key)
+      expandedKeysRef.value = newExpandedKeys
       emit('update:expandedKeys', newExpandedKeys)
       emit('expand', newExpandedKeys, {
         expanded,
@@ -182,23 +216,19 @@ export default defineComponent({
     const onDrop = (e: DragEvent, dropNode: TreeNodeData) => {
       emit('drop', {
         event: e,
-        node: dropNode,
-        dragNode: dragNode.value
+        node: dropNode
       })
     }
 
-    // 当前拖拽的节点
-    const dragNode = ref<TreeNodeData | null>(null)
-
     return {
+      expandedKeysRef,
       onSelect,
       onCheck,
       onExpand,
       onDragStart,
       onDragEnd,
       onDragOver,
-      onDrop,
-      dragNode
+      onDrop
     }
   }
 })

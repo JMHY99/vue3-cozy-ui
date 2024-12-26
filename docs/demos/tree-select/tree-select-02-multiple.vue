@@ -2,13 +2,16 @@
 
 ```vue
 <template>
-  <c-tree-select
-    v-model="value"
-    :tree-data="treeData"
-    multiple
-    placeholder="请选择"
-    style="width: 300px"
-  />
+  <div>
+    <c-tree-select
+      v-model="value"
+      :tree-data="treeData"
+      multiple
+      placeholder="请选择多个选项"
+      style="width: 300px"
+      allow-clear
+    />
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -18,29 +21,51 @@ const value = ref<string[]>([])
 
 const treeData = [
   {
-    title: '节点1',
-    key: '0-0',
+    title: '水果',
+    key: 'fruits',
     children: [
       {
-        title: '子节点1',
-        key: '0-0-0',
+        title: '柑橘类',
+        key: 'citrus',
         children: [
-          { title: '子节点1.1', key: '0-0-0-0' },
-          { title: '子节点1.2', key: '0-0-0-1' }
+          { title: '橙子', key: 'orange' },
+          { title: '柠檬', key: 'lemon' },
+          { title: '柚子', key: 'grapefruit' }
         ]
       },
       {
-        title: '子节点2',
-        key: '0-0-1'
+        title: '浆果类',
+        key: 'berries',
+        children: [
+          { title: '草莓', key: 'strawberry' },
+          { title: '蓝莓', key: 'blueberry' },
+          { title: '树莓', key: 'raspberry' }
+        ]
       }
     ]
   },
   {
-    title: '节点2',
-    key: '0-1',
+    title: '蔬菜',
+    key: 'vegetables',
     children: [
-      { title: '子节点2.1', key: '0-1-0' },
-      { title: '子节点2.2', key: '0-1-1' }
+      {
+        title: '叶菜类',
+        key: 'leafy',
+        children: [
+          { title: '生菜', key: 'lettuce' },
+          { title: '菠菜', key: 'spinach' },
+          { title: '白菜', key: 'cabbage' }
+        ]
+      },
+      {
+        title: '根茎类',
+        key: 'root',
+        children: [
+          { title: '胡萝卜', key: 'carrot' },
+          { title: '土豆', key: 'potato' },
+          { title: '萝卜', key: 'radish' }
+        ]
+      }
     ]
   }
 ]

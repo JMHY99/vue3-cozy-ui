@@ -1,6 +1,3 @@
-::: demo 可拖拽：可以通过拖拽进行节点的移动。
-
-```vue
 <template>
   <c-tree
     v-model:selectedKeys="selectedKeys"
@@ -129,6 +126,3 @@ const onDrop = (e: DragEvent, node: any, dragNode: any) => {
   treeData.value = data
 }
 </script>
-```
-
-::: 

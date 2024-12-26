@@ -2,12 +2,14 @@
 
 ```vue
 <template>
-  <c-tree-select
-    v-model="value"
-    :tree-data="treeData"
-    placeholder="请选择"
-    style="width: 300px"
-  />
+  <div>
+    <c-tree-select
+      v-model="value"
+      :tree-data="treeData"
+      placeholder="请选择"
+      style="width: 300px"
+    />
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -18,28 +20,25 @@ const value = ref<string>()
 const treeData = [
   {
     title: '节点1',
-    key: '0-0',
+    key: '1',
     children: [
       {
-        title: '子节点1',
-        key: '0-0-0',
+        title: '节点1.1',
+        key: '1-1',
         children: [
-          { title: '子节点1.1', key: '0-0-0-0' },
-          { title: '子节点1.2', key: '0-0-0-1' }
+          { title: '节点1.1.1', key: '1-1-1' },
+          { title: '节点1.1.2', key: '1-1-2' }
         ]
       },
-      {
-        title: '子节点2',
-        key: '0-0-1'
-      }
+      { title: '节点1.2', key: '1-2' }
     ]
   },
   {
     title: '节点2',
-    key: '0-1',
+    key: '2',
     children: [
-      { title: '子节点2.1', key: '0-1-0' },
-      { title: '子节点2.2', key: '0-1-1' }
+      { title: '节点2.1', key: '2-1' },
+      { title: '节点2.2', key: '2-2' }
     ]
   }
 ]

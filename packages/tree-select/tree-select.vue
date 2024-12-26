@@ -7,7 +7,8 @@
       'cozy-tree-select-disabled': disabled,
       'cozy-tree-select-focused': focused,
       'cozy-tree-select-multiple': multiple,
-      'cozy-tree-select-open': visible
+      'cozy-tree-select-open': visible,
+      [`cozy-tree-select-${size}`]: size
     }"
     @mousedown.stop="handleClick"
   >
@@ -49,7 +50,7 @@
               class="cozy-tree-select-selection-item-remove"
               @click.stop="removeValue(value)"
             >
-              <c-icon name="c-close" :size="12" />
+              <c-icon name="c-close-outlined" :size="12" />
             </span>
           </span>
         </template>
@@ -91,14 +92,16 @@
       >
         <c-input
           v-model="searchText"
-          placeholder="请输入搜索内容"
+          :placeholder="searchPlaceholder"
           size="small"
           :prefix-icon="'c-search'"
+          @input="handleSearch"
         />
       </div>
 
       <!-- 树形选择器 -->
       <c-tree
+        ref="treeRef"
         :tree-data="treeData"
         :field-names="fieldNames"
         :selected-keys="multiple ? undefined : (selectedValue ? [selectedValue] : [])"
@@ -107,10 +110,22 @@
         :checkable="multiple"
         :selectable="!multiple"
         :filter-tree-node="handleFilterTreeNode"
+        :default-expanded-keys="defaultExpandedKeys"
+        :default-expanded-all="defaultExpandAll"
+        :load-data="loadData"
+        :disabled="disabled"
+        :virtual="virtual"
+        :height="treeHeight"
         @select="handleSelect"
         @check="handleCheck"
         @expand="handleExpand"
+        @load="handleLoad"
       />
+
+      <!-- 空状态 -->
+      <div v-if="showEmpty" class="cozy-tree-select-empty">
+        {{ emptyText }}
+      </div>
     </div>
   </div>
 </template>
@@ -159,6 +174,11 @@ export default defineComponent({
       type: String,
       default: '请选择'
     },
+    // 搜索框占位符
+    searchPlaceholder: {
+      type: String,
+      default: '请输入搜索内容'
+    },
     // 是否禁用
     disabled: {
       type: Boolean,
@@ -173,20 +193,145 @@ export default defineComponent({
     showSearch: {
       type: Boolean,
       default: false
+    },
+    // 空状态文本
+    emptyText: {
+      type: String,
+      default: '暂无数据'
+    },
+    // 选择框大小
+    size: {
+      type: String as PropType<'large' | 'small'>,
+      default: undefined
+    },
+    // 默认展开的树节点
+    defaultExpandedKeys: {
+      type: Array as PropType<(string | number)[]>,
+      default: () => []
+    },
+    // 默认展开所有树节点
+    defaultExpandAll: {
+      type: Boolean,
+      default: false
+    },
+    // 异步加载数据
+    loadData: {
+      type: Function as PropType<(node: TreeNodeData) => Promise<void>>,
+      default: undefined
+    },
+    // 是否开启虚拟滚动
+    virtual: {
+      type: Boolean,
+      default: false
+    },
+    // 虚拟滚动高度
+    treeHeight: {
+      type: Number,
+      default: 256
+    },
+    // 自定义过滤方法
+    filterTreeNode: {
+      type: [Boolean, Function] as PropType<boolean | ((searchValue: string, node: TreeNodeData) => boolean)>,
+      default: true
+    },
+    // 多选时最多显示多少个 tag
+    maxTagCount: {
+      type: Number,
+      default: undefined
+    },
+    // 隐藏 tag 时显示的内容
+    maxTagPlaceholder: {
+      type: Function as PropType<(omittedValues: any[]) => string>,
+      default: undefined
+    },
+    // 自定义显示内容
+    treeNodeLabelProp: {
+      type: String,
+      default: 'title'
     }
   },
-  emits: ['update:modelValue', 'change', 'search'],
+  emits: ['update:modelValue', 'change', 'search', 'select', 'treeExpand', 'dropdownVisibleChange', 'load'],
   setup(props, { emit }) {
     // DOM引用
     const selectRef = ref<HTMLElement | null>(null)
     const selectorRef = ref<HTMLElement | null>(null)
     const dropdownRef = ref<HTMLElement | null>(null)
+    const treeRef = ref<InstanceType<typeof CTree> | null>(null)
     
     // 状态
     const focused = ref(false)
     const hovering = ref(false)
     const visible = ref(false)
     const searchText = ref('')
+    const expandedKeys = ref<(string | number)[]>(props.defaultExpandedKeys)
+
+    // 计算属性
+    const showEmpty = computed(() => {
+      return props.treeData.length === 0 || 
+        (searchText.value && filteredTreeData.value.length === 0)
+    })
+
+    const filteredTreeData = computed(() => {
+      if (!searchText.value) return props.treeData
+      return filterTreeNodes(props.treeData)
+    })
+
+    // 过滤树节点
+    const filterTreeNodes = (nodes: TreeNodeData[]): TreeNodeData[] => {
+      return nodes.filter(node => {
+        const matched = handleFilterTreeNode(node)
+        if (matched) return true
+        if (node[props.fieldNames.children]) {
+          const filteredChildren = filterTreeNodes(node[props.fieldNames.children] as TreeNodeData[])
+          if (filteredChildren.length) {
+            return {
+              ...node,
+              [props.fieldNames.children]: filteredChildren
+            }
+          }
+        }
+        return false
+      })
+    }
+
+    // 处理搜索
+    const handleSearch = () => {
+      emit('search', searchText.value)
+    }
+
+    // 处理树节点过滤
+    const handleFilterTreeNode = (node: TreeNodeData) => {
+      if (!searchText.value) return true
+      if (typeof props.filterTreeNode === 'function') {
+        return props.filterTreeNode(searchText.value, node)
+      }
+      if (props.filterTreeNode === false) return true
+      const title = node[props.fieldNames.title]
+      return typeof title === 'string' && 
+        title.toLowerCase().includes(searchText.value.toLowerCase())
+    }
+
+    // 处理节点展开/收缩
+    const handleExpand = (keys: (string | number)[], { expanded, node }: { expanded: boolean; node: TreeNodeData }) => {
+      expandedKeys.value = keys
+      emit('treeExpand', keys, { expanded, node })
+    }
+
+    // 处理异步加载
+    const handleLoad = (loadedKeys: (string | number)[], { node }: { node: TreeNodeData }) => {
+      emit('load', loadedKeys, { node })
+    }
+
+    // 监听下拉面板显示状态
+    watch(visible, (value) => {
+      emit('dropdownVisibleChange', value)
+      if (value) {
+        window.addEventListener('mousedown', handleClickOutside)
+      } else {
+        window.removeEventListener('mousedown', handleClickOutside)
+        searchText.value = ''
+      }
+    })
 
     // 下拉框样式
     const dropdownStyle = computed(() => {
@@ -275,19 +420,6 @@ export default defineComponent({
       focused.value = false
     }
 
-    // 处理树节点过滤
-    const handleFilterTreeNode = (node: TreeNodeData) => {
-      if (!searchText.value) return true
-      const title = node[props.fieldNames.title]
-      return typeof title === 'string' && 
-        title.toLowerCase().includes(searchText.value.toLowerCase())
-    }
-
-    // 监听搜索文本变化
-    watch(searchText, (value) => {
-      emit('search', value)
-    })
-
     // 点击外部关闭下拉面板
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as HTMLElement
@@ -300,32 +432,16 @@ export default defineComponent({
       }
     }
 
-    // 监听下拉���板显示状态
-    watch(visible, (value) => {
-      if (value) {
-        window.addEventListener('mousedown', handleClickOutside)
-      } else {
-        window.removeEventListener('mousedown', handleClickOutside)
-      }
-    })
-
     // 组件卸载前
     onBeforeUnmount(() => {
       window.removeEventListener('mousedown', handleClickOutside)
     })
 
-    // 展开的节点
-    const expandedKeys = ref<(string | number)[]>([])
-
-    // 处理节点展开/收缩
-    const handleExpand = (keys: (string | number)[], { expanded, node }: { expanded: boolean; node: TreeNodeData }) => {
-      expandedKeys.value = keys
-    }
-
     return {
       selectRef,
       selectorRef,
       dropdownRef,
+      treeRef,
       dropdownStyle,
       focused,
       hovering,
@@ -333,15 +449,18 @@ export default defineComponent({
       searchText,
       selectedValue,
       selectedValues,
+      expandedKeys,
+      showEmpty,
       getLabel,
       handleClick,
       handleSelect,
       handleCheck,
+      handleExpand,
+      handleLoad,
+      handleSearch,
       removeValue,
       clearSelection,
-      handleFilterTreeNode,
-      expandedKeys,
-      handleExpand
+      handleFilterTreeNode
     }
   }
 })
