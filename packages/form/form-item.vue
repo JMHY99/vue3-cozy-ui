@@ -184,7 +184,7 @@ const isRequired = computed(() => {
 /**
  * 重置表单项
  * - 清除校验状态和错误信息
- * - 重置字段值为初始��
+ * - 重置字段值为初始值
  */
 const resetField = () => {
   validateState.value = '';

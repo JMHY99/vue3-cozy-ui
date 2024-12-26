@@ -45,6 +45,6 @@ h2 {
 p {
   margin: 16px 0;
   line-height: 1.5;
-  padding: 50px 0; /* 增加内容间��以便于演示效果 */
+  padding: 50px 0; /* 增加内容间距以便于演示效果 */
 }
 </style>

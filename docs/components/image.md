@@ -41,7 +41,7 @@
 
 | 事件名称 | 说明 | 回调参数 |
 | --- | --- | --- |
-| error | 图��加载失败时触发 | (e: Event) |
+| error | 图片加载失败时触发 | (e: Event) |
 | load | 图片加载完成时触发 | (e: Event) |
 | click | 图片被点击时触发 | (e: MouseEvent) |
 

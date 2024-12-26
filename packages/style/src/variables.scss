@@ -180,3 +180,11 @@ $tooltip-box-shadow: $shadow-1;
 // Skeleton
 $skeleton-color: rgba(190, 190, 190, 0.2);
 $skeleton-to-color: rgba(129, 129, 129, 0.24);
+
+// Progress 进度条
+$progress-remaining-color: #f5f5f5; // 进度条背景色
+$progress-default-color: $color-primary; // 进度条默认颜色
+$progress-success-color: $color-success; // 进度条成功状态颜色
+$progress-error-color: $color-danger; // 进度条错误状态颜色
+$progress-info-color: $color-info; // 进度条信息状态颜色
+$progress-text-color: $text-color; // 进度条文字颜色

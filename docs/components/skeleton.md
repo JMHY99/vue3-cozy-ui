@@ -45,7 +45,7 @@
 | active | 是否展示动画效果 | boolean | - | false |
 | avatar | 是否显示头像占位图 | boolean | - | false |
 | avatar-size | 头像占位图大小 | string | large / small / default | default |
-| loading | 为 true 时，显示占位图。反之则直接展示子���件 | boolean | - | true |
+| loading | 为 true 时，显示占位图。反之则直接展示子组件 | boolean | - | true |
 | paragraph | 是否显示段落占位图 | boolean | - | true |
 | paragraph-rows | 段落占位图行数 | number | - | 3 |
 | paragraph-width | 段落占位图宽度，可传数组来指定每一行的宽度 | number / string / Array<number \| string> | - | '100%' |

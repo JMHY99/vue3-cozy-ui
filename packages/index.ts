@@ -57,6 +57,7 @@ import { CTimeline, CTimelineItem } from "./timeline";
 import CTransfer from "./transfer";
 import CTree from "./tree";
 import CTreeSelect from "./tree-select";
+import CProgress from "./progress";
 
 const components = [
   CIcon,
@@ -136,6 +137,7 @@ const components = [
   CTransfer,
   CTree,
   CTreeSelect,
+  CProgress,
 ];
 
 const installComponents = (app: any) => {
@@ -228,6 +230,7 @@ export {
   CTransfer,
   CTree,
   CTreeSelect,
+  CProgress,
 };
 
 export default { install };

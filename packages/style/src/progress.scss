@@ -1,0 +1,128 @@
+@import "./variables.scss";
+
+.cozy-progress {
+  display: inline-block;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.5715;
+  position: relative;
+
+  // 线性进度条
+  &.cozy-progress-line {
+    width: 100%;
+    font-size: $font-size-base;
+    position: relative;
+
+    .cozy-progress-outer {
+      display: inline-block;
+      width: 100%;
+      margin-right: 0;
+      padding-right: 0;
+    }
+
+    .cozy-progress-inner {
+      display: inline-block;
+      width: 100%;
+      background-color: $progress-remaining-color;
+      border-radius: 100px;
+      vertical-align: middle;
+      position: relative;
+    }
+
+    .cozy-progress-bg {
+      position: relative;
+      background-color: $progress-default-color;
+      border-radius: 100px;
+      transition: all 0.4s cubic-bezier(0.08, 0.82, 0.17, 1) 0s;
+      height: 8px;
+    }
+
+    .cozy-progress-success-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: $progress-success-color;
+      border-radius: 100px;
+      transition: all 0.4s cubic-bezier(0.08, 0.82, 0.17, 1) 0s;
+      height: 8px;
+    }
+
+    .cozy-progress-text {
+      display: inline-block;
+      width: 2em;
+      margin-left: 8px;
+      color: $progress-text-color;
+      font-size: 1em;
+      line-height: 1;
+      white-space: nowrap;
+      text-align: left;
+      vertical-align: middle;
+      word-break: normal;
+    }
+  }
+
+  // 环形进度条
+  &.cozy-progress-circle,
+  &.cozy-progress-dashboard {
+    // width: 120px;
+    // height: 120px;
+    font-size: $font-size-base;
+    position: relative;
+
+    .cozy-progress-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      color: $progress-text-color;
+      font-size: 1.25em;
+      line-height: 1;
+      white-space: normal;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      > * {
+        line-height: 1;
+      }
+    }
+
+    .cozy-progress-circle-trail {
+      stroke: $progress-remaining-color;
+    }
+
+    .cozy-progress-circle-path {
+      stroke: $progress-default-color;
+      transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray 0.3s ease 0s, stroke 0.3s ease 0s;
+    }
+  }
+
+  // 状态样式
+  &.cozy-progress-status-success {
+    .cozy-progress-bg,
+    .cozy-progress-circle-path {
+      background-color: $progress-success-color;
+      stroke: $progress-success-color;
+    }
+    .cozy-progress-text {
+      color: $progress-success-color;
+    }
+  }
+
+  &.cozy-progress-status-exception {
+    .cozy-progress-bg,
+    .cozy-progress-circle-path {
+      background-color: $progress-error-color;
+      stroke: $progress-error-color;
+    }
+    .cozy-progress-text {
+      color: $progress-error-color;
+    }
+  }
+} 
