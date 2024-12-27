@@ -1,0 +1,234 @@
+@import './variables.scss';
+
+// 遮罩层动画
+@keyframes cozyDrawerFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// 抽屉动画
+@keyframes cozyDrawerSlideInRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes cozyDrawerSlideInLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes cozyDrawerSlideInTop {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes cozyDrawerSlideInBottom {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.cozy-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  pointer-events: none;
+
+  &-mask {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.45);
+    pointer-events: auto;
+  }
+
+  &-content-wrapper {
+    position: fixed;
+    z-index: 1000;
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    background: $background-color-white;
+    pointer-events: auto;
+    overflow: hidden;
+    box-shadow: -6px 0 16px -8px rgba(0, 0, 0, 0.08),
+                -9px 0 28px 0 rgba(0, 0, 0, 0.05),
+                -12px 0 48px 16px rgba(0, 0, 0, 0.03);
+  }
+
+  &-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background: $background-color-white;
+  }
+
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    color: $text-color;
+    background: $background-color-white;
+    border-bottom: 1px solid $border-color-split;
+  }
+
+  &-header-title {
+    margin: 0;
+    color: $text-color;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  &-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    padding: 0;
+    color: $text-color-secondary;
+    font-weight: 700;
+    font-size: 16px;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    transition: color 0.3s;
+    text-decoration: none;
+
+    &:hover {
+      color: $text-color;
+    }
+
+    &:active {
+      color: $text-color;
+    }
+  }
+
+  &-body {
+    flex: 1;
+    padding: 24px;
+    overflow: auto;
+    font-size: 14px;
+    line-height: 1.5715;
+    word-wrap: break-word;
+  }
+
+  &-footer {
+    padding: 10px 16px;
+    text-align: right;
+    background: $background-color-white;
+    border-top: 1px solid $border-color-split;
+  }
+
+  // 位置样式
+  &-right {
+    .cozy-drawer-content-wrapper {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 378px;
+      transform: translateX(0);
+      animation: cozyDrawerSlideInRight 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+  }
+
+  &-left {
+    .cozy-drawer-content-wrapper {
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 378px;
+      transform: translateX(0);
+      animation: cozyDrawerSlideInLeft 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+      box-shadow: 6px 0 16px -8px rgba(0, 0, 0, 0.08),
+                  9px 0 28px 0 rgba(0, 0, 0, 0.05),
+                  12px 0 48px 16px rgba(0, 0, 0, 0.03);
+    }
+  }
+
+  &-top {
+    .cozy-drawer-content-wrapper {
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 378px;
+      transform: translateY(0);
+      animation: cozyDrawerSlideInTop 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+      box-shadow: 0 6px 16px -8px rgba(0, 0, 0, 0.08),
+                  0 9px 28px 0 rgba(0, 0, 0, 0.05),
+                  0 12px 48px 16px rgba(0, 0, 0, 0.03);
+    }
+  }
+
+  &-bottom {
+    .cozy-drawer-content-wrapper {
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 378px;
+      transform: translateY(0);
+      animation: cozyDrawerSlideInBottom 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+      box-shadow: 0 -6px 16px -8px rgba(0, 0, 0, 0.08),
+                  0 -9px 28px 0 rgba(0, 0, 0, 0.05),
+                  0 -12px 48px 16px rgba(0, 0, 0, 0.03);
+    }
+  }
+
+  // 尺寸样式
+  &-default {
+    .cozy-drawer-content-wrapper {
+      width: 378px;
+    }
+  }
+
+  &-large {
+    .cozy-drawer-content-wrapper {
+      width: 736px;
+    }
+  }
+
+  // 无遮罩层样式
+  &-no-mask {
+    pointer-events: none;
+    .cozy-drawer-content-wrapper {
+      pointer-events: auto;
+    }
+  }
+} 

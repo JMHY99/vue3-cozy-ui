@@ -59,6 +59,7 @@ import CTree from "./tree";
 import CTreeSelect from "./tree-select";
 import CProgress from "./progress";
 import CResult from "./result";
+import CDrawer from "./drawer";
 
 const components = [
   CIcon,
@@ -140,6 +141,7 @@ const components = [
   CTreeSelect,
   CProgress,
   CResult,
+  CDrawer,
 ];
 
 const installComponents = (app: any) => {
@@ -234,6 +236,7 @@ export {
   CTreeSelect,
   CProgress,
   CResult,
+  CDrawer,
 };
 
 export default { install };

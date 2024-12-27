@@ -115,15 +115,16 @@ export default {
                   link: "/components/time-picker.md",
                 },
                 { text: "Transfer 穿梭框", link: "/components/transfer.md" },
-                { text: "TreeSelect 树选择", link: "/components/tree-select.md" },
+                {
+                  text: "TreeSelect 树选择",
+                  link: "/components/tree-select.md",
+                },
               ],
             },
             {
               text: "视图",
               items: [
-                { text: "Alert 警告提示", link: "/components/alert.md" },
                 { text: "Badge 徽标数", link: "/components/badge.md" },
-                { text: "Message 全局提示", link: "/components/message.md" },
                 { text: "Avatar 头像", link: "/components/avatar.md" },
                 { text: "Calendar 日历", link: "/components/calendar.md" },
                 { text: "Card 卡片", link: "/components/card.md" },
@@ -145,6 +146,14 @@ export default {
                 { text: "Tree 树", link: "/components/tree.md" },
                 { text: "Tooltip 文字提示", link: "/components/tooltip.md" },
                 { text: "Popover 气泡卡片", link: "/components/popover.md" },
+              ],
+            },
+            {
+              text: "反馈",
+              items: [
+                { text: "Alert 警告提示", link: "/components/alert.md" },
+                { text: "Message 全局提示", link: "/components/message.md" },
+                { text: "Drawer 抽屉", link: "/components/drawer.md" },
               ],
             },
             {
