@@ -154,6 +154,15 @@ export default {
                 { text: "Alert 警告提示", link: "/components/alert.md" },
                 { text: "Message 全局提示", link: "/components/message.md" },
                 { text: "Drawer 抽屉", link: "/components/drawer.md" },
+                { text: "Modal 对话框", link: "/components/modal.md" },
+                {
+                  text: "Notification 通知提醒框",
+                  link: "/components/notification.md",
+                },
+                {
+                  text: "Popconfirm 气泡确认框",
+                  link: "/components/popconfirm.md",
+                },
               ],
             },
             {

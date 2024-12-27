@@ -1,0 +1,151 @@
+@import './variables.scss';
+
+// 遮罩层动画
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+// 对话框动画
+.zoom-enter-active,
+.zoom-leave-active {
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.zoom-enter-from,
+.zoom-leave-to {
+  opacity: 0;
+  transform: scale(0.2);
+}
+
+.cozy-modal {
+  &-mask {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.45);
+    pointer-events: auto;
+  }
+
+  &-wrap {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    overflow: auto;
+    outline: 0;
+    display: flex;
+    justify-content: center;
+    
+    // 垂直居中
+    &:has(.cozy-modal-centered) {
+      align-items: center;
+      padding: 0;
+    }
+
+    // 默认顶部对齐
+    &:not(:has(.cozy-modal-centered)) {
+      align-items: flex-start;
+      padding: 100px 0 24px;
+    }
+  }
+
+  // 对话框
+  position: relative;
+  top: 0;
+  margin: 0 auto;
+  padding: 0;
+  color: $text-color;
+  background: $background-color-white;
+  background-clip: padding-box;
+  border: 0;
+  border-radius: $border-radius-base;
+  box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08),
+              0 3px 6px -4px rgba(0, 0, 0, 0.12),
+              0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  pointer-events: auto;
+
+  // 关闭按钮
+  &-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    padding: 0;
+    color: $text-color-secondary;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    transition: color 0.3s;
+    width: 54px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      color: $text-color;
+    }
+  }
+
+  // 头部
+  &-header {
+    padding: 16px 24px;
+    color: $text-color;
+    background: $background-color-white;
+    border-bottom: 1px solid $border-color-split;
+    border-radius: $border-radius-base $border-radius-base 0 0;
+  }
+
+  &-title {
+    margin: 0;
+    color: $text-color;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    word-wrap: break-word;
+  }
+
+  // 内容
+  &-body {
+    padding: 24px;
+    font-size: 14px;
+    line-height: 1.5715;
+    word-wrap: break-word;
+  }
+
+  // 底部
+  &-footer {
+    padding: 10px 16px;
+    text-align: right;
+    background: transparent;
+    border-top: 1px solid $border-color-split;
+    border-radius: 0 0 $border-radius-base $border-radius-base;
+
+    .cozy-button + .cozy-button {
+      margin-left: 8px;
+    }
+  }
+
+  // 尺寸
+  &-small {
+    width: 378px;
+  }
+
+  &-default {
+    width: 520px;
+  }
+
+  &-large {
+    width: 736px;
+  }
+} 
