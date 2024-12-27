@@ -61,6 +61,7 @@ import CProgress from "./progress";
 import CResult from "./result";
 import CDrawer from "./drawer";
 import CModal from "./modal";
+import CNotification from "./notification";
 
 const components = [
   CIcon,
@@ -143,7 +144,8 @@ const components = [
   CProgress,
   CResult,
   CDrawer,
-  CModal
+  CModal,
+  CNotification
 ];
 
 const installComponents = (app: any) => {
@@ -239,7 +241,8 @@ export {
   CProgress,
   CResult,
   CDrawer,
-  CModal
+  CModal,
+  CNotification
 };
 
 export default { install };

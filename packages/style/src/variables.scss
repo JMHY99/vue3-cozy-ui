@@ -188,3 +188,59 @@ $progress-success-color: $color-success; // 进度条成功状态颜色
 $progress-error-color: $color-danger; // 进度条错误状态颜色
 $progress-info-color: $color-info; // 进度条信息状态颜色
 $progress-text-color: $text-color; // 进度条文字颜色
+
+// 主题色
+$primary-color: #1890ff;
+$success-color: #52c41a;
+$warning-color: #faad14;
+$error-color: #ff4d4f;
+$info-color: #1890ff;
+
+// 文本色
+$text-color: rgba(0, 0, 0, 0.85);
+$text-color-secondary: rgba(0, 0, 0, 0.45);
+
+// 背景色
+$background-color-white: #fff;
+
+// 边框
+$border-color-base: #d9d9d9;
+$border-color-split: #f0f0f0;
+$border-radius-base: 2px;
+
+// 字体
+$font-size-base: 14px;
+$font-size-lg: 16px;
+$font-size-sm: 12px;
+
+// 行高
+$line-height-base: 1.5715;
+
+// 动画
+$animation-duration-base: 0.2s;
+$animation-duration-slow: 0.3s;
+
+// 阴影
+$shadow-1-up: 0 -6px 16px -8px rgba(0, 0, 0, 0.08),
+  0 -9px 28px 0 rgba(0, 0, 0, 0.05),
+  0 -12px 48px 16px rgba(0, 0, 0, 0.03);
+
+$shadow-1-down: 0 6px 16px -8px rgba(0, 0, 0, 0.08),
+  0 9px 28px 0 rgba(0, 0, 0, 0.05),
+  0 12px 48px 16px rgba(0, 0, 0, 0.03);
+
+$shadow-1-left: -6px 0 16px -8px rgba(0, 0, 0, 0.08),
+  -9px 0 28px 0 rgba(0, 0, 0, 0.05),
+  -12px 0 48px 16px rgba(0, 0, 0, 0.03);
+
+$shadow-1-right: 6px 0 16px -8px rgba(0, 0, 0, 0.08),
+  9px 0 28px 0 rgba(0, 0, 0, 0.05),
+  12px 0 48px 16px rgba(0, 0, 0, 0.03);
+
+// z-index
+$zindex-notification: 1010;
+$zindex-modal: 1000;
+$zindex-drawer: 1000;
+$zindex-dropdown: 1050;
+$zindex-tooltip: 1070;
+$zindex-message: 1090;

@@ -1,0 +1,128 @@
+@import './variables.scss';
+
+// 通知框淡入淡出动画
+.cozy-notification-fade-enter-active,
+.cozy-notification-fade-leave-active {
+  transition: all 0.3s ease;
+}
+
+.cozy-notification-fade-enter-from,
+.cozy-notification-fade-leave-to {
+  opacity: 0;
+  margin-right: -384px;
+}
+
+.cozy-notification {
+  position: fixed;
+  z-index: $zindex-notification;
+  width: 384px;
+  max-width: calc(100vw - 48px);
+  margin-right: 24px;
+  margin-left: 24px;
+  padding: 16px 24px;
+  overflow: hidden;
+  line-height: 1.5715;
+  word-wrap: break-word;
+  background: $background-color-white;
+  border-radius: $border-radius-base;
+  box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08),
+              0 3px 6px -4px rgba(0, 0, 0, 0.12),
+              0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s;
+
+  // 位置
+  &-topRight {
+    right: 0;
+  }
+
+  &-topLeft {
+    left: 0;
+  }
+
+  &-bottomRight {
+    right: 0;
+  }
+
+  &-bottomLeft {
+    left: 0;
+  }
+
+  // 关闭按钮
+  &-close {
+    position: absolute;
+    top: 16px;
+    right: 22px;
+    color: $text-color-secondary;
+    font-size: 14px;
+    line-height: 0;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+
+    &:hover {
+      color: $text-color;
+    }
+  }
+
+  // 带图标样式
+  &-with-icon {
+    padding-left: 48px;
+  }
+
+  // 图标
+  &-icon {
+    position: absolute;
+    top: 16px;
+    left: 24px;
+    font-size: 24px;
+    line-height: 24px;
+  }
+
+  &-icon-success {
+    color: $success-color;
+  }
+
+  &-icon-info {
+    color: $info-color;
+  }
+
+  &-icon-warning {
+    color: $warning-color;
+  }
+
+  &-icon-error {
+    color: $error-color;
+  }
+
+  // 内容
+  &-content {
+    position: relative;
+  }
+
+  // 标题
+  &-title {
+    margin-bottom: 8px;
+    color: $text-color;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  // 描述
+  &-description {
+    font-size: 14px;
+    line-height: 21px;
+    color: $text-color-secondary;
+  }
+
+  // 按钮
+  &-btn {
+    margin-top: 16px;
+    text-align: right;
+
+    .cozy-button + .cozy-button {
+      margin-left: 8px;
+    }
+  }
+} 
