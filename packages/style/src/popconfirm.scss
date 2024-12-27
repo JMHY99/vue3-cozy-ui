@@ -1,0 +1,37 @@
+@import './variables.scss';
+
+.cozy-popconfirm {
+  padding: 12px;
+  min-width: 200px;
+  max-width: 300px;
+
+  // 图标
+  &-icon {
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 16px;
+    vertical-align: -0.125em;
+
+    &-warning {
+      color: $warning-color;
+    }
+  }
+
+  // 标题
+  &-title {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: $text-color;
+    font-size: 14px;
+  }
+
+  // 按钮组
+  &-buttons {
+    margin-top: 12px;
+    text-align: right;
+
+    .cozy-button + .cozy-button {
+      margin-left: 8px;
+    }
+  }
+} 
