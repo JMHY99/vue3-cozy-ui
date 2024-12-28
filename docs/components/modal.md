@@ -50,7 +50,7 @@
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| v-model | 对��框是否可见 | `boolean` | `false` |
+| v-model | 对话框是否可见 | `boolean` | `false` |
 | title | 标题 | `string` | - |
 | mask | 是否显示遮罩层 | `boolean` | `true` |
 | maskClosable | 点击遮罩层是否允许关闭 | `boolean` | `true` |

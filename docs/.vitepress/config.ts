@@ -106,6 +106,12 @@ export default {
                 { text: "Rate 评分", link: "/components/rate.md" },
                 { text: "Slider 滑动输入条", link: "/components/slider.md" },
                 { text: "Upload 上传", link: "/components/upload.md" },
+                { text: "Cascader 级联选择", link: "/components/cascader.md" },
+                { text: "Mentions 提及", link: "/components/mentions.md" },
+                {
+                  text: "AutoComplete 自动完成",
+                  link: "/components/auto-complete.md",
+                },
                 {
                   text: "DatePicker 日期选择器",
                   link: "/components/date-picker.md",
@@ -181,16 +187,8 @@ export default {
                   link: "/components/virtual-tree.md",
                 },
                 {
-                  text: "VirtualGrid 虚拟网格",
-                  link: "/components/virtual-grid.md",
-                },
-                {
                   text: "VirtualTable 虚拟表格",
                   link: "/components/virtual-table.md",
-                },
-                {
-                  text: "VirtualSelect 虚拟选择",
-                  link: "/components/virtual-select.md",
                 },
               ],
             },

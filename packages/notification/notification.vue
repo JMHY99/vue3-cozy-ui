@@ -123,7 +123,7 @@ export default defineComponent({
     },
     /**
      * 自动关闭的延时，单位秒
-     * 当设置为 0 ��，不会自动关闭
+     * 当设置为0时，不会自动关闭
      */
     duration: {
       type: Number,

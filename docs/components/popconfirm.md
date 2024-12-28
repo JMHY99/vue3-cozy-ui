@@ -73,7 +73,7 @@
 | 事件名称 | 说明 | 回调参数 |
 | --- | --- | --- |
 | confirm | 点击确认按钮时触发 | function | - |
-| cancel | ���击取消按钮时触发 | function | - |
+| cancel | 点击取消按钮时触发 | function | - |
 | visibleChange | 显示隐藏的回调 | function(visible) | - |
 
 ### Popconfirm Slots

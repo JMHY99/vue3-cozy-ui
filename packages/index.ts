@@ -63,6 +63,7 @@ import CDrawer from "./drawer";
 import CModal from "./modal";
 import CNotification from "./notification";
 import CPopconfirm from "./popconfirm";
+import CCascader from "./cascader";
 
 const components = [
   CIcon,
@@ -147,7 +148,8 @@ const components = [
   CDrawer,
   CModal,
   CNotification,
-  CPopconfirm
+  CPopconfirm,
+  CCascader
 ];
 
 const installComponents = (app: any) => {
@@ -245,7 +247,8 @@ export {
   CDrawer,
   CModal,
   CNotification,
-  CPopconfirm
+  CPopconfirm,
+  CCascader
 };
 
 export default { install };

@@ -40,6 +40,6 @@ const showNotification = (pos: keyof typeof placementMap) => {
 }
 
 const onClose = () => {
-  console.log('通知关��了')
+  console.log('通知关闭了')
 }
 </script> 
