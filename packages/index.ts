@@ -65,6 +65,7 @@ import CNotification from "./notification";
 import CPopconfirm from "./popconfirm";
 import CCascader from "./cascader";
 import CMentions from "./mentions";
+import CAutoComplete from "./auto-complete";
 
 const components = [
   CIcon,
@@ -151,7 +152,8 @@ const components = [
   CNotification,
   CPopconfirm,
   CCascader,
-  CMentions
+  CMentions,
+  CAutoComplete
 ];
 
 const installComponents = (app: any) => {
@@ -251,7 +253,8 @@ export {
   CNotification,
   CPopconfirm,
   CCascader,
-  CMentions
+  CMentions,
+  CAutoComplete
 };
 
 export default { install };
