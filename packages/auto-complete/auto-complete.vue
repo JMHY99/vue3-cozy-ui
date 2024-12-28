@@ -12,19 +12,21 @@
     }"
   >
     <!-- 输入框 -->
-    <c-input
-      ref="inputRef"
-      v-model="innerValue"
-      :placeholder="placeholder"
-      :disabled="disabled"
-      :size="size"
-      :maxlength="maxLength"
-      :allow-clear="allowClear"
-      @focus="handleFocus"
-      @blur="handleBlur"
-      @input="handleInput"
-      @keydown="handleKeyDown"
-    />
+    <slot>
+      <c-input
+        ref="inputRef"
+        v-model="innerValue"
+        :placeholder="placeholder"
+        :disabled="disabled"
+        :size="size"
+        :maxlength="maxLength"
+        :allow-clear="allowClear"
+        @focus="handleFocus"
+        @blur="handleBlur"
+        @input="handleInput"
+        @keydown="handleKeyDown"
+      />
+    </slot>
 
     <!-- 下拉面板 -->
     <div
@@ -61,7 +63,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, PropType, nextTick } from 'vue'
+import { defineComponent, ref, computed, PropType, nextTick, watch } from 'vue'
 
 // 选项数据类型
 export interface AutoCompleteOption {
@@ -156,12 +158,14 @@ export default defineComponent({
     const activeIndex = ref(-1)
     const inputRef = ref<HTMLInputElement | null>(null)
 
-    // 过���的选项
+    // 过滤后的选项
     const filteredOptions = computed(() => {
-      if (!innerValue.value) return props.options
-      
       if (props.filterOption === false) {
         return props.options
+      }
+      
+      if (!innerValue.value) {
+        return props.defaultOpen ? props.options : []
       }
       
       const filterFunc = typeof props.filterOption === 'function' 
@@ -197,6 +201,8 @@ export default defineComponent({
       // 默认选中第一个选项
       if (props.defaultActiveFirstOption && filteredOptions.value.length) {
         activeIndex.value = 0
+      } else {
+        activeIndex.value = -1
       }
     }
 
@@ -210,13 +216,26 @@ export default defineComponent({
       emit('select', option)
       emit('change', value)
 
+      // 关闭下拉框
       visible.value = false
       emit('dropdownVisibleChange', false)
+
+      // 聚焦输入框
+      nextTick(() => {
+        inputRef.value?.focus()
+      })
     }
 
     // 处理键盘事件
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (!visible.value) return
+      if (!visible.value) {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+          visible.value = true
+          emit('dropdownVisibleChange', true)
+          e.preventDefault()
+        }
+        return
+      }
 
       switch (e.key) {
         case 'ArrowUp':
@@ -286,8 +305,16 @@ export default defineComponent({
       setTimeout(() => {
         visible.value = false
         emit('dropdownVisibleChange', false)
-      }, 100)
+      }, 150)
     }
+
+    // 监听 modelValue 的变化
+    watch(
+      () => props.modelValue,
+      (newValue) => {
+        innerValue.value = newValue
+      }
+    )
 
     return {
       innerValue,
