@@ -23,21 +23,98 @@
     box-shadow: $shadow-2;
     transition: opacity $animation-duration-base, transform $animation-duration-base;
     transform-origin: top;
+    padding: 4px 0;
 
-    &.slide-fade-enter-active,
-    &.slide-fade-leave-active {
-      transition: opacity $animation-duration-base, transform $animation-duration-base;
+    &.cozy-dropdown-hidden {
+      display: none;
     }
 
-    &.slide-fade-enter-from,
-    &.slide-fade-leave-to {
-      opacity: 0;
-      transform: scaleY(0);
+    .cozy-menu {
+      border: none;
+      box-shadow: none;
+      margin: 0;
+      padding: 0;
+      background: transparent;
+
+      &-item,
+      &-submenu-title {
+        padding: 5px 12px;
+        margin: 0;
+        clear: both;
+        font-size: $font-size-base;
+        font-weight: normal;
+        color: $text-color;
+        white-space: nowrap;
+        cursor: pointer;
+        transition: all $animation-duration-base;
+        line-height: $line-height-base;
+        border-radius: $border-radius-base;
+
+        &:hover {
+          background-color: $background-color-light;
+        }
+
+        &-selected {
+          color: $color-primary;
+          background-color: $color-primary-light-10;
+        }
+
+        &-disabled {
+          color: $text-color-disabled;
+          cursor: not-allowed;
+
+          &:hover {
+            color: $text-color-disabled;
+            background-color: transparent;
+            cursor: not-allowed;
+          }
+        }
+      }
+
+      &-submenu {
+        position: relative;
+
+        &-title {
+          padding-right: 26px;
+        }
+
+        &-arrow {
+          position: absolute;
+          right: 12px;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: 10px;
+          color: $text-color-secondary;
+        }
+
+        &-popup {
+          position: absolute;
+          left: 100%;
+          top: 0;
+          min-width: 120px;
+          margin-left: 4px;
+          transform-origin: top left;
+        }
+
+        &:hover {
+          > .cozy-menu-submenu-title {
+            color: $color-primary;
+          }
+        }
+      }
+
+      &-divider {
+        height: 1px;
+        margin: 4px 0;
+        overflow: hidden;
+        line-height: 0;
+        background-color: $border-color-split;
+      }
     }
   }
 
   &-content {
-    padding: $spacing-xs 0;
+    position: relative;
   }
 }
 
@@ -47,11 +124,39 @@
   &-bottomCenter,
   &-bottomRight {
     transform-origin: top;
+    margin-top: 4px;
   }
 
   &-topLeft,
   &-topCenter,
   &-topRight {
     transform-origin: bottom;
+    margin-bottom: 4px;
+  }
+}
+
+// RTL 支持
+.cozy-dropdown-rtl {
+  direction: rtl;
+
+  .cozy-menu {
+    &-item,
+    &-submenu-title {
+      text-align: right;
+    }
+
+    &-submenu-arrow {
+      right: auto;
+      left: 12px;
+      transform: translateY(-50%) scaleX(-1);
+    }
+
+    &-submenu-popup {
+      left: auto;
+      right: 100%;
+      margin-right: 4px;
+      margin-left: 0;
+      transform-origin: top right;
+    }
   }
 }

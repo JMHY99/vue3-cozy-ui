@@ -21,10 +21,14 @@
         class="cozy-dropdown-overlay"
         :class="[
           `cozy-dropdown-placement-${placement}`,
-          overlayClassName
+          overlayClassName,
+          { 'cozy-dropdown-hidden': !visible }
         ]"
         :style="[overlayStyle, overlayPosition]"
         ref="overlayRef"
+        @click="handleOverlayClick"
+        @mouseenter="handleOverlayMouseEnter"
+        @mouseleave="handleOverlayMouseLeave"
       >
         <div class="cozy-dropdown-content">
           <slot name="overlay"></slot>
@@ -35,7 +39,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, onBeforeUnmount, computed } from 'vue'
+import { ref, onMounted, onBeforeUnmount, computed, watch } from 'vue'
 
 defineOptions({
   name: 'CDropdown'
@@ -57,6 +61,10 @@ interface Props {
   mouseEnterDelay?: number
   /** 触发后的延时消失，单位毫秒 */
   mouseLeaveDelay?: number
+  /** 点击菜单项后是否自动隐藏菜单 */
+  autoClose?: boolean
+  /** 菜单是否显示，可以通过 v-model 控制 */
+  modelValue?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -66,19 +74,30 @@ const props = withDefaults(defineProps<Props>(), {
   overlayStyle: () => ({}),
   placement: 'bottomLeft',
   mouseEnterDelay: 100,
-  mouseLeaveDelay: 100
+  mouseLeaveDelay: 100,
+  autoClose: true,
+  modelValue: undefined
 })
 
 // 定义事件
 const emit = defineEmits<{
   'visibleChange': [visible: boolean]
   'click': [e: MouseEvent]
+  'update:modelValue': [visible: boolean]
 }>()
 
 // 组件状态
 const visible = ref(false)
 const dropdownRef = ref<HTMLElement | null>(null)
 const overlayRef = ref<HTMLElement | null>(null)
+const isMouseInOverlay = ref(false)
+
+// 监听 modelValue 变化
+watch(() => props.modelValue, (newValue) => {
+  if (newValue !== undefined) {
+    visible.value = newValue
+  }
+}, { immediate: true })
 
 // 显示/隐藏定时器
 let showTimer: number | null = null
@@ -129,8 +148,7 @@ const handleMouseEnter = () => {
   }
 
   showTimer = window.setTimeout(() => {
-    visible.value = true
-    emit('visibleChange', true)
+    setVisible(true)
   }, props.mouseEnterDelay)
 }
 
@@ -143,9 +161,32 @@ const handleMouseLeave = () => {
     showTimer = null
   }
 
+  // 只有当鼠标不在下拉内容区域时才隐藏
+  if (!isMouseInOverlay.value) {
+    hideTimer = window.setTimeout(() => {
+      setVisible(false)
+    }, props.mouseLeaveDelay)
+  }
+}
+
+// 处理下拉内容区域的鼠标进入事件
+const handleOverlayMouseEnter = () => {
+  if (props.disabled || props.trigger !== 'hover') return
+
+  isMouseInOverlay.value = true
+  if (hideTimer) {
+    clearTimeout(hideTimer)
+    hideTimer = null
+  }
+}
+
+// 处理下拉内容区域的鼠标离开事件
+const handleOverlayMouseLeave = () => {
+  if (props.disabled || props.trigger !== 'hover') return
+
+  isMouseInOverlay.value = false
   hideTimer = window.setTimeout(() => {
-    visible.value = false
-    emit('visibleChange', false)
+    setVisible(false)
   }, props.mouseLeaveDelay)
 }
 
@@ -158,11 +199,25 @@ const handleTriggerClick = (e: MouseEvent) => {
   }
 
   if (props.trigger === 'click') {
-    visible.value = !visible.value
-    emit('visibleChange', visible.value)
+    setVisible(!visible.value)
   }
 
   emit('click', e)
+}
+
+// 处理下拉菜单点击事件
+const handleOverlayClick = (e: MouseEvent) => {
+  if (props.autoClose) {
+    setVisible(false)
+  }
+}
+
+// 设置可见状态
+const setVisible = (value: boolean) => {
+  if (visible.value === value) return
+  visible.value = value
+  emit('visibleChange', value)
+  emit('update:modelValue', value)
 }
 
 // 处理点击外部关闭
@@ -177,8 +232,7 @@ const handleClickOutside = (e: MouseEvent) => {
     return
   }
 
-  visible.value = false
-  emit('visibleChange', false)
+  setVisible(false)
 }
 
 // 监听点击外部

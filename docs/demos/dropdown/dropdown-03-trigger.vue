@@ -7,9 +7,9 @@
       </c-button>
       <template #overlay>
         <c-menu>
-          <c-menu-item key="1">菜单项一</c-menu-item>
-          <c-menu-item key="2">菜单项二</c-menu-item>
-          <c-menu-item key="3">菜单项三</c-menu-item>
+          <c-menu-item itemKey="1">菜单项一</c-menu-item>
+          <c-menu-item itemKey="2">菜单项二</c-menu-item>
+          <c-menu-item itemKey="3">菜单项三</c-menu-item>
         </c-menu>
       </template>
     </c-dropdown>
@@ -21,9 +21,9 @@
       </c-button>
       <template #overlay>
         <c-menu>
-          <c-menu-item key="1">菜单项一</c-menu-item>
-          <c-menu-item key="2">菜单项二</c-menu-item>
-          <c-menu-item key="3">菜单项三</c-menu-item>
+          <c-menu-item itemKey="1">菜单项一</c-menu-item>
+          <c-menu-item itemKey="2">菜单项二</c-menu-item>
+          <c-menu-item itemKey="3">菜单项三</c-menu-item>
         </c-menu>
       </template>
     </c-dropdown>
