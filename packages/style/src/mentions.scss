@@ -1,0 +1,146 @@
+.cozy-mentions {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  min-width: 0;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  line-height: 1.5715;
+  background-color: #fff;
+  border-radius: 2px;
+
+  // 输入框
+  &-textarea {
+    width: 100%;
+    min-height: 32px;
+    padding: 4px 11px;
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 14px;
+    line-height: 1.5715;
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    transition: all 0.3s;
+    resize: vertical;
+
+    &:hover {
+      border-color: #40a9ff;
+    }
+
+    &:focus {
+      border-color: #40a9ff;
+      box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+      outline: 0;
+    }
+
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.45);
+    }
+  }
+
+  // 下拉面板
+  &-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1050;
+    width: 100%;
+    margin-top: 4px;
+    padding: 4px 0;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12),
+                0 6px 16px 0 rgba(0, 0, 0, 0.08),
+                0 9px 28px 8px rgba(0, 0, 0, 0.05);
+
+    &-menu {
+      max-height: 250px;
+      margin: 0;
+      padding: 0;
+      overflow: auto;
+      list-style: none;
+    }
+
+    &-menu-item {
+      position: relative;
+      display: block;
+      padding: 5px 12px;
+      overflow: hidden;
+      color: rgba(0, 0, 0, 0.85);
+      font-weight: normal;
+      line-height: 1.5715;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      cursor: pointer;
+      transition: background 0.3s ease;
+
+      &:hover {
+        background-color: #f5f5f5;
+      }
+
+      &-active {
+        background-color: #e6f7ff;
+        font-weight: 500;
+      }
+
+      &-disabled {
+        color: rgba(0, 0, 0, 0.25);
+        cursor: not-allowed;
+
+        &:hover {
+          background-color: transparent;
+        }
+      }
+    }
+
+    &-empty {
+      padding: 12px 16px;
+      color: rgba(0, 0, 0, 0.45);
+      text-align: center;
+    }
+  }
+
+  // 大小变体
+  &-large {
+    font-size: 16px;
+
+    .cozy-mentions-textarea {
+      padding: 6px 11px;
+      font-size: 16px;
+    }
+  }
+
+  &-small {
+    font-size: 14px;
+
+    .cozy-mentions-textarea {
+      padding: 1px 7px;
+    }
+  }
+
+  // 禁用状态
+  &-disabled {
+    .cozy-mentions-textarea {
+      color: rgba(0, 0, 0, 0.25);
+      background-color: #f5f5f5;
+      border-color: #d9d9d9;
+      box-shadow: none;
+      cursor: not-allowed;
+      opacity: 1;
+
+      &:hover {
+        border-color: #d9d9d9;
+      }
+    }
+  }
+
+  // 聚焦状态
+  &-focused {
+    .cozy-mentions-textarea {
+      border-color: #40a9ff;
+      box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+      outline: 0;
+    }
+  }
+} 

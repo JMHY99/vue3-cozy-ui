@@ -64,6 +64,7 @@ import CModal from "./modal";
 import CNotification from "./notification";
 import CPopconfirm from "./popconfirm";
 import CCascader from "./cascader";
+import CMentions from "./mentions";
 
 const components = [
   CIcon,
@@ -149,7 +150,8 @@ const components = [
   CModal,
   CNotification,
   CPopconfirm,
-  CCascader
+  CCascader,
+  CMentions
 ];
 
 const installComponents = (app: any) => {
@@ -248,7 +250,8 @@ export {
   CModal,
   CNotification,
   CPopconfirm,
-  CCascader
+  CCascader,
+  CMentions
 };
 
 export default { install };
