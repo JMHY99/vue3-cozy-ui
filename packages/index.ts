@@ -66,6 +66,9 @@ import CPopconfirm from "./popconfirm";
 import CCascader from "./cascader";
 import CMentions from "./mentions";
 import CAutoComplete from "./auto-complete";
+import VList from './v-list';
+import VTree from './v-tree';
+import VTable from './v-table';
 
 const components = [
   CIcon,
@@ -153,7 +156,10 @@ const components = [
   CPopconfirm,
   CCascader,
   CMentions,
-  CAutoComplete
+  CAutoComplete,
+  VList,
+  VTree,
+  VTable
 ];
 
 const installComponents = (app: any) => {
@@ -254,7 +260,10 @@ export {
   CPopconfirm,
   CCascader,
   CMentions,
-  CAutoComplete
+  CAutoComplete,
+  VList,
+  VTree,
+  VTable
 };
 
 export default { install };

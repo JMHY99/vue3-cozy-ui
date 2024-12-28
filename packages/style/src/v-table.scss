@@ -1,0 +1,156 @@
+@import "./variables.scss";
+
+.cozy-v-table {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid $border-color-base;
+  border-radius: $border-radius-base;
+  background-color: $background-color-white;
+
+  table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+}
+
+.cozy-v-table-header {
+  position: relative;
+  overflow: hidden;
+  background-color: $background-color-light;
+  border-bottom: 1px solid $border-color-base;
+  z-index: 2;
+
+  table {
+    border-radius: $border-radius-base $border-radius-base 0 0;
+  }
+}
+
+.cozy-v-table-header-inner {
+  overflow: hidden;
+  will-change: transform;
+}
+
+.cozy-v-table-body {
+  position: relative;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.2);
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  &::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
+}
+
+.cozy-v-table-phantom {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.cozy-v-table-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  will-change: transform;
+}
+
+.cozy-v-table-cell {
+  padding: 12px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  border-bottom: 1px solid $border-color-base;
+  transition: background 0.3s;
+  background-color: $background-color-white;
+
+  &.cozy-v-table-cell-left {
+    text-align: left;
+  }
+
+  &.cozy-v-table-cell-center {
+    text-align: center;
+  }
+
+  &.cozy-v-table-cell-right {
+    text-align: right;
+  }
+
+  &.cozy-v-table-cell-fixed-left,
+  &.cozy-v-table-cell-fixed-right {
+    z-index: 1;
+  }
+}
+
+th.cozy-v-table-cell {
+  font-weight: 500;
+  color: $text-color;
+  background-color: $background-color-light;
+
+  &.cozy-v-table-cell-fixed-left,
+  &.cozy-v-table-cell-fixed-right {
+    z-index: 3;
+  }
+}
+
+.cozy-v-table-row {
+  &:hover {
+    td.cozy-v-table-cell {
+      background-color: $background-color-light;
+    }
+  }
+
+  &.cozy-v-table-row-striped {
+    td.cozy-v-table-cell {
+      background-color: $background-color-base;
+    }
+
+    &:hover {
+      td.cozy-v-table-cell {
+        background-color: $background-color-light;
+      }
+    }
+  }
+}
+
+.cozy-v-table-fixed-left-shadow,
+.cozy-v-table-fixed-right-shadow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 30px;
+  pointer-events: none;
+  transition: box-shadow .3s ease;
+  z-index: 1;
+}
+
+.cozy-v-table-fixed-left-shadow {
+  right: 0;
+  box-shadow: inset 10px 0 8px -8px rgba(0, 0, 0, 0.15);
+}
+
+.cozy-v-table-fixed-right-shadow {
+  left: 0;
+  box-shadow: inset -10px 0 8px -8px rgba(0, 0, 0, 0.15);
+} 

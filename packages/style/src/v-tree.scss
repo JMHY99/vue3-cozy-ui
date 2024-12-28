@@ -1,0 +1,166 @@
+@import "./variables.scss";
+
+.cozy-v-tree {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 1px solid $border-color-base;
+  border-radius: $border-radius-base;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.cozy-v-tree-phantom {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.cozy-v-tree-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  will-change: transform;
+}
+
+.cozy-v-tree-node {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: $background-color-light;
+  }
+}
+
+.cozy-v-tree-node-content {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  height: 100%;
+}
+
+.cozy-v-tree-switcher {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin-right: 4px;
+  color: $text-color-secondary;
+  transition: transform 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    color: $text-color;
+  }
+
+  &.cozy-v-tree-switcher-open {
+    transform: rotate(90deg);
+  }
+
+  &.cozy-v-tree-switcher-noop {
+    cursor: default;
+  }
+}
+
+.cozy-v-tree-checkbox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.cozy-v-tree-checkbox-inner {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 1px solid $border-color-base;
+  border-radius: 2px;
+  background-color: $background-color-white;
+  transition: all 0.3s;
+
+  &::after {
+    position: absolute;
+    top: 50%;
+    left: 22%;
+    display: table;
+    width: 5.71428571px;
+    height: 9.14285714px;
+    border: 2px solid $background-color-white;
+    border-top: 0;
+    border-left: 0;
+    transform: rotate(45deg) scale(0) translate(-50%, -50%);
+    opacity: 0;
+    transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6), opacity 0.1s;
+    content: ' ';
+  }
+
+  &.cozy-v-tree-checkbox-checked {
+    background-color: $color-primary;
+    border-color: $color-primary;
+
+    &::after {
+      transform: rotate(45deg) scale(1) translate(-50%, -50%);
+      opacity: 1;
+    }
+  }
+
+  &.cozy-v-tree-checkbox-indeterminate {
+    background-color: $background-color-white;
+    border-color: $border-color-base;
+
+    &::after {
+      top: 50%;
+      left: 50%;
+      width: 8px;
+      height: 8px;
+      background-color: $color-primary;
+      border: 0;
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+      content: ' ';
+    }
+  }
+}
+
+.cozy-v-tree-node-title {
+  flex: 1;
+  padding: 0 4px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $color-primary;
+  }
+
+  &.cozy-v-tree-node-selected {
+    color: $color-primary;
+    font-weight: 500;
+  }
+} 

@@ -175,20 +175,20 @@ export default {
               text: "虚拟",
               items: [
                 {
-                  text: "VirtualList 虚拟列表",
-                  link: "/components/virtual-list.md",
+                  text: "VList 虚拟列表",
+                  link: "/components/v-list.md",
+                },
+                // {
+                //   text: "VScroll 虚拟滚动",
+                //   link: "/components/v-scroll.md",
+                // },
+                {
+                  text: "VTree 虚拟树",
+                  link: "/components/v-tree.md",
                 },
                 {
-                  text: "VirtualScroll 虚拟滚动",
-                  link: "/components/virtual-scroll.md",
-                },
-                {
-                  text: "VirtualTree 虚拟树",
-                  link: "/components/virtual-tree.md",
-                },
-                {
-                  text: "VirtualTable 虚拟表格",
-                  link: "/components/virtual-table.md",
+                  text: "VTable 虚拟表格",
+                  link: "/components/v-table.md",
                 },
               ],
             },

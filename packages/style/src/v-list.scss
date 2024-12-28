@@ -1,0 +1,54 @@
+@import "./variables.scss";
+
+.cozy-v-list {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 1px solid $border-color-base;
+  border-radius: $border-radius-base;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.cozy-v-list-phantom {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.cozy-v-list-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  will-change: transform;
+}
+
+.cozy-v-list-item {
+  padding: 8px 12px;
+  box-sizing: border-box;
+  border-bottom: 1px solid $border-color-split;
+  
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background-color: $background-color-light;
+  }
+} 
