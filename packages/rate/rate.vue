@@ -13,7 +13,7 @@
       class="cozy-rate-star"
       :class="{
         'cozy-rate-star-full': item.value <= currentValue,
-        'cozy-rate-star-half': item.value - 0.5 === currentValue,
+        'cozy-rate-star-half': allowHalf && item.value - 0.5 === currentValue,
       }"
       @mousemove="(e) => handleMouseMove(e, item)"
       @click="() => handleClick(item)"
@@ -25,8 +25,7 @@
           :style="{
             color: item.value <= currentValue ? activeColor : '#e8e8e8',
           }"
-          >{{ character }}</i
-        >
+        >{{ character }}</i>
         <i
           v-else-if="icon"
           :class="['cozy-icon', icon]"
@@ -42,66 +41,35 @@
           }"
         ></i>
       </slot>
-      <template v-if="allowHalf">
-        <div
-          class="cozy-rate-star-first"
-          @mousemove.stop="(e) => handleHalfMove(e, item)"
-        >
-          <slot name="character" :index="index" :value="item.value - 0.5">
-            <i
-              v-if="character"
-              class="cozy-rate-character"
-              :style="{
-                color:
-                  item.value - 0.5 <= currentValue ? activeColor : '#e8e8e8',
-              }"
-              >{{ character }}</i
-            >
-            <i
-              v-else-if="icon"
-              :class="['cozy-icon', icon]"
-              :style="{
-                color:
-                  item.value - 0.5 <= currentValue ? activeColor : '#e8e8e8',
-              }"
-            ></i>
-            <i
-              v-else
-              class="cozy-icon c-shoucang1"
-              :style="{
-                color:
-                  item.value - 0.5 <= currentValue ? activeColor : '#e8e8e8',
-              }"
-            ></i>
-          </slot>
-        </div>
-        <div class="cozy-rate-star-second">
-          <slot name="character" :index="index" :value="item.value">
-            <i
-              v-if="character"
-              class="cozy-rate-character"
-              :style="{
-                color: item.value <= currentValue ? activeColor : '#e8e8e8',
-              }"
-              >{{ character }}</i
-            >
-            <i
-              v-else-if="icon"
-              :class="['cozy-icon', icon]"
-              :style="{
-                color: item.value <= currentValue ? activeColor : '#e8e8e8',
-              }"
-            ></i>
-            <i
-              v-else
-              class="cozy-icon c-shoucang1"
-              :style="{
-                color: item.value <= currentValue ? activeColor : '#e8e8e8',
-              }"
-            ></i>
-          </slot>
-        </div>
-      </template>
+      <div
+        v-if="allowHalf"
+        class="cozy-rate-star-first"
+        @mousemove.stop="(e) => handleHalfMove(e, item)"
+      >
+        <slot name="character" :index="index" :value="item.value - 0.5">
+          <i
+            v-if="character"
+            class="cozy-rate-character"
+            :style="{
+              color: item.value - 0.5 <= currentValue ? activeColor : '#e8e8e8',
+            }"
+          >{{ character }}</i>
+          <i
+            v-else-if="icon"
+            :class="['cozy-icon', icon]"
+            :style="{
+              color: item.value - 0.5 <= currentValue ? activeColor : '#e8e8e8',
+            }"
+          ></i>
+          <i
+            v-else
+            class="cozy-icon c-shoucang1"
+            :style="{
+              color: item.value - 0.5 <= currentValue ? activeColor : '#e8e8e8',
+            }"
+          ></i>
+        </slot>
+      </div>
     </div>
     <span v-if="showText" class="cozy-rate-text">{{ currentText }}</span>
   </div>
@@ -150,8 +118,6 @@ const emit = defineEmits(["update:modelValue", "change"]);
 const currentValue = ref(props.modelValue);
 // 实际选中的值
 const selectedValue = ref(props.modelValue);
-// 是否处于半星状态
-const isHalf = ref(false);
 
 // 生成星星列表
 const starList = computed(() => {
@@ -169,27 +135,25 @@ const currentText = computed(() => {
 // 处理鼠标移动
 const handleMouseMove = (event: MouseEvent, item: { value: number }) => {
   if (props.disabled || props.readonly) return;
-
-  if (!isHalf.value) {
-    currentValue.value = item.value;
-  }
+  currentValue.value = item.value;
 };
 
 // 处理半星移动
 const handleHalfMove = (event: MouseEvent, item: { value: number }) => {
   if (props.disabled || props.readonly || !props.allowHalf) return;
 
+  event.stopPropagation();
   const target = event.currentTarget as HTMLElement;
   const rect = target.getBoundingClientRect();
-  isHalf.value = event.clientX - rect.left < rect.width;
-  currentValue.value = isHalf.value ? item.value - 0.5 : item.value;
+  const isHalfStar = event.offsetX < rect.width / 2;
+  
+  currentValue.value = isHalfStar ? item.value - 0.5 : item.value;
 };
 
 // 处理鼠标离开
 const handleMouseLeave = () => {
   if (props.disabled || props.readonly) return;
   currentValue.value = selectedValue.value;
-  isHalf.value = false;
 };
 
 // 处理点击

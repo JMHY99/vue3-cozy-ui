@@ -23,35 +23,25 @@
       transition: all 0.3s;
     }
 
-    &-first,
-    &-second {
+    &-first {
       position: absolute;
       top: 0;
       left: 0;
       width: 50%;
       height: 100%;
       overflow: hidden;
+      cursor: pointer;
       opacity: 0;
 
-      &:hover {
-        opacity: 1;
-      }
-    }
-
-    &-first {
       .cozy-icon,
       .cozy-rate-character {
-        margin-right: 0;
+        transform: scale(1.1);
       }
     }
+  }
 
-    &-second {
-      left: 50%;
-      .cozy-icon,
-      .cozy-rate-character {
-        transform: translateX(-50%);
-      }
-    }
+  &-star-half &-star-first {
+    opacity: 1;
   }
 
   &-character {
