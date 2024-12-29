@@ -109,4 +109,19 @@
   &-clear {
     cursor: pointer;
   }
+
+  // 字数限制
+  &-word-limit {
+    color: rgba(0, 0, 0, 0.45);
+    font-size: 12px;
+    margin-left: 4px;
+  }
+
+  // 文本域字数限制
+  &-textarea + &-word-limit {
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    margin: 0;
+  }
 }

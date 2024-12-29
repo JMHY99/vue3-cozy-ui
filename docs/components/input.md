@@ -41,6 +41,12 @@
 
 <demo src="../demos/input/input-06-textarea.vue"></demo>
 
+### 字数统计
+
+通过设置 `show-word-limit` 属性和 `maxlength` 属性，可以显示输入字数的统计。
+
+<demo src="../demos/input/input-07-word-limit.vue"></demo>
+
 ### API
 
 | 属性名 | 说明 | 类型 | 可选值 | 默认值 |
@@ -56,6 +62,7 @@
 | size | 输入框尺寸 | string | large/default/small | default |
 | rows | 文本域默认行数 | number | — | 3 |
 | maxlength | 最大输入长度 | number | — | — |
+| show-word-limit | 是否显示输入字数统计 | boolean | — | false |
 | autofocus | 自动获取焦点 | boolean | — | false |
 | resize | 文本域是否可缩放 | string | none/both/horizontal/vertical | vertical |
 

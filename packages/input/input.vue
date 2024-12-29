@@ -44,7 +44,7 @@
 
     <!-- 后缀图标 -->
     <span
-      v-if="(suffixIcon || clearable) && !isTextarea"
+      v-if="(suffixIcon || clearable || showWordLimit) && !isTextarea"
       class="cozy-input-suffix"
     >
       <i
@@ -53,6 +53,14 @@
         @click="handleClear"
       ></i>
       <i v-else-if="suffixIcon" :class="`cozy-icon ${suffixIcon}`"></i>
+      <span v-if="showWordLimit && maxlength" class="cozy-input-word-limit">
+        {{ valueLength }}/{{ maxlength }}
+      </span>
+    </span>
+
+    <!-- 文本域字数限制 -->
+    <span v-if="showWordLimit && maxlength && type === 'textarea'" class="cozy-input-word-limit">
+      {{ valueLength }}/{{ maxlength }}
     </span>
   </div>
 </template>
@@ -121,6 +129,10 @@ const props = defineProps({
     values: ["none", "both", "horizontal", "vertical"],
     default: "vertical",
   },
+  showWordLimit: {
+    type: Boolean,
+    default: false
+  }
 });
 
 // 定义事件
@@ -142,12 +154,17 @@ const isTextarea = computed(() => props.type === "textarea");
 // 新增 textarea ref
 const textareaRef = ref<HTMLTextAreaElement>();
 
+// 计算输入值的长度
+const valueLength = computed(() => {
+  return String(props.modelValue).length;
+});
+
 // 计算 class
 const inputClass = computed(() => ({
   "cozy-input-disabled": props.disabled,
   [`cozy-input-${props.size}`]: props.size,
   "cozy-input-with-prefix": props.prefixIcon,
-  "cozy-input-with-suffix": props.suffixIcon || props.clearable,
+  "cozy-input-with-suffix": props.suffixIcon || props.clearable || props.showWordLimit,
 }));
 
 // 处理输入
@@ -155,7 +172,6 @@ const handleInput = (event: Event) => {
   const value = (event.target as HTMLInputElement).value;
   emit("update:modelValue", value);
   emit("input", event);
-  formItem?.validate?.()
 };
 
 // 处理聚焦
@@ -166,7 +182,6 @@ const handleFocus = (event: FocusEvent) => {
 // 处理失焦
 const handleBlur = (event: FocusEvent) => {
   emit("blur", event);
-  formItem?.validate?.()
 };
 
 // 处理变化
