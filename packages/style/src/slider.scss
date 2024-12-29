@@ -2,10 +2,80 @@
   position: relative;
   width: 100%;
   height: 12px;
+  margin: 10px 6px;
   padding: 4px 0;
-  margin: 10px 0;
   cursor: pointer;
-  touch-action: none;
+
+  &-vertical {
+    width: 12px;
+    height: 100%;
+    margin: 6px 10px;
+    padding: 0 4px;
+
+    .cozy-slider-rail {
+      width: 4px;
+      height: 100%;
+      top: 0;
+      bottom: 0;
+    }
+
+    .cozy-slider-track {
+      width: 4px;
+      height: auto;
+      bottom: 0;
+    }
+
+    .cozy-slider-handle {
+      top: auto;
+      bottom: 0;
+      margin-top: 0;
+      margin-left: -5px;
+      margin-bottom: -7px;
+    }
+
+    .cozy-slider-tooltip {
+      bottom: auto;
+      left: auto;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      margin-bottom: 0;
+      margin-right: 12px;
+
+      &-arrow {
+        top: 50%;
+        right: -4px;
+        bottom: auto;
+        left: auto;
+        margin-top: -4px;
+        margin-left: 0;
+        border-width: 4px 0 4px 4px;
+        border-top-color: transparent;
+        border-left-color: rgba(0, 0, 0, 0.85);
+      }
+    }
+
+    .cozy-slider-marks {
+      top: 0;
+      left: 15px;
+      height: 100%;
+    }
+
+    .cozy-slider-mark {
+      top: auto;
+      left: 0;
+      transform: translateY(50%);
+    }
+
+    .cozy-slider-steps {
+      width: 4px;
+      height: 100%;
+    }
+
+    .cozy-slider-step {
+      transform: translateY(50%);
+    }
+  }
 
   &-rail {
     position: absolute;
@@ -30,83 +100,61 @@
     height: 14px;
     margin-top: -5px;
     background-color: #fff;
-    border: 2px solid #1890ff;
+    border: solid 2px #1890ff;
     border-radius: 50%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    cursor: grab;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.6s;
 
     &:hover {
       border-color: #40a9ff;
     }
 
-    &:active {
-      cursor: grabbing;
-      border-color: #096dd9;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
-
     &:focus {
+      border-color: #40a9ff;
       outline: none;
       box-shadow: 0 0 0 5px rgba(24, 144, 255, 0.12);
     }
   }
 
-  &-marks {
-    position: absolute;
-    top: 18px;
-    left: 0;
-    width: 100%;
-
-    .cozy-slider-mark {
-      position: absolute;
-      font-size: 12px;
-      color: rgba(0, 0, 0, 0.45);
-      transform: translateX(-50%);
-      user-select: none;
-    }
-  }
-
-  &-steps {
-    position: absolute;
-    width: 100%;
-    height: 4px;
-    background: transparent;
-
-    .cozy-slider-step {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background-color: #f5f5f5;
-      border-radius: 50%;
-      transform: translateX(-50%);
-
-      &-active {
-        background-color: #fff;
-      }
-    }
-  }
-
   &-tooltip {
     position: absolute;
-    top: -32px;
-    padding: 4px 8px;
-    color: #fff;
-    font-size: 12px;
-    line-height: 1;
-    background-color: rgba(0, 0, 0, 0.75);
-    border-radius: 2px;
+    z-index: 1070;
+    display: block;
+    visibility: visible;
+    font-size: 14px;
+    line-height: 1.5;
+    bottom: 100%;
+    left: 50%;
     transform: translateX(-50%);
+    margin-bottom: 12px;
 
-    &::after {
-      content: '';
+    &-content {
+      min-width: 30px;
+      min-height: 32px;
+      padding: 6px 8px;
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      word-wrap: break-word;
+      background-color: rgba(0, 0, 0, 0.85);
+      border-radius: 2px;
+      box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12),
+        0 6px 16px 0 rgba(0, 0, 0, 0.08),
+        0 9px 28px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    &-arrow {
       position: absolute;
-      bottom: -4px;
       left: 50%;
-      width: 8px;
-      height: 8px;
-      background-color: rgba(0, 0, 0, 0.75);
-      transform: translateX(-50%) rotate(45deg);
+      bottom: -4px;
+      display: block;
+      width: 0;
+      height: 0;
+      margin-left: -4px;
+      border-color: transparent;
+      border-style: solid;
+      border-width: 4px 4px 0;
+      border-top-color: rgba(0, 0, 0, 0.85);
     }
   }
 
@@ -124,73 +172,50 @@
     .cozy-slider-handle {
       background-color: #fff;
       border-color: rgba(0, 0, 0, 0.25);
-      box-shadow: none;
       cursor: not-allowed;
+      box-shadow: none;
 
       &:hover,
-      &:active,
       &:focus {
         border-color: rgba(0, 0, 0, 0.25);
         box-shadow: none;
       }
     }
-
-    .cozy-slider-mark {
-      color: rgba(0, 0, 0, 0.25);
-    }
   }
 
-  &-vertical {
-    width: 12px;
+  &-marks {
+    position: absolute;
+    width: 100%;
     height: 100%;
-    padding: 0 4px;
-    margin: 6px 10px;
+    font-size: 14px;
+  }
 
-    .cozy-slider-rail {
-      width: 4px;
-      height: 100%;
-    }
+  &-mark {
+    position: absolute;
+    top: 15px;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    user-select: none;
+    color: rgba(0, 0, 0, 0.45);
+  }
 
-    .cozy-slider-track {
-      width: 4px;
-      bottom: 0;
-    }
+  &-steps {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: transparent;
+  }
 
-    .cozy-slider-handle {
-      margin-top: 0;
-      margin-left: -5px;
-    }
+  &-step {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: #f5f5f5;
+    border-radius: 50%;
+    transform: translateX(-50%);
 
-    .cozy-slider-marks {
-      top: 0;
-      left: 18px;
-      height: 100%;
-      width: auto;
-
-      .cozy-slider-mark {
-        transform: translateY(50%);
-      }
-    }
-
-    .cozy-slider-steps {
-      width: 4px;
-      height: 100%;
-
-      .cozy-slider-step {
-        transform: translateY(50%);
-      }
-    }
-
-    .cozy-slider-tooltip {
-      top: 50%;
-      left: 24px;
-      transform: translateY(-50%);
-
-      &::after {
-        top: 50%;
-        left: -4px;
-        transform: translateY(-50%) rotate(45deg);
-      }
+    &-active {
+      background-color: #1890ff;
     }
   }
 }

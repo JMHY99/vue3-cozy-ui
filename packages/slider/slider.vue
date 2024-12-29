@@ -44,9 +44,13 @@
       :aria-valuemax="max"
       :aria-valuenow="modelValue"
       :aria-disabled="disabled"
-    ></div>
-    <div v-if="showTooltip" class="cozy-slider-tooltip" :style="tooltipStyle">
-      {{ formatTooltip ? formatTooltip(modelValue) : modelValue }}
+    >
+      <div v-if="showTooltip" class="cozy-slider-tooltip">
+        <div class="cozy-slider-tooltip-content">
+          {{ formatTooltip ? formatTooltip(modelValue) : modelValue }}
+        </div>
+        <div class="cozy-slider-tooltip-arrow"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -112,7 +116,7 @@ const trackStyle = computed(() => {
   const percentage =
     ((props.modelValue - props.min) / (props.max - props.min)) * 100;
   return props.vertical
-    ? { height: `${percentage}%` }
+    ? { bottom: '0', height: `${percentage}%` }
     : { width: `${percentage}%` };
 });
 
@@ -167,7 +171,7 @@ const getValueFromPosition = (position: number) => {
   const sliderRect = sliderRef.value.getBoundingClientRect();
   const sliderLength = props.vertical ? sliderRect.height : sliderRect.width;
   const percentage = props.vertical
-    ? (sliderLength - position) / sliderLength
+    ? 1 - (position / sliderLength)
     : position / sliderLength;
 
   return percentage * (props.max - props.min) + props.min;
@@ -224,8 +228,11 @@ const handleMouseMove = (event: MouseEvent) => {
   const sliderRect = sliderRef.value?.getBoundingClientRect();
   const sliderLength = props.vertical ? sliderRect?.height : sliderRect?.width;
   const diffValue = (diff / (sliderLength || 1)) * (props.max - props.min);
+  const newValue = props.vertical
+    ? startValue.value + diffValue
+    : startValue.value + diffValue;
 
-  handleValueChange(startValue.value + diffValue);
+  handleValueChange(newValue);
 };
 
 // 处理触摸移动事件
@@ -242,8 +249,11 @@ const handleTouchMove = (event: TouchEvent) => {
   const sliderRect = sliderRef.value?.getBoundingClientRect();
   const sliderLength = props.vertical ? sliderRect?.height : sliderRect?.width;
   const diffValue = (diff / (sliderLength || 1)) * (props.max - props.min);
+  const newValue = props.vertical
+    ? startValue.value + diffValue
+    : startValue.value + diffValue;
 
-  handleValueChange(startValue.value + diffValue);
+  handleValueChange(newValue);
 };
 
 // 处理鼠标松开事件
