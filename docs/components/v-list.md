@@ -6,6 +6,8 @@
 
 虚拟列表的核心实现原理如下：
 
+![v-list](../demos/v-list/v-list.excalidraw.png)
+
 1. 容器结构
    - 外层容器：固定高度，设置 `overflow: auto` 实现滚动
    - 占位容器：高度等于所有列表项总高度，用于形成滚动条
