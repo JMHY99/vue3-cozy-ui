@@ -1,28 +1,32 @@
 # Comment 评论
 
-对网站内容的反馈、评价和讨论。
+### 概述
 
-## 基础用法
+::: tip
+对网站内容的反馈、评价和讨论。
+:::
+
+### 基础用法
 
 基础评论组件。
 
 <demo src="../demos/comment/comment-01-base.vue"></demo>
 
-## 嵌套评论
+### 嵌套评论
 
 评论可以嵌套。
 
 <demo src="../demos/comment/comment-02-nested.vue"></demo>
 
-## 配置操作
+### 配置操作
 
 配置操作项。
 
 <demo src="../demos/comment/comment-03-actions.vue"></demo>
 
-## API
+### API
 
-### Comment Props
+#### Comment Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -31,7 +35,7 @@
 | content | 评论的主要内容 | string | - |
 | datetime | 展示时间描述 | string | - |
 
-### Comment Slots
+#### Comment Slots
 
 | 名称 | 说明 |
 | --- | --- |

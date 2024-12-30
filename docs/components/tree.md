@@ -1,13 +1,13 @@
 # Tree 树形控件
 
+### 概述
+::: tip
 树形数据展示控件。
-
-## 何时使用
 
 - 文件夹、组织架构、生物分类、国家地区等等，世间万物的大多数结构都是树形结构。
 - 使用 `树控件` 可以完整展现其中的层级关系，并具有展开收起选择等交互功能。
+:::
 
-## 代码演示
 
 ### 基本用法
 
@@ -57,9 +57,9 @@
 
 <demo src="../demos/tree/tree-08-line.vue"></demo>
 
-## API
+### API
 
-### Tree Props
+#### Tree Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -87,7 +87,7 @@
 | switcherIcon | 自定义展开/折叠图标 | `(props: { expanded: boolean }) => VNode` | - |
 | blockNode | 是否节点占据一行 | `boolean` | `false` |
 
-### Tree Events
+#### Tree Events
 
 | 事件名称 | 说明 | 回调参数 |
 | --- | --- | --- |
@@ -102,7 +102,7 @@
 | drop | 拖拽放置时触发 | `({ event: DragEvent, node: TreeNodeData, dragNode: TreeNodeData, dropPosition: number }) => void` |
 | dragend | 拖拽结束时触发 | `({ event: DragEvent, node: TreeNodeData }) => void` |
 
-### TreeNodeData
+#### TreeNodeData
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -117,7 +117,7 @@
 | icon | 自定义图标 | `string \| (() => VNode)` | - |
 | switcherIcon | 自定义展开/折叠图标 | `string \| (() => VNode)` | - |
 
-### Tree Methods
+#### Tree Methods
 
 | 方法名 | 说明 | 参数 |
 | --- | --- | --- |

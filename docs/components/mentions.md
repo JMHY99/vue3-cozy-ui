@@ -1,13 +1,14 @@
 # Mentions 提及
 
-提及组件。
+### 概述
 
-## 何时使用
+::: tip
+提及组件。
 
 - 用于在输入中提及某人或某事
 - 常用于评论、聊天、反馈等场景
 
-## 代码演示
+:::
 
 ### 基本使用
 
@@ -57,43 +58,43 @@
 
 <demo src="../demos/mentions/mentions-08-size.vue"></demo>
 
-## API
+### API
 
-### Mentions Props
+#### Mentions Props
 
-| 参数 | 说明 | 类型 | 默认��� |
-| --- | --- | --- | --- |
-| modelValue(v-model) | 输入框的值 | `string` | - |
-| options | 选项数组 | `MentionsOption[]` | `[]` |
-| prefix | 触发字符 | `string \| string[]` | `'@'` |
-| fieldNames | 自定义建议选项的键名 | `object` | `{ label: 'label', value: 'value' }` |
-| placeholder | 输入框占位文本 | `string` | - |
-| disabled | 是否禁用 | `boolean` | `false` |
-| rows | 输入框行数 | `number` | `1` |
-| maxLength | 最大长度 | `number` | - |
-| size | 输入框大小 | `'large' \| 'small'` | - |
-| notFoundContent | 无匹配时的内容 | `string` | `'无匹配结果'` |
-| dropdownStyle | 下拉框的样式 | `object` | - |
-| filterOption | 自定义过滤逻辑 | `(input: string, option: MentionsOption) => boolean` | - |
-| validateSearch | 自定义触发验证逻辑 | `(text: string, props: Record<string, any>) => boolean` | - |
+| 参数                | 说明                 | 类型                                                    | 默认                                 |
+| ------------------- | -------------------- | ------------------------------------------------------- | ------------------------------------ |
+| modelValue(v-model) | 输入框的值           | `string`                                                | -                                    |
+| options             | 选项数组             | `MentionsOption[]`                                      | `[]`                                 |
+| prefix              | 触发字符             | `string \| string[]`                                    | `'@'`                                |
+| fieldNames          | 自定义建议选项的键名 | `object`                                                | `{ label: 'label', value: 'value' }` |
+| placeholder         | 输入框占位文本       | `string`                                                | -                                    |
+| disabled            | 是否禁用             | `boolean`                                               | `false`                              |
+| rows                | 输入框行数           | `number`                                                | `1`                                  |
+| maxLength           | 最大长度             | `number`                                                | -                                    |
+| size                | 输入框大小           | `'large' \| 'small'`                                    | -                                    |
+| notFoundContent     | 无匹配时的内容       | `string`                                                | `'无匹配结果'`                       |
+| dropdownStyle       | 下拉框的样式         | `object`                                                | -                                    |
+| filterOption        | 自定义过滤逻辑       | `(input: string, option: MentionsOption) => boolean`    | -                                    |
+| validateSearch      | 自定义触发验证逻辑   | `(text: string, props: Record<string, any>) => boolean` | -                                    |
 
-### Mentions Events
+#### Mentions Events
 
-| 事件名称 | 说明 | 回调参数 |
-| --- | --- | --- |
-| change | 输入框内容变化时触发 | `(value: string) => void` |
-| select | 选择选项时触发 | `(option: MentionsOption) => void` |
-| search | 搜索时触发 | `(value: string) => void` |
-| focus | 获得焦点时触发 | `(e: FocusEvent) => void` |
-| blur | 失去焦点时触发 | `(e: FocusEvent) => void` |
+| 事件名称 | 说明                 | 回调参数                           |
+| -------- | -------------------- | ---------------------------------- |
+| change   | 输入框内容变化时触发 | `(value: string) => void`          |
+| select   | 选择选项时触发       | `(option: MentionsOption) => void` |
+| search   | 搜索时触发           | `(value: string) => void`          |
+| focus    | 获得焦点时触发       | `(e: FocusEvent) => void`          |
+| blur     | 失去焦点时触发       | `(e: FocusEvent) => void`          |
 
-### Mentions Slots
+#### Mentions Slots
 
-| 名称 | 说明 | 参数 |
-| --- | --- | --- |
+| 名称   | 说明           | 参数                         |
+| ------ | -------------- | ---------------------------- |
 | option | 自定义选项内容 | `{ option: MentionsOption }` |
 
-### MentionsOption
+#### MentionsOption
 
 ```ts
 interface MentionsOption {
@@ -102,4 +103,4 @@ interface MentionsOption {
   disabled?: boolean;
   [key: string]: any;
 }
-``` 
+```

@@ -1,8 +1,11 @@
 # 虚拟树 VTree
 
+### 概述
+::: tip
 虚拟树组件用于展示大量树形数据时优化性能，通过只渲染可视区域内的节点来减少 DOM 节点数量。
+:::
 
-## 实现思路
+### 实现思路
 
 虚拟树的核心实现原理如下：
 
@@ -35,27 +38,27 @@
    - 滚动定位：支持滚动到指定节点
    - 搜索高亮：支持节点内容搜索
 
-## 基础用法
+### 基础用法
 
 最基础的虚拟树用法。
 
 <demo src="../demos/v-tree/v-tree-01-basic.vue"></demo>
 
-## 可选择
+### 可选择
 
 通过 `checkable` 属性启用复选框功能。
 
 <demo src="../demos/v-tree/v-tree-02-checkable.vue"></demo>
 
-## 自定义节点内容
+### 自定义节点内容
 
 使用 `title` 插槽自定义节点内容。
 
 <demo src="../demos/v-tree/v-tree-03-custom.vue"></demo>
 
-## API
+### API
 
-### Props
+#### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -71,7 +74,7 @@
 | defaultExpandAll | 默认展开所有节点 | boolean | false |
 | multiple | 是否支持多选 | boolean | false |
 
-### Events
+#### Events
 
 | 事件名 | 说明 | 回调参数 |
 | --- | --- | --- |
@@ -82,20 +85,20 @@
 | select | 选择节点时触发 | (selectedKeys: (string \| number)[], node: TreeNode) => void |
 | check | 勾选节点时触发 | (checkedKeys: (string \| number)[], node: TreeNode) => void |
 
-### Methods
+#### Methods
 
 | 方法名 | 说明 | 参数 |
 | --- | --- | --- |
 | scrollToKey | 滚动到指定key的节点 | (key: string \| number) => void |
 | expandToKey | 展开指定节点到根节点的路径 | (key: string \| number) => void |
 
-### Slots
+#### Slots
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
 | title | 自定义节点内容 | { node: TreeNode } |
 
-### TreeNode 数据结构
+#### TreeNode 数据结构
 
 ```ts
 interface TreeNode {

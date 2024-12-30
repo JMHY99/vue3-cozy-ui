@@ -1,12 +1,10 @@
 # Result 结果
 
+### 概述
+::: tip
 用于反馈一系列操作任务的处理结果。
-
-## 何时使用
-
 当有重要操作需要告知用户处理结果，且反馈内容较为复杂时使用。
-
-## 代码演示
+:::
 
 ### 基本用法
 
@@ -32,9 +30,9 @@
 
 <demo src="../demos/result/result-04-error.vue"></demo>
 
-## API
+### API
 
-### Result Props
+#### Result Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -42,7 +40,7 @@
 | title | 标题 | `string` | - |
 | subTitle | 副标题 | `string` | - |
 
-### Result Slots
+#### Result Slots
 
 | 名称 | 说明 |
 | --- | --- |

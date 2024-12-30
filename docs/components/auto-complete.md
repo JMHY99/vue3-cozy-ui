@@ -1,13 +1,13 @@
 # AutoComplete 自动完成
 
-输入框自动完成功能。
+### 概述
 
-## 何时使用
+::: tip
+输入框自动完成功能。
 
 - 需要一个输入框而不是选择器。
 - 需要输入建议/辅助提示。
-
-## 代码演示
+:::
 
 ### 基本使用
 
@@ -51,11 +51,11 @@
 
 <demo src="../demos/auto-complete/auto-complete-07-size.vue"></demo>
 
-## API
+### API
 
-### AutoComplete Props
+#### AutoComplete Props
 
-| 参�� | 说明 | 类型 | 默认值 |
+| 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | modelValue(v-model) | 输入框的值 | `string` | - |
 | options | 自动完成的数据源 | `AutoCompleteOption[]` | `[]` |
@@ -71,24 +71,24 @@
 | backfill | 使用键盘选择选项的时候把选中项回填到输入框中 | `boolean` | `false` |
 | filterOption | 是否根据输入项进行筛选。当其为一个函数时，会接收 `inputValue` `option` 两个参数，当 `option` 符合筛选条件时，应返回 `true`，反之则返回 `false` | `boolean \| ((inputValue: string, option: AutoCompleteOption) => boolean)` | `true` |
 
-### AutoComplete Events
+#### AutoComplete Events
 
 | 事件名称 | 说明 | 回调参数 |
 | --- | --- | --- |
 | change | 选中 option，或 input 的 value 变化时触发 | `(value: string) => void` |
-| select | 被���中时调用 | `(option: AutoCompleteOption) => void` |
+| select | 被选中时调用 | `(option: AutoCompleteOption) => void` |
 | search | 搜索补全项的时候调用 | `(value: string) => void` |
 | focus | 获得焦点时触发 | `(e: FocusEvent) => void` |
 | blur | 失去焦点时触发 | `(e: FocusEvent) => void` |
 | dropdownVisibleChange | 下拉框出现/隐藏时触发 | `(visible: boolean) => void` |
 
-### AutoComplete Slots
+#### AutoComplete Slots
 
 | 名称 | 说明 | 参数 |
 | --- | --- | --- |
 | option | 自定义选项内容 | `{ option: AutoCompleteOption }` |
 
-### AutoCompleteOption
+#### AutoCompleteOption
 
 ```ts
 interface AutoCompleteOption {

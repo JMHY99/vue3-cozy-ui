@@ -1,12 +1,13 @@
 # TreeSelect 树选择
 
+### 概述
+
+::: tip
 树型选择控件。
 
-## 何时使用
-
 类似 Select 的选择控件，可选择的数据结构是一个树形结构时，可以使用 TreeSelect，例如公司层级、学科系统、分类目录等等。
+:::
 
-## 代码演示
 
 ### 基本使用
 
@@ -44,9 +45,9 @@
 
 <demo src="../demos/tree-select/tree-select-06-size.vue"></demo>
 
-## API
+### API
 
-### TreeSelect Props
+#### TreeSelect Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -71,7 +72,7 @@
 | treeNodeLabelProp | 作为显示的 prop 设置 | `string` | `title` |
 | emptyText | 当下拉列表为空时显示的内容 | `string` | `'暂无数据'` |
 
-### TreeSelect Events
+#### TreeSelect Events
 
 | 事件名称 | 说明 | 回调参数 |
 | --- | --- | --- |
@@ -82,7 +83,7 @@
 | dropdownVisibleChange | 展开下拉菜单的回调 | `(open: boolean) => void` |
 | load | 异步加载数据完成时的回调 | `(loadedKeys: (string \| number)[], { node: TreeNodeData }) => void` |
 
-### TreeNodeData
+#### TreeNodeData
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |

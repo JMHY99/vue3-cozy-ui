@@ -1,12 +1,12 @@
 # Modal 对话框
 
+### 概述
+
+::: tip
 模态对话框。
 
-## 何时使用
-
 需要用户处理事务，又不希望跳转页面以致打断工作流程时，可以使用 Modal 在当前页面正中打开一个浮层，承载相应的操作。
-
-## 代码演示
+::: 
 
 ### 基础用法
 
@@ -44,9 +44,9 @@
 
 <demo src="../demos/modal/modal-06-custom.vue"></demo>
 
-## API
+### API
 
-### Modal Props
+#### Modal Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -65,14 +65,14 @@
 | cancelText | 取消按钮文字 | `string` | `'取消'` |
 | confirmLoading | 确定按钮 loading | `boolean` | `false` |
 
-### Modal Events
+#### Modal Events
 
 | 事件名称 | 说明 | 回调参数 |
 | --- | --- | --- |
 | ok | 点击确定回调 | - |
 | cancel | 点击遮罩层或右上角叉或取消按钮的回调 | - |
 
-### Modal Slots
+#### Modal Slots
 
 | 名称 | 说明 |
 | --- | --- |

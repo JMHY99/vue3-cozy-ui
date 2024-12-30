@@ -1,8 +1,9 @@
 # Notification 通知提醒框
 
-全局展示通知提醒信息。
+### 概述
 
-## 何时使用
+::: tip
+全局展示通知提醒信息。
 
 在系统四个角显示通知提醒信息。经常用于以下情况：
 
@@ -10,7 +11,8 @@
 - 带有交互的通知，给出用户下一步的行动点
 - 系统主动推送
 
-## 代码演示
+:::
+
 
 ### 基本用法
 
@@ -54,9 +56,9 @@
 
 <!-- <demo src="../demos/notification/notification-07-method.vue"></demo> -->
 
-## API
+### API
 
-### Notification Props
+#### Notification Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -70,13 +72,13 @@
 | placement | 弹出位置，可选 `topRight` `topLeft` `bottomRight` `bottomLeft` | string | topRight |
 | style | 自定义内联样式 | object | - |
 
-### Notification Events
+#### Notification Events
 
 | 事件名称 | 说明 | 回调参数 |
 | --- | --- | --- |
 | close | 当通知关闭时触发 | function | - |
 
-### Notification Slots
+#### Notification Slots
 
 | 名称 | 说明 |
 | --- | --- |
@@ -84,7 +86,7 @@
 | title | 标题 |
 | btn | 自定义关闭按钮 |
 
-### 函数式调用
+#### 函数式调用
 
 组件提供了一些静态方法，使用方式和参数如下：
 

@@ -1,15 +1,15 @@
 # Drawer 抽屉
 
-屏幕边缘滑出的浮层面板。
+### 概述
 
-## 何时使用
+::: tip
+屏幕边缘滑出的浮层面板。
 
 抽屉从父窗体边缘滑入，覆盖住部分父窗体内容。用户在抽屉内操作时不必离开当前任务，操作完成后，可以平滑地回到原任务。
 
 - 当需要一个附加的面板来控制父窗体内容，这个面板在需要时呼出。
 - 当需要在当前任务流中插入临时任务，创建或预览附加内容。
-
-## 代码演示
+:::
 
 ### 基础用法
 
@@ -41,9 +41,9 @@
 
 <demo src="../demos/drawer/drawer-05-custom.vue"></demo>
 
-## API
+### API
 
-### Drawer Props
+#### Drawer Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -59,13 +59,13 @@
 | height | 高度，在 placement 为 top 或 bottom 时使用 | `string \| number` | `378` |
 | zIndex | 设置抽屉的 z-index | `number` | `1000` |
 
-### Drawer Events
+#### Drawer Events
 
 | 事件名称 | 说明 | 回调参数 |
 | --- | --- | --- |
 | close | 点击遮罩层或关闭按钮的回调 | - |
 
-### Drawer Slots
+#### Drawer Slots
 
 | 名称 | 说明 |
 | --- | --- |

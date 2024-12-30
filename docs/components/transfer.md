@@ -1,21 +1,25 @@
 # Transfer 穿梭框
 
-在两栏之间移动元素,完成选择行为。
+### 概述
 
-## 何时使用
+::: tip
+在两栏之间移动元素,完成选择行为。
 
 - 需要在多个可选项中进行多选时。
 - 比起 Select 和 TreeSelect,穿梭框占据更大的空间,可以展示可选项的更多信息。
+:::
 
-## 代码演示
+### 基本用法
 
 <demo src="../demos/transfer/transfer-01-basic.vue"></demo>
 
+### 搜索
+
 <demo src="../demos/transfer/transfer-02-search.vue"></demo>
 
-## API
+### API
 
-### Transfer Props
+#### Transfer Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -26,7 +30,7 @@
 | render-prop | 每行数据显示的属性 | `string` | `'title'` |
 | show-search | 是否显示搜索框 | `boolean` | `false` |
 
-### Transfer Events
+#### Transfer Events
 
 | 事件名称 | 说明 | 回调参数 |
 | --- | --- | --- |

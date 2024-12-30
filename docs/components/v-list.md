@@ -1,8 +1,11 @@
 # 虚拟列表 VList
 
+### 概述
+::: tip
 虚拟列表组件用于展示大量数据时优化性能，通过只渲染可视区域内的元素来减少 DOM 节点数量。
+:::
 
-## 实现思路
+### 实现思路
 
 虚拟列表的核心实现原理如下：
 
@@ -32,27 +35,27 @@
    - 提供滚动到指定位置的方法
    - 支持自定义渲染内容
 
-## 基础用法
+### 基础用法
 
 最基础的虚拟列表用法，适用于大数据量的简单列表展示。
 
 <demo src="../demos/v-list/v-list-01-basic.vue"></demo>
 
-## 自定义高度
+### 自定义高度
 
 通过 `itemHeight` 和 `height` 属性可以自定义列表项和容器的高度。
 
 <demo src="../demos/v-list/v-list-02-height.vue"></demo>
 
-## 自定义内容
+### 自定义内容
 
 使用默认插槽可以自定义列表项的内容，插槽提供 `item` 和 `index` 参数。
 
 <demo src="../demos/v-list/v-list-03-custom.vue"></demo>
 
-## API
+### API
 
-### Props
+#### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -61,14 +64,14 @@
 | height | 可视区域高度 | number \| string | 400 |
 | bufferSize | 预加载的数量 | number | 10 |
 
-### Events
+#### Events
 
 | 事件名 | 说明 | 回调参数 |
 | --- | --- | --- |
 | scroll | 滚动时触发 | event: Event |
 | visible-range-change | 可视区域改变时触发 | startIndex: number, endIndex: number |
 
-### Methods
+#### Methods
 
 | 方法名 | 说明 | 参数 |
 | --- | --- | --- |
@@ -76,8 +79,8 @@
 | scrollTo | 滚动到指定位置 | top: number |
 | getVisibleRange | 获取当前可视范围 | - |
 
-### Slots
+#### Slots
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
-| default | 自定义列表���内容 | { item: any, index: number } | 
+| default | 自定义列表内容 | { item: any, index: number } | 

@@ -1,14 +1,14 @@
 # Cascader 级联选择
 
-级联选择框。
+### 概述
 
-## 何时使用
+::: tip
+级联选择框。
 
 - 需要从一组相关联的数据集合进行选择，例如省市区，公司层级，事物分类等。
 - 从一个较大的数据集合中进行选择时，用多级分类进行分隔，方便选择。
 - 比起 Select 组件，可以在同一个浮层中完成选择，有较好的体验。
-
-## 代码演示
+  :::
 
 ### 基本用法
 
@@ -70,37 +70,37 @@
 
 <demo src="../demos/cascader/cascader-10-multiple.vue"></demo>
 
-## API
+### API
 
-### Cascader Props
+#### Cascader Props
 
-| 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| modelValue / v-model | 指定选中项 | `string \| number \| (string \| number)[]` | - |
-| options | 可选项数据源 | `CascaderOption[]` | `[]` |
-| placeholder | 输入框占位文本 | `string` | `'请选择'` |
-| disabled | 是否禁用 | `boolean` | `false` |
-| allowClear | 是否支持清除 | `boolean` | `true` |
-| showSearch | 是否支持搜索 | `boolean` | `false` |
-| searchPlaceholder | 搜索框占位文本 | `string` | `'请输入搜索内容'` |
-| size | 输入框大小 | `'large' \| 'small'` | - |
-| multiple | 是否多选 | `boolean` | `false` |
-| maxTagCount | 最多显示多少个 tag | `number` | `3` |
-| fieldNames | 自定义字段名 | `object` | `{ label: 'label', value: 'value', children: 'children' }` |
-| loadData | 动态加载选项 | `(selectedOptions: CascaderOption[]) => Promise<void>` | - |
-| emptyText | 当下拉列表为空时显示的内容 | `string` | `'暂无数据'` |
+| 参数                 | 说明                       | 类型                                                   | 默认值                                                     |
+| -------------------- | -------------------------- | ------------------------------------------------------ | ---------------------------------------------------------- |
+| modelValue / v-model | 指定选中项                 | `string \| number \| (string \| number)[]`             | -                                                          |
+| options              | 可选项数据源               | `CascaderOption[]`                                     | `[]`                                                       |
+| placeholder          | 输入框占位文本             | `string`                                               | `'请选择'`                                                 |
+| disabled             | 是否禁用                   | `boolean`                                              | `false`                                                    |
+| allowClear           | 是否支持清除               | `boolean`                                              | `true`                                                     |
+| showSearch           | 是否支持搜索               | `boolean`                                              | `false`                                                    |
+| searchPlaceholder    | 搜索框占位文本             | `string`                                               | `'请输入搜索内容'`                                         |
+| size                 | 输入框大小                 | `'large' \| 'small'`                                   | -                                                          |
+| multiple             | 是否多选                   | `boolean`                                              | `false`                                                    |
+| maxTagCount          | 最多显示多少个 tag         | `number`                                               | `3`                                                        |
+| fieldNames           | 自定义字段名               | `object`                                               | `{ label: 'label', value: 'value', children: 'children' }` |
+| loadData             | 动态加载选项               | `(selectedOptions: CascaderOption[]) => Promise<void>` | -                                                          |
+| emptyText            | 当下拉列表为空时显示的内容 | `string`                                               | `'暂无数据'`                                               |
 
-### Cascader Events
+#### Cascader Events
 
-| 事件名称 | 说明 | 回调参数 |
-| --- | --- | --- |
-| change | 选择完成后的回调 | `(value: string \| number \| (string \| number)[], selectedOptions: CascaderOption[]) => void` |
-| search | 搜索框值变化时的回调 | `(value: string) => void` |
-| blur | 失去焦点时的回调 | - |
-| focus | 获得焦点时的回调 | - |
-| visibleChange | 下拉框出现/隐藏时触发 | `(visible: boolean) => void` |
+| 事件名称      | 说明                  | 回调参数                                                                                       |
+| ------------- | --------------------- | ---------------------------------------------------------------------------------------------- |
+| change        | 选择完成后的回调      | `(value: string \| number \| (string \| number)[], selectedOptions: CascaderOption[]) => void` |
+| search        | 搜索框值变化时的回调  | `(value: string) => void`                                                                      |
+| blur          | 失去焦点时的回调      | -                                                                                              |
+| focus         | 获得焦点时的回调      | -                                                                                              |
+| visibleChange | 下拉框出现/隐藏时触发 | `(visible: boolean) => void`                                                                   |
 
-### CascaderOption
+#### CascaderOption
 
 ```ts
 interface CascaderOption {
@@ -111,4 +111,4 @@ interface CascaderOption {
   loading?: boolean;
   [key: string]: any;
 }
-``` 
+```

@@ -1,15 +1,16 @@
 # Tabs 标签页
 
-选项卡切换组件。
+### 概述
 
-## 何时使用
+::: tip
+选项卡切换组件。
 
 - 提供平级的区域将大块内容进行收纳和展现，保持界面整洁。
 - Ant Design 依次提供了三级选项卡，分别用于不同的场景。
 - 卡片式的页签，提供可关闭的样式，常用于容器顶部。
 - 标准线条式页签，用于容器内部的主功能切换，这是最常用的 Tabs。
+:::
 
-## 代码演示
 
 ### 基础用法
 
@@ -59,9 +60,9 @@
 
 <demo src="../demos/tabs/tabs-08-size.vue"></demo>
 
-## API
+### API
 
-### Tabs
+#### Tabs
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -77,7 +78,7 @@
 | closable | tabs 为 editable-card 时，是否使用关闭图标 | boolean | `true` |
 | draggable | 是否可拖拽 | boolean | `false` |
 
-### Tabs 事件
+#### Tabs 事件
 
 | 事件名称 | 说明 | 回调参数 |
 | --- | --- | --- |
@@ -85,14 +86,14 @@
 | tabClick | 点击 tab 时的回调 | (key: string) => void |
 | edit | 新增和删除页签的回调 | (targetKey: string \| MouseEvent, action: 'add' \| 'remove') => void |
 
-### Tabs 插槽
+#### Tabs 插槽
 
 | 插槽名称 | 说明 |
 | --- | --- |
 | tabBarExtraContent | tab bar 上额外的元素 |
 | rightExtra | tab bar 上右侧额外的元素 |
 
-### TabPane
+#### TabPane
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -103,7 +104,7 @@
 | href | 选项卡链接 | string | - |
 | prefixIcon | 选项卡前缀图标 | string | - |
 
-### TabPane 插槽
+#### TabPane 插槽
 
 | 插槽名称 | 说明 |
 | --- | --- |

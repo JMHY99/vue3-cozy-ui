@@ -1,13 +1,15 @@
 # Tag 标签
 
-进行标记和分类的小标签。
+### 概述
 
-## 何时使用
+::: tip
+
+进行标记和分类的小标签。
 
 - 用于标记事物的属性和维度。
 - 进行分类。
+::: 
 
-## 代码演示
 
 ### 基本用法
 
@@ -45,9 +47,9 @@
 
 <demo src="../demos/tag/tag-06-icon.vue"></demo>
 
-## API
+### API
 
-### 属性
+#### 属性
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -59,7 +61,7 @@
 | checkable | 是否可选中 | boolean | false |
 | checked(v-model) | 是否选中 | boolean | false |
 
-### 事件
+#### 事件
 
 | 事件名称 | 说明 | 回调参数 |
 | --- | --- | --- |
@@ -67,4 +69,3 @@
 | click | 点击标签时的回调 | (e: MouseEvent) => void |
 | update:checked | 选中状态改变时的回调 | (checked: boolean) => void |
 | afterClose | 关闭动画完成后的回调 | () => void |
-  </rewritten_file> 

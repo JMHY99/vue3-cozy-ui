@@ -1,8 +1,12 @@
 # 虚拟表格 VTable
 
-虚拟表格组件用于展示大量数据时优化性能，通过只渲染可视区域内的行和列来减少 DOM 节点数量。
+### 概述
 
-## 实现思路
+::: tip
+虚拟表格组件用于展示大量数据时优化性能，通过只渲染可视区域内的行和列来减少 DOM 节点数量。
+:::
+
+### 实现思路
 
 虚拟表格的核心实现原理如下：
 
@@ -42,33 +46,33 @@
    - 斑马纹：支持奇偶行样式
    - 边界处理：处理滚动边界情况
 
-## 基础用法
+### 基础用法
 
 最基础的虚拟表格用法。
 
 <demo src="../demos/v-table/v-table-01-basic.vue"></demo>
 
-## 自定义列宽和对齐方式
+### 自定义列宽和对齐方式
 
 通过 `width` 和 `align` 属性设置列的宽度和对齐方式。
 
 <demo src="../demos/v-table/v-table-02-column.vue"></demo>
 
-## 斑马纹表格
+### 斑马纹表格
 
 通过 `stripe` 属性设置斑马纹样式。
 
 <demo src="../demos/v-table/v-table-03-stripe.vue"></demo>
 
-## 自定义单元格内容
+### 自定义单元格内容
 
 使用具名插槽自定义单元格内容。
 
 <demo src="../demos/v-table/v-table-04-custom.vue"></demo>
 
-## API
+### API
 
-### Props
+#### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -80,7 +84,7 @@
 | rowKey | 行数据的唯一标识 | string | - |
 | stripe | 是否显示斑马纹 | boolean | false |
 
-### Column
+#### Column
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -89,19 +93,19 @@
 | width | 列宽度 | string \| number | - |
 | align | 对齐方式 | 'left' \| 'center' \| 'right' | 'left' |
 
-### Events
+#### Events
 
 | 事件名 | 说明 | 回调参数 |
 | --- | --- | --- |
-| row-click | 点击��时触发 | (row: any, index: number) => void |
+| row-click | 点击行时触发 | (row: any, index: number) => void |
 
-### Methods
+#### Methods
 
 | 方法名 | 说明 | 参数 |
 | --- | --- | --- |
 | scrollToIndex | 滚动到指定索引的行 | (index: number) => void |
 
-### Slots
+#### Slots
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
