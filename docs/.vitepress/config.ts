@@ -214,7 +214,7 @@ export default {
     // 页脚
     footer: {
       message: "Released under the MIT License.",
-      copyright: "Copyright © 2018-present ZhuJiuming",
+      copyright: "Copyright © 2022-present ZhuJiuming",
     },
   },
 
