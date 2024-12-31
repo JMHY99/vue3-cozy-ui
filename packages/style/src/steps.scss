@@ -9,68 +9,71 @@
   display: flex;
   width: 100%;
   text-align: initial;
-  
+
+  .cozy-step-title {
+    background: #fff;
+  }
+
   &-horizontal {
     white-space: nowrap;
-    
+
     .cozy-steps-items {
       display: flex;
       width: 100%;
     }
-    
+
     .cozy-step {
       position: relative;
       flex: 1;
       white-space: normal;
       overflow: hidden;
       vertical-align: top;
-      
+
       &:first-child {
         .cozy-step-title {
           padding-left: 0;
         }
       }
-      
+
       &:last-child {
         flex: none;
         width: auto;
         padding-right: 0;
-        
+
         .cozy-step-line {
           display: none;
         }
       }
-      
       .cozy-step-line {
         position: absolute;
         top: 16px;
-        left: 0;
-        right: 0;
-        padding: 0 48px 0 8px;
-        
+        left: 50px;
+        right: 10px;
+        // padding: 0 48px 0 8px;
+
         &::after {
           display: block;
           width: 100%;
           height: 1px;
           background: rgba(5, 5, 5, 0.06);
           border-radius: 1px;
-          content: '';
+          content: "";
           transition: background 0.3s;
         }
       }
     }
   }
-  
+
   &-vertical {
     display: flex;
     flex-direction: column;
-    
+
     .cozy-step {
       display: block;
       flex: 1 0 auto;
       padding-left: 0;
       overflow: visible;
-      
+
       &-line {
         position: absolute;
         top: 0;
@@ -78,44 +81,44 @@
         width: 1px;
         height: 100%;
         padding: 38px 0 6px;
-        
+
         &::after {
           display: inline-block;
           width: 1px;
           height: 100%;
           background: rgba(5, 5, 5, 0.06);
           border-radius: 1px;
-          content: '';
+          content: "";
           transition: background 0.3s;
         }
       }
-      
+
       &:last-child .cozy-step-line {
         display: none;
       }
-      
+
       .cozy-step-icon {
         float: left;
         margin-right: 16px;
       }
-      
+
       .cozy-step-content {
         display: block;
         min-height: 48px;
         overflow: hidden;
       }
-      
+
       .cozy-step-title {
         line-height: 32px;
         padding-right: 0;
       }
-      
+
       .cozy-step-description {
         padding-bottom: 12px;
       }
     }
   }
-  
+
   &-small {
     .cozy-step-icon {
       width: 24px;
@@ -126,11 +129,11 @@
       border-radius: 24px;
       margin-right: 8px;
     }
-    
+
     .cozy-step-content {
       min-height: 24px;
     }
-    
+
     .cozy-step-title {
       padding-right: 12px;
       font-size: 14px;
@@ -145,13 +148,15 @@
   flex: 1;
   overflow: hidden;
   vertical-align: top;
-  
+
   &-icon {
     width: 32px;
     height: 32px;
     margin-right: 8px;
     font-size: 16px;
-    font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     line-height: 32px;
     text-align: center;
     border: 1px solid rgba(0, 0, 0, 0.25);
@@ -160,7 +165,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    
+
     &-inner {
       display: inline-flex;
       align-items: center;
@@ -170,7 +175,7 @@
       text-align: center;
       transition: color 0.3s;
     }
-    
+
     &-custom {
       width: auto;
       height: auto;
@@ -180,13 +185,13 @@
       color: rgba(0, 0, 0, 0.25);
     }
   }
-  
+
   &-content {
     display: inline-block;
     vertical-align: top;
     padding-right: 16px;
   }
-  
+
   &-title {
     position: relative;
     display: inline-block;
@@ -196,7 +201,7 @@
     line-height: 32px;
     font-weight: normal;
   }
-  
+
   &-subtitle {
     display: inline;
     margin-left: 8px;
@@ -204,105 +209,105 @@
     font-weight: normal;
     font-size: 14px;
   }
-  
+
   &-description {
     color: rgba(0, 0, 0, 0.45);
     font-size: 14px;
   }
-  
+
   // 等待状态
   &-wait {
     .cozy-step-icon {
       background-color: #fff;
       border-color: rgba(0, 0, 0, 0.25);
-      
+
       .cozy-step-icon-inner {
         color: rgba(0, 0, 0, 0.25);
       }
-      
+
       .cozy-icon {
         color: rgba(0, 0, 0, 0.25);
       }
     }
-    
+
     .cozy-step-title {
       color: rgba(0, 0, 0, 0.45);
     }
   }
-  
+
   // 进行中状态
   &-process {
     .cozy-step-icon {
       background-color: #1890ff;
       border-color: #1890ff;
-      
+
       .cozy-step-icon-inner {
         color: #fff;
       }
-      
+
       .cozy-icon {
         color: #fff;
       }
     }
-    
+
     .cozy-step-title {
       color: rgba(0, 0, 0, 0.85);
       font-weight: 500;
     }
-    
+
     .cozy-step-description {
       color: rgba(0, 0, 0, 0.65);
     }
   }
-  
+
   // 完成状态
   &-finish {
     .cozy-step-icon {
       background-color: #fff;
       border-color: #1890ff;
-      
+
       .cozy-step-icon-inner {
         color: #1890ff;
       }
-      
+
       .cozy-icon {
         color: #1890ff;
       }
     }
-    
+
     .cozy-step-line::after {
       background: #1890ff;
     }
   }
-  
+
   // 错误状态
   &-error {
     .cozy-step-icon {
       background-color: #fff;
       border-color: #ff4d4f;
-      
+
       .cozy-step-icon-inner {
         color: #ff4d4f;
       }
-      
+
       .cozy-icon {
         color: #ff4d4f;
       }
     }
-    
+
     .cozy-step-title {
       color: #ff4d4f;
     }
-    
+
     .cozy-step-description {
       color: #ff4d4f;
     }
   }
-  
+
   // 点状步骤条
   &-with-progress {
     padding-top: 8px;
-    
+
     .cozy-step-icon {
       width: auto;
       height: auto;
@@ -317,7 +322,7 @@
       position: relative;
       z-index: 2;
       height: 8px;
-      
+
       &-dot {
         position: relative;
         display: inline-block;
@@ -328,7 +333,7 @@
         margin: 0;
       }
     }
-    
+
     .cozy-step-line {
       position: absolute;
       top: 12px !important;
@@ -336,7 +341,7 @@
       right: 0;
       padding: 0;
       margin: 0;
-      
+
       &::after {
         position: absolute;
         top: 0;
@@ -344,10 +349,10 @@
         width: 100%;
         height: 1px;
         margin: 0;
-        content: '';
+        content: "";
       }
     }
-    
+
     &:first-child {
       .cozy-step-line {
         left: 50%;
@@ -356,16 +361,16 @@
         }
       }
     }
-    
+
     &:last-child {
       flex: none;
       width: auto;
-      
+
       .cozy-step-line {
         display: none;
       }
     }
-    
+
     .cozy-step-content {
       margin-top: 12px;
       text-align: center;
@@ -376,7 +381,7 @@
       padding: 0;
       box-sizing: border-box;
     }
-    
+
     .cozy-step-title {
       padding-right: 0;
       font-size: 14px;
@@ -387,18 +392,18 @@
       width: 100%;
       word-break: break-all;
     }
-    
+
     .cozy-step-description {
       font-size: 14px;
       color: rgba(0, 0, 0, 0.45);
       width: 100%;
       word-break: break-all;
     }
-    
+
     &.cozy-step-process {
       .cozy-step-icon-dot {
         background: #1890ff;
-        
+
         &::after {
           position: absolute;
           top: -5px;
@@ -407,48 +412,48 @@
           height: 18px;
           background: rgba(24, 144, 255, 0.2);
           border-radius: 100px;
-          content: '';
+          content: "";
           animation: cozyStepsDotEffect 0.3s ease-in-out;
         }
       }
     }
-    
+
     &.cozy-step-wait {
       .cozy-step-icon-dot {
         background: rgba(0, 0, 0, 0.25);
       }
     }
-    
+
     &.cozy-step-finish {
       .cozy-step-icon-dot {
         background: #1890ff;
       }
-      
+
       .cozy-step-line::after {
         background: #1890ff;
       }
     }
-    
+
     &.cozy-step-error {
       .cozy-step-icon-dot {
         background: #ff4d4f;
       }
     }
   }
-  
+
   // 标签垂直放置
   &.cozy-steps-label-vertical {
     .cozy-step-icon {
       display: block;
       margin: 0 auto 8px;
     }
-    
+
     .cozy-step-title {
       padding-right: 0;
       padding-left: 0;
       text-align: center;
     }
-    
+
     .cozy-step-description {
       text-align: center;
     }
@@ -464,4 +469,7 @@
     transform: scale(1);
     opacity: 1;
   }
-} 
+}
+.cozy-steps-horizontal.cozy-steps-small .cozy-step .cozy-step-line {
+  top: 12px;
+}
