@@ -1,30 +1,31 @@
 <template>
-  <div class="cozy-anchor-link">
-    <!-- 链接标题 -->
+  <div
+    class="cozy-anchor-link"
+    :class="{
+      'cozy-anchor-link-active': active,
+    }"
+  >
     <a
-      :class="{
-        'cozy-anchor-link-title': true,
-        'cozy-anchor-link-title-active': active
-      }"
-      :href="href"
+      :href="'#' + href"
       :title="title"
-      @click="handleClick"
+      class="cozy-anchor-link-title"
+      @click.prevent="handleClick"
     >
       {{ title }}
     </a>
-    <!-- 子链接 -->
-    <slot></slot>
+    <div class="cozy-anchor-link-content">
+      <slot />
+    </div>
   </div>
 </template>
 
-<script lang="ts" setup>
-import { computed, inject, onMounted, onBeforeUnmount } from 'vue'
+<script setup lang="ts">
+import { ref, inject, onMounted, onBeforeUnmount, computed } from 'vue'
 
 defineOptions({
-  name: 'CAnchorLink'
+  name: 'CAnchorLink',
 })
 
-// 定义组件属性
 interface Props {
   /** 锚点链接 */
   href: string
@@ -34,39 +35,35 @@ interface Props {
 
 const props = defineProps<Props>()
 
-// 注入父组件提供的上下文
-const {
-  registerLink,
-  unregisterLink,
-  handleLinkClick,
-  activeLink
-} = inject('anchorContext', {
-  registerLink: (link: string) => {},
-  unregisterLink: (link: string) => {},
-  handleLinkClick: (e: MouseEvent, link: string) => {},
-  activeLink: computed(() => '')
+// 注入父组件数据
+const anchor = inject('anchor', {
+  activeLink: ref(''),
+  registerLink: (_: string) => {},
+  unregisterLink: (_: string) => {},
 })
 
-// 计算当前链接是否激活
-const active = computed(() => {
-  const href = props.href.startsWith('#') ? props.href.slice(1) : props.href
-  return href === activeLink.value
-})
+// 计算属性
+const active = computed(() => anchor.activeLink.value === props.href)
 
-// 处理点击事件
+// 方法
 const handleClick = (e: MouseEvent) => {
-  handleLinkClick(e, props.href)
+  e.preventDefault()
+  const element = document.getElementById(props.href)
+  if (element) {
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest'
+    })
+  }
 }
 
-// 组件挂载时注册链接
+// 生命周期钩子
 onMounted(() => {
-  const href = props.href.startsWith('#') ? props.href.slice(1) : props.href
-  registerLink(href)
+  anchor.registerLink(props.href)
 })
 
-// 组件卸载时注销链接
 onBeforeUnmount(() => {
-  const href = props.href.startsWith('#') ? props.href.slice(1) : props.href
-  unregisterLink(href)
+  anchor.unregisterLink(props.href)
 })
 </script>

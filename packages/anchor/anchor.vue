@@ -1,283 +1,204 @@
 <template>
   <div
-    class="cozy-anchor"
-    :class="{
-      'cozy-anchor-fixed': affix && !customizeAffix,
-      [`cozy-anchor-${direction}`]: true
-    }"
-    :style="wrapperStyle"
+    ref="rootRef"
+    :class="[
+      'cozy-anchor',
+      {
+        'cozy-anchor-slider': type === 'slider',
+        'is-affix': affix,
+        'is-static': !affix
+      },
+    ]"
   >
-    <!-- 固定位置的包装器 -->
     <div
-      v-if="affix && !customizeAffix"
-      class="cozy-anchor-wrapper"
-      :style="containerStyle"
+      v-if="type === 'slider'"
+      class="cozy-anchor-slider-line"
+      :style="{ height: containerHeight + 'px' }"
     >
-      <div class="cozy-anchor-ink">
-        <!-- 墨条 -->
-        <div class="cozy-anchor-ink-ball-visible" :style="inkStyle" ref="inkNode" />
-      </div>
-      <!-- 锚点链接内容 -->
-      <slot></slot>
+      <div
+        class="cozy-anchor-slider-ball"
+        :style="{
+          top: sliderOffset + 'px',
+          height: sliderHeight + 'px',
+        }"
+      />
     </div>
-    <!-- 不固定位置的内容 -->
-    <template v-else>
-      <div class="cozy-anchor-ink">
-        <div class="cozy-anchor-ink-ball-visible" :style="inkStyle" ref="inkNode" />
-      </div>
-      <slot></slot>
-    </template>
+    <div class="cozy-anchor-content">
+      <slot />
+    </div>
   </div>
 </template>
 
-<script lang="ts" setup>
-import { ref, computed, onMounted, onBeforeUnmount, watch, provide } from 'vue'
+<script setup lang="ts">
+import {
+  ref,
+  computed,
+  onMounted,
+  onBeforeUnmount,
+  provide,
+  nextTick,
+  watch,
+} from 'vue'
 
 defineOptions({
-  name: 'CAnchor'
+  name: 'CAnchor',
 })
 
-// 定义组件属性
 interface Props {
-  /** 固定模式 */
-  affix?: boolean
-  /** 距离窗口顶部达到指定偏移量后触发 */
+  /** 容器滚动的监听目标 */
+  container?: string | HTMLElement
+  /** 滚动偏移量 */
+  offset?: number
+  /** 滚动边界 */
   bounds?: number
-  /** 自定义 class */
-  customizeAffix?: boolean
-  /** 方向 */
-  direction?: 'vertical' | 'horizontal'
-  /** 指定滚动的容器 */
-  getContainer?: () => HTMLElement | Window
-  /** 锚点区域边界 */
-  offsetBottom?: number
-  /** 距离窗口顶部触发偏移量 */
-  offsetTop?: number
-  /** 是否显示小圆点 */
-  showInkInFixed?: boolean
-  /** 指定滚动到锚点时的偏移量 */
-  targetOffset?: number
-  /** 指定最大滚动高度 */
-  wrapperStyle?: Record<string, string>
+  /** 锚点滑动模式 */
+  type?: 'slider' | 'line'
+  /** 是否浮动 */
+  affix?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  affix: true,
+  container: 'window',
+  offset: 0,
   bounds: 5,
-  customizeAffix: false,
-  direction: 'vertical',
-  getContainer: () => window,
-  offsetBottom: undefined,
-  offsetTop: undefined,
-  showInkInFixed: false,
-  targetOffset: undefined,
-  wrapperStyle: () => ({})
+  type: 'line',
+  affix: true
 })
 
-// 定义事件
-const emit = defineEmits<{
-  'click': [e: MouseEvent, link: string]
-  'change': [currentActiveLink: string]
-}>()
-
 // 组件状态
+const rootRef = ref<HTMLElement>()
 const activeLink = ref('')
-const inkNode = ref<HTMLElement | null>(null)
 const links = ref<string[]>([])
-const scrollContainer = ref<HTMLElement | Window>(window)
-const animating = ref(false)
+const sections = ref<{ link: string; top: number }[]>([])
+const containerHeight = ref(0)
+const sliderHeight = ref(0)
+const sliderOffset = ref(0)
+let scrollTimer: number | null = null
 
-// 计算样式
-const containerStyle = computed(() => ({
-  maxHeight: typeof props.offsetBottom === 'number' ?
-    `calc(100vh - ${props.offsetBottom}px)` : undefined,
-  ...props.wrapperStyle
-}))
+// 计算属性
+const getContainer = computed(() => {
+  if (props.container === 'window') {
+    return window
+  }
+  if (typeof props.container === 'string') {
+    return document.querySelector(props.container)
+  }
+  return props.container
+})
 
-const inkStyle = computed(() => ({
-  top: activeLink.value ? getInkTop() : '0px',
-  height: props.direction === 'vertical' ? '8px' : '2px',
-  width: props.direction === 'vertical' ? '2px' : '8px',
-  transition: animating.value ? 'top 0.3s ease-in-out' : 'none'
-}))
-
-// 获取墨条位置
-const getInkTop = () => {
-  if (!activeLink.value || !inkNode.value) return '0px'
-  const linkNode = document.querySelector(`a[href="#${activeLink.value}"]`)
-  if (!linkNode) return '0px'
-
-  const { top: inkTop } = inkNode.value.getBoundingClientRect()
-  const { top: linkTop } = linkNode.getBoundingClientRect()
-
-  return `${linkTop - inkTop}px`
-}
-
-// 注册链接
+// 方法
 const registerLink = (link: string) => {
   if (!links.value.includes(link)) {
     links.value.push(link)
+    nextTick(() => {
+      initSections()
+      updateSlider()
+    })
   }
 }
 
-// 注销链接
 const unregisterLink = (link: string) => {
   const index = links.value.indexOf(link)
   if (index !== -1) {
     links.value.splice(index, 1)
+    nextTick(() => {
+      initSections()
+      updateSlider()
+    })
   }
 }
 
-// 处理点击事件
-const handleLinkClick = (e: MouseEvent, link: string) => {
-  e.preventDefault()
-  e.stopPropagation()
+const updateSlider = () => {
+  if (!rootRef.value || !activeLink.value || props.type !== 'slider') return
 
-  const element = document.querySelector(link) as HTMLElement
-  if (!element) return
-
-  animating.value = true
-  activeLink.value = link.slice(1)
-  emit('click', e, link)
-
-  const container = props.getContainer()
-  const scrollTop = getScroll(container, true)
-  const elementOffsetTop = getOffsetTop(element, container)
-  const targetOffset = props.targetOffset !== undefined ? props.targetOffset : props.offsetTop || 0
-
-  scrollTo(container, scrollTop, elementOffsetTop - targetOffset)
-
-  // 动画结束后重置状态
-  setTimeout(() => {
-    animating.value = false
-  }, 300)
+  const linkEl = rootRef.value.querySelector(
+    `[href="#${activeLink.value}"]`
+  ) as HTMLElement
+  if (linkEl) {
+    sliderOffset.value = linkEl.offsetTop
+    sliderHeight.value = linkEl.offsetHeight
+  }
 }
 
-// 获取滚动位置
-const getScroll = (target: HTMLElement | Window, top: boolean): number => {
-  if (typeof window === 'undefined') return 0
-
-  const prop = top ? 'pageYOffset' : 'pageXOffset'
-  const method = top ? 'scrollTop' : 'scrollLeft'
-  const isWindow = target === window
-
-  let ret = isWindow ? (target as Window)[prop] : (target as HTMLElement)[method]
-  if (isWindow && typeof ret !== 'number') {
-    ret = document.documentElement[method]
+const handleScroll = () => {
+  if (scrollTimer) {
+    window.clearTimeout(scrollTimer)
   }
 
-  return ret
-}
+  scrollTimer = window.setTimeout(() => {
+    if (!rootRef.value) return
 
-// 获取元素相对容器的偏移量
-const getOffsetTop = (element: HTMLElement, container: HTMLElement | Window) => {
-  if (!element || !container) return 0
+    const container = getContainer.value
+    const scrollTop = container === window
+      ? document.documentElement.scrollTop
+      : (container as HTMLElement).scrollTop
 
-  if (container === window) {
-    return element.getBoundingClientRect().top + getScroll(window, true)
-  }
+    // 更新滑块位置
+    const activeSection = sections.value.find((section) => {
+      const top = section.top - props.offset - props.bounds
+      const nextSection = sections.value[sections.value.indexOf(section) + 1]
+      const bottom = nextSection ? nextSection.top - props.offset - props.bounds : Infinity
+      return scrollTop >= top && scrollTop < bottom
+    })
 
-  return element.getBoundingClientRect().top + getScroll(container as HTMLElement, true)
-}
-
-// 滚动到指定位置
-const scrollTo = (container: HTMLElement | Window, currentTop: number, targetTop: number) => {
-  const startTime = Date.now()
-  const frameFunc = () => {
-    const timestamp = Date.now()
-    const time = timestamp - startTime
-    const nextScrollTop = easeInOutCubic(time > 450 ? 450 : time, currentTop, targetTop, 450)
-    if (container === window) {
-      window.scrollTo(window.pageXOffset, nextScrollTop)
-    } else {
-      (container as HTMLElement).scrollTop = nextScrollTop
+    if (activeSection && activeSection.link !== activeLink.value) {
+      activeLink.value = activeSection.link
+      updateSlider()
     }
-    if (time < 450) {
-      requestAnimationFrame(frameFunc)
-    }
-  }
-  requestAnimationFrame(frameFunc)
+  }, 100)
 }
 
-// 缓动函数
-const easeInOutCubic = (t: number, b: number, c: number, d: number) => {
-  const cc = c - b
-  t /= d / 2
-  if (t < 1) {
-    return (cc / 2) * t * t * t + b
-  }
-  return (cc / 2) * ((t -= 2) * t * t + 2) + b
+const initSections = () => {
+  sections.value = links.value.map((link) => {
+    const el = document.getElementById(link)
+    return {
+      link,
+      top: el ? el.offsetTop : 0,
+    }
+  }).sort((a, b) => a.top - b.top)
 }
 
-// 自定义节流函数
-const throttle = (fn: Function, delay: number) => {
-  let timer: number | null = null
-  let lastTime = 0
-
-  return function (...args: any[]) {
-    const now = Date.now()
-
-    if (lastTime && now < lastTime + delay) {
-      if (timer) {
-        window.clearTimeout(timer)
-      }
-      timer = window.setTimeout(() => {
-        lastTime = now
-        fn.apply(this, args)
-      }, delay)
-    } else {
-      lastTime = now
-      fn.apply(this, args)
-    }
-  }
+const updateContainer = () => {
+  if (!rootRef.value) return
+  containerHeight.value = rootRef.value.offsetHeight
+  updateSlider()
 }
 
-// 处理滚动事件
-const handleScroll = throttle(() => {
-  if (animating.value) return
-
-  const container = props.getContainer()
-  const currentTop = getScroll(container, true)
-
-  // 找到当前滚动位置最近的锚点
-  let currentActiveLink = ''
-  let minDistance = Number.MAX_VALUE
-
-  links.value.forEach(link => {
-    const element = document.querySelector(`#${link}`) as HTMLElement
-    if (!element) return
-
-    const top = getOffsetTop(element, container)
-    const distance = Math.abs(top - currentTop)
-
-    if (distance < minDistance) {
-      minDistance = distance
-      currentActiveLink = link
-    }
-  })
-
-  if (currentActiveLink !== activeLink.value) {
-    activeLink.value = currentActiveLink
-    emit('change', currentActiveLink)
-  }
-}, 50)
-
-// 监听滚动事件
+// 生命周期钩子
 onMounted(() => {
-  scrollContainer.value = props.getContainer()
-  scrollContainer.value.addEventListener('scroll', handleScroll)
+  nextTick(() => {
+    initSections()
+    updateContainer()
+    handleScroll()
+    getContainer.value?.addEventListener('scroll', handleScroll)
+    window.addEventListener('resize', updateContainer)
+  })
 })
 
-// 清理事件监听
 onBeforeUnmount(() => {
-  scrollContainer.value.removeEventListener('scroll', handleScroll)
+  if (scrollTimer) {
+    window.clearTimeout(scrollTimer)
+  }
+  getContainer.value?.removeEventListener('scroll', handleScroll)
+  window.removeEventListener('resize', updateContainer)
 })
 
-// 提供给子组件的方法
-provide('anchorContext', {
+// 监听属性变化
+watch(links, () => {
+  nextTick(() => {
+    initSections()
+    handleScroll()
+  })
+})
+
+// 向子组件提供数据
+provide('anchor', {
+  activeLink,
   registerLink,
   unregisterLink,
-  handleLinkClick,
-  activeLink
+})
+
+defineExpose({
+  handleScroll,
 })
 </script>

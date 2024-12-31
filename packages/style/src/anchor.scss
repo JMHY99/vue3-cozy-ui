@@ -1,112 +1,99 @@
 @import "./variables.scss";
 
 .cozy-anchor {
-  position: relative;
-  padding-left: 2px;
+  padding-left: 0;
+  width: 200px;
 
-  &-wrapper {
-    overflow: auto;
-    padding-left: 4px;
-    margin-left: -4px;
+  // 清除默认
+  a {
+    color: #333;
+    text-decoration: none;
+  }
+  a:hover {
+    color: $color-primary;
   }
 
-  &-fixed {
+  // 浮动模式
+  &.is-affix {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 80px;
+    right: 100px;
   }
 
-  &-ink {
+  // 静态模式
+  &.is-static {
+    position: static;
+  }
+
+  &-slider {
+    position: relative;
+    margin-right: 8px;
+    padding-left: 2px;
+  }
+
+  &-slider-line {
     position: absolute;
-    height: 100%;
     left: 0;
-    top: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background-color: $border-color-lighter;
+  }
 
-    &::before {
-      content: ' ';
-      position: relative;
-      width: 2px;
-      height: 100%;
-      display: block;
-      background-color: $border-color;
-      margin: 0 auto;
-    }
+  &-slider-ball {
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background-color: $color-primary;
+    transition: top .25s cubic-bezier(.645,.045,.355,1);
+  }
 
-    &-ball-visible {
-      position: absolute;
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      background-color: $background-color-white;
-      border: 2px solid $color-primary;
-      border-radius: 8px;
-      transform: translateX(-50%);
-      transition: top 0.3s ease-in-out;
-      left: 50%;
+  &-content {
+    padding-left: 16px;
+  }
+}
+
+.cozy-anchor-link {
+  padding: 6px 0;
+  line-height: 1.5715;
+
+  &-title {
+    position: relative;
+    display: block;
+    margin-bottom: 8px;
+    color: $text-color;
+    font-size: 14px;
+    font-weight: 400;
+    white-space: nowrap;
+    transition: all .25s;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      color: lighten($color-primary, 10%);
     }
   }
 
-  &-link {
-    padding: 7px 0 7px 16px;
-    line-height: 1.143;
+  &-active {
+    > .cozy-anchor-link-title {
+      color: $color-primary;
+      font-weight: 600;
+    }
+  }
+
+  &-content {
+    padding-left: 16px;
+  }
+
+  .cozy-anchor-link {
+    padding-top: 4px;
+    padding-bottom: 4px;
 
     &-title {
-      display: block;
-      position: relative;
-      transition: all 0.3s;
-      color: $text-color;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      margin-bottom: 6px;
-
-      &:only-child {
-        margin-bottom: 0;
-      }
-
-      &:hover {
-        color: $color-primary;
-      }
-
-      &-active {
-        color: $color-primary;
-      }
-    }
-  }
-
-  // 水平方向样式
-  &-horizontal {
-    padding-left: 0;
-    padding-bottom: 2px;
-
-    .cozy-anchor-ink {
-      height: 2px;
-      width: 100%;
-      bottom: 0;
-      left: 0;
-      top: auto;
-
-      &::before {
-        width: 100%;
-        height: 2px;
-      }
-
-      &-ball-visible {
-        width: 8px;
-        height: 2px;
-        transform: translateY(-50%);
-        left: 0;
-        top: 50%;
-      }
-    }
-
-    .cozy-anchor-link {
-      padding: 0 16px 7px 0;
-      display: inline-block;
-
-      &-title {
-        margin-bottom: 0;
-      }
+      margin-bottom: 4px;
+      font-size: 13px;
     }
   }
 }

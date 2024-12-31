@@ -11,9 +11,9 @@
           <p>这是自定义容器3的内容区域，展示在特定容器内的锚点效果。</p>
         </div>
         <c-anchor :get-container="getContainer" :affix="false">
-          <c-anchor-link href="#custom1" title="自定义容器1" />
-          <c-anchor-link href="#custom2" title="自定义容器2" />
-          <c-anchor-link href="#custom3" title="自定义容器3" />
+          <c-anchor-link href="custom1" title="自定义容器1" />
+          <c-anchor-link href="custom2" title="自定义容器2" />
+          <c-anchor-link href="custom3" title="自定义容器3" />
         </c-anchor>
       </div>
     </div>

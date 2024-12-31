@@ -10,9 +10,9 @@
         <p>这是偏移示例3的内容区域</p>
       </div>
       <c-anchor :target-offset="100">
-        <c-anchor-link href="#offset1" title="偏移示例1" />
-        <c-anchor-link href="#offset2" title="偏移示例2" />
-        <c-anchor-link href="#offset3" title="偏移示例3" />
+        <c-anchor-link href="offset1" title="偏移示例1" />
+        <c-anchor-link href="offset2" title="偏移示例2" />
+        <c-anchor-link href="offset3" title="偏移示例3" />
       </c-anchor>
     </div>
   </div>

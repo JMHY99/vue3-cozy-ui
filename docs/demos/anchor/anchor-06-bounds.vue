@@ -10,9 +10,9 @@
         <p>这是边界示例3的内容区域，展示自定义锚点区域边界效果。</p>
       </div>
       <c-anchor :bounds="100">
-        <c-anchor-link href="#bounds1" title="边界示例1" />
-        <c-anchor-link href="#bounds2" title="边界示例2" />
-        <c-anchor-link href="#bounds3" title="边界示例3" />
+        <c-anchor-link href="bounds1" title="边界示例1" />
+        <c-anchor-link href="bounds2" title="边界示例2" />
+        <c-anchor-link href="bounds3" title="边界示例3" />
       </c-anchor>
     </div>
   </div>

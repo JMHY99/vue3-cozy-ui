@@ -12,10 +12,10 @@
         <p>这是水平锚点的内容区域</p>
       </div>
       <c-anchor>
-        <c-anchor-link href="#basic" title="基础锚点" />
-        <c-anchor-link href="#static" title="静态锚点" />
-        <c-anchor-link href="#custom" title="自定义锚点" />
-        <c-anchor-link href="#horizontal" title="水平锚点" />
+        <c-anchor-link href="basic" title="基础锚点" />
+        <c-anchor-link href="static" title="静态锚点" />
+        <c-anchor-link href="custom" title="自定义锚点" />
+        <c-anchor-link href="horizontal" title="水平锚点" />
       </c-anchor>
     </div>
   </div>

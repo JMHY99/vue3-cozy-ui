@@ -15,7 +15,8 @@
     "@floating-ui/dom": "^1.6.12",
     "async-validator": "^4.2.5",
     "dayjs": "^1.11.13",
-    "vue": "^3.4.21"
+    "vue": "^3.4.21",
+    "lodash-es": "^4.17.21"
   },
   "devDependencies": {
     "@ruabick/md-demo-plugins": "^0.3.3",

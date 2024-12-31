@@ -1,10 +1,10 @@
 <template>
   <div class="demo-anchor">
     <c-anchor direction="horizontal" :affix="false" class="horizontal-anchor">
-      <c-anchor-link href="#section1" title="第一节" />
-      <c-anchor-link href="#section2" title="第二节" />
-      <c-anchor-link href="#section3" title="第三节" />
-      <c-anchor-link href="#section4" title="第四节" />
+      <c-anchor-link href="section1" title="第一节" />
+      <c-anchor-link href="section2" title="第二节" />
+      <c-anchor-link href="section3" title="第三节" />
+      <c-anchor-link href="section4" title="第四节" />
     </c-anchor>
 
     <div class="content-sections">

@@ -10,9 +10,9 @@
         <p>这是第三部分的内容区域</p>
       </div>
       <c-anchor :affix="false">
-        <c-anchor-link href="#part1" title="第一部分" />
-        <c-anchor-link href="#part2" title="第二部分" />
-        <c-anchor-link href="#part3" title="第三部分" />
+        <c-anchor-link href="part1" title="第一部分" />
+        <c-anchor-link href="part2" title="第二部分" />
+        <c-anchor-link href="part3" title="第三部分" />
       </c-anchor>
     </div>
   </div>
