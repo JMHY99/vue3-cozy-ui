@@ -15,25 +15,12 @@
         <c-option label="区域二" value="beijing" />
       </c-select>
     </c-form-item>
-    <c-form-item label="活动时间" required>
-      <c-col :span="11">
-        <c-form-item prop="date1">
-          <c-date-picker
-            v-model="form.date1"
-            placeholder="选择日期"
-            style="width: 100%"
-          />
-        </c-form-item>
-      </c-col>
-      <c-col :span="11">
-        <c-form-item prop="date2">
-          <c-time-picker
-            v-model="form.date2"
-            placeholder="选择时间"
-            style="width: 100%"
-          />
-        </c-form-item>
-      </c-col>
+    <c-form-item label="活动时间" prop="date">
+      <c-date-picker
+        v-model="form.date"
+        placeholder="选择日期"
+        style="width: 100%"
+      />
     </c-form-item>
     <c-form-item label="即时配送" prop="delivery">
       <c-switch v-model="form.delivery" />
@@ -63,62 +50,68 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue'
+import { reactive, ref } from "vue";
 
-const formRef = ref()
+const formRef = ref();
 
 const form = reactive({
-  name: '',
-  region: '',
-  date1: undefined,
-  date2: undefined,
+  name: "",
+  region: "",
+  date: null,
   delivery: false,
   type: [],
-  resource: '',
-  desc: ''
-})
+  resource: "",
+  desc: "",
+});
 
 const rules = reactive({
   name: [
-    { required: true, message: '请输入活动名称', trigger: 'blur' },
-    { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+    { required: true, message: "请输入活动名称", trigger: "blur" },
+    { min: 3, max: 5, message: "长度在 3 到 5 个字符", trigger: "blur" },
   ],
-  region: [
-    { required: true, message: '请选择活动区域', trigger: 'change' }
-  ],
-  date1: [
-    { required: true, message: '请选择日期', trigger: 'change' }
-  ],
-  date2: [
-    { required: true, message: '请选择时间', trigger: 'change' }
+  region: [{ required: true, message: "请选择活动区域", trigger: "change" }],
+  date: [
+    // { required: true, message: "请选择日期", trigger: "change" },
+    {
+      validator: (rule: any, value: any, callback: any) => {
+        console.log('value', value)
+        if (value && value !== "") {
+          callback();
+        } else {
+          callback(new Error("请选择日期"));
+        }
+      },
+      trigger: "change",
+    },
   ],
   type: [
-    { type: 'array', required: true, message: '请至少选择一个活动性质', trigger: 'change' }
+    {
+      type: "array",
+      required: true,
+      message: "请至少选择一个活动性质",
+      trigger: "change",
+    },
   ],
-  resource: [
-    { required: true, message: '请选择活动资源', trigger: 'change' }
-  ],
-  desc: [
-    { required: true, message: '请填写活动形式', trigger: 'blur' }
-  ]
-})
+  resource: [{ required: true, message: "请选择活动资源", trigger: "change" }],
+  desc: [{ required: true, message: "请填写活动形式", trigger: "blur" }],
+});
 
 const submitForm = async () => {
-  if (!formRef.value) return
+  if (!formRef.value) return;
   await formRef.value.validate((valid: boolean) => {
     if (valid) {
-      console.log('submit!', form)
+      console.log("submit!", form);
     } else {
-      console.log('error submit!')
-      return false
+      console.log("error submit!");
+      return false;
     }
-  })
-}
+  });
+};
 
 const resetForm = () => {
-  if (!formRef.value) return
-  formRef.value.resetFields()
-}
+  if (!formRef.value) return;
+  formRef.value.resetFields();
+};
 </script>
 
 <style>
