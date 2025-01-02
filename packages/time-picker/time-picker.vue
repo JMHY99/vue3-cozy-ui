@@ -9,7 +9,7 @@
         readonly
       />
       <span class="cozy-time-picker-suffix">
-        <i class="cozy-icon-clock"></i>
+        <i class="cozy-icon c-shijian"></i>
       </span>
     </div>
 

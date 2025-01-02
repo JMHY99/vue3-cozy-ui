@@ -9,7 +9,7 @@
         readonly
       />
       <span class="cozy-date-picker-suffix">
-        <i class="cozy-icon-calendar"></i>
+        <i class="cozy-icon c-riqi"></i>
       </span>
     </div>
 
