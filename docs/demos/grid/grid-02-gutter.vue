@@ -51,11 +51,11 @@
     width: 100%;
     border-radius: 4px;
     min-height: 36px;
-    background-color: #e6f4ff;
+    background-color: #45a5ff;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #1677ff;
+    color: #fff;
   }
 }
 </style>
