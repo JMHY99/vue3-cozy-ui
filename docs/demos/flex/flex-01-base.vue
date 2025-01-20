@@ -30,7 +30,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .demo div > div {
   width: 80px;
   height: 80px;
